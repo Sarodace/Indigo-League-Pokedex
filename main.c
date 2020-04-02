@@ -2,10 +2,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <gtk/gtk.h>
 #include "pokemonData.h"
+#include <gtk/gtk.h>
+
+// TODO: Move all these gtk widgets into a new file maybe?
 
 // Make them global
+// TODO: Rename this to something that actually makes sense
 char str[5];
 
 // WINDOW VARIABLES
@@ -56,9 +59,6 @@ gboolean my_keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer da
         } else {
             gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
             gtk_stack_set_visible_child(GTK_STACK(subStack),GTK_WIDGET(emptyScreen));
-            // for (int i = 1; i <= 22; i++) {
-            //     gtk_widget_show(GTK_WIDGET(mainWindowButton[i]));
-            // }
             return TRUE;
         }
     }

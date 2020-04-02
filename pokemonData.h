@@ -1,7 +1,7 @@
 #ifndef POKEMONDATA_H
 #define POKEMONDATA_H
 
-#define POKEDEX_SIZE 23
+#define POKEDEX_SIZE 23 // REMINDER: This'll eventually go up to 151
 #include <gtk/gtk.h>
 
 typedef enum typeEnum {
@@ -55,6 +55,7 @@ typedef struct pokemon {
   int weight; // In kilograms
 } pokemon;
 
+// TODO: Rename this to something that actually makes sense
 pokemon initial[POKEDEX_SIZE] = {
   {"Bulbasaur", "Seed", 1, Grass, Poison, 0.7, 6.9},
   {"Ivysaur", "Seed", 2, Grass, Poison, 1, 13},
@@ -89,6 +90,7 @@ int searchPokemonList3(GtkWidget** buttonArray,
                        int greaterWeight,
                        typeEnum firstType,
                        typeEnum secondType) {
+  // TODO: Rename these variables so they make more sense
   int i; // Counter
   int j = 0; // Results
   char numberBuffer[3];
@@ -127,16 +129,13 @@ int searchPokemonList3(GtkWidget** buttonArray,
     }
 
     // Check which pokemon satisfy all conditions
-    if (ptr1 != NULL && ptr2 == 1 && ptr3 == 1 && ptr4 == 1 && ptr5 == 1) {
+    if (ptr1 != NULL && ptr2 && ptr3 && ptr4 && ptr5) {
       j += 1;
-      printf("GOOD: pokemon name: %s\n",initial[i].name);
       gtk_widget_show(buttonArray[i+1]);
     } else {
-      printf("BAD: pokemon name: %s\n",initial[i].name);
       gtk_widget_hide(buttonArray[i+1]);
     }
   }
-  printf("\n");
   return j;
 }
 
