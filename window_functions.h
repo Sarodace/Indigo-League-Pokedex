@@ -14,7 +14,7 @@ GtkWidget   *pokemonImage;
 // MAIN WINDOW LIST WIDGETS
 GtkBuilder  *builder;
 
-GtkWidget *mainWindowButton[POKEDEX_SIZE];
+GtkWidget *mainWindowButton[40];
 GtkWidget *viewBox;
 
 // MAIN WINDOW SEARCH WIDGETS
@@ -45,3 +45,15 @@ GtkWidget   *pokemonType2;
 GtkWidget   *infoStack;
 GtkWidget   *entryScreen;
 GtkWidget   *infoEmptyScreen;
+
+void readFromTXTFile(GtkWidget *selectedPokemon);
+gboolean my_keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data);
+void handle_main_window(GtkButton *buttonClicked);
+void handle_sub_window(GtkButton *buttonClicked);
+void handle_info_window(GtkButton *buttonClicked);
+int pokemon_button_clicked (GtkButton *buttonClicked);
+void searchPokemon(void);
+int pokemon_name_search (GtkSearchEntry *entry, gpointer user_data);
+int pokemon_spin_search (GtkSpinButton *entry, gpointer user_data);
+void pokemon_range_search (GtkComboBox *widget, gpointer user_data);
+void myCSS(void);
