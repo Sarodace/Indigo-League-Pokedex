@@ -48,7 +48,7 @@ GtkWidget   *infoEmptyScreen;
 
 //FUNCTION PROTOTYPES
 void readFromTXTFile(GtkWidget *selectedPokemon);
-gboolean my_keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data);
+gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data);
 void handle_main_window(GtkButton *buttonClicked);
 void handle_sub_window(GtkButton *buttonClicked);
 void handle_info_window(GtkButton *buttonClicked);
@@ -58,3 +58,5 @@ int pokemon_name_search (GtkSearchEntry *entry, gpointer user_data);
 int pokemon_spin_search (GtkSpinButton *entry, gpointer user_data);
 void pokemon_range_search (GtkComboBox *widget, gpointer user_data);
 void implement_CSS(void);
+gboolean switch_screens(void);
+gboolean scroll_list_screen(int);

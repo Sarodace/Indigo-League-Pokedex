@@ -1,9 +1,12 @@
+#include <time.h>
+
 #include "window_functions.h"
 #include "pokemonData.h"
 
 // VARIABLES
 // Declare global variables
 extern const char* typeEnumStrings[];
+int currentHeight = 0;
 
 void read_from_TXT_file(GtkWidget *selectedPokemon) {
     FILE* file = fopen("pokedex_entries.txt", "r");
@@ -19,22 +22,54 @@ void read_from_TXT_file(GtkWidget *selectedPokemon) {
     fclose(file);
 }
 
-//KEYPRESS HANDLER- Treat each key as a function
-gboolean my_keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data) {
-    if (event->keyval == GDK_KEY_Escape) {
-        if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == listScreen) {
-            gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(searchScreen));
-            return TRUE;
+gboolean switch_screens(void) {
+    if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == listScreen) {
+        gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(searchScreen));
+        return TRUE;
+    } else {
+        gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
+        gtk_stack_set_visible_child(GTK_STACK(subStack),GTK_WIDGET(subEmptyScreen));
+        gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(infoEmptyScreen));
+        return TRUE;
+    }
+}
+
+// Scrolls the list screen to best display selected, and surrounding, Pokemon.
+// Future goals:
+//  - Implement smooth scrolling (current code is very "snappy")
+//  - Properly account for lower bound
+//  - Gradient blur on bottom most visibile pokemon (This is more of a Glade/CSS
+//    thing, but I think it's important to mention here)
+gboolean scroll_list_screen(int pressedArrowKey) {
+    GtkAdjustment *viewWindow = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(viewBox));
+    // 65362 is the int representation of the "Up-arrow Key"
+    if (pressedArrowKey == 65362) {
+        // Checks if current height allows up arrow to be pressed
+        if (currentHeight >= 195) {
+            // Moves screen up 
+            currentHeight -= 65;
+            gtk_adjustment_set_value(viewWindow, currentHeight - 130);
+        }
+    } else {
+        // Checks if current height allows down arrow to be pressed
+        if (currentHeight >= 130) {
+            // Moves screen down
+            currentHeight += 65;
+            gtk_adjustment_set_value(viewWindow, currentHeight - 130);
         } else {
-            gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
-            gtk_stack_set_visible_child(GTK_STACK(subStack),GTK_WIDGET(subEmptyScreen));
-            gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(infoEmptyScreen));
-            return TRUE;
+            // Increments current height by 65 pixels
+            currentHeight += 65;
         }
     }
-    if (event->keyval == GDK_KEY_Down) {
-        gtk_adjustment_set_value(gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(viewBox)),gtk_adjustment_get_value(gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(viewBox))) + 100);
-        printf("Works again!!!\n");
+}
+
+//KEYPRESS HANDLER- Treat each key as a function
+gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data) {
+    if (event->keyval == GDK_KEY_Escape) {
+        switch_screens();
+    }
+    if (event->keyval == GDK_KEY_Down || event->keyval == GDK_KEY_Up) {
+        scroll_list_screen(event->keyval);
     }
     return FALSE;
 }

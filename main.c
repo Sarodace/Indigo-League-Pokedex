@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
     gtk_widget_add_events(mainWindow, GDK_KEY_PRESS_MASK);
 
     g_signal_connect(mainWindow, "destroy", G_CALLBACK(gtk_main_quit), NULL);
-    g_signal_connect(G_OBJECT (mainWindow), "key_press_event", G_CALLBACK (my_keypress_function), NULL);
+    g_signal_connect(G_OBJECT (mainWindow), "key_press_event", G_CALLBACK (keypress_function), NULL);
     gtk_builder_connect_signals(builder, NULL);
 
     // Build widgets decribed in Glade file
