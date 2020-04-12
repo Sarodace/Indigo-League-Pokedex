@@ -1,15 +1,10 @@
-// #define _GNU_SOURCE
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include <string.h>
-
 #include "pokemonData.h"
 #include "window_functions.h"
 
 int main(int argc, char *argv[]) {
     // init GTK
     gtk_init(&argc, &argv);
-    myCSS();
+    implement_CSS();
 
     // Build windows and connect signals described in Glade file
     builder = gtk_builder_new_from_file ("pokedex2.glade");

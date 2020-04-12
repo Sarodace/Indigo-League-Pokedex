@@ -5,11 +5,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#define POKEDEX_SIZE 40 // REMINDER: This'll eventually go up to 151
 #include <gtk/gtk.h>
 
-typedef enum typeEnum {
+#define POKEDEX_SIZE 40
+
+// VARIABLES
+// Declare & Define local variables
+typedef enum typeEnum { // Potential Pokemon types 
   NONE,
   Normal,
   Fire,
@@ -30,9 +32,7 @@ typedef enum typeEnum {
   Steel
 } typeEnum;
 
-extern const char* typeEnumStrings[];
-
-typedef struct pokemon {
+typedef struct pokemon { // Identifying data associated with Pokemon
   char name[13];
   char category[15];
   int number;
@@ -42,10 +42,14 @@ typedef struct pokemon {
   int weight; // In kilograms
 } pokemon;
 
-extern pokemon pokedexArray[POKEDEX_SIZE];
+// Declare global variables
+extern const char* typeEnumStrings[]; // Potential Pokemon types (as strings)
+extern pokemon pokedexArray[POKEDEX_SIZE]; // Array containing all Kanto Pokemon
 
-// TODO: Clean up this function!!!
-int searchPokemonList(GtkWidget** buttonArray,
+
+
+// FUNCTION PROTOTYPES
+int searchPokemonList(GtkWidget** buttonArray, 
                        const char* name, 
                        float height, 
                        int greaterHeight,

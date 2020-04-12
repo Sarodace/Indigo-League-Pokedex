@@ -1,9 +1,11 @@
 #include "window_functions.h"
 #include "pokemonData.h"
 
+// VARIABLES
+// Declare global variables
 extern const char* typeEnumStrings[];
 
-void readFromTXTFile(GtkWidget *selectedPokemon) {
+void read_from_TXT_file(GtkWidget *selectedPokemon) {
     FILE* file = fopen("pokedex_entries.txt", "r");
     char line[256];
     int i = 0;
@@ -95,7 +97,7 @@ int pokemon_button_clicked (GtkButton *buttonClicked) {
 }
 
 // Pokemon search handler
-void searchPokemon(void) {
+void search_pokemon(void) {
     int relevantPokemon = searchPokemonList(mainWindowButton,
                                             gtk_entry_get_text(GTK_ENTRY(pokemonNameSearchEntry)),
                                             gtk_spin_button_get_value(GTK_SPIN_BUTTON(pokemonHeightSpinButton)),
@@ -113,18 +115,18 @@ void searchPokemon(void) {
 
 // Signal handlers
 int pokemon_name_search (GtkSearchEntry *entry, gpointer user_data) {
-    searchPokemon();
+    search_pokemon();
 }
 
 int pokemon_spin_search (GtkSpinButton *entry, gpointer user_data) {
-    searchPokemon();
+    search_pokemon();
 }
 
 void pokemon_range_search (GtkComboBox *widget, gpointer user_data) {
-    searchPokemon();
+    search_pokemon();
 }
 
-void myCSS(void) {
+void implement_CSS(void) {
     GtkCssProvider *provider;
     GdkDisplay *display;
     GdkScreen *screen;

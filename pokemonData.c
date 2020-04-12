@@ -1,6 +1,28 @@
 #include "pokemonData.h"
 
-pokemon pokedexArray[POKEDEX_SIZE] = {
+// VARIABLES
+// Define global variables
+const char* typeEnumStrings[] = { // Potential Pokemon types (as strings)
+  "Normal",
+  "Fire",
+  "Water",
+  "Electric",
+  "Grass",
+  "Ice",
+  "Fighting",
+  "Poison",
+  "Ground",
+  "Flying",
+  "Psychic",
+  "Bug",
+  "Rock",
+  "Ghost",
+  "Dragon",
+  "Dark",
+  "Steel"
+};
+
+pokemon pokedexArray[POKEDEX_SIZE] = { // Array containing all Kanto Pokemon
   {"Bulbasaur", "Seed", 1, Grass, Poison, 0.7, 6.9},
   {"Ivysaur", "Seed", 2, Grass, Poison, 1, 13},
   {"Venusaur", "Seed", 3, Grass, Poison, 2, 100},
@@ -41,26 +63,7 @@ pokemon pokedexArray[POKEDEX_SIZE] = {
   {"Ninetales", "Fox", 38, Fire, NONE, 1.1, 19.9}
 };
 
-const char* typeEnumStrings[] = {
-  "Normal",
-  "Fire",
-  "Water",
-  "Electric",
-  "Grass",
-  "Ice",
-  "Fighting",
-  "Poison",
-  "Ground",
-  "Flying",
-  "Psychic",
-  "Bug",
-  "Rock",
-  "Ghost",
-  "Dragon",
-  "Dark",
-  "Steel"
-};
-
+// Searches Pokemon list for Pokemon who satisfy user-provided constraints
 int searchPokemonList(GtkWidget** buttonArray,
                        const char* name, 
                        float height, 
@@ -69,45 +72,44 @@ int searchPokemonList(GtkWidget** buttonArray,
                        int greaterWeight,
                        typeEnum firstType,
                        typeEnum secondType) {
-  // TODO: Rename these variables so they make more sense
-  int i; // Counter
-  int j = 0; // Results
-  char numberBuffer[3];
-  char *ptr1, ptr2, ptr3, ptr4, ptr5;
+  int i; // Loop Counter
+  int j = 0; // Relevant Pokemon counter
+  char *ptr1; // Name checker variable
+  int ptr2, ptr3, ptr4, ptr5; // Height, weight, and types checker variables
   
-  for (i=0;i<POKEDEX_SIZE-1;i++) { // I DON'T THINK I NEED THIS COUNTER
-    // Set first variable to input text
+  for (i=0;i<POKEDEX_SIZE-1;i++) {
+    // Check if Pokemon's name contains given string 
     ptr1 = strcasestr(pokedexArray[i].name,name);
 
-    // Set first variable to desired height range
+    // Check if Pokemon's height falls within given range
     if (greaterHeight) {
       ptr2 = (pokedexArray[i].height >= height);
     } else {
       ptr2 = (pokedexArray[i].height <= height);
     }
 
-    // Set first variable to desired weight range
+    // Check if Pokemon's weight falls within given range
     if (greaterWeight) {
       ptr3 = (pokedexArray[i].weight >= weight);
     } else {
       ptr3 = (pokedexArray[i].weight <= weight);
     }
 
-    // First type checker
+    // Check if Pokemon's first type matches with given first type
     if (firstType == NONE) {
       ptr4 = 1;
     } else {
       ptr4 = (pokedexArray[i].firstType == firstType);
     }
 
-    // Second type checker
+    // Check if Pokemon's second type matches with given second type
     if (secondType == NONE) {
       ptr5 = 1;
     } else {
       ptr5 = (pokedexArray[i].secondType == secondType);
     }
 
-    // Check which pokemon satisfy all conditions
+    // Determine whether the Pokemon satisfies all constraints
     if (ptr1 != NULL && ptr2 && ptr3 && ptr4 && ptr5) {
       j += 1;
       gtk_widget_show(buttonArray[i+1]);

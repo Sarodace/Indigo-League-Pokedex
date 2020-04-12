@@ -1,19 +1,19 @@
 #include <gtk/gtk.h>
 
+// VARIABLES
 // WINDOW VARIABLES
 GtkWidget   *mainWindow;
 GtkWidget   *subWindow;
 GtkWidget   *infoWindow;
 
-// MAIN WINDOW SCREENS
+// MAIN WINDOW SCREENS & BUILDER VARIABLE
 GtkWidget   *mainStack;
 GtkWidget   *searchScreen;
 GtkWidget   *listScreen;
 GtkWidget   *pokemonImage;
-
-// MAIN WINDOW LIST WIDGETS
 GtkBuilder  *builder;
 
+// MAIN WINDOW LIST WIDGETS
 GtkWidget *mainWindowButton[40];
 GtkWidget *viewBox;
 
@@ -46,14 +46,15 @@ GtkWidget   *infoStack;
 GtkWidget   *entryScreen;
 GtkWidget   *infoEmptyScreen;
 
+//FUNCTION PROTOTYPES
 void readFromTXTFile(GtkWidget *selectedPokemon);
 gboolean my_keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data);
 void handle_main_window(GtkButton *buttonClicked);
 void handle_sub_window(GtkButton *buttonClicked);
 void handle_info_window(GtkButton *buttonClicked);
 int pokemon_button_clicked (GtkButton *buttonClicked);
-void searchPokemon(void);
+void search_pokemon(void);
 int pokemon_name_search (GtkSearchEntry *entry, gpointer user_data);
 int pokemon_spin_search (GtkSpinButton *entry, gpointer user_data);
 void pokemon_range_search (GtkComboBox *widget, gpointer user_data);
-void myCSS(void);
+void implement_CSS(void);
