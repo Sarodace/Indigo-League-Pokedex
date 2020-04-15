@@ -1,3 +1,12 @@
+.menu_bar {
+  background-color: #263137;
+  box-shadow: 0px 2px 4px gray;
+}
+
+.menu_bar_text {
+  color: #fff;
+}
+
 /* ICON FORMAT */
 .icon{
   background-color: white;
@@ -9,35 +18,35 @@
   background-color: #c6f4a1;
   border-color: #c6f4a1;
   border-radius: 100px;
-  box-shadow: 2px 2px 4px gray;
+  box-shadow: 0px 2px 4px gray;
 }
+
 
 .poison{
   background-color: #cea1f4;
   border-color: #cea1f4;
   border-radius: 100px;
-  box-shadow: 2px 2px 4px gray;
-}
+  box-shadow: 0px 2px 4px gray;}
 
 .water{
   background-color: #acced3;
   border-color: #acced3;
   border-radius: 100px;
-  box-shadow: 2px 2px 4px gray;
+  box-shadow: 0px 2px 4px gray;
 }
 
 .fire{
   background-color: #f4a9a1;
   border-color: #f4a9a1;
   border-radius: 100px;
-  box-shadow: 2px 2px 4px gray;
+  box-shadow: 0px 2px 4px gray;
 }
 
 .normal{
   background-color: #edf5a9;
   border-color: #edf5a9;
   border-radius: 100px;
-  box-shadow: 2px 2px 4px gray;
+  box-shadow: 0px 2px 4px gray;
 }
 
 .electric{

@@ -46,6 +46,11 @@ GtkWidget   *infoStack;
 GtkWidget   *entryScreen;
 GtkWidget   *infoEmptyScreen;
 
+// MAIN WINDOW MENU BAR
+GtkWidget   *searchScreenIndicator;
+GtkWidget   *listScreenIndicator;
+GtkWidget   *displayScreenIndicator;
+
 //FUNCTION PROTOTYPES
 void readFromTXTFile(GtkWidget *selectedPokemon);
 gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data);

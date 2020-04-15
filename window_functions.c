@@ -24,12 +24,23 @@ void read_from_TXT_file(GtkWidget *selectedPokemon) {
 
 gboolean switch_screens(void) {
     if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == listScreen) {
+        gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), FALSE);
+        gtk_revealer_set_reveal_child(GTK_REVEALER(searchScreenIndicator), TRUE);
         gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(searchScreen));
         return TRUE;
-    } else {
+    } 
+    if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == searchScreen) {
+        gtk_revealer_set_reveal_child(GTK_REVEALER(searchScreenIndicator), FALSE);
+        gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), TRUE);
         gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
         gtk_stack_set_visible_child(GTK_STACK(subStack),GTK_WIDGET(subEmptyScreen));
         gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(infoEmptyScreen));
+        return TRUE;
+    }
+    if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == pokemonImage) {
+        gtk_revealer_set_reveal_child(GTK_REVEALER(displayScreenIndicator), FALSE);
+        gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), TRUE);
+        gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
         return TRUE;
     }
 }
@@ -71,12 +82,26 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
     if (event->keyval == GDK_KEY_Down || event->keyval == GDK_KEY_Up) {
         scroll_list_screen(event->keyval);
     }
+    if (event->keyval == GDK_KEY_G ) {
+        gtk_revealer_set_reveal_child(GTK_REVEALER(searchScreenIndicator), TRUE);
+    }
+    if (event->keyval == GDK_KEY_g ) {
+        gtk_revealer_set_reveal_child(GTK_REVEALER(searchScreenIndicator), FALSE);
+    }
+    if (event->keyval == GDK_KEY_H ) {
+        gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), TRUE);
+    }
+    if (event->keyval == GDK_KEY_h ) {
+        gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), FALSE);
+    }
     return FALSE;
 }
 
 // Handle logic in the main window
 void handle_main_window(GtkButton *buttonClicked) {
     // Assemble path to pokemon image
+    gtk_revealer_set_reveal_child(GTK_REVEALER(displayScreenIndicator), TRUE);
+    gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), FALSE);
     char selectedPokemon[30] = "assets/pokeSprites/main/";
     strcat(selectedPokemon,gtk_widget_get_name(GTK_WIDGET(buttonClicked)));
     strcat(selectedPokemon,".png");
@@ -149,7 +174,7 @@ void search_pokemon(void) {
 }
 
 // Signal handlers
-int pokemon_name_search (GtkSearchEntry *entry, gpointer user_data) {
+int pokemon_search (GtkSearchEntry *entry, gpointer user_data) {
     search_pokemon();
 }
 

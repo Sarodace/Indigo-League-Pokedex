@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
     implement_CSS();
 
     // Build windows and connect signals described in Glade file
-    builder = gtk_builder_new_from_file ("pokedex2.glade");
+    builder = gtk_builder_new_from_file ("pokedex - material.glade");
     mainWindow = GTK_WIDGET(gtk_builder_get_object(builder, "mainWindow"));
     subWindow = GTK_WIDGET(gtk_builder_get_object(builder, "subWindow"));
     infoWindow = GTK_WIDGET(gtk_builder_get_object(builder, "infoWindow"));
@@ -23,7 +23,8 @@ int main(int argc, char *argv[]) {
     for (int i = 1; i <= POKEDEX_SIZE; i++) {
         sprintf(str,"%d",i);
         mainWindowButton[i] = GTK_WIDGET(gtk_builder_get_object(builder, str));
-        GList *children = gtk_container_get_children(GTK_CONTAINER(mainWindowButton[i]));
+        // GList *children = gtk_container_get_children(GTK_CONTAINER(mainWindowButton[i]));
+        // PUT BUTTON PRESS EVENT HERE
     }
 
     viewBox = GTK_WIDGET(gtk_builder_get_object(builder, "viewBox"));
@@ -61,13 +62,20 @@ int main(int argc, char *argv[]) {
     entryScreen = GTK_WIDGET(gtk_builder_get_object(builder, "entryScreen"));
     infoEmptyScreen = GTK_WIDGET(gtk_builder_get_object(builder, "infoEmptyScreen"));
 
+    // MENU BAR INDICATORS
+    searchScreenIndicator = GTK_WIDGET(gtk_builder_get_object(builder, "searchScreenIndicator"));
+    listScreenIndicator = GTK_WIDGET(gtk_builder_get_object(builder, "listScreenIndicator"));
+    displayScreenIndicator = GTK_WIDGET(gtk_builder_get_object(builder, "displayScreenIndicator"));
+
     // Display the GUI
     gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
 
-    gtk_label_set_line_wrap (GTK_LABEL(entryScreen),TRUE);
-    gtk_label_set_max_width_chars (GTK_LABEL (entryScreen), 30);
-    gtk_label_set_line_wrap_mode (GTK_LABEL (entryScreen),PANGO_WRAP_WORD);
+    // gtk_label_set_line_wrap (GTK_LABEL(entryScreen),TRUE);
+    // gtk_label_set_max_width_chars (GTK_LABEL (entryScreen), 30);
+    // gtk_label_set_line_wrap_mode (GTK_LABEL (entryScreen),PANGO_WRAP_WORD);
 
+
+    gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), TRUE);
     gtk_widget_show(mainWindow);
     // gtk_widget_show(subWindow);
     // gtk_widget_show(infoWindow);
