@@ -1,3 +1,4 @@
+/* MENU BAR */
 .menu_bar {
   background-color: #263137;
   box-shadow: 0px 2px 4px gray;
@@ -13,50 +14,46 @@
   border-radius: 20px;
 }
 
-/* TYPE FORMAT */
-.grass{
-  background-color: #c6f4a1;
-  border-color: #c6f4a1;
+/* BUTTON FORMAT */
+.button{
   border-radius: 100px;
   box-shadow: 0px 2px 4px gray;
 }
 
+/* TYPE FORMAT */
+.grass{
+  background-color: #c6f4a1;
+  border-color: #c6f4a1;
+}
 
 .poison{
   background-color: #cea1f4;
   border-color: #cea1f4;
-  border-radius: 100px;
-  box-shadow: 0px 2px 4px gray;}
+}
 
 .water{
   background-color: #acced3;
   border-color: #acced3;
-  border-radius: 100px;
-  box-shadow: 0px 2px 4px gray;
 }
 
 .fire{
   background-color: #f4a9a1;
   border-color: #f4a9a1;
-  border-radius: 100px;
-  box-shadow: 0px 2px 4px gray;
 }
 
 .normal{
   background-color: #edf5a9;
   border-color: #edf5a9;
-  border-radius: 100px;
-  box-shadow: 0px 2px 4px gray;
 }
 
 .electric{
   background-color: #f4e1a1;
-  border-radius: 100px;
+  border-color: #f4e1a1;
 }
 
 .bug{
-  background-color: #D4DC92;
-  border-radius: 100px;
+  background-color: rgb(199, 209, 121);
+  border-color: rgb(199, 209, 121);
 }
 
 /* TEXT FORMAT */
@@ -72,40 +69,38 @@
   font-size: 14px;
 }
 
-.poison_type{
-  background-color: #a074c4;
+.type{
   color: #FFFFFF;
   border-radius: 100px;
+}
+
+.poison_type{
+  background-color: #a074c4;
 }
 
 .water_type{
   background-color: #7c9ca1;
-  color: #FFFFFF;
-  border-radius: 100px;
 }
 
 .grass_type{
   background-color: #9bcc73;
-  color: #FFFFFF;
-  border-radius: 100px;
 }
 
 .fire_type{
   background-color: #df7165;
-  color: #FFFFFF;
-  border-radius: 100px;
 }
 
 .flying_type{
   background-color: rgb(123, 180, 204);
-  color: #FFFFFF;
-  border-radius: 100px;
 }
 
+.normal_type{
+  background-color: #bfc775;
+}
+
+
 .bug_type{
-  background-color: rgb(175, 190, 119);
-  color: #FFFFFF;
-  border-radius: 100px;
+  background-color: rgb(190, 204, 140);
 }
 
 /* |      Poison      | */
