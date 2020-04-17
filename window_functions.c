@@ -82,17 +82,8 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
     if (event->keyval == GDK_KEY_Down || event->keyval == GDK_KEY_Up) {
         scroll_list_screen(event->keyval);
     }
-    if (event->keyval == GDK_KEY_G ) {
-        gtk_revealer_set_reveal_child(GTK_REVEALER(searchScreenIndicator), TRUE);
-    }
     if (event->keyval == GDK_KEY_g ) {
-        gtk_revealer_set_reveal_child(GTK_REVEALER(searchScreenIndicator), FALSE);
-    }
-    if (event->keyval == GDK_KEY_H ) {
-        gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), TRUE);
-    }
-    if (event->keyval == GDK_KEY_h ) {
-        gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), FALSE);
+        printf("%s\n",gtk_widget_get_name(gtk_window_get_focus(GTK_WINDOW(mainWindow))));
     }
     return FALSE;
 }
