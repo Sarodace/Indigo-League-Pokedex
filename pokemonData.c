@@ -3,6 +3,7 @@
 // VARIABLES
 // Define global variables
 const char* typeEnumStrings[] = { // Potential Pokemon types (as strings)
+  "",
   "Normal",
   "Fire",
   "Water",
@@ -47,10 +48,10 @@ pokemon pokedexArray[POKEDEX_SIZE] = { // Array containing all Kanto Pokemon
   {"Fearow", "Beak", 22, Normal, Flying, 1.2, 38},
   {"Ekans", "Snake", 23, Poison, NONE, 2, 6.9},
   {"Arbok", "Cobra", 24, Poison, NONE, 3.5, 65},
-  {"Pikachu", "Mouse", 25, Electric, 0.4, 6},
-  {"Raichu", "Mouse", 26, Electric, 0.8, 30},
-  {"Sandshrew", "Mouse", 27, Ground, 0.6, 12},
-  {"Sandslash", "Mouse", 28, Ground, 1, 29.5},
+  {"Pikachu", "Mouse", 25, Electric, NONE, 0.4, 6},
+  {"Raichu", "Mouse", 26, Electric, NONE, 0.8, 30},
+  {"Sandshrew", "Mouse", 27, Ground, NONE, 0.6, 12},
+  {"Sandslash", "Mouse", 28, Ground, NONE, 1, 29.5},
   {"Nidoran♀", "Poison Pin", 29, Poison, NONE, 0.4, 7},
   {"Nidorina", "Poison Pin", 30, Poison, NONE, 0.8, 20},
   {"Nidoqueen", "Drill", 31, Poison, Ground, 1.3, 60},
@@ -65,6 +66,7 @@ pokemon pokedexArray[POKEDEX_SIZE] = { // Array containing all Kanto Pokemon
 
 // Searches Pokemon list for Pokemon who satisfy user-provided constraints
 int searchPokemonList(GtkWidget** buttonArray,
+                       int desiredOrder,
                        const char* name, 
                        float height, 
                        int greaterHeight,

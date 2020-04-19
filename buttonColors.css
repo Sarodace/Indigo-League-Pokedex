@@ -5,7 +5,7 @@
 }
 
 .menu_bar_text {
-  color: #fff;
+  color: white;
 }
 
 /* ICON FORMAT */
@@ -17,72 +17,11 @@
 /* BUTTON FORMAT */
 .button{
   border-radius: 100px;
+  border-width: 2px;
   box-shadow: 0px 2px 4px gray;
 }
 
-/* TYPE FORMAT */
-.search {
-  margin: 5px 20px 5px 0px;
-  border-bottom-right-radius: 50px;
-  border-top-right-radius: 50px;
-}
-
-.search_sub{
-  margin: 5px 0px 5px 0px;
-  border-bottom-right-radius: 50px;
-  border-top-right-radius: 50px;
-}
-
-.search_box {
-  box-shadow: 0px 2px 4px gray;
-  background-color: #a1c8f4;
-  border-color: #a1c8f4;
-  transition: background-color 2s;
-}
-
-.search_box:hover {
-  box-shadow: 0px 2px 4px gray;
-  background-color: red;
-}
-
-
-
-.grass{
-  background-color: #c6f4a1;
-  border-color: #c6f4a1;
-}
-
-.poison{
-  background-color: #cea1f4;
-  border-color: #cea1f4;
-}
-
-.water{
-  background-color: #acced3;
-  border-color: #acced3;
-}
-
-.fire{
-  background-color: #f4a9a1;
-  border-color: #f4a9a1;
-}
-
-.normal{
-  background-color: #edf5a9;
-  border-color: #edf5a9;
-}
-
-.electric{
-  background-color: #f4e1a1;
-  border-color: #f4e1a1;
-}
-
-.bug{
-  background-color: rgb(213, 241, 147);
-  border-color: rgb(199, 209, 121);
-}
-
-/* TEXT FORMAT */
+/* BUTTON ENTRY FORMAT */
 .name{
   font-family: "Lucida Console", Courier, monospace;
   font-weight: bold;
@@ -93,40 +32,111 @@
   font-family: "Lucida Console", Courier, monospace;
   color: #616161;
   font-size: 14px;
+  margin: 0px 10px 0px 15px;
 }
 
 .type{
   color: #FFFFFF;
   border-radius: 100px;
+  margin: 0px 0px 0px 10px;
 }
 
-.poison_type{
+/* SEARCH BARS*/
+.search {
+  margin: 5px 20px 5px 20px;
+  border-radius: 50px;
+}
+
+.search_box {
+  box-shadow: 0px 2px 4px gray;
+  background-color: #a1c8f4;
+  border-color: #c6f4a1;
+}
+
+.search_sub1 {
+  margin: 5px 0px 5px 0px;
+}
+
+.search_sub2 {
+  margin: 5px 20px 5px 0px;
+}
+
+/* TYPES PRIMARY-SHADES */
+.Grass{
+  background-color: #c6f4a1;
+  border-color: #9bcc73;
+}
+
+.Poison{
+  background-color: #cea1f4;
+  border-color: #a074c4;
+}
+
+.Water{
+  background-color: #abd3da;
+  border-color: #7c9ca1;
+}
+
+.Fire{
+  background-color: #f4a9a1;
+  border-color: #df7165;
+}
+
+.Normal{
+  background-color: #F5EA95;
+  border-color: #bfc775;
+}
+
+.Electric{
+  background-color: #f4e1a1;
+  border-color: #c5b171;
+}
+
+.Bug{
+  background-color: rgb(213, 241, 147);
+  border-color: rgb(190, 204, 140);
+}
+
+.Ground{
+  background-color: #d3b695;
+  border-color: #a58c6f;
+}
+
+/* TYPES SECONDARY-SHADES */
+.Poison_type{
   background-color: #a074c4;
 }
 
-.water_type{
+.Water_type{
   background-color: #7c9ca1;
 }
 
-.grass_type{
+.Grass_type{
   background-color: #9bcc73;
 }
 
-.fire_type{
+.Fire_type{
   background-color: #df7165;
 }
 
-.flying_type{
+.Flying_type{
   background-color: rgb(123, 180, 204);
 }
 
-.normal_type{
+.Normal_type{
   background-color: #bfc775;
 }
 
-
-.bug_type{
+.Bug_type{
   background-color: rgb(190, 204, 140);
+}
+
+.Electric_type{
+  background-color: #c5b171;
+}
+
+.Ground_type{
+  background-color: #a58c6f;
 }
 
 /* |      Poison      | */

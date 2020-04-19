@@ -18,6 +18,8 @@ GtkWidget *mainWindowButton[40];
 GtkWidget *viewBox;
 
 // MAIN WINDOW SEARCH WIDGETS
+GtkWidget   *orderComboBox;
+
 GtkWidget   *pokemonNameSearchEntry;
 GtkWidget   *pokemonHeightSpinButton;
 GtkWidget   *pokemonWeightSpinButton;
@@ -65,3 +67,5 @@ void pokemon_range_search (GtkComboBox *widget, gpointer user_data);
 void implement_CSS(void);
 gboolean switch_screens(void);
 gboolean scroll_list_screen(int);
+
+int sortPokemonList(int);

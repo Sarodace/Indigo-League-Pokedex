@@ -85,7 +85,14 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
     if (event->keyval == GDK_KEY_g ) {
         printf("%s\n",gtk_widget_get_name(gtk_window_get_focus(GTK_WINDOW(mainWindow))));
     }
+    if (event->keyval == GDK_KEY_b ) {
+        sortPokemonList(0);
+    }
     return FALSE;
+}
+
+int sortPokemonList(int orderMode) {
+    printf("Function call works!\n");
 }
 
 // Handle logic in the main window
@@ -120,15 +127,16 @@ void handle_sub_window(GtkButton *buttonClicked) {
     strcat(pokemonDexNumber, gtk_widget_get_name(GTK_WIDGET(buttonClicked)));
     gtk_label_set_text(GTK_LABEL(pokemonNumber),pokemonDexNumber);
 
-    // Format pokemon first type from button label
-    gtk_label_set_text(GTK_LABEL(pokemonType1),typeEnumStrings[pokedexArray[selectedPokemon].firstType - 1]);
+    //TODO: This code should be reworked for i = 0 to be null
+    // // Format pokemon first type from button label
+    // gtk_label_set_text(GTK_LABEL(pokemonType1),typeEnumStrings[pokedexArray[selectedPokemon].firstType - 1]);
 
-    // Format pokemon second type
-    if (pokedexArray[selectedPokemon].secondType == 0) {
-        gtk_label_set_text(GTK_LABEL(pokemonType2),"");
-    } else {
-        gtk_label_set_text(GTK_LABEL(pokemonType2),typeEnumStrings[pokedexArray[selectedPokemon].secondType - 1]);
-    }
+    // // Format pokemon second type
+    // if (pokedexArray[selectedPokemon].secondType == 0) {
+    //     gtk_label_set_text(GTK_LABEL(pokemonType2),"");
+    // } else {
+    //     gtk_label_set_text(GTK_LABEL(pokemonType2),typeEnumStrings[pokedexArray[selectedPokemon].secondType - 1]);
+    // }
 
     //Switch sub window's focus to pokemon info
     gtk_stack_set_visible_child(GTK_STACK(subStack),GTK_WIDGET(dataScreen));
@@ -150,6 +158,7 @@ int pokemon_button_clicked (GtkButton *buttonClicked) {
 // Pokemon search handler
 void search_pokemon(void) {
     int relevantPokemon = searchPokemonList(mainWindowButton,
+                                            gtk_combo_box_get_active(GTK_COMBO_BOX(orderComboBox)),
                                             gtk_entry_get_text(GTK_ENTRY(pokemonNameSearchEntry)),
                                             gtk_spin_button_get_value(GTK_SPIN_BUTTON(pokemonHeightSpinButton)),
                                             gtk_combo_box_get_active(GTK_COMBO_BOX(heightComboBox)),
@@ -182,14 +191,14 @@ void implement_CSS(void) {
     GdkDisplay *display;
     GdkScreen *screen;
 
-    provider = gtk_css_provider_new ();
-    display = gdk_display_get_default ();
-    screen = gdk_display_get_default_screen (display);
-    gtk_style_context_add_provider_for_screen (screen, GTK_STYLE_PROVIDER (provider), GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+    provider = gtk_css_provider_new();
+    display = gdk_display_get_default();
+    screen = gdk_display_get_default_screen(display);
+    gtk_style_context_add_provider_for_screen(screen, GTK_STYLE_PROVIDER (provider), GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-    const gchar *myCssFile = "buttonColors.css";
+    const gchar *cssFile = "buttonColors.css";
     GError *error = 0;
 
-    gtk_css_provider_load_from_file(provider, g_file_new_for_path(myCssFile), &error);
-    g_object_unref (provider);
+    gtk_css_provider_load_from_file(provider, g_file_new_for_path(cssFile), &error);
+    g_object_unref(provider);
 }
