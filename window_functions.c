@@ -33,8 +33,8 @@ gboolean switch_screens(void) {
         gtk_revealer_set_reveal_child(GTK_REVEALER(searchScreenIndicator), FALSE);
         gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), TRUE);
         gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
-        gtk_stack_set_visible_child(GTK_STACK(subStack),GTK_WIDGET(subEmptyScreen));
-        gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(infoEmptyScreen));
+        // gtk_stack_set_visible_child(GTK_STACK(subStack),GTK_WIDGET(subEmptyScreen));
+        // gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(infoEmptyScreen));
         return TRUE;
     }
     if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == pokemonImage) {
@@ -77,7 +77,7 @@ gboolean scroll_list_screen(int pressedArrowKey) {
 //KEYPRESS HANDLER- Treat each key as a function
 gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data) {
     if (event->keyval == GDK_KEY_Escape) {
-        switch_screens();
+        return switch_screens();
     }
     if (event->keyval == GDK_KEY_Down || event->keyval == GDK_KEY_Up) {
         scroll_list_screen(event->keyval);
@@ -149,6 +149,11 @@ void handle_info_window(GtkButton *buttonClicked) {
 }
 
 // Handle button presses
+//TODO: Why is this an int?
+// KNOWN_BUG
+/* It's possible to click on another pokedex entry while the list screen is 
+transitioning to the viewscreen. Look into preventing input until screen has
+finished transitioning.*/
 int pokemon_button_clicked (GtkButton *buttonClicked) {
     handle_main_window(buttonClicked);
     handle_sub_window(buttonClicked);
@@ -194,11 +199,103 @@ void implement_CSS(void) {
     provider = gtk_css_provider_new();
     display = gdk_display_get_default();
     screen = gdk_display_get_default_screen(display);
-    gtk_style_context_add_provider_for_screen(screen, GTK_STYLE_PROVIDER (provider), GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+    gtk_style_context_add_provider_for_screen(screen, GTK_STYLE_PROVIDER (provider), 
+        GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 
     const gchar *cssFile = "buttonColors.css";
     GError *error = 0;
 
     gtk_css_provider_load_from_file(provider, g_file_new_for_path(cssFile), &error);
     g_object_unref(provider);
+}
+
+
+void generatePokedexButtons(void) {
+    // Style Context variable needed to use CSS to style widgets
+    GtkStyleContext   *context;
+
+    // Null variable used to bypass having to pass data
+    int *pInt = NULL; 
+
+    // Variables unique to each button
+    // TODO: Find a way to stop using magic numbers
+    char buttonID[5];
+    char nameString[10];
+    char numberString[12];
+    char iconString[10];
+    char iconStringFromFile[30];
+    char firstTypeString[20];
+    char secondTypeString[20];
+    char firstTypeCSS[20];
+    char secondTypeCSS[20];
+    char formattedPokedexNumber[10];
+    char rawPokedexNumber[10];
+
+    for (int i = 1; i <= 30; i++) {
+        //// DEFINE UNIQUE IDENTIFIERS
+        sprintf(buttonID,"%d",i); // Button ID
+        sprintf(nameString,"name_%d",i); // Pokemon name
+        sprintf(iconString,"icon_%d",i); // Pokemon icon
+        sprintf(numberString,"number_%d",i); // Pokemon number
+
+        // Pokemon icon location
+        sprintf(iconStringFromFile,"assets/pokeSprites/icons/%d",i);
+        strcat(iconStringFromFile,".png");
+
+        // Pokemon number
+        sprintf(formattedPokedexNumber, "%s","#");
+        sprintf(rawPokedexNumber, "%03d", i);
+        strcat(formattedPokedexNumber, rawPokedexNumber);
+
+        // Pokemon types
+        sprintf(firstTypeString,"type1_%d",i); // Pokemon icon
+        sprintf(secondTypeString,"type2_%d",i); // Pokemon icon
+
+        // Create string that formats types with CSS
+        sprintf(firstTypeCSS, "%s", typeEnumStrings[pokedexArray[i-1].firstType]);
+        strcat(firstTypeCSS, "_type");
+        sprintf(secondTypeCSS, "%s", typeEnumStrings[pokedexArray[i-1].secondType]);
+        strcat(secondTypeCSS, "_type");
+
+        //// CREATE THE BUTTON
+        mainWindowButton[i-1] = GTK_WIDGET(gtk_builder_get_object(builder, buttonID));
+
+        //// FILL THE BUTTON WITH RELEVANT UNIQUE INFORMATION
+        // Set icon image on button
+        gtk_image_set_from_file(GTK_IMAGE(gtk_builder_get_object(builder, iconString)),
+            iconStringFromFile);
+
+        // Set Pokemon's name on button
+        gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, nameString)),
+            pokedexArray[i-1].name);
+
+        // Set Pokemon's number on button
+        gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, numberString)),
+            formattedPokedexNumber);
+
+        // Set Pokemon's first type...
+        gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, firstTypeString)),
+            typeEnumStrings[pokedexArray[i-1].firstType]);
+        // Then apply the CSS to format it to the correct color
+        context = gtk_widget_get_style_context(GTK_WIDGET(gtk_builder_get_object(builder, firstTypeString)));
+        gtk_style_context_add_class(context, firstTypeCSS);
+
+        // Set Pokemon's second type...
+        gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, secondTypeString)),
+            typeEnumStrings[pokedexArray[i-1].secondType]);
+        // Then apply the CSS to format it to the correct color
+        context = gtk_widget_get_style_context(GTK_WIDGET(gtk_builder_get_object(builder, secondTypeString)));
+        gtk_style_context_add_class(context, secondTypeCSS);
+
+        // Apply CSS to format button's color to allign with Pokemon's first type
+        context = gtk_widget_get_style_context(GTK_WIDGET(gtk_builder_get_object(builder, buttonID)));
+        gtk_style_context_add_class(context, typeEnumStrings[pokedexArray[i-1].firstType]);
+
+        // Clicking the button will trigger the "pokemon_button_clicked" function
+        g_signal_connect(GTK_BUTTON(mainWindowButton[i-1]), "clicked",
+            G_CALLBACK(pokemon_button_clicked), pInt);
+
+        // Finally, name the button to facilitate interaction with other functions
+        gtk_widget_set_name(mainWindowButton[i-1],rawPokedexNumber);
+    }
 }

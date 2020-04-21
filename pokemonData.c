@@ -114,9 +114,9 @@ int searchPokemonList(GtkWidget** buttonArray,
     // Determine whether the Pokemon satisfies all constraints
     if (ptr1 != NULL && ptr2 && ptr3 && ptr4 && ptr5) {
       j += 1;
-      gtk_widget_show(buttonArray[i+1]);
+      gtk_widget_show(buttonArray[i]);
     } else {
-      gtk_widget_hide(buttonArray[i+1]);
+      gtk_widget_hide(buttonArray[i]);
     }
   }
   return j;
