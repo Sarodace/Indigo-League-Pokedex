@@ -39,6 +39,7 @@ gboolean switch_screens(void) {
     }
     if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == pokemonImage) {
         gtk_revealer_set_reveal_child(GTK_REVEALER(displayScreenIndicator), FALSE);
+        gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), FALSE);
         gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), TRUE);
         gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
         return TRUE;
@@ -145,7 +146,8 @@ void handle_sub_window(GtkButton *buttonClicked) {
 // Handle logic in 
 void handle_info_window(GtkButton *buttonClicked) {
     gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(entryScreen));
-    // readFromTXTFile(GTK_WIDGET(buttonClicked));
+    read_from_TXT_file(GTK_WIDGET(buttonClicked));
+    gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), TRUE);
 }
 
 // Handle button presses

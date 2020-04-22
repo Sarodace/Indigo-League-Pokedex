@@ -40,6 +40,12 @@ typedef struct pokemon { // Identifying data associated with Pokemon
   typeEnum secondType;
   float height; // In meters
   int weight; // In kilograms
+  int firstEvo;
+  int firstEvo_method;
+  int firstEvo_level;
+  int secondEvo;
+  int secondEvo_method;
+  int secondEvo_level;
 } pokemon;
 
 // Declare global variables

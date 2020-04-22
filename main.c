@@ -60,6 +60,10 @@ int main(int argc, char *argv[]) {
     listScreenIndicator = GTK_WIDGET(gtk_builder_get_object(builder, "listScreenIndicator"));
     displayScreenIndicator = GTK_WIDGET(gtk_builder_get_object(builder, "displayScreenIndicator"));
 
+    // Info screen MENU BAR INDICATORS
+    descriptionScreenIndicator = GTK_WIDGET(gtk_builder_get_object(builder, "descriptionScreenIndicator"));
+    evolutionScreenIndicator = GTK_WIDGET(gtk_builder_get_object(builder, "evolutionScreenIndicator"));
+
     // Display the GUI
     gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
 
@@ -73,11 +77,8 @@ int main(int argc, char *argv[]) {
     gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), TRUE);
     gtk_widget_show(mainWindow);
     // gtk_widget_show(subWindow);
-    // gtk_widget_show(infoWindow);
+    gtk_widget_show(infoWindow);
     gtk_main();
-    // printf("%03d\n",2);
-    // printf("%03d\n",92);
-    // printf("%03d\n",134);
 
     return EXIT_SUCCESS;
 }

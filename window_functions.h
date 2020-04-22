@@ -53,6 +53,11 @@ GtkWidget   *searchScreenIndicator;
 GtkWidget   *listScreenIndicator;
 GtkWidget   *displayScreenIndicator;
 
+// TODO: RENAME
+GtkWidget   *descriptionScreenIndicator;
+GtkWidget   *evolutionScreenIndicator;
+
+
 //FUNCTION PROTOTYPES
 void readFromTXTFile(GtkWidget *selectedPokemon);
 gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data);
