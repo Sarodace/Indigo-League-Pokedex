@@ -304,44 +304,41 @@ void generate_pokedex_buttons(void) {
     }
 }
 
-/*
-{"Bulbasaur", "Seed", 1, Grass, Poison, 0.7, 6.9, FALSE, 0, NULL, 0},
-{"Ivysaur", "Seed", 2, Grass, Poison, 1, 13, FALSE, 1, LEVEL_UP, 16},
-{"Venusaur", "Seed", 3, Grass, Poison, 2, 100, TRUE, 2, LEVEL_UP, 32},
-*/
-
 int find_evolutions(int selectedPokemon) {
-    int i; // count
-
-    // Back searches
+    // Loop back to the selected pokemon's 1st stage
     if (pokedexArray[selectedPokemon-1].finalForm == TRUE || pokedexArray[selectedPokemon-1].evolvesFrom != 0) {
-        for (i=0;i<POKEDEX_SIZE;i++) {
+        for (int i=0;i<POKEDEX_SIZE;i++) {
             if (pokedexArray[i].number == pokedexArray[selectedPokemon-1].evolvesFrom) {
-                printf("Evolves from %s\n",pokedexArray[i].name);
+                // Uses recursion to accomplish the task!
                 find_evolutions(pokedexArray[i].number);
             }
         }
-    } else {
-        if (pokedexArray[selectedPokemon-1].evolvesFrom == 0) {
-            printf("%s doesn't have any pre-evolutions\n",pokedexArray[selectedPokemon-1].name);
-        }
     }
 
-    // Reimplement following code to search forward
-    // if (pokedexArray[selectedPokemon-1].finalForm == TRUE) {
-    //     printf("%s\n",pokedexArray[selectedPokemon-1].name);
-    // }
+    // Go through the evolutionary stages
+    if (pokedexArray[selectedPokemon-1].finalForm == FALSE && pokedexArray[selectedPokemon-1].evolvesFrom == 0) {
+        printf("1st form: %s\n",pokedexArray[selectedPokemon-1].name);
 
-    // if (pokedexArray[selectedPokemon-1].finalForm == FALSE) {
-    //     for (i=0;i<POKEDEX_SIZE;i++) {
-    //         if (pokedexArray[i].evolvesFrom == pokedexArray[selectedPokemon-1].number) {
-    //             printf("Evolves into %s\n",pokedexArray[i].name);
-    //             find_evolutions(pokedexArray[i].number);
-    //         }
-    //     }
-    // } else {
-    //     printf("This pokemon doesn't evolve\n\n");
-    //     return 0;
-    // }
-    // printf("Final evolution? (0 no, 1 yes) %d\n",pokedexArray[selectedPokemon-1].finalForm);
+        // Looks for 2nd evolutionary stage
+        for (int j=0;j<POKEDEX_SIZE;j++) {
+            if (pokedexArray[j].evolvesFrom == pokedexArray[selectedPokemon-1].number) {
+
+                // Either goes on to look for 3rd evolutionary stage...
+                if (pokedexArray[j].finalForm == FALSE) {
+                    printf("2nd form: %s\n",pokedexArray[j].name);
+                    for (int k=0;k<POKEDEX_SIZE;k++) {
+
+                        //Finally, find the 3rd evolutionary stage
+                        if (pokedexArray[k].evolvesFrom == pokedexArray[j].number) {
+                            printf("3rd form (FINAL): %s\n",pokedexArray[k].name);
+                        }
+                    }
+
+                // Or breaks out of loop if that's its final evolution
+                } else {
+                    printf("2nd form (FINAL): %s\n",pokedexArray[j].name);
+                }
+            }
+        }
+    }
 }
