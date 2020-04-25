@@ -45,8 +45,11 @@ GtkWidget   *pokemonType2;
 
 // INFO WINDOW SCREENS
 GtkWidget   *infoStack;
-GtkWidget   *entryScreen;
+
 GtkWidget   *infoEmptyScreen;
+GtkWidget   *entryScreen;
+GtkWidget   *threeTierEvolution;
+GtkWidget   *twoTierEvolution;
 
 // MAIN WINDOW MENU BAR
 GtkWidget   *searchScreenIndicator;
@@ -58,20 +61,26 @@ GtkWidget   *descriptionScreenIndicator;
 GtkWidget   *evolutionScreenIndicator;
 
 
-//FUNCTION PROTOTYPES
-void readFromTXTFile(GtkWidget *selectedPokemon);
-gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data);
+// FUNCTION PROTOTYPES
+
+// MAIN WINDOW FUNCTION PROTOTYPES
 void handle_main_window(GtkButton *buttonClicked);
 void handle_sub_window(GtkButton *buttonClicked);
-void handle_info_window(GtkButton *buttonClicked);
-int pokemon_button_clicked (GtkButton *buttonClicked);
-void search_pokemon(void);
-int pokemon_name_search (GtkSearchEntry *entry, gpointer user_data);
-int pokemon_spin_search (GtkSpinButton *entry, gpointer user_data);
-void pokemon_range_search (GtkComboBox *widget, gpointer user_data);
-void implement_CSS(void);
 gboolean switch_screens(void);
 gboolean scroll_list_screen(int);
-void generatePokedexButtons(void);
+void generate_pokedex_buttons(void);
+int pokemon_entry_clicked(GtkButton *buttonClicked);
+gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data);
 
-int sortPokemonList(int);
+// INFO WINDOW FUNCTION PROTOTYPES
+void handle_info_window(GtkButton *buttonClicked);
+
+// FILE LOADING FUNCTION PROTOTYPES
+void implement_CSS(void);
+void read_from_TXT_file(GtkWidget *selectedPokemon);
+
+// Sorting and searching 
+void pokemon_search(GtkWidget *widget, gpointer user_data);
+
+// Test evolution
+int find_evolutions(int selectedPokemon);

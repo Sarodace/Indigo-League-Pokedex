@@ -52,8 +52,11 @@ int main(int argc, char *argv[]) {
 
     // INFO WINDOW
     infoStack = GTK_WIDGET(gtk_builder_get_object(builder, "infoStack"));
-    entryScreen = GTK_WIDGET(gtk_builder_get_object(builder, "entryScreen"));
+
     infoEmptyScreen = GTK_WIDGET(gtk_builder_get_object(builder, "infoEmptyScreen"));
+    entryScreen = GTK_WIDGET(gtk_builder_get_object(builder, "entryScreen"));
+    threeTierEvolution = GTK_WIDGET(gtk_builder_get_object(builder, "threeTierEvolution"));
+    twoTierEvolution = GTK_WIDGET(gtk_builder_get_object(builder, "twoTierEvolution"));
 
     // MENU BAR INDICATORS
     searchScreenIndicator = GTK_WIDGET(gtk_builder_get_object(builder, "searchScreenIndicator"));
@@ -67,12 +70,8 @@ int main(int argc, char *argv[]) {
     // Display the GUI
     gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
 
-    // gtk_label_set_line_wrap (GTK_LABEL(entryScreen),TRUE);
-    // gtk_label_set_max_width_chars (GTK_LABEL (entryScreen), 30);
-    // gtk_label_set_line_wrap_mode (GTK_LABEL (entryScreen),PANGO_WRAP_WORD);
-
     // Build widgets decribed in Glade file
-    generatePokedexButtons();
+    generate_pokedex_buttons();
 
     gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), TRUE);
     gtk_widget_show(mainWindow);

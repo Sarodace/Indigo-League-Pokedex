@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <gtk/gtk.h>
+#include <stdbool.h> 
 
 #define POKEDEX_SIZE 40
 
@@ -32,6 +33,21 @@ typedef enum typeEnum { // Potential Pokemon types
   Steel
 } typeEnum;
 
+// typedef enum canEvolveEnum {
+//   CANNOT_EVOLVE,
+//   CAN_EVOLVE,
+//   MULTIPLE_EVOLUTIONS
+// } canEvolveEnum;
+
+typedef enum evolutionEnum {
+  LEVEL_UP,
+  TRADE,
+  FIRE_STONE,
+  WATER_STONE,
+  THUNDER_STONE,
+  LEAF_STONE,
+} evolutionEnum;
+
 typedef struct pokemon { // Identifying data associated with Pokemon
   char name[13];
   char category[15];
@@ -39,13 +55,11 @@ typedef struct pokemon { // Identifying data associated with Pokemon
   typeEnum firstType;
   typeEnum secondType;
   float height; // In meters
-  int weight; // In kilograms
-  int firstEvo;
-  int firstEvo_method;
-  int firstEvo_level;
-  int secondEvo;
-  int secondEvo_method;
-  int secondEvo_level;
+  float weight; // In kilograms
+  bool finalForm; // -1 Can't evolve, 0 No, 1 yes
+  int evolvesFrom;
+  evolutionEnum *evolutionMethod;
+  int level;
 } pokemon;
 
 // Declare global variables
@@ -53,7 +67,7 @@ extern const char* typeEnumStrings[]; // Potential Pokemon types (as strings)
 extern pokemon pokedexArray[POKEDEX_SIZE]; // Array containing all Kanto Pokemon
 
 // FUNCTION PROTOTYPES
-int searchPokemonList(GtkWidget** buttonArray, 
+int search_Pokemon_list(GtkWidget** buttonArray, 
                        int desiredOrder,
                        const char* name, 
                        float height, 

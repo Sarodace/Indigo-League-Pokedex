@@ -24,15 +24,15 @@ const char* typeEnumStrings[] = { // Potential Pokemon types (as strings)
 };
 
 pokemon pokedexArray[POKEDEX_SIZE] = { // Array containing all Kanto Pokemon
-  {"Bulbasaur", "Seed", 1, Grass, Poison, 0.7, 6.9},
-  {"Ivysaur", "Seed", 2, Grass, Poison, 1, 13},
-  {"Venusaur", "Seed", 3, Grass, Poison, 2, 100},
-  {"Charmander", "Lizard", 4, Fire, NONE, 0.6, 8.5},
-  {"Charmeleon", "Flame", 5, Fire, NONE, 1.1, 19},
-  {"Charizard", "Flame", 6, Fire, Flying, 1.7, 90.5},
-  {"Squirtle", "Tiny Turtle", 7, Water, NONE, 0.5, 9},
-  {"Wartortle", "Turtle", 8, Water, NONE, 1, 22.5},
-  {"Blastoise", "Shellfish", 9, Water, NONE, 1.6, 85.5},
+  {"Bulbasaur", "Seed", 1, Grass, Poison, 0.7, 6.9, FALSE, 0, NULL, 0},
+  {"Ivysaur", "Seed", 2, Grass, Poison, 1, 13, FALSE, 1, LEVEL_UP, 16},
+  {"Venusaur", "Seed", 3, Grass, Poison, 2, 100, TRUE, 2, LEVEL_UP, 32},
+  {"Charmander", "Lizard", 4, Fire, NONE, 0.6, 8.5, FALSE, 0, NULL, 0},
+  {"Charmeleon", "Flame", 5, Fire, NONE, 1.1, 19, FALSE, 4, LEVEL_UP, 16},
+  {"Charizard", "Flame", 6, Fire, Flying, 1.7, 90.5, TRUE, 5, LEVEL_UP, 36},
+  {"Squirtle", "Tiny Turtle", 7, Water, NONE, 0.5, 9, FALSE, 0, NULL, 0},
+  {"Wartortle", "Turtle", 8, Water, NONE, 1, 22.5, FALSE, 7, LEVEL_UP, 16},
+  {"Blastoise", "Shellfish", 9, Water, NONE, 1.6, 85.5, TRUE, 8, LEVEL_UP, 36},
   {"Caterpie", "Worm", 10, Bug, NONE, 0.3, 2.9},
   {"Metapod", "Cocoon", 11, Bug, NONE, 0.7, 9.9},
   {"Butterfree", "Butterfly", 12, Bug, Flying, 1.1, 32},
@@ -62,10 +62,15 @@ pokemon pokedexArray[POKEDEX_SIZE] = { // Array containing all Kanto Pokemon
   {"Clefable", "Fairy", 36, Normal, NONE, 1.3, 40},
   {"Vulpix", "Fox", 37, Fire, NONE, 0.6, 9.9},
   {"Ninetales", "Fox", 38, Fire, NONE, 1.1, 19.9}
+
+  // {"Eevee", "Fox", 37, Fire, NONE, 0.6, 9.9, FALSE, NULL, NULL},
+  // {"Jolteon", "Fox", 38, Fire, NONE, 1.1, 19.9, TRUE, 140, THUNDER_STONE},
+  // {"Flareon", "Fox", 38, Fire, NONE, 1.1, 19.9, TRUE, 140, FIRE_STONE},
+  // {"Vaporeon", "Fox", 38, Fire, NONE, 1.1, 19.9, TRUE, 140, WATER_STONE},
 };
 
 // Searches Pokemon list for Pokemon who satisfy user-provided constraints
-int searchPokemonList(GtkWidget** buttonArray,
+int search_Pokemon_list(GtkWidget** buttonArray,
                        int desiredOrder,
                        const char* name, 
                        float height, 

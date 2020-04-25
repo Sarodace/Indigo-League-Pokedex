@@ -78,16 +78,29 @@ gboolean scroll_list_screen(int pressedArrowKey) {
 //KEYPRESS HANDLER- Treat each key as a function
 gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data) {
     if (event->keyval == GDK_KEY_Escape) {
+        //TODO MOVE INTO SWITCH SCREEN FUNCTION
+        gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), FALSE);
+        gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), FALSE);
+        gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(infoEmptyScreen));
+        //
         return switch_screens();
     }
     if (event->keyval == GDK_KEY_Down || event->keyval == GDK_KEY_Up) {
         scroll_list_screen(event->keyval);
     }
-    if (event->keyval == GDK_KEY_g ) {
-        printf("%s\n",gtk_widget_get_name(gtk_window_get_focus(GTK_WINDOW(mainWindow))));
+    if (event->keyval == GDK_KEY_Right) {
+        if (gtk_stack_get_visible_child(GTK_STACK(infoStack)) == entryScreen) {
+            gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(threeTierEvolution));
+            gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), FALSE);
+            gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), TRUE);
+        }
     }
-    if (event->keyval == GDK_KEY_b ) {
-        sortPokemonList(0);
+    if (event->keyval == GDK_KEY_Left) {
+        if (gtk_stack_get_visible_child(GTK_STACK(infoStack)) == threeTierEvolution) {
+            gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(entryScreen));
+            gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), TRUE);
+            gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), FALSE);
+        }
     }
     return FALSE;
 }
@@ -104,7 +117,7 @@ void handle_main_window(GtkButton *buttonClicked) {
     char selectedPokemon[30] = "assets/pokeSprites/main/";
     strcat(selectedPokemon,gtk_widget_get_name(GTK_WIDGET(buttonClicked)));
     strcat(selectedPokemon,".png");
-    printf("%s\n",selectedPokemon);
+    // printf("%s ",selectedPokemon);
 
     // Select relevent pokemon and then switch to child
     gtk_image_set_from_file(GTK_IMAGE(pokemonImage), selectedPokemon);
@@ -156,41 +169,30 @@ void handle_info_window(GtkButton *buttonClicked) {
 /* It's possible to click on another pokedex entry while the list screen is 
 transitioning to the viewscreen. Look into preventing input until screen has
 finished transitioning.*/
-int pokemon_button_clicked (GtkButton *buttonClicked) {
+int pokemon_entry_clicked (GtkButton *buttonClicked) {
     handle_main_window(buttonClicked);
     handle_sub_window(buttonClicked);
     handle_info_window(buttonClicked);
+    find_evolutions(atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))));
 }
 
-// Pokemon search handler
-void search_pokemon(void) {
-    int relevantPokemon = searchPokemonList(mainWindowButton,
-                                            gtk_combo_box_get_active(GTK_COMBO_BOX(orderComboBox)),
-                                            gtk_entry_get_text(GTK_ENTRY(pokemonNameSearchEntry)),
-                                            gtk_spin_button_get_value(GTK_SPIN_BUTTON(pokemonHeightSpinButton)),
-                                            gtk_combo_box_get_active(GTK_COMBO_BOX(heightComboBox)),
-                                            gtk_spin_button_get_value(GTK_SPIN_BUTTON(pokemonWeightSpinButton)),
-                                            gtk_combo_box_get_active(GTK_COMBO_BOX(weightComboBox)),
-                                            gtk_combo_box_get_active(GTK_COMBO_BOX(pokemonFirstTypeSearch)),
-                                            gtk_combo_box_get_active(GTK_COMBO_BOX(pokemonSecondTypeSearch)));
+// Signal handlers
+void pokemon_search(GtkWidget *entry, gpointer user_data) {
+        int relevantPokemon = search_Pokemon_list(mainWindowButton,
+        gtk_combo_box_get_active(GTK_COMBO_BOX(orderComboBox)),
+        gtk_entry_get_text(GTK_ENTRY(pokemonNameSearchEntry)),
+        gtk_spin_button_get_value(GTK_SPIN_BUTTON(pokemonHeightSpinButton)),
+        gtk_combo_box_get_active(GTK_COMBO_BOX(heightComboBox)),
+        gtk_spin_button_get_value(GTK_SPIN_BUTTON(pokemonWeightSpinButton)),
+        gtk_combo_box_get_active(GTK_COMBO_BOX(weightComboBox)),
+        gtk_combo_box_get_active(GTK_COMBO_BOX(pokemonFirstTypeSearch)),
+        gtk_combo_box_get_active(GTK_COMBO_BOX(pokemonSecondTypeSearch)));
+
     char relevantPokemonString[25];
     sprintf(relevantPokemonString,"%d",relevantPokemon);
     strcat(relevantPokemonString, " results(s) found");
 
     gtk_label_set_text(GTK_LABEL(pokemonResults), relevantPokemonString);
-}
-
-// Signal handlers
-int pokemon_search (GtkSearchEntry *entry, gpointer user_data) {
-    search_pokemon();
-}
-
-int pokemon_spin_search (GtkSpinButton *entry, gpointer user_data) {
-    search_pokemon();
-}
-
-void pokemon_range_search (GtkComboBox *widget, gpointer user_data) {
-    search_pokemon();
 }
 
 void implement_CSS(void) {
@@ -212,7 +214,7 @@ void implement_CSS(void) {
 }
 
 
-void generatePokedexButtons(void) {
+void generate_pokedex_buttons(void) {
     // Style Context variable needed to use CSS to style widgets
     GtkStyleContext   *context;
 
@@ -293,11 +295,53 @@ void generatePokedexButtons(void) {
         context = gtk_widget_get_style_context(GTK_WIDGET(gtk_builder_get_object(builder, buttonID)));
         gtk_style_context_add_class(context, typeEnumStrings[pokedexArray[i-1].firstType]);
 
-        // Clicking the button will trigger the "pokemon_button_clicked" function
+        // Clicking the button will trigger the "pokemon_entry_clicked" function
         g_signal_connect(GTK_BUTTON(mainWindowButton[i-1]), "clicked",
-            G_CALLBACK(pokemon_button_clicked), pInt);
+            G_CALLBACK(pokemon_entry_clicked), pInt);
 
         // Finally, name the button to facilitate interaction with other functions
         gtk_widget_set_name(mainWindowButton[i-1],rawPokedexNumber);
     }
+}
+
+/*
+{"Bulbasaur", "Seed", 1, Grass, Poison, 0.7, 6.9, FALSE, 0, NULL, 0},
+{"Ivysaur", "Seed", 2, Grass, Poison, 1, 13, FALSE, 1, LEVEL_UP, 16},
+{"Venusaur", "Seed", 3, Grass, Poison, 2, 100, TRUE, 2, LEVEL_UP, 32},
+*/
+
+int find_evolutions(int selectedPokemon) {
+    int i; // count
+
+    // Back searches
+    if (pokedexArray[selectedPokemon-1].finalForm == TRUE || pokedexArray[selectedPokemon-1].evolvesFrom != 0) {
+        for (i=0;i<POKEDEX_SIZE;i++) {
+            if (pokedexArray[i].number == pokedexArray[selectedPokemon-1].evolvesFrom) {
+                printf("Evolves from %s\n",pokedexArray[i].name);
+                find_evolutions(pokedexArray[i].number);
+            }
+        }
+    } else {
+        if (pokedexArray[selectedPokemon-1].evolvesFrom == 0) {
+            printf("%s doesn't have any pre-evolutions\n",pokedexArray[selectedPokemon-1].name);
+        }
+    }
+
+    // Reimplement following code to search forward
+    // if (pokedexArray[selectedPokemon-1].finalForm == TRUE) {
+    //     printf("%s\n",pokedexArray[selectedPokemon-1].name);
+    // }
+
+    // if (pokedexArray[selectedPokemon-1].finalForm == FALSE) {
+    //     for (i=0;i<POKEDEX_SIZE;i++) {
+    //         if (pokedexArray[i].evolvesFrom == pokedexArray[selectedPokemon-1].number) {
+    //             printf("Evolves into %s\n",pokedexArray[i].name);
+    //             find_evolutions(pokedexArray[i].number);
+    //         }
+    //     }
+    // } else {
+    //     printf("This pokemon doesn't evolve\n\n");
+    //     return 0;
+    // }
+    // printf("Final evolution? (0 no, 1 yes) %d\n",pokedexArray[selectedPokemon-1].finalForm);
 }
