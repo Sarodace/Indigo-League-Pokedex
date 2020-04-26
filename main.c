@@ -67,6 +67,28 @@ int main(int argc, char *argv[]) {
     descriptionScreenIndicator = GTK_WIDGET(gtk_builder_get_object(builder, "descriptionScreenIndicator"));
     evolutionScreenIndicator = GTK_WIDGET(gtk_builder_get_object(builder, "evolutionScreenIndicator"));
 
+    // Evolution screen
+    threeTier_1stImage = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_1stImage"));
+    threeTier_1stNumber = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_1stNumber"));
+    threeTier_1stName = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_1stName"));
+    threeTier_1stType1 = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_1stType1"));
+    threeTier_1stType2 = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_1stType2"));
+
+    threeTier_2ndImage = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_2ndImage"));
+    threeTier_2ndNumber = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_2ndNumber"));
+    threeTier_2ndName = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_2ndName"));
+    threeTier_2ndType1 = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_2ndType1"));
+    threeTier_2ndType2 = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_2ndType2"));
+
+    threeTier_3rdImage = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_3rdImage"));
+    threeTier_3rdNumber = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_3rdNumber"));
+    threeTier_3rdName = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_3rdName"));
+    threeTier_3rdType1 = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_3rdType1"));
+    threeTier_3rdType2 = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_3rdType2"));
+
+    threeTier_1stEvolution = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_1stEvolution"));
+    threeTier_2ndEvolution = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_2ndEvolution"));
+
     // Display the GUI
     gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
 

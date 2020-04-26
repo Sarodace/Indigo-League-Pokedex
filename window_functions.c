@@ -213,7 +213,6 @@ void implement_CSS(void) {
     g_object_unref(provider);
 }
 
-
 void generate_pokedex_buttons(void) {
     // Style Context variable needed to use CSS to style widgets
     GtkStyleContext   *context;
@@ -304,6 +303,52 @@ void generate_pokedex_buttons(void) {
     }
 }
 
+int fill_pokemon_evolution_entries(char *position, int counter) {
+    char numberString[20];
+    char imageString[20];
+    char nameString[20];
+    char firstTypeString[20];
+    char secondTypeString[20];
+    char pokemonImageString[30];
+    char formattedPokedexNumber[5];
+    char rawPokedexNumber[5];
+    char evolutionLevel[20];
+
+    sprintf(evolutionLevel, "Level %d", pokedexArray[counter].level);
+
+    sprintf(numberString,"threeTier_%sNumber",position);
+    sprintf(imageString,"threeTier_%sImage",position);
+    sprintf(nameString,"threeTier_%sName",position);
+    sprintf(firstTypeString,"threeTier_%sType1",position);
+    sprintf(secondTypeString,"threeTier_%sType2",position);
+
+    sprintf(formattedPokedexNumber, "%s","#");
+    sprintf(rawPokedexNumber, "%03d", pokedexArray[counter].number);
+    strcat(formattedPokedexNumber, rawPokedexNumber);
+
+    sprintf(pokemonImageString,"assets/pokeSprites/main/%s",rawPokedexNumber);
+    strcat(pokemonImageString,".png");
+
+    gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, numberString)),
+        formattedPokedexNumber);
+    gtk_image_set_from_file(GTK_IMAGE(gtk_builder_get_object(builder, imageString)),
+        pokemonImageString);
+    gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, nameString)),
+        pokedexArray[counter].name);
+    gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, firstTypeString)),
+        typeEnumStrings[pokedexArray[counter].firstType]);
+    gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, secondTypeString)),
+        typeEnumStrings[pokedexArray[counter].secondType]);
+    if (position == "2nd") {
+        gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "threeTier_1stEvolution")),
+            evolutionLevel);
+    }
+    if (position == "3rd") {
+        gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "threeTier_2ndEvolution")),
+            evolutionLevel);
+    }
+}
+
 int find_evolutions(int selectedPokemon) {
     // Loop back to the selected pokemon's 1st stage
     if (pokedexArray[selectedPokemon-1].finalForm == TRUE || pokedexArray[selectedPokemon-1].evolvesFrom != 0) {
@@ -318,6 +363,7 @@ int find_evolutions(int selectedPokemon) {
     // Go through the evolutionary stages
     if (pokedexArray[selectedPokemon-1].finalForm == FALSE && pokedexArray[selectedPokemon-1].evolvesFrom == 0) {
         printf("1st form: %s\n",pokedexArray[selectedPokemon-1].name);
+        fill_pokemon_evolution_entries("1st",selectedPokemon-1);
 
         // Looks for 2nd evolutionary stage
         for (int j=0;j<POKEDEX_SIZE;j++) {
@@ -326,14 +372,15 @@ int find_evolutions(int selectedPokemon) {
                 // Either goes on to look for 3rd evolutionary stage...
                 if (pokedexArray[j].finalForm == FALSE) {
                     printf("2nd form: %s\n",pokedexArray[j].name);
-                    for (int k=0;k<POKEDEX_SIZE;k++) {
+                    fill_pokemon_evolution_entries("2nd",j);
 
+                    for (int k=0;k<POKEDEX_SIZE;k++) {
                         //Finally, find the 3rd evolutionary stage
                         if (pokedexArray[k].evolvesFrom == pokedexArray[j].number) {
                             printf("3rd form (FINAL): %s\n",pokedexArray[k].name);
+                            fill_pokemon_evolution_entries("3rd",k);
                         }
                     }
-
                 // Or breaks out of loop if that's its final evolution
                 } else {
                     printf("2nd form (FINAL): %s\n",pokedexArray[j].name);

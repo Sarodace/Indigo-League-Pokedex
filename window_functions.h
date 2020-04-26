@@ -60,6 +60,28 @@ GtkWidget   *displayScreenIndicator;
 GtkWidget   *descriptionScreenIndicator;
 GtkWidget   *evolutionScreenIndicator;
 
+// Evolution screen variables
+// 3-Tier
+GtkWidget   *threeTier_1stImage;
+GtkWidget   *threeTier_1stNumber;
+GtkWidget   *threeTier_1stName;
+GtkWidget   *threeTier_1stType1;
+GtkWidget   *threeTier_1stType2;
+
+GtkWidget   *threeTier_2ndImage;
+GtkWidget   *threeTier_2ndNumber;
+GtkWidget   *threeTier_2ndName;
+GtkWidget   *threeTier_2ndType1;
+GtkWidget   *threeTier_2ndType2;
+
+GtkWidget   *threeTier_3rdImage;
+GtkWidget   *threeTier_3rdNumber;
+GtkWidget   *threeTier_3rdName;
+GtkWidget   *threeTier_3rdType1;
+GtkWidget   *threeTier_3rdType2;
+
+GtkWidget   *threeTier_1stEvolution;
+GtkWidget   *threeTier_2ndEvolution;
 
 // FUNCTION PROTOTYPES
 
@@ -84,3 +106,5 @@ void pokemon_search(GtkWidget *widget, gpointer user_data);
 
 // Test evolution
 int find_evolutions(int selectedPokemon);
+
+int fill_pokemon_evolution_entries(char*,int);
