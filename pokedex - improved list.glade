@@ -5157,13 +5157,14 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
+                <property name="margin_top">50</property>
                 <child>
                   <object class="GtkBox">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkImage">
+                      <object class="GtkImage" id="twoTier_1stImage">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="pixbuf">assets/pokeSprites/main/019.png</property>
@@ -5179,7 +5180,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkLabel">
+                          <object class="GtkLabel" id="twoTier_1stNumber">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">#019</property>
@@ -5191,7 +5192,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel">
+                          <object class="GtkLabel" id="twoTier_1stName">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Ratata</property>
@@ -5215,7 +5216,7 @@
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
                         <child>
-                          <object class="GtkLabel">
+                          <object class="GtkLabel" id="twoTier_1stType1">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Normal</property>
@@ -5227,7 +5228,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel">
+                          <object class="GtkLabel" id="twoTier_1stType2">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                           </object>
@@ -5252,13 +5253,35 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkBox">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">&lt;span font_desc="FontAwesome "&gt;Level 16
-&amp;#xf061;&lt;/span&gt;</property>
-                    <property name="use_markup">True</property>
-                    <property name="justify">center</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkLabel" id="twoTier_1stEvolution">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="justify">center</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">&lt;span font_desc="FontAwesome "&gt;&amp;#xf061;&lt;/span&gt;</property>
+                        <property name="use_markup">True</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -5272,7 +5295,7 @@
                     <property name="can_focus">False</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkImage">
+                      <object class="GtkImage" id="twoTier_2ndImage">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="pixbuf">assets/pokeSprites/main/020.png</property>
@@ -5288,7 +5311,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkLabel">
+                          <object class="GtkLabel" id="twoTier_2ndNumber">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">#020</property>
@@ -5300,7 +5323,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel">
+                          <object class="GtkLabel" id="twoTier_2ndName">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Raticate</property>
@@ -5324,7 +5347,7 @@
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
                         <child>
-                          <object class="GtkLabel">
+                          <object class="GtkLabel" id="twoTier_2ndType1">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Normal</property>
@@ -5336,7 +5359,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel">
+                          <object class="GtkLabel" id="twoTier_2ndType2">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                           </object>

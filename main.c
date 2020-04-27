@@ -89,6 +89,21 @@ int main(int argc, char *argv[]) {
     threeTier_1stEvolution = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_1stEvolution"));
     threeTier_2ndEvolution = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_2ndEvolution"));
 
+
+    twoTier_1stImage = GTK_WIDGET(gtk_builder_get_object(builder, "twoTier_1stImage"));
+    twoTier_1stNumber = GTK_WIDGET(gtk_builder_get_object(builder, "twoTier_1stNumber"));
+    twoTier_1stName = GTK_WIDGET(gtk_builder_get_object(builder, "twoTier_1stName"));
+    twoTier_1stType1 = GTK_WIDGET(gtk_builder_get_object(builder, "twoTier_1stType1"));
+    twoTier_1stType2 = GTK_WIDGET(gtk_builder_get_object(builder, "twoTier_1stType2"));
+
+    twoTier_2ndImage = GTK_WIDGET(gtk_builder_get_object(builder, "twoTier_2ndImage"));
+    twoTier_2ndNumber = GTK_WIDGET(gtk_builder_get_object(builder, "twoTier_2ndNumber"));
+    twoTier_2ndName = GTK_WIDGET(gtk_builder_get_object(builder, "twoTier_2ndName"));
+    twoTier_2ndType1 = GTK_WIDGET(gtk_builder_get_object(builder, "twoTier_2ndType1"));
+    twoTier_2ndType2 = GTK_WIDGET(gtk_builder_get_object(builder, "twoTier_2ndType2"));
+
+    twoTier_1stEvolution = GTK_WIDGET(gtk_builder_get_object(builder, "twoTier_1stEvolution"));
+
     // Display the GUI
     gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
 

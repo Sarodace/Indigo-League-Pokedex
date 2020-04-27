@@ -42,10 +42,10 @@ pokemon pokedexArray[POKEDEX_SIZE] = { // Array containing all Kanto Pokemon
   {"Pidgey", "Tiny Bird", 16, Normal, Flying, 0.3, 1.8, FALSE, 0, LEVEL_UP, 0},
   {"Pidgeotto", "Bird", 17, Normal, Flying, 1.1, 30, FALSE, 16, LEVEL_UP, 18},
   {"Pidgeot", "Bird", 18, Normal, Flying, 1.5, 39.5, TRUE, 17, LEVEL_UP, 36},
-  {"Rattata", "Mouse", 19, Normal, NONE, 0.3, 3.5},
-  {"Raticate", "Mouse", 20, Normal, NONE, 0.7, 18.5},
-  {"Spearow", "Tiny Bird", 21, Normal, Flying, 0.3, 2},
-  {"Fearow", "Beak", 22, Normal, Flying, 1.2, 38},
+  {"Rattata", "Mouse", 19, Normal, NONE, 0.3, 3.5, FALSE, 0, LEVEL_UP, 0}, //nc
+  {"Raticate", "Mouse", 20, Normal, NONE, 0.7, 18.5, TRUE, 19, LEVEL_UP, 20},
+  {"Spearow", "Tiny Bird", 21, Normal, Flying, 0.3, 2, FALSE, 0, LEVEL_UP, 0},
+  {"Fearow", "Beak", 22, Normal, Flying, 1.2, 38, TRUE, 21, LEVEL_UP, 20},//nc
   {"Ekans", "Snake", 23, Poison, NONE, 2, 6.9},
   {"Arbok", "Cobra", 24, Poison, NONE, 3.5, 65},
   {"Pikachu", "Mouse", 25, Electric, NONE, 0.4, 6},

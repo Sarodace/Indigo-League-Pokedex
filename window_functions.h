@@ -83,6 +83,22 @@ GtkWidget   *threeTier_3rdType2;
 GtkWidget   *threeTier_1stEvolution;
 GtkWidget   *threeTier_2ndEvolution;
 
+
+GtkWidget   *twoTier_1stImage;
+GtkWidget   *twoTier_1stNumber;
+GtkWidget   *twoTier_1stName;
+GtkWidget   *twoTier_1stType1;
+GtkWidget   *twoTier_1stType2;
+
+GtkWidget   *twoTier_2ndImage;
+GtkWidget   *twoTier_2ndNumber;
+GtkWidget   *twoTier_2ndName;
+GtkWidget   *twoTier_2ndType1;
+GtkWidget   *twoTier_2ndType2;
+
+GtkWidget   *twoTier_1stEvolution;
+
+
 // FUNCTION PROTOTYPES
 
 // MAIN WINDOW FUNCTION PROTOTYPES
@@ -107,4 +123,4 @@ void pokemon_search(GtkWidget *widget, gpointer user_data);
 // Test evolution
 int find_evolutions(int selectedPokemon);
 
-int fill_pokemon_evolution_entries(char*,int);
+int fill_pokemon_evolution_entries(char*,int,int);
