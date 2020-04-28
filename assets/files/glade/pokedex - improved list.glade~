@@ -4607,7 +4607,6 @@
               <object class="GtkImage" id="pokemonImage">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="pixbuf">assets/pokeSprites/main/001.png</property>
                 <property name="icon_size">2</property>
               </object>
               <packing>
@@ -5167,7 +5166,6 @@
                       <object class="GtkImage" id="twoTier_1stImage">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="pixbuf">assets/pokeSprites/main/019.png</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -5298,7 +5296,6 @@
                       <object class="GtkImage" id="twoTier_2ndImage">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="pixbuf">assets/pokeSprites/main/020.png</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
