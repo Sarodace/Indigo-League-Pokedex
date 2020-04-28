@@ -1,5 +1,3 @@
-#include <time.h>
-
 #include "window_functions.h"
 #include "pokemonData.h"
 
@@ -116,13 +114,13 @@ int sortPokemonList(int orderMode) {
 
 // Handle logic in the main window
 void handle_main_window(GtkButton *buttonClicked) {
+    char selectedPokemon[40];
+
     // Assemble path to pokemon image
     gtk_revealer_set_reveal_child(GTK_REVEALER(displayScreenIndicator), TRUE);
     gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), FALSE);
-    char selectedPokemon[30] = "assets/pokeSprites/main/";
-    strcat(selectedPokemon,gtk_widget_get_name(GTK_WIDGET(buttonClicked)));
-    strcat(selectedPokemon,".png");
-    // printf("%s ",selectedPokemon);
+    sprintf(selectedPokemon, "assets/pokeSprites/main/%s.png",
+        gtk_widget_get_name(GTK_WIDGET(buttonClicked)));
 
     // Select relevent pokemon and then switch to child
     gtk_image_set_from_file(GTK_IMAGE(pokemonImage), selectedPokemon);
@@ -131,14 +129,15 @@ void handle_main_window(GtkButton *buttonClicked) {
 
 // Handle logic in the sub window
 void handle_sub_window(GtkButton *buttonClicked) {
+    char pokemonCategoryText[30];
+
     // Converts button's label to a number coinceding with that pokemon
     int selectedPokemon = atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))) - 1;
     gtk_label_set_text(GTK_LABEL(pokemonName), pokedexArray[selectedPokemon].name);
 
     // Assemble pokemon category from button label
-    char pokemonCategoryText[25] = "The ";
-    strcat(pokemonCategoryText, pokedexArray[selectedPokemon].category);
-    strcat(pokemonCategoryText, " Pokemon");
+    sprintf(pokemonCategoryText, "The %s Pokemon",
+        pokedexArray[selectedPokemon].category);
     gtk_label_set_text(GTK_LABEL(pokemonCategory),pokemonCategoryText);
 
     // Assemble pokedex number from button label
@@ -183,7 +182,8 @@ int pokemon_entry_clicked (GtkButton *buttonClicked) {
 
 // Signal handlers
 void pokemon_search(GtkWidget *entry, gpointer user_data) {
-        int relevantPokemon = search_Pokemon_list(mainWindowButton,
+    char relevantPokemonString[25];
+    int relevantPokemon = search_Pokemon_list(mainWindowButton,
         gtk_combo_box_get_active(GTK_COMBO_BOX(orderComboBox)),
         gtk_entry_get_text(GTK_ENTRY(pokemonNameSearchEntry)),
         gtk_spin_button_get_value(GTK_SPIN_BUTTON(pokemonHeightSpinButton)),
@@ -193,9 +193,7 @@ void pokemon_search(GtkWidget *entry, gpointer user_data) {
         gtk_combo_box_get_active(GTK_COMBO_BOX(pokemonFirstTypeSearch)),
         gtk_combo_box_get_active(GTK_COMBO_BOX(pokemonSecondTypeSearch)));
 
-    char relevantPokemonString[25];
-    sprintf(relevantPokemonString,"%d",relevantPokemon);
-    strcat(relevantPokemonString, " results(s) found");
+    sprintf(relevantPokemonString,"%d results(s) found", relevantPokemon);
 
     gtk_label_set_text(GTK_LABEL(pokemonResults), relevantPokemonString);
 }
@@ -231,7 +229,7 @@ void generate_pokedex_buttons(void) {
     char nameString[10];
     char numberString[12];
     char iconString[10];
-    char iconStringFromFile[30];
+    char iconStringFromFile[40];
     char firstTypeString[20];
     char secondTypeString[20];
     char firstTypeCSS[20];
@@ -247,8 +245,7 @@ void generate_pokedex_buttons(void) {
         sprintf(numberString,"number_%d",i); // Pokemon number
 
         // Pokemon icon location
-        sprintf(iconStringFromFile,"assets/pokeSprites/icons/%d",i);
-        strcat(iconStringFromFile,".png");
+        sprintf(iconStringFromFile,"assets/pokeSprites/icons/%d.png",i);
 
         // Pokemon number
         sprintf(formattedPokedexNumber, "%s","#");
@@ -260,10 +257,8 @@ void generate_pokedex_buttons(void) {
         sprintf(secondTypeString,"type2_%d",i); // Pokemon icon
 
         // Create string that formats types with CSS
-        sprintf(firstTypeCSS, "%s", typeEnumStrings[pokedexArray[i-1].firstType]);
-        strcat(firstTypeCSS, "_type");
-        sprintf(secondTypeCSS, "%s", typeEnumStrings[pokedexArray[i-1].secondType]);
-        strcat(secondTypeCSS, "_type");
+        sprintf(firstTypeCSS, "%s_type", typeEnumStrings[pokedexArray[i-1].firstType]);
+        sprintf(secondTypeCSS, "%s_type", typeEnumStrings[pokedexArray[i-1].secondType]);
 
         //// CREATE THE BUTTON
         mainWindowButton[i-1] = GTK_WIDGET(gtk_builder_get_object(builder, buttonID));
@@ -322,7 +317,6 @@ int fill_pokemon_evolution_entries(char *position, int counter, int threeTier) {
 
     if (threeTier == 0) {
         sprintf(screen,"%s","two");
-        printf("Two stage!\n");
     } else {
         sprintf(screen,"%s","three");
     }
