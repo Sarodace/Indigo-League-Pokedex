@@ -1,4 +1,4 @@
-#include "pokemonData.h"
+#include "pokemon_data.h"
 
 // VARIABLES
 // Define global variables
@@ -70,7 +70,7 @@ pokemon pokedexArray[POKEDEX_SIZE] = { // Array containing all Kanto Pokemon
 };
 
 // Searches Pokemon list for Pokemon who satisfy user-provided constraints
-int search_Pokemon_list(GtkWidget** buttonArray,
+int search_Pokemon_List(GtkWidget** buttonArray,
                        int desiredOrder,
                        const char* name, 
                        float height, 

@@ -1,5 +1,8 @@
-#include "pokemonData.h"
-#include "window_functions.h"
+#include "gui.h"
+#include "load_files.h"
+#include "pokemon_data.h"
+#include "algorithms.h"
+
 
 int main(int argc, char *argv[]) {
     // init GTK
@@ -7,7 +10,7 @@ int main(int argc, char *argv[]) {
     implement_CSS();
 
     // Build windows and connect signals described in Glade file
-    builder = gtk_builder_new_from_file ("glade/pokedex - improved list.glade");
+    builder = gtk_builder_new_from_file("assets/files/glade/pokedex - improved list.glade");
     mainWindow = GTK_WIDGET(gtk_builder_get_object(builder, "mainWindow"));
     subWindow = GTK_WIDGET(gtk_builder_get_object(builder, "subWindow"));
     infoWindow = GTK_WIDGET(gtk_builder_get_object(builder, "infoWindow"));

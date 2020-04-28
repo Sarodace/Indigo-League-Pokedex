@@ -1,4 +1,10 @@
+#ifndef GUI_H
+#define GUI_H
+
 #include <gtk/gtk.h>
+#include "pokemon_data.h"
+#include "load_files.h"
+#include "algorithms.h"
 
 // VARIABLES
 // WINDOW VARIABLES
@@ -98,29 +104,13 @@ GtkWidget   *twoTier_2ndType2;
 
 GtkWidget   *twoTier_1stEvolution;
 
-
 // FUNCTION PROTOTYPES
-
-// MAIN WINDOW FUNCTION PROTOTYPES
 void handle_main_window(GtkButton *buttonClicked);
+void handle_info_window(GtkButton *buttonClicked);
 void handle_sub_window(GtkButton *buttonClicked);
 gboolean switch_screens(void);
 gboolean scroll_list_screen(int);
-void generate_pokedex_buttons(void);
 int pokemon_entry_clicked(GtkButton *buttonClicked);
 gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data);
 
-// INFO WINDOW FUNCTION PROTOTYPES
-void handle_info_window(GtkButton *buttonClicked);
-
-// FILE LOADING FUNCTION PROTOTYPES
-void implement_CSS(void);
-void read_from_TXT_file(GtkWidget *selectedPokemon);
-
-// Sorting and searching 
-void pokemon_search(GtkWidget *widget, gpointer user_data);
-
-// Test evolution
-int find_evolutions(int selectedPokemon);
-
-int fill_pokemon_evolution_entries(char*,int,int);
+#endif

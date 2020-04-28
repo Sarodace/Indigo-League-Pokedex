@@ -1,5 +1,5 @@
-#ifndef POKEMONDATA_H
-#define POKEMONDATA_H
+#ifndef POKEMON_DATA_H
+#define POKEMON_DATA_H
 
 #define _GNU_SOURCE
 #include <stdio.h>
@@ -33,12 +33,6 @@ typedef enum typeEnum { // Potential Pokemon types
   Steel
 } typeEnum;
 
-// typedef enum canEvolveEnum {
-//   CANNOT_EVOLVE,
-//   CAN_EVOLVE,
-//   MULTIPLE_EVOLUTIONS
-// } canEvolveEnum;
-
 typedef enum evolutionEnum {
   LEVEL_UP,
   TRADE,
@@ -67,7 +61,7 @@ extern const char* typeEnumStrings[]; // Potential Pokemon types (as strings)
 extern pokemon pokedexArray[POKEDEX_SIZE]; // Array containing all Kanto Pokemon
 
 // FUNCTION PROTOTYPES
-int search_Pokemon_list(GtkWidget** buttonArray, 
+int search_Pokemon_List(GtkWidget** buttonArray, 
                        int desiredOrder,
                        const char* name, 
                        float height, 
