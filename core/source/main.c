@@ -3,7 +3,6 @@
 #include "pokemon_data.h"
 #include "algorithms.h"
 
-
 int main(int argc, char *argv[]) {
     // init GTK
     gtk_init(&argc, &argv);

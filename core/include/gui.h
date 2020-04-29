@@ -6,6 +6,7 @@
 #include "load_files.h"
 #include "algorithms.h"
 
+
 // VARIABLES
 // WINDOW VARIABLES
 GtkWidget   *mainWindow;
