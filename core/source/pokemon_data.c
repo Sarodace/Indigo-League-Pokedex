@@ -60,7 +60,9 @@ pokemon pokedexArray[POKEDEX_SIZE] = { // Array containing all Kanto Pokemon
   {"Clefairy", "Fairy", 35, Normal, NONE, 0.6, 7.5},
   {"Clefable", "Fairy", 36, Normal, NONE, 1.3, 40},
   {"Vulpix", "Fox", 37, Fire, NONE, 0.6, 9.9},
-  {"Ninetales", "Fox", 38, Fire, NONE, 1.1, 19.9}
+  {"Ninetales", "Fox", 38, Fire, NONE, 1.1, 19.9},
+  {"Jigglypuff", "Fox", 39, Normal, NONE, 0.6, 9.9},
+  {"Wigglypuff", "Fox", 40, Normal, NONE, 1.1, 19.9}
   // {"Eevee", "Fox", 37, Fire, NONE, 0.6, 9.9, FALSE, NULL, NULL},
   // {"Jolteon", "Fox", 38, Fire, NONE, 1.1, 19.9, TRUE, 140, THUNDER_STONE},
   // {"Flareon", "Fox", 38, Fire, NONE, 1.1, 19.9, TRUE, 140, FIRE_STONE},

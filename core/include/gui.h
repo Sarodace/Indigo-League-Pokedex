@@ -21,8 +21,10 @@ GtkWidget   *pokemonImage;
 GtkBuilder  *builder;
 
 // MAIN WINDOW LIST WIDGETS
-GtkWidget *mainWindowButton[40];
 GtkWidget *viewBox;
+GtkWidget *pokemonEntryList;
+GtkWidget *mainWindowButton[40];
+
 
 // MAIN WINDOW SEARCH WIDGETS
 GtkWidget   *orderComboBox;

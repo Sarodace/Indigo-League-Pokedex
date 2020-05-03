@@ -28,4 +28,12 @@ int search_Pokemon_List(GtkWidget** buttonArray,
                        typeEnum firstType,
                        typeEnum secondType);
 
+// Sorting alogorithms
+int sort_alphabetical(const void *a, const void *b);
+int sort_numerical(const void *a, const void *b);
+int sort_weight_ascending(const void *a, const void *b);
+int sort_weight_descending(const void *a, const void *b);
+int sort_height_ascending(const void *a, const void *b);
+int sort_height_descending(const void *a, const void *b);
+
 #endif

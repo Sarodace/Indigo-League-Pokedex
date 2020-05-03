@@ -4,8 +4,6 @@
 void pokemon_search(GtkWidget *entry, gpointer user_data) {
     char relevantPokemonString[25];
 
-    rearrange_buttons();
-
     int relevantPokemon = search_Pokemon_List(mainWindowButton,
         gtk_combo_box_get_active(GTK_COMBO_BOX(orderComboBox)),
         gtk_entry_get_text(GTK_ENTRY(pokemonNameSearchEntry)),
@@ -41,7 +39,7 @@ void generate_pokedex_buttons(void) {
     char formattedPokedexNumber[10];
     char rawPokedexNumber[10];
 
-    for (int i = 1; i <= 30; i++) {
+    for (int i = 1; i <= 40; i++) {
         //// DEFINE UNIQUE IDENTIFIERS
         sprintf(buttonID,"%d",i); // Button ID
         sprintf(nameString,"name_%d",i); // Pokemon name
@@ -225,7 +223,8 @@ int search_Pokemon_List(GtkWidget** buttonArray,
   char *ptr1; // Name checker variable
   int ptr2, ptr3, ptr4, ptr5; // Height, weight, and types checker variables
   
-  printf("Selected order: %d\n", desiredOrder);
+  sort_pokedex_entries(desiredOrder);
+  rearrange_buttons();
 
   for (i=0;i<POKEDEX_SIZE-1;i++) {
     // Check if Pokemon's name contains given string 
@@ -270,38 +269,95 @@ int search_Pokemon_List(GtkWidget** buttonArray,
   return j;
 }
 
+// Sorting alogrithms
+int sort_alphabetical(const void *a, const void *b) {
+    pokemon *ia = (pokemon *)a;
+    pokemon *ib = (pokemon *)b;
+    return strcmp(ia->name, ib->name);
+}
+
+int sort_numerical(const void *a, const void *b) { 
+    pokemon *ia = (pokemon *)a;
+    pokemon *ib = (pokemon *)b;
+    return ia->number - ib->number;
+}
+
+int sort_weight_ascending(const void *a, const void *b) { 
+    pokemon *ia = (pokemon *)a;
+    pokemon *ib = (pokemon *)b;
+    return (int)(100.f*ia->weight - 100.f*ib->weight);
+}
+
+int sort_weight_descending(const void *a, const void *b) { 
+    pokemon *ia = (pokemon *)a;
+    pokemon *ib = (pokemon *)b;
+    return (int)(100.f*ib->weight - 100.f*ia->weight);
+}
+
+int sort_height_ascending(const void *a, const void *b) {
+    pokemon *ia = (pokemon *)a;
+    pokemon *ib = (pokemon *)b;
+    return (int)(100.f*ia->height - 100.f*ib->height);
+}
+
+int sort_height_descending(const void *a, const void *b) { 
+    pokemon *ia = (pokemon *)a;
+    pokemon *ib = (pokemon *)b;
+    return (int)(100.f*ib->height - 100.f*ia->height);
+}
+
+// Select sorting algorithm
 int sort_pokedex_entries(int sortingStyle) {
+    size_t pokemon_len = sizeof(pokedexArray) / sizeof(struct pokemon);
+
     switch (sortingStyle) {
     case 0: // Numerical
+        qsort(pokedexArray, pokemon_len, sizeof(pokemon), sort_numerical);
         break;
 
     case 1: // Alphabetical
-        /* code */
+        qsort(pokedexArray, pokemon_len, sizeof(pokemon), sort_alphabetical);
         break;
 
     case 2: // Heaviest
-        /* code */
+        qsort(pokedexArray, pokemon_len, sizeof(pokemon), sort_weight_descending);
         break;
 
     case 3: // Lightest
-        /* code */
+        qsort(pokedexArray, pokemon_len, sizeof(pokemon), sort_weight_ascending);
         break;
 
     case 4: // Tallest
-        /* code */
+        qsort(pokedexArray, pokemon_len, sizeof(pokemon), sort_height_descending);
         break;
 
     case 5: // Shortest
-        /* code */
+        qsort(pokedexArray, pokemon_len, sizeof(pokemon), sort_height_ascending);
         break;
     }
 }
 
-void rearrange_buttons(void) {
-    printf("Hello, World!\n");
-    int j;
+// Print sorted pokemon array
+void print_pokemon_struct_array(struct pokemon *array, size_t len) { 
+    size_t i;
+ 
+    for(i=0; i<len; i++) 
+        printf("--\n[ Name: %s \t Number: %d Height: %f Weight: %f ]\n", 
+          array[i].name, array[i].number, array[i].height, array[i].weight);
+ 
+    puts("--");
+}
 
-    for (int i; i = 0; i++) {
-        mainWindowButton[i]->position = abs(29 - i);
+
+void rearrange_buttons(void) {
+    size_t pokemon_len = sizeof(pokedexArray) / sizeof(struct pokemon);
+
+    print_pokemon_struct_array(pokedexArray, pokemon_len);
+
+    for (int i = 0; i < 40; i++) {
+        gtk_box_reorder_child(GTK_BOX(pokemonEntryList), mainWindowButton[pokedexArray[i].number - 1], i);
+        printf("%d,",pokedexArray[i].number);
     }
+
+    printf("\n");
 }

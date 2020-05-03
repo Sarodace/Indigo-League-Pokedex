@@ -21,6 +21,7 @@ int main(int argc, char *argv[]) {
 
     // MAIN WINDOW --- LIST
     viewBox = GTK_WIDGET(gtk_builder_get_object(builder, "viewBox"));
+    pokemonEntryList = GTK_WIDGET(gtk_builder_get_object(builder, "pokemonEntryList"));
 
     mainStack = GTK_WIDGET(gtk_builder_get_object(builder, "mainStack"));
     searchScreen = GTK_WIDGET(gtk_builder_get_object(builder, "searchScreen"));
