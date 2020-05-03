@@ -93,10 +93,6 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
     return FALSE;
 }
 
-int sortPokemonList(int orderMode) {
-    printf("Function call works!\n");
-}
-
 // Handle logic in the main window
 void handle_main_window(GtkButton *buttonClicked) {
     char selectedPokemon[40];
@@ -130,7 +126,6 @@ void handle_sub_window(GtkButton *buttonClicked) {
     strcat(pokemonDexNumber, gtk_widget_get_name(GTK_WIDGET(buttonClicked)));
     gtk_label_set_text(GTK_LABEL(pokemonNumber),pokemonDexNumber);
 
-    //TODO: This code should be reworked for i = 0 to be null
     // // Format pokemon first type from button label
     // gtk_label_set_text(GTK_LABEL(pokemonType1),typeEnumStrings[pokedexArray[selectedPokemon].firstType - 1]);
 

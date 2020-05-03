@@ -60,15 +60,4 @@ typedef struct pokemon { // Identifying data associated with Pokemon
 extern const char* typeEnumStrings[]; // Potential Pokemon types (as strings)
 extern pokemon pokedexArray[POKEDEX_SIZE]; // Array containing all Kanto Pokemon
 
-// FUNCTION PROTOTYPES
-int search_Pokemon_List(GtkWidget** buttonArray, 
-                       int desiredOrder,
-                       const char* name, 
-                       float height, 
-                       int greaterHeight,
-                       float weight, 
-                       int greaterWeight,
-                       typeEnum firstType,
-                       typeEnum secondType);
-
 #endif

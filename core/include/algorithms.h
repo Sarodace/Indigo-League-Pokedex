@@ -1,8 +1,11 @@
 #ifndef ALGORITHMS_H
 #define ALGORITHMS_H
 
+#define _GNU_SOURCE
 #include <gtk/gtk.h>
 #include "gui.h"
+#include <stdlib.h>
+#include <string.h>
 
 int godVar;
 
@@ -11,5 +14,18 @@ void generate_pokedex_buttons(void);
 void pokemon_search(GtkWidget *widget, gpointer user_data);
 int find_evolutions(int selectedPokemon);
 int fill_pokemon_evolution_entries(char*,int,int);
+int sort_pokedex_entries(int sortingStyle);
+int compare_weight(const void *pa,const void *pb);
+void rearrange_buttons(void);
+void test_sorting_functions(void);
+int search_Pokemon_List(GtkWidget** buttonArray, 
+                       int desiredOrder,
+                       const char* name, 
+                       float height, 
+                       int greaterHeight,
+                       float weight, 
+                       int greaterWeight,
+                       typeEnum firstType,
+                       typeEnum secondType);
 
 #endif

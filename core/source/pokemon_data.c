@@ -1,7 +1,6 @@
 #include "pokemon_data.h"
 
 // VARIABLES
-// Define global variables
 const char* typeEnumStrings[] = { // Potential Pokemon types (as strings)
   "",
   "Normal",
@@ -62,67 +61,8 @@ pokemon pokedexArray[POKEDEX_SIZE] = { // Array containing all Kanto Pokemon
   {"Clefable", "Fairy", 36, Normal, NONE, 1.3, 40},
   {"Vulpix", "Fox", 37, Fire, NONE, 0.6, 9.9},
   {"Ninetales", "Fox", 38, Fire, NONE, 1.1, 19.9}
-
   // {"Eevee", "Fox", 37, Fire, NONE, 0.6, 9.9, FALSE, NULL, NULL},
   // {"Jolteon", "Fox", 38, Fire, NONE, 1.1, 19.9, TRUE, 140, THUNDER_STONE},
   // {"Flareon", "Fox", 38, Fire, NONE, 1.1, 19.9, TRUE, 140, FIRE_STONE},
   // {"Vaporeon", "Fox", 38, Fire, NONE, 1.1, 19.9, TRUE, 140, WATER_STONE},
 };
-
-// Searches Pokemon list for Pokemon who satisfy user-provided constraints
-int search_Pokemon_List(GtkWidget** buttonArray,
-                       int desiredOrder,
-                       const char* name, 
-                       float height, 
-                       int greaterHeight,
-                       float weight, 
-                       int greaterWeight,
-                       typeEnum firstType,
-                       typeEnum secondType) {
-  int i; // Loop Counter
-  int j = 0; // Relevant Pokemon counter
-  char *ptr1; // Name checker variable
-  int ptr2, ptr3, ptr4, ptr5; // Height, weight, and types checker variables
-  
-  for (i=0;i<POKEDEX_SIZE-1;i++) {
-    // Check if Pokemon's name contains given string 
-    ptr1 = strcasestr(pokedexArray[i].name,name);
-
-    // Check if Pokemon's height falls within given range
-    if (greaterHeight) {
-      ptr2 = (pokedexArray[i].height >= height);
-    } else {
-      ptr2 = (pokedexArray[i].height <= height);
-    }
-
-    // Check if Pokemon's weight falls within given range
-    if (greaterWeight) {
-      ptr3 = (pokedexArray[i].weight >= weight);
-    } else {
-      ptr3 = (pokedexArray[i].weight <= weight);
-    }
-
-    // Check if Pokemon's first type matches with given first type
-    if (firstType == NONE) {
-      ptr4 = 1;
-    } else {
-      ptr4 = (pokedexArray[i].firstType == firstType);
-    }
-
-    // Check if Pokemon's second type matches with given second type
-    if (secondType == NONE) {
-      ptr5 = 1;
-    } else {
-      ptr5 = (pokedexArray[i].secondType == secondType);
-    }
-
-    // Determine whether the Pokemon satisfies all constraints
-    if (ptr1 != NULL && ptr2 && ptr3 && ptr4 && ptr5) {
-      j += 1;
-      gtk_widget_show(buttonArray[i]);
-    } else {
-      gtk_widget_hide(buttonArray[i]);
-    }
-  }
-  return j;
-}

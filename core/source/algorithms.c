@@ -3,6 +3,9 @@
 // Signal handlers
 void pokemon_search(GtkWidget *entry, gpointer user_data) {
     char relevantPokemonString[25];
+
+    rearrange_buttons();
+
     int relevantPokemon = search_Pokemon_List(mainWindowButton,
         gtk_combo_box_get_active(GTK_COMBO_BOX(orderComboBox)),
         gtk_entry_get_text(GTK_ENTRY(pokemonNameSearchEntry)),
@@ -204,5 +207,101 @@ int find_evolutions(int selectedPokemon) {
                 }
             }
         }
+    }
+}
+
+// Searches Pokemon list for Pokemon who satisfy user-provided constraints
+int search_Pokemon_List(GtkWidget** buttonArray,
+                       int desiredOrder,
+                       const char* name, 
+                       float height, 
+                       int greaterHeight,
+                       float weight, 
+                       int greaterWeight,
+                       typeEnum firstType,
+                       typeEnum secondType) {
+  int i; // Loop Counter
+  int j = 0; // Relevant Pokemon counter
+  char *ptr1; // Name checker variable
+  int ptr2, ptr3, ptr4, ptr5; // Height, weight, and types checker variables
+  
+  printf("Selected order: %d\n", desiredOrder);
+
+  for (i=0;i<POKEDEX_SIZE-1;i++) {
+    // Check if Pokemon's name contains given string 
+    ptr1 = strcasestr(pokedexArray[i].name,name);
+
+    // Check if Pokemon's height falls within given range
+    if (greaterHeight) {
+      ptr2 = (pokedexArray[i].height >= height);
+    } else {
+      ptr2 = (pokedexArray[i].height <= height);
+    }
+
+    // Check if Pokemon's weight falls within given range
+    if (greaterWeight) {
+      ptr3 = (pokedexArray[i].weight >= weight);
+    } else {
+      ptr3 = (pokedexArray[i].weight <= weight);
+    }
+
+    // Check if Pokemon's first type matches with given first type
+    if (firstType == NONE) {
+      ptr4 = 1;
+    } else {
+      ptr4 = (pokedexArray[i].firstType == firstType);
+    }
+
+    // Check if Pokemon's second type matches with given second type
+    if (secondType == NONE) {
+      ptr5 = 1;
+    } else {
+      ptr5 = (pokedexArray[i].secondType == secondType);
+    }
+
+    // Determine whether the Pokemon satisfies all constraints
+    if (ptr1 != NULL && ptr2 && ptr3 && ptr4 && ptr5) {
+      j += 1;
+      gtk_widget_show(buttonArray[i]);
+    } else {
+      gtk_widget_hide(buttonArray[i]);
+    }
+  }
+  return j;
+}
+
+int sort_pokedex_entries(int sortingStyle) {
+    switch (sortingStyle) {
+    case 0: // Numerical
+        break;
+
+    case 1: // Alphabetical
+        /* code */
+        break;
+
+    case 2: // Heaviest
+        /* code */
+        break;
+
+    case 3: // Lightest
+        /* code */
+        break;
+
+    case 4: // Tallest
+        /* code */
+        break;
+
+    case 5: // Shortest
+        /* code */
+        break;
+    }
+}
+
+void rearrange_buttons(void) {
+    printf("Hello, World!\n");
+    int j;
+
+    for (int i; i = 0; i++) {
+        mainWindowButton[i]->position = abs(29 - i);
     }
 }
