@@ -222,7 +222,7 @@ int search_Pokemon_List(GtkWidget** buttonArray,
   int j = 0; // Relevant Pokemon counter
   char *ptr1; // Name checker variable
   int ptr2, ptr3, ptr4, ptr5; // Height, weight, and types checker variables
-  
+
   sort_pokedex_entries(desiredOrder);
 
   for (i=0;i<POKEDEX_SIZE;i++) {
@@ -260,9 +260,9 @@ int search_Pokemon_List(GtkWidget** buttonArray,
     // Determine whether the Pokemon satisfies all constraints
     if (ptr1 != NULL && ptr2 && ptr3 && ptr4 && ptr5) {
       j += 1;
-      gtk_widget_show(buttonArray[i]);
+      gtk_widget_show(buttonArray[pokedexArray[i].number -1]);
     } else {
-      gtk_widget_hide(buttonArray[i]);
+      gtk_widget_hide(buttonArray[pokedexArray[i].number -1]);
     }
   }
 
@@ -392,12 +392,9 @@ void print_pokemon_struct_array(struct pokemon *array, size_t len) {
 void rearrange_buttons(void) {
     size_t pokemon_len = sizeof(pokedexArray) / sizeof(struct pokemon);
 
-    print_pokemon_struct_array(pokedexArray, pokemon_len);
+    // print_pokemon_struct_array(pokedexArray, pokemon_len);
 
     for (int i = 0; i < POKEDEX_SIZE; i++) {
         gtk_box_reorder_child(GTK_BOX(pokemonEntryList), mainWindowButton[pokedexArray[i].number - 1], i);
-        printf("%d,",pokedexArray[i].number);
     }
-
-    printf("\n");
 }
