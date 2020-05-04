@@ -23,7 +23,7 @@ GtkBuilder  *builder;
 // MAIN WINDOW LIST WIDGETS
 GtkWidget *viewBox;
 GtkWidget *pokemonEntryList;
-GtkWidget *mainWindowButton[40];
+GtkWidget *mainWindowButton[POKEDEX_SIZE];
 
 
 // MAIN WINDOW SEARCH WIDGETS

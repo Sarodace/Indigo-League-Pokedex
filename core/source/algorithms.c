@@ -39,7 +39,7 @@ void generate_pokedex_buttons(void) {
     char formattedPokedexNumber[10];
     char rawPokedexNumber[10];
 
-    for (int i = 1; i <= 40; i++) {
+    for (int i = 1; i <= POKEDEX_SIZE; i++) {
         //// DEFINE UNIQUE IDENTIFIERS
         sprintf(buttonID,"%d",i); // Button ID
         sprintf(nameString,"name_%d",i); // Pokemon name
@@ -224,9 +224,8 @@ int search_Pokemon_List(GtkWidget** buttonArray,
   int ptr2, ptr3, ptr4, ptr5; // Height, weight, and types checker variables
   
   sort_pokedex_entries(desiredOrder);
-  rearrange_buttons();
 
-  for (i=0;i<POKEDEX_SIZE-1;i++) {
+  for (i=0;i<POKEDEX_SIZE;i++) {
     // Check if Pokemon's name contains given string 
     ptr1 = strcasestr(pokedexArray[i].name,name);
 
@@ -266,6 +265,7 @@ int search_Pokemon_List(GtkWidget** buttonArray,
       gtk_widget_hide(buttonArray[i]);
     }
   }
+
   return j;
 }
 
@@ -283,27 +283,67 @@ int sort_numerical(const void *a, const void *b) {
 }
 
 int sort_weight_ascending(const void *a, const void *b) { 
+    int order;
     pokemon *ia = (pokemon *)a;
     pokemon *ib = (pokemon *)b;
-    return (int)(100.f*ia->weight - 100.f*ib->weight);
+
+    if (ib->weight < ia->weight) {
+        order = 1;
+    } else if (ib->weight > ia->weight) {
+        order = -1;
+    } else {
+        order = strcmp(ia->name, ib->name);
+    }
+
+    return order;
 }
 
-int sort_weight_descending(const void *a, const void *b) { 
+int sort_weight_descending(const void *a, const void *b) {
+    int order;
     pokemon *ia = (pokemon *)a;
     pokemon *ib = (pokemon *)b;
-    return (int)(100.f*ib->weight - 100.f*ia->weight);
+
+    if (ib->weight > ia->weight) {
+        order = 1;
+    } else if (ib->weight < ia->weight) {
+        order = -1;
+    } else {
+        order = strcmp(ia->name, ib->name);
+    }
+
+    return order;
 }
 
 int sort_height_ascending(const void *a, const void *b) {
+    int order;
     pokemon *ia = (pokemon *)a;
     pokemon *ib = (pokemon *)b;
-    return (int)(100.f*ia->height - 100.f*ib->height);
+
+    if (ib->height < ia->height) {
+        order = 1;
+    } else if (ib->height > ia->height) {
+        order = -1;
+    } else {
+        order = strcmp(ia->name, ib->name);
+    }
+
+    return order;
 }
 
 int sort_height_descending(const void *a, const void *b) { 
+    int order;
     pokemon *ia = (pokemon *)a;
     pokemon *ib = (pokemon *)b;
-    return (int)(100.f*ib->height - 100.f*ia->height);
+
+    if (ib->height > ia->height) {
+        order = 1;
+    } else if (ib->height < ia->height) {
+        order = -1;
+    } else {
+        order = strcmp(ia->name, ib->name);
+    }
+
+    return order;
 }
 
 // Select sorting algorithm
@@ -354,7 +394,7 @@ void rearrange_buttons(void) {
 
     print_pokemon_struct_array(pokedexArray, pokemon_len);
 
-    for (int i = 0; i < 40; i++) {
+    for (int i = 0; i < POKEDEX_SIZE; i++) {
         gtk_box_reorder_child(GTK_BOX(pokemonEntryList), mainWindowButton[pokedexArray[i].number - 1], i);
         printf("%d,",pokedexArray[i].number);
     }
