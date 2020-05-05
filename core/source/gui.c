@@ -90,9 +90,6 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
             gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), FALSE);
         }
     }
-    if (event->keyval == GDK_KEY_a) {
-        rearrange_buttons();
-    }
     return FALSE;
 }
 

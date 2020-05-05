@@ -165,7 +165,7 @@ int fill_pokemon_evolution_entries(char *position, int counter, int threeTier) {
 
 int find_evolutions(int selectedPokemon) {
     // Loop back to the selected pokemon's 1st stage
-    if (pokedexArray[selectedPokemon-1].finalForm == TRUE || pokedexArray[selectedPokemon-1].evolvesFrom != 0) {
+    if (pokedexArray[selectedPokemon-1].finalForm == TRUE || pokedexArray[selectedPokemon-1].evolvesFrom != NO_EVO) {
         for (int i=0;i<POKEDEX_SIZE;i++) {
             if (pokedexArray[i].number == pokedexArray[selectedPokemon-1].evolvesFrom) {
                 // Uses recursion to accomplish the task!
@@ -175,7 +175,7 @@ int find_evolutions(int selectedPokemon) {
     }
 
     // Go through the evolutionary stages
-    if (pokedexArray[selectedPokemon-1].finalForm == FALSE && pokedexArray[selectedPokemon-1].evolvesFrom == 0) {
+    if (pokedexArray[selectedPokemon-1].finalForm == FALSE && pokedexArray[selectedPokemon-1].evolvesFrom == NO_EVO) {
         printf("1st form: %s\n",pokedexArray[selectedPokemon-1].name);
         // fill_pokemon_evolution_entries("1st",selectedPokemon-1);
         // Looks for 2nd evolutionary stage
@@ -224,6 +224,7 @@ int search_Pokemon_List(GtkWidget** buttonArray,
   int ptr2, ptr3, ptr4, ptr5; // Height, weight, and types checker variables
 
   sort_pokedex_entries(desiredOrder);
+  rearrange_buttons();
 
   for (i=0;i<POKEDEX_SIZE;i++) {
     // Check if Pokemon's name contains given string 

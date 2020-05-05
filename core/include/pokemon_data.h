@@ -34,12 +34,14 @@ typedef enum typeEnum { // Potential Pokemon types
 } typeEnum;
 
 typedef enum evolutionEnum {
+  NO_EVO,
   LEVEL_UP,
   TRADE,
   FIRE_STONE,
   WATER_STONE,
   THUNDER_STONE,
   LEAF_STONE,
+  MOON_STONE
 } evolutionEnum;
 
 typedef struct pokemon { // Identifying data associated with Pokemon
@@ -52,7 +54,7 @@ typedef struct pokemon { // Identifying data associated with Pokemon
   float weight; // In kilograms
   bool finalForm; // -1 Can't evolve, 0 No, 1 yes
   int evolvesFrom;
-  evolutionEnum *evolutionMethod;
+  evolutionEnum evolutionMethod;
   int level;
 } pokemon;
 
