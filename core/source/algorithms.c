@@ -341,7 +341,7 @@ int sort_height_descending(const void *a, const void *b) {
     } else if (ib->height < ia->height) {
         order = -1;
     } else {
-        order = strcmp(ia->name, ib->name);
+        order = strcmp(ib->name, ia->name);
     }
 
     return order;
@@ -393,7 +393,7 @@ void print_pokemon_struct_array(struct pokemon *array, size_t len) {
 void rearrange_buttons(void) {
     size_t pokemon_len = sizeof(pokedexArray) / sizeof(struct pokemon);
 
-    // print_pokemon_struct_array(pokedexArray, pokemon_len);
+    print_pokemon_struct_array(pokedexArray, pokemon_len);
 
     for (int i = 0; i < POKEDEX_SIZE; i++) {
         gtk_box_reorder_child(GTK_BOX(pokemonEntryList), mainWindowButton[pokedexArray[i].number - 1], i);

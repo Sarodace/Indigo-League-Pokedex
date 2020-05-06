@@ -66,14 +66,13 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
         gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), FALSE);
         gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), FALSE);
         gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(infoEmptyScreen));
-        //
         return switch_screens();
     }
     if (event->keyval == GDK_KEY_Down || event->keyval == GDK_KEY_Up) {
         scroll_list_screen(event->keyval);
     }
     if (event->keyval == GDK_KEY_Right) {
-        if (gtk_stack_get_visible_child(GTK_STACK(infoStack)) == entryScreen) {
+        if (gtk_stack_get_visible_child(GTK_STACK(infoStack)) == descriptionScreen) {
             if (godVar == 1) {
                 gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(threeTierEvolution));
             } else {
@@ -85,7 +84,7 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
     }
     if (event->keyval == GDK_KEY_Left) {
         if (gtk_stack_get_visible_child(GTK_STACK(infoStack)) == threeTierEvolution) {
-            gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(entryScreen));
+            gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(descriptionScreen));
             gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), TRUE);
             gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), FALSE);
         }
@@ -142,7 +141,7 @@ void handle_sub_window(GtkButton *buttonClicked) {
 
 // Handle logic in 
 void handle_info_window(GtkButton *buttonClicked) {
-    gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(entryScreen));
+    gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(descriptionScreen));
     read_from_TXT_file(GTK_WIDGET(buttonClicked));
     gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), TRUE);
 }

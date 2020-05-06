@@ -1,11 +1,27 @@
 /* MENU BAR */
 .menu_bar {
   background-color: #263137;
-  box-shadow: 0px 2px 4px gray;
+  box-shadow: 0px 1px 4px gray;
 }
 
 .menu_bar_text {
   color: white;
+}
+
+.pokemon_description_text1 {
+  /* font-size: 20px; */
+  background-color: #f4a9a1;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  /* box-shadow: 0px 1px 4px gray; */
+}
+
+.pokemon_description_text2 {
+  font-size: 20px;
+  background-color: #cacaca;
+  border-radius: 10px;
+  margin-top: 10px;
+  /* min-height: 120px; */
 }
 
 /* ICON FORMAT */

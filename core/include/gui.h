@@ -56,6 +56,7 @@ GtkWidget   *pokemonType2;
 GtkWidget   *infoStack;
 
 GtkWidget   *infoEmptyScreen;
+GtkWidget   *descriptionScreen;
 GtkWidget   *entryScreen;
 GtkWidget   *threeTierEvolution;
 GtkWidget   *twoTierEvolution;

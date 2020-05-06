@@ -57,6 +57,7 @@ int main(int argc, char *argv[]) {
     infoStack = GTK_WIDGET(gtk_builder_get_object(builder, "infoStack"));
 
     infoEmptyScreen = GTK_WIDGET(gtk_builder_get_object(builder, "infoEmptyScreen"));
+    descriptionScreen = GTK_WIDGET(gtk_builder_get_object(builder, "descriptionScreen"));
     entryScreen = GTK_WIDGET(gtk_builder_get_object(builder, "entryScreen"));
     threeTierEvolution = GTK_WIDGET(gtk_builder_get_object(builder, "threeTierEvolution"));
     twoTierEvolution = GTK_WIDGET(gtk_builder_get_object(builder, "twoTierEvolution"));
