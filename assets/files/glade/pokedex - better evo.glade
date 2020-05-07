@@ -5935,9 +5935,6 @@
         </child>
       </object>
     </child>
-    <style>
-      <class name="test"/>
-    </style>
   </object>
   <object class="GtkWindow" id="infoWindow">
     <property name="can_focus">False</property>
@@ -6164,8 +6161,8 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="valign">end</property>
-                <property name="vexpand">True</property>
+                <property name="valign">center</property>
+                <property name="homogeneous">True</property>
                 <child>
                   <object class="GtkBox">
                     <property name="visible">True</property>
@@ -6202,6 +6199,9 @@
                       <object class="GtkLabel" id="threeTier_1stName">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <style>
+                          <class name="evo_screen_text"/>
+                        </style>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -6209,41 +6209,10 @@
                         <property name="position">2</property>
                       </packing>
                     </child>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <child>
-                          <object class="GtkLabel" id="threeTier_1stType1">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Grass</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="threeTier_1stType2">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Poison</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">3</property>
-                      </packing>
-                    </child>
+                    <style>
+                      <class name="evolutionCard"/>
+                      <class name="Water"/>
+                    </style>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -6325,6 +6294,9 @@
                       <object class="GtkLabel" id="threeTier_2ndName">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <style>
+                          <class name="evo_screen_text"/>
+                        </style>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -6332,41 +6304,10 @@
                         <property name="position">2</property>
                       </packing>
                     </child>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <child>
-                          <object class="GtkLabel" id="threeTier_2ndType1">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Grass</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="threeTier_2ndType2">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Poison</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">3</property>
-                      </packing>
-                    </child>
+                    <style>
+                      <class name="evolutionCard"/>
+                      <class name="Water"/>
+                    </style>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -6447,6 +6388,9 @@
                       <object class="GtkLabel" id="threeTier_3rdName">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <style>
+                          <class name="evo_screen_text"/>
+                        </style>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -6454,41 +6398,10 @@
                         <property name="position">2</property>
                       </packing>
                     </child>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <child>
-                          <object class="GtkLabel" id="threeTier_3rdType1">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Grass</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="threeTier_3rdType2">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Poison</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">3</property>
-                      </packing>
-                    </child>
+                    <style>
+                      <class name="evolutionCard"/>
+                      <class name="Water"/>
+                    </style>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -6790,9 +6703,6 @@
         </child>
       </object>
     </child>
-    <style>
-      <class name="test"/>
-    </style>
   </object>
   <object class="GtkWindow" id="subWindow">
     <property name="can_focus">False</property>

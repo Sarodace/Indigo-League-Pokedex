@@ -1,3 +1,32 @@
+/* Better evolution screen */
+.evolutionCard {
+  background-color: #abd3da;
+  border: 1px solid;
+  border-radius: 10px;
+  box-shadow: 0px 1px 4px gray;
+  min-height: 70px;
+}
+
+.evolution_screen_icon {
+  background-color: white;
+  border-radius: 1000px;
+  margin: 5px 5px 5px 5px;
+	/* min-height: 70px;
+	min-width: 70px; */
+}
+
+.evo_screen_text {
+  font-family: "Lucida Console", Courier, monospace;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+
+/* Window */
+.test {
+  background-color: #e0d8c0;
+}
+
 /* MENU BAR */
 .menu_bar {
   background-color: #263137;

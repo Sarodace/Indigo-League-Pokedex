@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
     implement_CSS();
 
     // Build windows and connect signals described in Glade file
-    builder = gtk_builder_new_from_file("assets/files/glade/pokedex - improved list.glade");
+    builder = gtk_builder_new_from_file("assets/files/glade/pokedex - better evo.glade");
     mainWindow = GTK_WIDGET(gtk_builder_get_object(builder, "mainWindow"));
     subWindow = GTK_WIDGET(gtk_builder_get_object(builder, "subWindow"));
     infoWindow = GTK_WIDGET(gtk_builder_get_object(builder, "infoWindow"));
@@ -110,6 +110,7 @@ int main(int argc, char *argv[]) {
 
     // Display the GUI
     gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
+    gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(threeTierEvolution));
 
     // Build widgets decribed in Glade file
     generate_pokedex_buttons();

@@ -123,7 +123,7 @@ int fill_pokemon_evolution_entries(char *position, int counter, int threeTier) {
         sprintf(screen,"%s","three");
     }
 
-    sprintf(evolutionLevel, "Level %d", pokedexArray[counter].level);
+    sprintf(evolutionLevel, "Lvl. %d", pokedexArray[counter].level);
 
     sprintf(numberString, "%sTier_%sNumber", screen, position);
     sprintf(imageString, "%sTier_%sImage", screen, position);
