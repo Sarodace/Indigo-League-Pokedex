@@ -157,4 +157,5 @@ int pokemon_entry_clicked (GtkButton *buttonClicked) {
     handle_sub_window(buttonClicked);
     handle_info_window(buttonClicked);
     find_evolutions(atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))));
+    printf("________________\n");
 }

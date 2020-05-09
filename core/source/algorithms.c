@@ -1,12 +1,31 @@
 #include "algorithms.h"
 
-void style_given_element(const char* elementID, const char* cssTag) {
-    GtkStyleContext   *context;
+// void style_given_element(const char* elementID, const char* cssTag) {
+//     GtkStyleContext   *context;
 
-    context = gtk_widget_get_style_context(GTK_WIDGET(gtk_builder_get_object(builder, 
-        elementID)));
-    gtk_style_context_add_class(context, cssTag);
-}
+//     context = gtk_widget_get_style_context(GTK_WIDGET(gtk_builder_get_object(builder, 
+//         elementID)));
+//     gtk_style_context_add_class(context, cssTag);
+//     // printf("%s",gtk_style_context_list_classes(context));
+// }
+
+// void style_evolution_card(const char* elementID, const char* cssTag) {
+//     GtkStyleContext   *context;
+
+//     // for (int i = 0; i < 17; i++) {
+//     //     printf("%s\n", typeEnumStrings[i]);
+//     //     if (gtk_style_context_has_class(context, typeEnumStrings[i])) {
+//     //         printf("Already has style class: %s\n", typeEnumStrings[i]);
+//     //         gtk_style_context_remove_class(context, typeEnumStrings[i]);
+//     //     }
+//     // }
+
+//     context = gtk_widget_get_style_context(GTK_WIDGET(gtk_builder_get_object(builder, 
+//     elementID)));
+//     gtk_style_context_add_class(context, cssTag);
+//     gtk_style_context_add_class(context, "seeIfThisWorks");
+// }
+
 
 // Signal handlers
 void pokemon_search(GtkWidget *entry, gpointer user_data) {
@@ -149,12 +168,8 @@ int fill_pokemon_evolution_entries(char *position, int counter, int threeTier) {
         pokemonImageString);
     gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, nameString)),
         pokedexArray[counter].name);
-    // gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, firstTypeString)),
-    //     typeEnumStrings[pokedexArray[counter].firstType]);
-    // gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, secondTypeString)),
-    //     typeEnumStrings[pokedexArray[counter].secondType]);
-    style_given_element(cardString, typeEnumStrings[pokedexArray[counter].firstType]);
-    printf("%s and %s\n",cardString,typeEnumStrings[pokedexArray[counter].firstType]);
+
+    style_evolution_card(cardString, typeEnumStrings[pokedexArray[counter].firstType]);
 
     if (position == "2nd") {
         gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "threeTier_1stEvolution")),
@@ -168,7 +183,6 @@ int fill_pokemon_evolution_entries(char *position, int counter, int threeTier) {
         gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "twoTier_1stEvolution")),
             evolutionLevel);
     }
-    printf("TEST WORKS\n");
 }
 
 int find_evolutions(int selectedPokemon) {

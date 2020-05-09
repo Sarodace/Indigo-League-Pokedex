@@ -2,6 +2,7 @@
 #include "load_files.h"
 #include "pokemon_data.h"
 #include "algorithms.h"
+#include "css_styling.h"
 
 int main(int argc, char *argv[]) {
     // init GTK

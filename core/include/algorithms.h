@@ -4,13 +4,15 @@
 #define _GNU_SOURCE
 #include <gtk/gtk.h>
 #include "gui.h"
+#include "css_styling.h"
 #include <stdlib.h>
 #include <string.h>
 
 int godVar;
 
 // Sorting and searching
-void style_given_element(const char* elementID, const char* cssTag);
+// void style_given_element(const char* elementID, const char* cssTag);
+// void style_evolution_card(const char* elementID, const char* cssTag);
 void generate_pokedex_buttons(void);
 void pokemon_search(GtkWidget *widget, gpointer user_data);
 int find_evolutions(int selectedPokemon);
