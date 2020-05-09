@@ -10,6 +10,7 @@
 int godVar;
 
 // Sorting and searching
+void style_given_element(const char* elementID, const char* cssTag);
 void generate_pokedex_buttons(void);
 void pokemon_search(GtkWidget *widget, gpointer user_data);
 int find_evolutions(int selectedPokemon);

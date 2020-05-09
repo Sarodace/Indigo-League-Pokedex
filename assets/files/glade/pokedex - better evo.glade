@@ -6162,12 +6162,13 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="homogeneous">True</property>
+                <property name="spacing">5</property>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkBox" id="threeTierEvolution_1stCard">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="valign">center</property>
+                    <property name="margin_left">10</property>
                     <property name="vexpand">True</property>
                     <property name="orientation">vertical</property>
                     <child>
@@ -6199,6 +6200,7 @@
                       <object class="GtkLabel" id="threeTier_1stName">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">ABCDEFGHIJ</property>
                         <style>
                           <class name="evo_screen_text"/>
                         </style>
@@ -6211,12 +6213,11 @@
                     </child>
                     <style>
                       <class name="evolutionCard"/>
-                      <class name="Water"/>
                     </style>
                   </object>
                   <packing>
                     <property name="expand">False</property>
-                    <property name="fill">True</property>
+                    <property name="fill">False</property>
                     <property name="position">0</property>
                   </packing>
                 </child>
@@ -6259,7 +6260,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkBox" id="threeTierEvolution_2ndCard">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="valign">center</property>
@@ -6294,6 +6295,7 @@
                       <object class="GtkLabel" id="threeTier_2ndName">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">ABCDEFGHIJ</property>
                         <style>
                           <class name="evo_screen_text"/>
                         </style>
@@ -6306,7 +6308,6 @@
                     </child>
                     <style>
                       <class name="evolutionCard"/>
-                      <class name="Water"/>
                     </style>
                   </object>
                   <packing>
@@ -6353,10 +6354,11 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkBox" id="threeTierEvolution_3rdCard">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="valign">center</property>
+                    <property name="margin_right">10</property>
                     <property name="vexpand">True</property>
                     <property name="orientation">vertical</property>
                     <child>
@@ -6388,6 +6390,7 @@
                       <object class="GtkLabel" id="threeTier_3rdName">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">ABCDEFGHIJ</property>
                         <style>
                           <class name="evo_screen_text"/>
                         </style>
@@ -6400,7 +6403,6 @@
                     </child>
                     <style>
                       <class name="evolutionCard"/>
-                      <class name="Water"/>
                     </style>
                   </object>
                   <packing>
@@ -6422,16 +6424,17 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="margin_top">50</property>
+                <property name="spacing">10</property>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkBox" id="twoTierEvolution_1stCard">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkImage" id="twoTier_1stImage">
+                      <object class="GtkLabel" id="twoTier_1stNumber">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">#019</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -6440,33 +6443,12 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkImage" id="twoTier_1stImage">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <child>
-                          <object class="GtkLabel" id="twoTier_1stNumber">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">#019</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="twoTier_1stName">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Ratata</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
+                        <style>
+                          <class name="evolution_screen_icon"/>
+                        </style>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -6475,33 +6457,13 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkLabel" id="twoTier_1stName">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">center</property>
-                        <child>
-                          <object class="GtkLabel" id="twoTier_1stType1">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Normal</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="twoTier_1stType2">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
+                        <property name="label" translatable="yes">Ratata</property>
+                        <style>
+                          <class name="evo_screen_text"/>
+                        </style>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -6509,6 +6471,9 @@
                         <property name="position">2</property>
                       </packing>
                     </child>
+                    <style>
+                      <class name="evolutionCard"/>
+                    </style>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -6520,6 +6485,7 @@
                   <object class="GtkBox">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="valign">center</property>
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkLabel" id="twoTier_1stEvolution">
@@ -6554,14 +6520,15 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkBox" id="twoTierEvolution_2ndCard">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkImage" id="twoTier_2ndImage">
+                      <object class="GtkLabel" id="twoTier_2ndNumber">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">#020</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -6570,33 +6537,12 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkImage" id="twoTier_2ndImage">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <child>
-                          <object class="GtkLabel" id="twoTier_2ndNumber">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">#020</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="twoTier_2ndName">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Raticate</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
+                        <style>
+                          <class name="evolution_screen_icon"/>
+                        </style>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -6605,33 +6551,13 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkLabel" id="twoTier_2ndName">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">center</property>
-                        <child>
-                          <object class="GtkLabel" id="twoTier_2ndType1">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Normal</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="twoTier_2ndType2">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
+                        <property name="label" translatable="yes">Raticate</property>
+                        <style>
+                          <class name="evo_screen_text"/>
+                        </style>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -6639,6 +6565,9 @@
                         <property name="position">2</property>
                       </packing>
                     </child>
+                    <style>
+                      <class name="evolutionCard"/>
+                    </style>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -6665,7 +6594,6 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="valign">end</property>
-            <property name="vexpand">True</property>
             <property name="homogeneous">True</property>
             <child>
               <object class="GtkBox">

@@ -1,5 +1,13 @@
 #include "algorithms.h"
 
+void style_given_element(const char* elementID, const char* cssTag) {
+    GtkStyleContext   *context;
+
+    context = gtk_widget_get_style_context(GTK_WIDGET(gtk_builder_get_object(builder, 
+        elementID)));
+    gtk_style_context_add_class(context, cssTag);
+}
+
 // Signal handlers
 void pokemon_search(GtkWidget *entry, gpointer user_data) {
     char relevantPokemonString[25];
@@ -20,9 +28,6 @@ void pokemon_search(GtkWidget *entry, gpointer user_data) {
 }
 
 void generate_pokedex_buttons(void) {
-    // Style Context variable needed to use CSS to style widgets
-    GtkStyleContext   *context;
-
     // Null variable used to bypass having to pass data
     int *pInt = NULL; 
 
@@ -82,19 +87,17 @@ void generate_pokedex_buttons(void) {
         gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, firstTypeString)),
             typeEnumStrings[pokedexArray[i-1].firstType]);
         // Then apply the CSS to format it to the correct color
-        context = gtk_widget_get_style_context(GTK_WIDGET(gtk_builder_get_object(builder, firstTypeString)));
-        gtk_style_context_add_class(context, firstTypeCSS);
+        style_given_element(firstTypeString,firstTypeCSS);
 
         // Set Pokemon's second type...
         gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, secondTypeString)),
             typeEnumStrings[pokedexArray[i-1].secondType]);
         // Then apply the CSS to format it to the correct color
-        context = gtk_widget_get_style_context(GTK_WIDGET(gtk_builder_get_object(builder, secondTypeString)));
-        gtk_style_context_add_class(context, secondTypeCSS);
+        style_given_element(secondTypeString,secondTypeCSS);
 
         // Apply CSS to format button's color to allign with Pokemon's first type
-        context = gtk_widget_get_style_context(GTK_WIDGET(gtk_builder_get_object(builder, buttonID)));
-        gtk_style_context_add_class(context, typeEnumStrings[pokedexArray[i-1].firstType]);
+        style_given_element(buttonID,
+            typeEnumStrings[pokedexArray[i-1].firstType]);
 
         // Clicking the button will trigger the "pokemon_entry_clicked" function
         g_signal_connect(GTK_BUTTON(mainWindowButton[i-1]), "clicked",
@@ -109,8 +112,9 @@ int fill_pokemon_evolution_entries(char *position, int counter, int threeTier) {
     char numberString[20];
     char imageString[20];
     char nameString[20];
-    char firstTypeString[20];
-    char secondTypeString[20];
+    char cardString[20];
+    // char firstTypeString[20];
+    // char secondTypeString[20];
     char pokemonImageString[30];
     char formattedPokedexNumber[5];
     char rawPokedexNumber[5];
@@ -128,8 +132,9 @@ int fill_pokemon_evolution_entries(char *position, int counter, int threeTier) {
     sprintf(numberString, "%sTier_%sNumber", screen, position);
     sprintf(imageString, "%sTier_%sImage", screen, position);
     sprintf(nameString, "%sTier_%sName", screen, position);
-    sprintf(firstTypeString, "%sTier_%sType1", screen, position);
-    sprintf(secondTypeString, "%sTier_%sType2", screen, position);
+    sprintf(cardString, "%sTierEvolution_%sCard", screen, position);
+    // sprintf(firstTypeString, "%sTier_%sType1", screen, position);
+    // sprintf(secondTypeString, "%sTier_%sType2", screen, position);
 
     sprintf(formattedPokedexNumber, "%s","#");
     sprintf(rawPokedexNumber, "%03d", pokedexArray[counter].number);
@@ -144,10 +149,12 @@ int fill_pokemon_evolution_entries(char *position, int counter, int threeTier) {
         pokemonImageString);
     gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, nameString)),
         pokedexArray[counter].name);
-    gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, firstTypeString)),
-        typeEnumStrings[pokedexArray[counter].firstType]);
-    gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, secondTypeString)),
-        typeEnumStrings[pokedexArray[counter].secondType]);
+    // gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, firstTypeString)),
+    //     typeEnumStrings[pokedexArray[counter].firstType]);
+    // gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, secondTypeString)),
+    //     typeEnumStrings[pokedexArray[counter].secondType]);
+    style_given_element(cardString, typeEnumStrings[pokedexArray[counter].firstType]);
+    printf("%s and %s\n",cardString,typeEnumStrings[pokedexArray[counter].firstType]);
 
     if (position == "2nd") {
         gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "threeTier_1stEvolution")),
@@ -161,6 +168,7 @@ int fill_pokemon_evolution_entries(char *position, int counter, int threeTier) {
         gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "twoTier_1stEvolution")),
             evolutionLevel);
     }
+    printf("TEST WORKS\n");
 }
 
 int find_evolutions(int selectedPokemon) {
@@ -177,15 +185,12 @@ int find_evolutions(int selectedPokemon) {
     // Go through the evolutionary stages
     if (pokedexArray[selectedPokemon-1].finalForm == FALSE && pokedexArray[selectedPokemon-1].evolvesFrom == NO_EVO) {
         printf("1st form: %s\n",pokedexArray[selectedPokemon-1].name);
-        // fill_pokemon_evolution_entries("1st",selectedPokemon-1);
         // Looks for 2nd evolutionary stage
         for (int j=0;j<POKEDEX_SIZE;j++) {
             if (pokedexArray[j].evolvesFrom == pokedexArray[selectedPokemon-1].number) {
                 // Either goes on to look for 3rd evolutionary stage...
                 if (pokedexArray[j].finalForm == FALSE) {
                     printf("2nd form: %s\n",pokedexArray[j].name);
-                    // fill_pokemon_evolution_entries("1st",selectedPokemon-1);
-                    // fill_pokemon_evolution_entries("2nd",j);
                     for (int k=0;k<POKEDEX_SIZE;k++) {
                         //Finally, find the 3rd evolutionary stage
                         if (pokedexArray[k].evolvesFrom == pokedexArray[j].number) {

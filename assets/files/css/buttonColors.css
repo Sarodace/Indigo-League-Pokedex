@@ -4,23 +4,24 @@
   border: 1px solid;
   border-radius: 10px;
   box-shadow: 0px 1px 4px gray;
-  min-height: 70px;
+  min-height: 120px;
+  min-width: 100px;
 }
 
 .evolution_screen_icon {
   background-color: white;
   border-radius: 1000px;
-  margin: 5px 5px 5px 5px;
-	/* min-height: 70px;
-	min-width: 70px; */
+  margin: 5px 25px 5px 25px;
+	/* max-height: 70px;
+  max-width: 70px; */
 }
 
 .evo_screen_text {
   font-family: "Lucida Console", Courier, monospace;
+  color: #616161;
   font-weight: bold;
   font-size: 14px;
 }
-
 
 /* Window */
 .test {
