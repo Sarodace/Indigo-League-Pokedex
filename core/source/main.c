@@ -120,7 +120,7 @@ int main(int argc, char *argv[]) {
 
     // Display the GUI
     gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
-    gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(threeTierEvolution));
+    gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(infoEmptyScreen));
 
     // Build widgets decribed in Glade file
     generate_pokedex_buttons();

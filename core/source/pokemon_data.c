@@ -70,8 +70,8 @@ pokemon pokedexArray[POKEDEX_SIZE] = { // Array containing all Kanto Pokemon
   {"Clefable", "Fairy", 36, Normal, NONE, 1.3, 40, TRUE, 35, MOON_STONE, 0},
   {"Vulpix", "Fox", 37, Fire, NONE, 0.6, 9.9, FALSE, 0, NO_EVO, 0},
   {"Ninetales", "Fox", 38, Fire, NONE, 1.1, 19.9, TRUE, 37, FIRE_STONE, 0},
-  {"Jigglypuff", "Fox", 39, Normal, NONE, 0.6, 9.9, FALSE, 0, NO_EVO, 0},
-  {"Wigglypuff", "Fox", 40, Normal, NONE, 1.1, 19.9, TRUE, 39, MOON_STONE, 0},
+  {"Jigglypuff", "Balloon", 39, Normal, NONE, 0.6, 9.9, FALSE, 0, NO_EVO, 0},
+  {"Wigglypuff", "Balloon", 40, Normal, NONE, 1.1, 19.9, TRUE, 39, MOON_STONE, 0},
 
   // {"Eevee", "Fox", 37, Fire, NONE, 0.6, 9.9, FALSE, NO_EVO, NO_EVO},
   // {"Jolteon", "Fox", 38, Fire, NONE, 1.1, 19.9, TRUE, 140, THUNDER_STONE},

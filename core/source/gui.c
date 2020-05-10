@@ -80,7 +80,7 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
         }
     }
     if (event->keyval == GDK_KEY_Left) {
-        if (gtk_stack_get_visible_child(GTK_STACK(infoStack)) == threeTierEvolution) {
+        if (gtk_stack_get_visible_child(GTK_STACK(infoStack)) == threeTierEvolution || twoTierEvolution) {
             gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(descriptionScreen));
             gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), TRUE);
             gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), FALSE);
