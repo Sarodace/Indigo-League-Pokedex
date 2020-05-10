@@ -109,6 +109,15 @@ int main(int argc, char *argv[]) {
 
     twoTier_1stEvolution = GTK_WIDGET(gtk_builder_get_object(builder, "twoTier_1stEvolution"));
 
+
+    twoTier_evolutionSwitcher = GTK_WIDGET(gtk_builder_get_object(builder, "twoTier_evolutionSwitcher"));
+    twoTier_evolutionMethod = GTK_WIDGET(gtk_builder_get_object(builder, "twoTier_evolutionMethod"));
+
+    threeTier_evolutionSwitcher = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_evolutionSwitcher"));
+    threeTier_evolutionMethod = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_evolutionMethod"));
+
+
+
     // Display the GUI
     gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
     gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(threeTierEvolution));

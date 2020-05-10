@@ -6323,9 +6323,31 @@
                     <property name="valign">center</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkLabel" id="threeTier_2ndEvolution">
+                      <object class="GtkStack" id="threeTier_evolutionSwitcher">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <child>
+                          <object class="GtkLabel" id="threeTier_2ndEvolution">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                          </object>
+                          <packing>
+                            <property name="name">page0</property>
+                            <property name="title" translatable="yes">page0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkImage" id="threeTier_evolutionMethod">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="pixbuf">../../sprites/items/leaf_stone.png</property>
+                          </object>
+                          <packing>
+                            <property name="name">page1</property>
+                            <property name="title" translatable="yes">page1</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -6488,10 +6510,32 @@
                     <property name="valign">center</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkLabel" id="twoTier_1stEvolution">
+                      <object class="GtkStack" id="twoTier_evolutionSwitcher">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="justify">center</property>
+                        <child>
+                          <object class="GtkLabel" id="twoTier_1stEvolution">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="justify">center</property>
+                          </object>
+                          <packing>
+                            <property name="name">page0</property>
+                            <property name="title" translatable="yes">page0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkImage" id="twoTier_evolutionMethod">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="stock">gtk-missing-image</property>
+                          </object>
+                          <packing>
+                            <property name="name">page1</property>
+                            <property name="title" translatable="yes">page1</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
                       </object>
                       <packing>
                         <property name="expand">False</property>

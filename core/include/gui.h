@@ -108,6 +108,13 @@ GtkWidget   *twoTier_2ndType2;
 
 GtkWidget   *twoTier_1stEvolution;
 
+// evolution methods
+GtkWidget   *twoTier_evolutionSwitcher;
+GtkWidget   *threeTier_evolutionSwitcher;
+GtkWidget   *twoTier_evolutionMethod;
+GtkWidget   *threeTier_evolutionMethod;
+
+
 // FUNCTION PROTOTYPES
 void handle_main_window(GtkButton *buttonClicked);
 void handle_info_window(GtkButton *buttonClicked);

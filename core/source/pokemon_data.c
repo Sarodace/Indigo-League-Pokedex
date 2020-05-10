@@ -22,6 +22,15 @@ const char* typeEnumStrings[] = { // Potential Pokemon types (as strings)
   "Steel"
 };
 
+const char* evolutionEnumStrings[] = {
+  "trade",
+  "fire_stone",
+  "water_stone",
+  "thunder_stone",
+  "leaf_stone",
+  "moon_stone"
+};
+
 pokemon pokedexArray[POKEDEX_SIZE] = { // Array containing all Kanto Pokemon
   {"Bulbasaur", "Seed", 1, Grass, Poison, 0.7, 6.9, FALSE, 0, NO_EVO, 0},
   {"Ivysaur", "Seed", 2, Grass, Poison, 1, 13, FALSE, 1, LEVEL_UP, 16},
