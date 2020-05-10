@@ -1,6 +1,7 @@
 #include "algorithms.h"
 
 extern const char* evolutionEnumStrings[];
+extern int currentHeight;
 
 // Signal handlers
 void pokemon_search(GtkWidget *entry, gpointer user_data) {
@@ -17,8 +18,11 @@ void pokemon_search(GtkWidget *entry, gpointer user_data) {
         gtk_combo_box_get_active(GTK_COMBO_BOX(pokemonSecondTypeSearch)));
 
     sprintf(relevantPokemonString,"%d results(s) found", relevantPokemon);
-
     gtk_label_set_text(GTK_LABEL(pokemonResults), relevantPokemonString);
+
+    // Resets scrollbar on list screen to zero
+    currentHeight = 0;
+    gtk_adjustment_set_value(viewWindow, currentHeight);
 }
 
 void generate_pokedex_buttons(void) {
@@ -156,7 +160,6 @@ int fill_pokemon_evolution_entries(char *position, int counter, int threeTier) {
 
             gtk_image_set_from_file(GTK_IMAGE(threeTier_evolutionMethod),
                 pathToImage);
-            printf("%s\n", pathToImage);
         } else {
             gtk_stack_set_visible_child(GTK_STACK(threeTier_evolutionSwitcher),
                 threeTier_2ndEvolution);

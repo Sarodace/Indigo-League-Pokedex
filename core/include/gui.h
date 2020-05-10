@@ -115,6 +115,10 @@ GtkWidget   *twoTier_evolutionMethod;
 GtkWidget   *threeTier_evolutionMethod;
 
 
+GtkAdjustment *viewWindow;
+int currentHeight;
+
+
 // FUNCTION PROTOTYPES
 void handle_main_window(GtkButton *buttonClicked);
 void handle_info_window(GtkButton *buttonClicked);

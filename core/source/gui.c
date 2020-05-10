@@ -3,7 +3,6 @@
 // VARIABLES
 // Declare global variables
 extern const char* typeEnumStrings[];
-int currentHeight = 0;
 
 // FUNCTIONS
 gboolean switch_screens(void) {
@@ -37,17 +36,15 @@ gboolean switch_screens(void) {
 //  - Gradient blur on bottom most visibile pokemon (This is more of a Glade/CSS
 //    thing, but I think it's important to mention here)
 gboolean scroll_list_screen(int pressedArrowKey) {
-    GtkAdjustment *viewWindow = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(viewBox));
-    // 65362 is the int representation of the "Up-arrow Key"
-    if (pressedArrowKey == 65362) {
+    if (pressedArrowKey == GDK_KEY_Up) {
         // Checks if current height allows up arrow to be pressed
         if (currentHeight >= 195) {
             // Moves screen up 
             currentHeight -= 65;
             gtk_adjustment_set_value(viewWindow, currentHeight - 130);
         }
-    } else {
-        // Checks if current height allows down arrow to be pressed
+    }
+    if (pressedArrowKey == GDK_KEY_Down) {
         if (currentHeight >= 130) {
             // Moves screen down
             currentHeight += 65;

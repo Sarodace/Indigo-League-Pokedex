@@ -116,7 +116,7 @@ int main(int argc, char *argv[]) {
     threeTier_evolutionSwitcher = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_evolutionSwitcher"));
     threeTier_evolutionMethod = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_evolutionMethod"));
 
-
+    viewWindow = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(viewBox));
 
     // Display the GUI
     gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
