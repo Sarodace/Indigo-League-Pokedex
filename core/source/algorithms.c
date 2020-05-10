@@ -147,6 +147,9 @@ int fill_pokemon_evolution_entries(char *position, int counter, int threeTier) {
     }
 
     sprintf(evolutionLevel, "Lvl. %d", pokedexArray[counter].level);
+    // printf("%d\n", pokedexArray[counter].number);
+    // printf("%d", mainWindowButton[pokedexArray[counter].number);
+    // mainWindowButton[pokedexArray[counter].number-1].level
 
     sprintf(numberString, "%sTier_%sNumber", screen, position);
     sprintf(imageString, "%sTier_%sImage", screen, position);
@@ -186,10 +189,19 @@ int fill_pokemon_evolution_entries(char *position, int counter, int threeTier) {
 }
 
 int find_evolutions(int selectedPokemon) {
+    int adjustSelectedPokemon;
+
+    // Have to do this because of pokemon sorting
+    for (int i = 0; i < POKEDEX_SIZE; i++) {
+        if (pokedexArray[i].number == selectedPokemon) {
+            adjustSelectedPokemon = i;
+        }
+    }
+    
     // Loop back to the selected pokemon's 1st stage
-    if (pokedexArray[selectedPokemon-1].finalForm == TRUE || pokedexArray[selectedPokemon-1].evolvesFrom != NO_EVO) {
+    if (pokedexArray[adjustSelectedPokemon].finalForm == TRUE || pokedexArray[adjustSelectedPokemon].evolvesFrom != NO_EVO) {
         for (int i=0;i<POKEDEX_SIZE;i++) {
-            if (pokedexArray[i].number == pokedexArray[selectedPokemon-1].evolvesFrom) {
+            if (pokedexArray[i].number == pokedexArray[adjustSelectedPokemon].evolvesFrom) {
                 // Uses recursion to accomplish the task!
                 find_evolutions(pokedexArray[i].number);
             }
@@ -197,19 +209,19 @@ int find_evolutions(int selectedPokemon) {
     }
 
     // Go through the evolutionary stages
-    if (pokedexArray[selectedPokemon-1].finalForm == FALSE && pokedexArray[selectedPokemon-1].evolvesFrom == NO_EVO) {
-        printf("1st form: %s\n",pokedexArray[selectedPokemon-1].name);
+    if (pokedexArray[adjustSelectedPokemon].finalForm == FALSE && pokedexArray[adjustSelectedPokemon].evolvesFrom == NO_EVO) {
+        //// printf("1st form: %s\n",pokedexArray[adjustSelectedPokemon].name);
         // Looks for 2nd evolutionary stage
         for (int j=0;j<POKEDEX_SIZE;j++) {
-            if (pokedexArray[j].evolvesFrom == pokedexArray[selectedPokemon-1].number) {
+            if (pokedexArray[j].evolvesFrom == pokedexArray[adjustSelectedPokemon].number) {
                 // Either goes on to look for 3rd evolutionary stage...
                 if (pokedexArray[j].finalForm == FALSE) {
-                    printf("2nd form: %s\n",pokedexArray[j].name);
+                    //// printf("2nd form: %s\n",pokedexArray[j].name);
                     for (int k=0;k<POKEDEX_SIZE;k++) {
                         //Finally, find the 3rd evolutionary stage
                         if (pokedexArray[k].evolvesFrom == pokedexArray[j].number) {
-                            printf("3rd form (FINAL): %s\n\n",pokedexArray[k].name);
-                            fill_pokemon_evolution_entries("1st",selectedPokemon-1,1);
+                            //// printf("3rd form (FINAL): %s\n\n",pokedexArray[k].name);
+                            fill_pokemon_evolution_entries("1st",adjustSelectedPokemon,1);
                             fill_pokemon_evolution_entries("2nd",j,1);
                             fill_pokemon_evolution_entries("3rd",k,1);
                             godVar = 1;
@@ -217,8 +229,8 @@ int find_evolutions(int selectedPokemon) {
                     }
                 // Or breaks out of loop if that's its final evolution
                 } else {
-                    printf("2nd form (FINAL): %s\n\n",pokedexArray[j].name);
-                    fill_pokemon_evolution_entries("1st",selectedPokemon-1,0);
+                    //// printf("2nd form (FINAL): %s\n\n",pokedexArray[j].name);
+                    fill_pokemon_evolution_entries("1st",adjustSelectedPokemon,0);
                     fill_pokemon_evolution_entries("2nd",j,0);
                     godVar = 0;
                 }
@@ -412,7 +424,7 @@ void print_pokemon_struct_array(struct pokemon *array, size_t len) {
 void rearrange_buttons(void) {
     size_t pokemon_len = sizeof(pokedexArray) / sizeof(struct pokemon);
 
-    print_pokemon_struct_array(pokedexArray, pokemon_len);
+    // print_pokemon_struct_array(pokedexArray, pokemon_len);
 
     for (int i = 0; i < POKEDEX_SIZE; i++) {
         gtk_box_reorder_child(GTK_BOX(pokemonEntryList), mainWindowButton[pokedexArray[i].number - 1], i);
