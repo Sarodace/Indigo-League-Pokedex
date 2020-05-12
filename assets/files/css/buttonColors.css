@@ -4,7 +4,7 @@
   border-radius: 10px;
   box-shadow: 0px 1px 4px gray;
   min-height: 120px;
-  min-width: 100px;
+  min-width: 90px;
 }
 
 .evolution_screen_icon {
@@ -40,17 +40,15 @@
 .pokemon_description_text1 {
   /* font-size: 20px; */
   background-color: #f4a9a1;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-radius: 10px;
   /* box-shadow: 0px 1px 4px gray; */
 }
 
 .pokemon_description_text2 {
-  font-size: 20px;
+  /* font-size: 20px; */
   background-color: #cacaca;
   border-radius: 10px;
-  margin-top: 10px;
-  /* min-height: 120px; */
+  margin: 5px;
 }
 
 /* ICON FORMAT */
