@@ -8,7 +8,9 @@ void read_from_TXT_file(GtkWidget *selectedPokemon) {
     while (fgets(line, sizeof(line), file)) {
         i++;
         if(i == atoi(gtk_widget_get_name(selectedPokemon))) {
-            gtk_label_set_text(GTK_LABEL(entryScreen),line);
+            // strtok(line, "\n");
+            gtk_label_set_text(GTK_LABEL(entryScreen), line);
+            printf("%s\n",line);
         }
     }
     fclose(file);

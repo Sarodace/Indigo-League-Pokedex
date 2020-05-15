@@ -115,6 +115,12 @@ GtkWidget   *twoTier_evolutionMethod;
 GtkWidget   *threeTier_evolutionMethod;
 
 
+// Infostack
+GtkWidget   *infoStackName;
+GtkWidget   *infoStackSpecies;
+GtkWidget   *infoStackBar;
+
+
 GtkAdjustment *viewWindow;
 int currentHeight;
 

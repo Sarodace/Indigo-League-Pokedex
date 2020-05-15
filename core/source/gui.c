@@ -140,6 +140,21 @@ void handle_sub_window(GtkButton *buttonClicked) {
 void handle_info_window(GtkButton *buttonClicked) {
     gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(descriptionScreen));
     read_from_TXT_file(GTK_WIDGET(buttonClicked));
+
+    ///
+    // printf("%d\n", atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))));
+    int selectedPokemon = atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))) - 1;
+    char pokemonCategoryText[30];
+
+    gtk_label_set_text(GTK_LABEL(infoStackName), pokedexArray[selectedPokemon].name);
+
+    sprintf(pokemonCategoryText, "The %s Pokemon",
+        pokedexArray[selectedPokemon].category);
+    gtk_label_set_text(GTK_LABEL(infoStackSpecies),pokemonCategoryText);
+
+    style_evolution_card("infoStackBar", 
+        typeEnumStrings[pokedexArray[selectedPokemon].firstType]);
+    ///
     gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), TRUE);
 }
 

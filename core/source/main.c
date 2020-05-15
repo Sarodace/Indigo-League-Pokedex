@@ -118,9 +118,16 @@ int main(int argc, char *argv[]) {
 
     viewWindow = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(viewBox));
 
+
+    // Infostack
+    infoStackName = GTK_WIDGET(gtk_builder_get_object(builder, "infoStackName"));
+    infoStackSpecies = GTK_WIDGET(gtk_builder_get_object(builder, "infoStackSpecies"));
+    infoStackBar = GTK_WIDGET(gtk_builder_get_object(builder, "infoStackBar"));
+
+
     // Display the GUI
     gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
-    gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(infoEmptyScreen));
+    gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(descriptionScreen));
 
     // Build widgets decribed in Glade file
     generate_pokedex_buttons();
