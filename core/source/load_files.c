@@ -1,16 +1,14 @@
 #include "load_files.h"
 
-void read_from_TXT_file(GtkWidget *selectedPokemon) {
+void set_pokemon_description(GtkWidget *selectedPokemon) {
     FILE* file = fopen("assets/files/txt/pokedex_entries.txt", "r");
-    char line[256];
+    char line[128];
     int i = 0;
 
     while (fgets(line, sizeof(line), file)) {
         i++;
         if(i == atoi(gtk_widget_get_name(selectedPokemon))) {
-            // strtok(line, "\n");
             gtk_label_set_text(GTK_LABEL(entryScreen), line);
-            printf("%s\n",line);
         }
     }
     fclose(file);

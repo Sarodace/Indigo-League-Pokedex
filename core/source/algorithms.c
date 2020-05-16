@@ -199,7 +199,7 @@ int find_evolutions(int selectedPokemon) {
             adjustSelectedPokemon = i;
         }
     }
-    
+
     // Loop back to the selected pokemon's 1st stage
     if (pokedexArray[adjustSelectedPokemon].finalForm == TRUE || pokedexArray[adjustSelectedPokemon].evolvesFrom != NO_EVO) {
         for (int i=0;i<POKEDEX_SIZE;i++) {

@@ -138,11 +138,14 @@ void handle_sub_window(GtkButton *buttonClicked) {
 
 // Handle logic in 
 void handle_info_window(GtkButton *buttonClicked) {
+    // Go to description screen
     gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(descriptionScreen));
-    read_from_TXT_file(GTK_WIDGET(buttonClicked));
+    gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), TRUE);
 
-    ///
-    // printf("%d\n", atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))));
+    // Set relevant description
+    set_pokemon_description(GTK_WIDGET(buttonClicked));
+
+    /// Put this into it's own function
     int selectedPokemon = atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))) - 1;
     char pokemonCategoryText[30];
 
@@ -155,7 +158,9 @@ void handle_info_window(GtkButton *buttonClicked) {
     style_evolution_card("infoStackBar", 
         typeEnumStrings[pokedexArray[selectedPokemon].firstType]);
     ///
-    gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), TRUE);
+
+    // Set evolution screen
+    find_evolutions(atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))));
 }
 
 // Handle button presses
@@ -166,7 +171,5 @@ transitioning to the viewscreen. Look into preventing input until screen has
 finished transitioning.*/
 int pokemon_entry_clicked (GtkButton *buttonClicked) {
     handle_main_window(buttonClicked);
-    // handle_sub_window(buttonClicked);
     handle_info_window(buttonClicked);
-    find_evolutions(atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))));
 }
