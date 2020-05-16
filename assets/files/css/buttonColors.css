@@ -1,6 +1,6 @@
 /* Better evolution screen */
 .evolutionCard {
-  border: 1px solid;
+  border: 1.5px solid;
   border-radius: 10px;
   box-shadow: 0px 1px 4px gray;
   min-height: 120px;
@@ -38,16 +38,18 @@
 }
 
 .pokemon_description_text1 {
-  /* font-size: 20px; */
   background-color: #f4a9a1;
   border-radius: 10px;
 }
 
 .pokemon_description_text2 {
-  /* font-size: 20px; */
-  background-color: #cacaca;
-  border-radius: 10px;
+  background-color: #e2e2e2;
+  border-radius: 15px;
   margin: 5px;
+  font-size: 20px;
+
+  box-shadow: 0px 2px 4px gray;
+  border: 1.5px solid;
 }
 
 /* ICON FORMAT */
@@ -61,6 +63,7 @@
 .button{
   border-radius: 100px;
   box-shadow: 0px 2px 4px gray;
+  border: 1.5px solid;
 }
 
 /* BUTTON ENTRY FORMAT */
