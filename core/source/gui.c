@@ -145,18 +145,34 @@ void handle_info_window(GtkButton *buttonClicked) {
     // Set relevant description
     set_pokemon_description(GTK_WIDGET(buttonClicked));
 
-    /// Put this into it's own function
+    ///         Put this into it's own function
     int selectedPokemon = atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))) - 1;
     char pokemonCategoryText[30];
+    int adjustSelectedPokemon;
 
-    gtk_label_set_text(GTK_LABEL(infoStackName), pokedexArray[selectedPokemon].name);
+    // Have to do this because of pokemon sorting
+    for (int i = 0; i < POKEDEX_SIZE; i++) {
+        if (pokedexArray[i].number == selectedPokemon + 1) {
+            adjustSelectedPokemon = i;
+        }
+    }
+
+    printf("Button Name: %s Button Number: %d\nName: %s Number: %d\n----\n",
+        gtk_widget_get_name(GTK_WIDGET(buttonClicked)),
+        atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))) - 1,
+        pokedexArray[selectedPokemon].name,
+        pokedexArray[selectedPokemon].number);
+
+    printf("New number: %d\n", adjustSelectedPokemon);
+
+    gtk_label_set_text(GTK_LABEL(infoStackName), pokedexArray[adjustSelectedPokemon].name);
 
     sprintf(pokemonCategoryText, "The %s Pokemon",
-        pokedexArray[selectedPokemon].category);
+        pokedexArray[adjustSelectedPokemon].category);
     gtk_label_set_text(GTK_LABEL(infoStackSpecies),pokemonCategoryText);
 
     style_evolution_card("infoStackBar", 
-        typeEnumStrings[pokedexArray[selectedPokemon].firstType]);
+        typeEnumStrings[pokedexArray[adjustSelectedPokemon].firstType]);
     ///
 
     // Set evolution screen
