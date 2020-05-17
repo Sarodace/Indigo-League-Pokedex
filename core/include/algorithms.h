@@ -11,8 +11,6 @@
 int godVar;
 
 // Sorting and searching
-// void style_given_element(const char* elementID, const char* cssTag);
-// void style_evolution_card(const char* elementID, const char* cssTag);
 void generate_pokedex_buttons(void);
 void pokemon_search(GtkWidget *widget, gpointer user_data);
 int find_evolutions(int selectedPokemon);
@@ -30,6 +28,8 @@ int search_Pokemon_List(GtkWidget** buttonArray,
                        int greaterWeight,
                        typeEnum firstType,
                        typeEnum secondType);
+void set_pokemon_description_title(GtkWidget *widget);
+
 
 // Sorting alogorithms
 int sort_alphabetical(const void *a, const void *b);

@@ -131,7 +131,7 @@ void handle_info_window(GtkButton *buttonClicked);
 void handle_sub_window(GtkButton *buttonClicked);
 gboolean switch_screens(void);
 gboolean scroll_list_screen(int);
-int pokemon_entry_clicked(GtkButton *buttonClicked);
+void pokemon_entry_clicked(GtkButton *buttonClicked);
 gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data);
 
 #endif

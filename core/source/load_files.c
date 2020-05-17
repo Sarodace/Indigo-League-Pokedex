@@ -1,6 +1,6 @@
 #include "load_files.h"
 
-void set_pokemon_description(GtkWidget *selectedPokemon) {
+void set_pokemon_description_text(GtkWidget *selectedPokemon) {
     FILE* file = fopen("assets/files/txt/pokedex_entries.txt", "r");
     char line[128];
     int i = 0;

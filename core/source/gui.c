@@ -80,7 +80,8 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
         }
     }
     if (event->keyval == GDK_KEY_Left) {
-        if (gtk_stack_get_visible_child(GTK_STACK(infoStack)) == threeTierEvolution || twoTierEvolution) {
+        if (gtk_stack_get_visible_child(GTK_STACK(infoStack)) == threeTierEvolution ||
+            gtk_stack_get_visible_child(GTK_STACK(infoStack)) == twoTierEvolution) {
             gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(descriptionScreen));
             gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), TRUE);
             gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), FALSE);
@@ -99,9 +100,11 @@ void handle_main_window(GtkButton *buttonClicked) {
     sprintf(selectedPokemon, "assets/sprites/main/%s.png",
         gtk_widget_get_name(GTK_WIDGET(buttonClicked)));
 
-    // Select relevent pokemon and then switch to child
+    // Select relevant pokemon and then switch to child
     gtk_image_set_from_file(GTK_IMAGE(pokemonImage), selectedPokemon);
     gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(pokemonImage));
+
+    printf("Hello!\n");
 }
 
 // Handle logic in the sub window
@@ -136,56 +139,24 @@ void handle_sub_window(GtkButton *buttonClicked) {
     gtk_stack_set_visible_child(GTK_STACK(subStack),GTK_WIDGET(dataScreen));
 }
 
-// Handle logic in 
+// Handle logic in the info window
 void handle_info_window(GtkButton *buttonClicked) {
     // Go to description screen
     gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(descriptionScreen));
     gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), TRUE);
 
-    // Set relevant description
-    set_pokemon_description(GTK_WIDGET(buttonClicked));
-
-    ///         Put this into it's own function
-    int selectedPokemon = atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))) - 1;
-    char pokemonCategoryText[30];
-    int adjustSelectedPokemon;
-
-    // Have to do this because of pokemon sorting
-    for (int i = 0; i < POKEDEX_SIZE; i++) {
-        if (pokedexArray[i].number == selectedPokemon + 1) {
-            adjustSelectedPokemon = i;
-        }
-    }
-
-    printf("Button Name: %s Button Number: %d\nName: %s Number: %d\n----\n",
-        gtk_widget_get_name(GTK_WIDGET(buttonClicked)),
-        atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))) - 1,
-        pokedexArray[selectedPokemon].name,
-        pokedexArray[selectedPokemon].number);
-
-    printf("New number: %d\n", adjustSelectedPokemon);
-
-    gtk_label_set_text(GTK_LABEL(infoStackName), pokedexArray[adjustSelectedPokemon].name);
-
-    sprintf(pokemonCategoryText, "The %s Pokemon",
-        pokedexArray[adjustSelectedPokemon].category);
-    gtk_label_set_text(GTK_LABEL(infoStackSpecies),pokemonCategoryText);
-
-    style_evolution_card("infoStackBar", 
-        typeEnumStrings[pokedexArray[adjustSelectedPokemon].firstType]);
-    ///
+    // Set relevant description screen text and title
+    set_pokemon_description_text(GTK_WIDGET(buttonClicked));
+    set_pokemon_description_title(GTK_WIDGET(buttonClicked));
 
     // Set evolution screen
     find_evolutions(atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))));
 }
 
 // Handle button presses
-//TODO: Why is this an int?
-// KNOWN_BUG
-/* It's possible to click on another pokedex entry while the list screen is 
-transitioning to the viewscreen. Look into preventing input until screen has
-finished transitioning.*/
-int pokemon_entry_clicked (GtkButton *buttonClicked) {
-    handle_main_window(buttonClicked);
-    handle_info_window(buttonClicked);
+void pokemon_entry_clicked (GtkButton *buttonClicked) {
+    if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == listScreen) {
+        handle_main_window(buttonClicked);
+        handle_info_window(buttonClicked);
+    }
 }

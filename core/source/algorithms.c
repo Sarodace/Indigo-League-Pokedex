@@ -303,6 +303,28 @@ int search_Pokemon_List(GtkWidget** buttonArray,
   return j;
 }
 
+void set_pokemon_description_title(GtkWidget *buttonClicked) {
+    int selectedPokemon = atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))) - 1;
+    char pokemonCategoryText[30];
+    int adjustSelectedPokemon;
+
+    // Have to do this because of pokemon sorting
+    for (int i = 0; i < POKEDEX_SIZE; i++) {
+        if (pokedexArray[i].number == selectedPokemon + 1) {
+            adjustSelectedPokemon = i;
+        }
+    }
+
+    gtk_label_set_text(GTK_LABEL(infoStackName), pokedexArray[adjustSelectedPokemon].name);
+
+    sprintf(pokemonCategoryText, "The %s Pokemon",
+        pokedexArray[adjustSelectedPokemon].category);
+    gtk_label_set_text(GTK_LABEL(infoStackSpecies),pokemonCategoryText);
+
+    style_evolution_card("infoStackBar", 
+        typeEnumStrings[pokedexArray[adjustSelectedPokemon].firstType]);
+}
+
 // Sorting alogrithms
 int sort_alphabetical(const void *a, const void *b) {
     pokemon *ia = (pokemon *)a;

@@ -6,6 +6,6 @@
 
 // FILE LOADING FUNCTION PROTOTYPES
 void implement_CSS(void);
-void set_pokemon_description(GtkWidget *selectedPokemon);
+void set_pokemon_description_text(GtkWidget *selectedPokemon);
 
 #endif
