@@ -1,5 +1,7 @@
 #include "gui.h"
 
+// PLAN IS TO COMBINE BOTH SCREENS INTO ONE
+
 // VARIABLES
 // Declare global variables
 extern const char* typeEnumStrings[];
