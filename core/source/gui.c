@@ -103,8 +103,6 @@ void handle_main_window(GtkButton *buttonClicked) {
     // Select relevant pokemon and then switch to child
     gtk_image_set_from_file(GTK_IMAGE(pokemonImage), selectedPokemon);
     gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(pokemonImage));
-
-    printf("Hello!\n");
 }
 
 // Handle logic in the sub window
