@@ -8,7 +8,7 @@
 #include <gtk/gtk.h>
 #include <stdbool.h> 
 
-#define POKEDEX_SIZE 40
+#define POKEDEX_SIZE 51
 
 // VARIABLES
 // Declare & Define local variables
