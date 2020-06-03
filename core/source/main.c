@@ -4,6 +4,8 @@
 #include "algorithms.h"
 #include "css_styling.h"
 
+// Test to see if logged into GitKraken
+
 int main(int argc, char *argv[]) {
     // init GTK
     gtk_init(&argc, &argv);
