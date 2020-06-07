@@ -26,174 +26,155 @@
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkBox">
+          <object class="GtkStack" id="menuBarStack">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="homogeneous">True</property>
+            <property name="transition_duration">500</property>
+            <property name="transition_type">crossfade</property>
             <child>
-              <object class="GtkBox">
+              <object class="GtkBox" id="mainScreenBar">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="halign">start</property>
-                <property name="baseline_position">top</property>
+                <property name="homogeneous">True</property>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkBox">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="margin_left">10</property>
-                    <property name="margin_right">10</property>
-                    <property name="label" translatable="yes">&lt;span font_desc="FontAwesome "&gt;&amp;#xf002;&lt;/span&gt;</property>
-                    <property name="use_markup">True</property>
-                    <style>
-                      <class name="menu_bar_text"/>
-                    </style>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkRevealer" id="searchScreenIndicator">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="transition_type">slide-left</property>
+                    <property name="halign">start</property>
+                    <property name="baseline_position">top</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Search</property>
+                        <property name="margin_left">10</property>
+                        <property name="margin_right">10</property>
+                        <property name="label" translatable="yes">&lt;span font_desc="FontAwesome "&gt;&amp;#xf002;&lt;/span&gt;</property>
+                        <property name="use_markup">True</property>
                         <style>
                           <class name="menu_bar_text"/>
                         </style>
                       </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
                     </child>
-                    <style>
-                      <class name="menu_bar_text"/>
-                    </style>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">3</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="margin_left">10</property>
-                    <property name="margin_right">10</property>
-                    <property name="label" translatable="yes">&lt;span font_desc="FontAwesome "&gt;&amp;#xf03a;&lt;/span&gt;</property>
-                    <property name="use_markup">True</property>
-                    <style>
-                      <class name="menu_bar_text"/>
-                    </style>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">4</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkRevealer" id="listScreenIndicator">
-                    <property name="width_request">0</property>
-                    <property name="height_request">0</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="transition_type">slide-left</property>
+                    <child>
+                      <object class="GtkRevealer" id="searchScreenIndicator">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="transition_type">slide-left</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">Search</property>
+                            <style>
+                              <class name="menu_bar_text"/>
+                            </style>
+                          </object>
+                        </child>
+                        <style>
+                          <class name="menu_bar_text"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">3</property>
+                      </packing>
+                    </child>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">List</property>
+                        <property name="margin_left">10</property>
+                        <property name="margin_right">10</property>
+                        <property name="label" translatable="yes">&lt;span font_desc="FontAwesome "&gt;&amp;#xf03a;&lt;/span&gt;</property>
+                        <property name="use_markup">True</property>
                         <style>
                           <class name="menu_bar_text"/>
                         </style>
                       </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">4</property>
+                      </packing>
                     </child>
-                    <style>
-                      <class name="menu_bar_text"/>
-                    </style>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">5</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="margin_left">10</property>
-                    <property name="margin_right">10</property>
-                    <property name="label" translatable="yes">&lt;span font_desc="FontAwesome "&gt;&amp;#xf06e;&lt;/span&gt;</property>
-                    <property name="use_markup">True</property>
-                    <style>
-                      <class name="menu_bar_text"/>
-                    </style>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">6</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkRevealer" id="displayScreenIndicator">
-                    <property name="width_request">0</property>
-                    <property name="height_request">0</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="transition_type">slide-left</property>
+                    <child>
+                      <object class="GtkRevealer" id="listScreenIndicator">
+                        <property name="width_request">0</property>
+                        <property name="height_request">0</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="transition_type">slide-left</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">List</property>
+                            <style>
+                              <class name="menu_bar_text"/>
+                            </style>
+                          </object>
+                        </child>
+                        <style>
+                          <class name="menu_bar_text"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">5</property>
+                      </packing>
+                    </child>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Display</property>
+                        <property name="margin_left">10</property>
+                        <property name="margin_right">10</property>
+                        <property name="label" translatable="yes">&lt;span font_desc="FontAwesome "&gt;&amp;#xf06e;&lt;/span&gt;</property>
+                        <property name="use_markup">True</property>
                         <style>
                           <class name="menu_bar_text"/>
                         </style>
                       </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">6</property>
+                      </packing>
                     </child>
-                    <style>
-                      <class name="menu_bar_text"/>
-                    </style>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">7</property>
-                  </packing>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkBox">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">end</property>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">end</property>
-                    <property name="margin_left">10</property>
-                    <property name="margin_right">10</property>
-                    <property name="label" translatable="yes">&lt;span font_desc="FontAwesome "&gt;&amp;#xf013;&lt;/span&gt;</property>
-                    <property name="use_markup">True</property>
-                    <property name="xalign">0.5</property>
-                    <style>
-                      <class name="menu_bar_text"/>
-                    </style>
+                    <child>
+                      <object class="GtkRevealer" id="displayScreenIndicator">
+                        <property name="width_request">0</property>
+                        <property name="height_request">0</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="transition_type">slide-left</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">Display</property>
+                            <style>
+                              <class name="menu_bar_text"/>
+                            </style>
+                          </object>
+                        </child>
+                        <style>
+                          <class name="menu_bar_text"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">7</property>
+                      </packing>
+                    </child>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -202,38 +183,184 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkRevealer" id="settingsScreenIndicator">
+                  <object class="GtkBox">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">end</property>
-                    <property name="transition_type">slide-left</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Settings</property>
+                        <property name="halign">end</property>
+                        <property name="margin_left">10</property>
+                        <property name="margin_right">10</property>
+                        <property name="label" translatable="yes">&lt;span font_desc="FontAwesome "&gt;&amp;#xf013;&lt;/span&gt;</property>
+                        <property name="use_markup">True</property>
+                        <property name="xalign">0.5</property>
+                        <style>
+                          <class name="menu_bar_text"/>
+                        </style>
                       </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
                     </child>
-                    <style>
-                      <class name="menu_bar_text"/>
-                    </style>
+                    <child>
+                      <object class="GtkRevealer" id="settingsScreenIndicator">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">end</property>
+                        <property name="transition_type">slide-left</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">Settings</property>
+                          </object>
+                        </child>
+                        <style>
+                          <class name="menu_bar_text"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
                   </object>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
-                    <property name="position">1</property>
+                    <property name="position">2</property>
                   </packing>
                 </child>
+                <style>
+                  <class name="menu_bar"/>
+                </style>
               </object>
               <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">2</property>
+                <property name="name">page0</property>
+                <property name="title" translatable="yes">page0</property>
               </packing>
             </child>
-            <style>
-              <class name="menu_bar"/>
-            </style>
+            <child>
+              <object class="GtkBox" id="displayScreenBar">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="homogeneous">True</property>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="margin_left">10</property>
+                        <property name="margin_right">10</property>
+                        <property name="label" translatable="yes">&lt;span font_desc="FontAwesome "&gt;&amp;#xf05a;&lt;/span&gt;</property>
+                        <property name="use_markup">True</property>
+                        <style>
+                          <class name="menu_bar_text"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkRevealer" id="descriptionScreenIndicator1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="transition_type">slide-left</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">Description</property>
+                            <style>
+                              <class name="menu_bar_text"/>
+                            </style>
+                          </object>
+                        </child>
+                        <style>
+                          <class name="menu_bar_text"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="margin_left">10</property>
+                        <property name="margin_right">10</property>
+                        <property name="label" translatable="yes">&lt;span font_desc="FontAwesome "&gt;&amp;#xf471;&lt;/span&gt;</property>
+                        <property name="use_markup">True</property>
+                        <style>
+                          <class name="menu_bar_text"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">4</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkRevealer" id="evolutionScreenIndicator1">
+                        <property name="width_request">0</property>
+                        <property name="height_request">0</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="transition_type">slide-left</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">Evolutions</property>
+                            <style>
+                              <class name="menu_bar_text"/>
+                            </style>
+                          </object>
+                        </child>
+                        <style>
+                          <class name="menu_bar_text"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">5</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <style>
+                  <class name="menu_bar"/>
+                </style>
+              </object>
+              <packing>
+                <property name="name">page1</property>
+                <property name="title" translatable="yes">page1</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -7714,7 +7841,7 @@
                 <property name="vexpand">True</property>
                 <property name="spacing">10</property>
                 <child>
-                  <object class="GtkBox" id="threeTierEvolution_1stCard1">
+                  <object class="GtkBox" id="threeTierEvolution_Card0">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
@@ -7723,71 +7850,55 @@
                     <property name="vexpand">True</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkLabel" id="threeTier_1stNumber1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="hexpand">True</property>
-                        <property name="vexpand">True</property>
-                        <property name="orientation">vertical</property>
-                        <child>
-                          <object class="GtkLabel" id="threeTier_1stNumber1">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">#001</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkImage" id="threeTier_1stImage1">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="pixbuf">../../sprites/main/001.png</property>
-                            <style>
-                              <class name="evolution_screen_icon"/>
-                            </style>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="threeTier_1stName1">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Bulbasaur</property>
-                            <style>
-                              <class name="evo_screen_text"/>
-                            </style>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">2</property>
-                          </packing>
-                        </child>
+                        <property name="label" translatable="yes">#001</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
-                        <property name="fill">False</property>
+                        <property name="fill">True</property>
                         <property name="position">0</property>
                       </packing>
                     </child>
+                    <child>
+                      <object class="GtkImage" id="threeTier_1stImage1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="pixbuf">../../sprites/main/001.png</property>
+                        <style>
+                          <class name="evolution_screen_icon"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="threeTier_1stName1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Bulbasaur</property>
+                        <style>
+                          <class name="evo_screen_text"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
                     <style>
-                      <class name="evolutionCard"/>
                       <class name="Grass"/>
+                      <class name="evolutionCard"/>
                     </style>
                   </object>
                   <packing>
                     <property name="expand">False</property>
-                    <property name="fill">True</property>
+                    <property name="fill">False</property>
                     <property name="position">0</property>
                   </packing>
                 </child>
@@ -7833,7 +7944,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="threeTierEvolution_2ndCard1">
+                  <object class="GtkBox" id="threeTierEvolution_Card1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
@@ -7842,56 +7953,10 @@
                     <property name="vexpand">True</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkLabel" id="threeTier_2ndNumber1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="hexpand">True</property>
-                        <property name="vexpand">True</property>
-                        <property name="orientation">vertical</property>
-                        <child>
-                          <object class="GtkLabel" id="threeTier_2ndNumber1">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">#002</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkImage" id="threeTier_2ndImage1">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="pixbuf">../../sprites/main/002.png</property>
-                            <style>
-                              <class name="evolution_screen_icon"/>
-                            </style>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="threeTier_2ndName1">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Ivysaur</property>
-                            <style>
-                              <class name="evo_screen_text"/>
-                            </style>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">2</property>
-                          </packing>
-                        </child>
+                        <property name="label" translatable="yes">#002</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -7899,9 +7964,39 @@
                         <property name="position">0</property>
                       </packing>
                     </child>
+                    <child>
+                      <object class="GtkImage" id="threeTier_2ndImage1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="pixbuf">../../sprites/main/002.png</property>
+                        <style>
+                          <class name="evolution_screen_icon"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="threeTier_2ndName1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Ivysaur</property>
+                        <style>
+                          <class name="evo_screen_text"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
                     <style>
-                      <class name="evolutionCard"/>
                       <class name="Grass"/>
+                      <class name="evolutionCard"/>
                     </style>
                   </object>
                   <packing>
@@ -7974,7 +8069,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="threeTierEvolution_3rdCard1">
+                  <object class="GtkBox" id="threeTierEvolution_Card2">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
@@ -7983,56 +8078,10 @@
                     <property name="vexpand">True</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkLabel" id="threeTier_3rdNumber1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="hexpand">True</property>
-                        <property name="vexpand">True</property>
-                        <property name="orientation">vertical</property>
-                        <child>
-                          <object class="GtkLabel" id="threeTier_3rdNumber1">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">#003</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkImage" id="threeTier_3rdImage1">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="pixbuf">../../sprites/main/003.png</property>
-                            <style>
-                              <class name="evolution_screen_icon"/>
-                            </style>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="threeTier_3rdName1">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Venusaur</property>
-                            <style>
-                              <class name="evo_screen_text"/>
-                            </style>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">2</property>
-                          </packing>
-                        </child>
+                        <property name="label" translatable="yes">#003</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -8040,9 +8089,39 @@
                         <property name="position">0</property>
                       </packing>
                     </child>
+                    <child>
+                      <object class="GtkImage" id="threeTier_3rdImage1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="pixbuf">../../sprites/main/003.png</property>
+                        <style>
+                          <class name="evolution_screen_icon"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="threeTier_3rdName1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Venusaur</property>
+                        <style>
+                          <class name="evo_screen_text"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
                     <style>
-                      <class name="evolutionCard"/>
                       <class name="Grass"/>
+                      <class name="evolutionCard"/>
                     </style>
                   </object>
                   <packing>

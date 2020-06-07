@@ -99,11 +99,15 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
     }
     if (event->keyval == GDK_KEY_Q) {
         printf("SPINNN\n");
-        style_given_element("threeTierEvolution_1stCard1", "hvr-wobble-vertical");
-        // style_given_element("threeTierEvolution_2ndCard1", "hvr-bob");
-        // style_given_element("threeTierEvolution_3rdCard1", "default_card");
+        style_given_element("threeTierEvolution_Card1", "hvr-wobble-vertical");
     }
 
+    if (event->keyval == GDK_KEY_8) {
+        gtk_stack_set_visible_child(GTK_STACK(menuBarStack), GTK_WIDGET(displayScreenBar));
+    }
+    if (event->keyval == GDK_KEY_9) {
+        gtk_stack_set_visible_child(GTK_STACK(menuBarStack), GTK_WIDGET(mainScreenBar));
+    }
 
     return FALSE;
 }
@@ -120,7 +124,7 @@ void handle_main_window(GtkButton *buttonClicked) {
 
     // Select relevant pokemon and then switch to child
     gtk_image_set_from_file(GTK_IMAGE(pokemonImage), selectedPokemon);
-    gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(pokemonImage));
+    gtk_stack_set_visible_child(GTK_STACK(mainStack), GTK_WIDGET(pokemonImage));
 }
 
 // Handle logic in the sub window

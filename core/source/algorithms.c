@@ -202,6 +202,7 @@ int find_evolutions(int selectedPokemon) {
 
     // Loop back to the selected pokemon's 1st stage
     if (pokedexArray[adjustSelectedPokemon].finalForm == TRUE || pokedexArray[adjustSelectedPokemon].evolvesFrom != NO_EVO) {
+        pokemonStage += 1;
         for (int i=0;i<POKEDEX_SIZE;i++) {
             if (pokedexArray[i].number == pokedexArray[adjustSelectedPokemon].evolvesFrom) {
                 // Uses recursion to accomplish the task!
@@ -223,10 +224,15 @@ int find_evolutions(int selectedPokemon) {
                         //Finally, find the 3rd evolutionary stage
                         if (pokedexArray[k].evolvesFrom == pokedexArray[j].number) {
                             //// printf("3rd form (FINAL): %s\n\n",pokedexArray[k].name);
+                            char relevantPokemonCard[25];
+                            sprintf(relevantPokemonCard, "threeTierEvolution_Card%d", pokemonStage);
+
                             fill_pokemon_evolution_entries("1st",adjustSelectedPokemon,1);
                             fill_pokemon_evolution_entries("2nd",j,1);
                             fill_pokemon_evolution_entries("3rd",k,1);
                             godVar = 1;
+                            printf("Pokemon Stage: %d \n", pokemonStage);
+                            style_given_element(relevantPokemonCard, "hvr-wobble-vertical");
                         }
                     }
                 // Or breaks out of loop if that's its final evolution
@@ -235,10 +241,12 @@ int find_evolutions(int selectedPokemon) {
                     fill_pokemon_evolution_entries("1st",adjustSelectedPokemon,0);
                     fill_pokemon_evolution_entries("2nd",j,0);
                     godVar = 0;
+                    printf("Pokemon Stage: %d \n", pokemonStage);
                 }
             }
         }
     }
+    // printf("Pokemon Stage: %d \n", pokemonStage);
 }
 
 // Searches Pokemon list for Pokemon who satisfy user-provided constraints
