@@ -118,6 +118,10 @@ int main(int argc, char *argv[]) {
     threeTier_evolutionSwitcher = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_evolutionSwitcher"));
     threeTier_evolutionMethod = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_evolutionMethod"));
 
+
+    testScreen = GTK_WIDGET(gtk_builder_get_object(builder, "testScreen"));
+    testScreenTwo = GTK_WIDGET(gtk_builder_get_object(builder, "testScreenTwo"));
+
     viewWindow = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(viewBox));
 
 

@@ -89,6 +89,22 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
             gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), FALSE);
         }
     }
+    if (event->keyval == GDK_KEY_1) {
+        printf("Description screen \n");
+        gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(testScreen));
+    }
+    if (event->keyval == GDK_KEY_2) {
+        printf("Evolution screen\n");
+        gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(testScreenTwo));
+    }
+    if (event->keyval == GDK_KEY_Q) {
+        printf("SPINNN\n");
+        style_given_element("threeTierEvolution_1stCard1", "hvr-wobble-vertical");
+        // style_given_element("threeTierEvolution_2ndCard1", "hvr-bob");
+        // style_given_element("threeTierEvolution_3rdCard1", "default_card");
+    }
+
+
     return FALSE;
 }
 

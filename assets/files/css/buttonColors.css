@@ -1,3 +1,31 @@
+@keyframes hvr-wobble-vertical {
+  16.65% {
+    margin-bottom: 32px;
+  }
+  33.3% {
+    margin-bottom: -24px;
+  }
+  49.95% {
+    margin-bottom: 16px;
+  }
+  66.6% {
+    margin-bottom: -8px;
+  }
+  83.25% {
+    margin-bottom: 4px;
+  }
+  100% {
+    margin-bottom: 0px;
+  }
+}
+
+.hvr-wobble-vertical {
+  animation-name: hvr-wobble-vertical;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+
 /* Better evolution screen */
 .evolutionCard {
   border: 1.5px solid;
@@ -52,6 +80,17 @@
   border: 1.5px solid;
 }
 
+.pokemon_description_text3 {
+  background-color: #e2e2e2;
+  border-radius: 15px;
+  margin: 5px;
+
+  box-shadow: 0px 2px 4px gray;
+  /* border: 1.5px solid; */
+  min-width: 40px;
+  min-height: 40px;
+}
+
 /* ICON FORMAT */
 .icon{
   background-color: white;
@@ -64,6 +103,14 @@
   border-radius: 100px;
   box-shadow: 0px 2px 4px gray;
   border: 1.5px solid;
+}
+
+.buttonBox{
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px gray;
+  border: 1.5px solid;
+  min-width: 50px;
+  min-height: 50px;
 }
 
 /* BUTTON ENTRY FORMAT */
@@ -111,6 +158,11 @@
 .Grass{
   background-color: #c6f4a1;
   border-color: #9bcc73;
+  transition: 2s;
+}
+
+.Grass:hover {
+  background-color: red;
 }
 
 .Poison{

@@ -114,6 +114,8 @@ GtkWidget   *threeTier_evolutionSwitcher;
 GtkWidget   *twoTier_evolutionMethod;
 GtkWidget   *threeTier_evolutionMethod;
 
+GtkWidget   *testScreen;
+GtkWidget   *testScreenTwo;
 
 // Infostack
 GtkWidget   *infoStackName;
