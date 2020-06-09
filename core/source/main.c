@@ -122,6 +122,10 @@ int main(int argc, char *argv[]) {
     testScreen = GTK_WIDGET(gtk_builder_get_object(builder, "testScreen"));
     testScreenTwo = GTK_WIDGET(gtk_builder_get_object(builder, "testScreenTwo"));
 
+    menuBarStack = GTK_WIDGET(gtk_builder_get_object(builder, "menuBarStack"));
+    mainScreenBar = GTK_WIDGET(gtk_builder_get_object(builder, "mainScreenBar"));
+    displayScreenBar = GTK_WIDGET(gtk_builder_get_object(builder, "displayScreenBar"));
+
     viewWindow = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(viewBox));
 
 

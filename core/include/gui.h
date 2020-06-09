@@ -117,6 +117,10 @@ GtkWidget   *threeTier_evolutionMethod;
 GtkWidget   *testScreen;
 GtkWidget   *testScreenTwo;
 
+GtkWidget   *menuBarStack;
+GtkWidget   *mainScreenBar;
+GtkWidget   *displayScreenBar;
+
 // Infostack
 GtkWidget   *infoStackName;
 GtkWidget   *infoStackSpecies;

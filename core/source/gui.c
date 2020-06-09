@@ -99,7 +99,7 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
     }
     if (event->keyval == GDK_KEY_Q) {
         printf("SPINNN\n");
-        style_given_element("threeTierEvolution_Card1", "hvr-wobble-vertical");
+        style_given_element("threeTierEvolution_Card1", "currently_selected");
     }
 
     if (event->keyval == GDK_KEY_8) {
@@ -122,9 +122,10 @@ void handle_main_window(GtkButton *buttonClicked) {
     sprintf(selectedPokemon, "assets/sprites/main/%s.png",
         gtk_widget_get_name(GTK_WIDGET(buttonClicked)));
 
-    // Select relevant pokemon and then switch to child
-    gtk_image_set_from_file(GTK_IMAGE(pokemonImage), selectedPokemon);
-    gtk_stack_set_visible_child(GTK_STACK(mainStack), GTK_WIDGET(pokemonImage));
+    // // Select relevant pokemon and then switch to child
+    // gtk_image_set_from_file(GTK_IMAGE(pokemonImage), selectedPokemon);
+    // gtk_stack_set_visible_child(GTK_STACK(mainStack), GTK_WIDGET(pokemonImage));
+    gtk_stack_set_visible_child(GTK_STACK(mainStack), GTK_WIDGET(testScreen));
 }
 
 // Handle logic in the sub window
