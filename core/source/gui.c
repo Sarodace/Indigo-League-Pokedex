@@ -104,13 +104,13 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
     }
 
     if (event->keyval == GDK_KEY_Q) {
-        printf("SPINNN\n");
+        // printf("SPINNN\n");
         style_given_element("threeTierEvolution_Card1", "currently_selected");
 
-        gtk_revealer_set_reveal_child(GTK_REVEALER(submenuBarRevealer), FALSE);
-        if (gtk_revealer_get_child_revealed(GTK_REVEALER(submenuBarRevealer))) {
-            printf("Still transtioning :( \n");
-        }
+        // gtk_revealer_set_reveal_child(GTK_REVEALER(submenuBarRevealer), FALSE);
+        // if (gtk_revealer_get_child_revealed(GTK_REVEALER(submenuBarRevealer))) {
+        //     printf("Still transtioning :( \n");
+        // }
     }
 
     if (event->keyval == GDK_KEY_A) {
