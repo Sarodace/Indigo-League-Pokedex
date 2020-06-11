@@ -9,24 +9,30 @@ extern const char* typeEnumStrings[];
 // FUNCTIONS
 gboolean switch_screens(void) {
     if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == listScreen) {
+        //// This is for the other menu bar apparently
+        // gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), FALSE);
+        // gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), FALSE);
+
+        // gtk_revealer_set_reveal_child(GTK_REVEALER(submenuBarRevealer), FALSE);
         gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), FALSE);
         gtk_revealer_set_reveal_child(GTK_REVEALER(searchScreenIndicator), TRUE);
         gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(searchScreen));
+        gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Search));
         return TRUE;
     } 
     if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == searchScreen) {
         gtk_revealer_set_reveal_child(GTK_REVEALER(searchScreenIndicator), FALSE);
         gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), TRUE);
         gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
-        // gtk_stack_set_visible_child(GTK_STACK(subStack),GTK_WIDGET(subEmptyScreen));
-        // gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(infoEmptyScreen));
+        gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_List));
         return TRUE;
     }
-    if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == pokemonImage) {
+    if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreen) {
         gtk_revealer_set_reveal_child(GTK_REVEALER(displayScreenIndicator), FALSE);
         gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), FALSE);
         gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), TRUE);
         gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
+        gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_List));
         return TRUE;
     }
 }
@@ -61,10 +67,6 @@ gboolean scroll_list_screen(int pressedArrowKey) {
 //KEYPRESS HANDLER- Treat each key as a function
 gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data) {
     if (event->keyval == GDK_KEY_Escape) {
-        //TODO MOVE INTO SWITCH SCREEN FUNCTION
-        gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), FALSE);
-        gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), FALSE);
-        gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(infoEmptyScreen));
         return switch_screens();
     }
     if (event->keyval == GDK_KEY_Down || event->keyval == GDK_KEY_Up) {
@@ -74,9 +76,11 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
         if (gtk_stack_get_visible_child(GTK_STACK(infoStack)) == descriptionScreen) {
             if (godVar == 1) {
                 gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(threeTierEvolution));
+                gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(testScreenTwo));
             } else {
                 gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(twoTierEvolution));
             }
+            gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Evos));
             gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), FALSE);
             gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), TRUE);
         }
@@ -84,7 +88,8 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
     if (event->keyval == GDK_KEY_Left) {
         if (gtk_stack_get_visible_child(GTK_STACK(infoStack)) == threeTierEvolution ||
             gtk_stack_get_visible_child(GTK_STACK(infoStack)) == twoTierEvolution) {
-            gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(descriptionScreen));
+            gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(testScreen));
+            gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Define));
             gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), TRUE);
             gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), FALSE);
         }
@@ -97,9 +102,19 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
         printf("Evolution screen\n");
         gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(testScreenTwo));
     }
+
     if (event->keyval == GDK_KEY_Q) {
         printf("SPINNN\n");
         style_given_element("threeTierEvolution_Card1", "currently_selected");
+
+        gtk_revealer_set_reveal_child(GTK_REVEALER(submenuBarRevealer), FALSE);
+        if (gtk_revealer_get_child_revealed(GTK_REVEALER(submenuBarRevealer))) {
+            printf("Still transtioning :( \n");
+        }
+    }
+
+    if (event->keyval == GDK_KEY_A) {
+        gtk_revealer_set_reveal_child(GTK_REVEALER(submenuBarRevealer), TRUE);
     }
 
     if (event->keyval == GDK_KEY_8) {
@@ -119,6 +134,7 @@ void handle_main_window(GtkButton *buttonClicked) {
     // Assemble path to pokemon image
     gtk_revealer_set_reveal_child(GTK_REVEALER(displayScreenIndicator), TRUE);
     gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), FALSE);
+    gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Define));
     sprintf(selectedPokemon, "assets/sprites/main/%s.png",
         gtk_widget_get_name(GTK_WIDGET(buttonClicked)));
 

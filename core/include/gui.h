@@ -126,6 +126,13 @@ GtkWidget   *infoStackName;
 GtkWidget   *infoStackSpecies;
 GtkWidget   *infoStackBar;
 
+// Declare variables for bottom menu bar
+GtkWidget   *submenuBarRevealer;
+GtkWidget   *submenuBarStack;
+GtkWidget   *submenuBarStack_Search;
+GtkWidget   *submenuBarStack_List;
+GtkWidget   *submenuBarStack_Define;
+GtkWidget   *submenuBarStack_Evos;
 
 GtkAdjustment *viewWindow;
 int currentHeight;
