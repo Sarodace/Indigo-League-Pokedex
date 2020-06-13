@@ -230,9 +230,14 @@ int find_evolutions(int selectedPokemon) {
                             fill_pokemon_evolution_entries("1st",adjustSelectedPokemon,1);
                             fill_pokemon_evolution_entries("2nd",j,1);
                             fill_pokemon_evolution_entries("3rd",k,1);
+
                             godVar = 1;
+
                             printf("Pokemon Stage: %d \n", pokemonStage);
-                            style_given_element(relevantPokemonCard, "hvr-wobble-vertical");
+                            style_given_element(relevantPokemonCard, "currently_selected");
+
+                            externalPokemonStage = pokemonStage;
+                            pokemonStage = 0;
                         }
                     }
                 // Or breaks out of loop if that's its final evolution
@@ -240,8 +245,13 @@ int find_evolutions(int selectedPokemon) {
                     //// printf("2nd form (FINAL): %s\n\n",pokedexArray[j].name);
                     fill_pokemon_evolution_entries("1st",adjustSelectedPokemon,0);
                     fill_pokemon_evolution_entries("2nd",j,0);
+
                     godVar = 0;
+
                     printf("Pokemon Stage: %d \n", pokemonStage);
+
+                    externalPokemonStage = pokemonStage;
+                    pokemonStage = 0;
                 }
             }
         }

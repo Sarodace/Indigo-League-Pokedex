@@ -60,6 +60,10 @@
   color: white;
 }
 
+.pokemon_description_text {
+  font-size: 20px;
+}
+
 .pokemon_description_text2 {
   background-color: #e2e2e2;
   border-radius: 15px;
@@ -71,12 +75,14 @@
 }
 
 .pokemon_description_topBox {
-  background-color: #e2e2e2;
   border-radius: 15px 15px 0px 0px;
   /* margin: 5px; */
 
   box-shadow: 0px 2px 4px gray;
   border: 1.5px solid;
+
+  background-color: #c6f4a1;
+  border-color: #9bcc73;
 }
 
 .pokemon_description_bottomBox {
@@ -87,8 +93,7 @@
   box-shadow: 0px 2px 4px gray;
   border: 1.5px solid;
 
-  background-color: #c6f4a1;
-  border-color: #9bcc73;
+  background-color: #e2e2e2;
 }
 
 /* ICON FORMAT */
@@ -118,6 +123,12 @@
   font-family: "Lucida Console", Courier, monospace;
   font-weight: bold;
   font-size: 14px;
+}
+
+.nameEntryScreen {
+  font-family: "Lucida Console", Courier, monospace;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .number{
