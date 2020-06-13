@@ -73,6 +73,13 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
     if (event->keyval == GDK_KEY_Down || event->keyval == GDK_KEY_Up) {
         scroll_list_screen(event->keyval);
     }
+
+    if (event->keyval == GDK_KEY_A || event->keyval == GDK_KEY_D) {
+        printf("Currently selected pokemon: %d, Given stage; %d\n", currentlySelectedPokemon, pokemonStage);
+        currentlySelectedPokemon = animate_pokemon_evolution_cards(currentlySelectedPokemon, event->keyval);
+        printf("After button press: %d\n\n", currentlySelectedPokemon);
+    }
+
     if (event->keyval == GDK_KEY_Right) {
         if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreen) {
             if (godVar == 1) {
@@ -95,12 +102,11 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
             gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), TRUE);
             gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), FALSE);
         }
+
     }
 
     if (event->keyval == GDK_KEY_Q) {
-        // printf("SPINNN\n");
         style_given_element("threeTierEvolution_Card1", "currently_selected");
-        printf("The stage is: %d\n", externalPokemonStage);
 
         // gtk_revealer_set_reveal_child(GTK_REVEALER(submenuBarRevealer), FALSE);
         // if (gtk_revealer_get_child_revealed(GTK_REVEALER(submenuBarRevealer))) {
@@ -108,9 +114,13 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
         // }
     }
 
-    if (event->keyval == GDK_KEY_A) {
-        gtk_revealer_set_reveal_child(GTK_REVEALER(submenuBarRevealer), TRUE);
+    if (event->keyval == GDK_KEY_W) {
+        unstyle_moving_evolution_card("threeTierEvolution_Card1", "currently_selected");
     }
+
+    // if (event->keyval == GDK_KEY_A) {
+    //     gtk_revealer_set_reveal_child(GTK_REVEALER(submenuBarRevealer), TRUE);
+    // }
 
     if (event->keyval == GDK_KEY_8) {
         gtk_stack_set_visible_child(GTK_STACK(menuBarStack), GTK_WIDGET(displayScreenBar));
@@ -190,5 +200,61 @@ void pokemon_entry_clicked (GtkButton *buttonClicked) {
     if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == listScreen) {
         handle_main_window(buttonClicked);
         handle_info_window(buttonClicked);
+    }
+}
+
+int animate_pokemon_evolution_cards(int pokemonStage, int buttonPress) {
+    char relevantPokemonCard[25];
+
+    if (buttonPress == GDK_KEY_A) {
+        switch (pokemonStage) {
+        case 0:
+            printf("Pokemon stage: %d, CAN'T GO LEFT\n", pokemonStage);
+            return 0;
+        // CASES 1 & 2 CAN BE COMPRESSED INTO ONE CASE
+        case 1:
+            printf("Pokemon stage: %d, CAN GO LEFT\n", pokemonStage);
+            
+            // Unstyle currently hovering card
+            unstyle_moving_evolution_card("threeTierEvolution_Card1", "currently_selected");
+
+            // Style desired card to the left of it
+            style_given_element("threeTierEvolution_Card0", "currently_selected");
+            return 0; // pokemonStage -= 1
+        case 2:
+            printf("Pokemon stage: %d, CAN GO LEFT\n", pokemonStage);
+
+            // Unstyle currently hovering card
+            unstyle_moving_evolution_card("threeTierEvolution_Card2", "currently_selected");
+
+            // Style desired card to the left of it
+            style_given_element("threeTierEvolution_Card1", "currently_selected");
+            return 1; // pokemonStage -= 1;
+        }
+    }
+    if (buttonPress == GDK_KEY_D) {
+        switch (pokemonStage) {
+        case 0:
+            printf("Pokemon stage: %d, CAN GO RIGHT\n", pokemonStage);
+
+            // Unstyle currently hovering card
+            unstyle_moving_evolution_card("threeTierEvolution_Card0", "currently_selected");
+
+            // Style desired card to the left of it
+            style_given_element("threeTierEvolution_Card1", "currently_selected");
+            return 1; //pokemonStage += 1;
+        case 1:
+            printf("Pokemon stage: %d, CAN GO RIGHT\n", pokemonStage);
+
+            // Unstyle currently hovering card
+            unstyle_moving_evolution_card("threeTierEvolution_Card1", "currently_selected");
+
+            // Style desired card to the left of it
+            style_given_element("threeTierEvolution_Card2", "currently_selected");
+            return 2; // pokemonStage += 1;
+        case 2:
+            printf("Pokemon stage: %d, CAN'T GO RIGHT\n", pokemonStage);
+            return 2;
+        }
     }
 }

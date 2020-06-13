@@ -10,7 +10,6 @@
 
 int godVar;
 int pokemonStage;
-int externalPokemonStage;
 
 // Sorting and searching
 void generate_pokedex_buttons(void);

@@ -136,7 +136,7 @@ GtkWidget   *submenuBarStack_Evos;
 
 GtkAdjustment *viewWindow;
 int currentHeight;
-
+int currentlySelectedPokemon;
 
 // FUNCTION PROTOTYPES
 void handle_main_window(GtkButton *buttonClicked);
@@ -146,5 +146,7 @@ gboolean switch_screens(void);
 gboolean scroll_list_screen(int);
 void pokemon_entry_clicked(GtkButton *buttonClicked);
 gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data);
+
+int animate_pokemon_evolution_cards(int pokemonStage, int buttonPress);
 
 #endif

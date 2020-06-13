@@ -236,7 +236,7 @@ int find_evolutions(int selectedPokemon) {
                             printf("Pokemon Stage: %d \n", pokemonStage);
                             style_given_element(relevantPokemonCard, "currently_selected");
 
-                            externalPokemonStage = pokemonStage;
+                            currentlySelectedPokemon = pokemonStage;
                             pokemonStage = 0;
                         }
                     }
@@ -250,7 +250,7 @@ int find_evolutions(int selectedPokemon) {
 
                     printf("Pokemon Stage: %d \n", pokemonStage);
 
-                    externalPokemonStage = pokemonStage;
+                    currentlySelectedPokemon = pokemonStage;
                     pokemonStage = 0;
                 }
             }
