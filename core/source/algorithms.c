@@ -228,7 +228,7 @@ int find_evolutions(int selectedPokemon) {
                             fill_pokemon_evolution_entries("2nd",j,1);
                             fill_pokemon_evolution_entries("3rd",k,1);
 
-                            godVar = 1;
+                            threeStagePokemon = TRUE;
 
                             currentlySelectedPokemon = pokemonStage;
                             pokemonStage = 0;
@@ -240,7 +240,7 @@ int find_evolutions(int selectedPokemon) {
                     fill_pokemon_evolution_entries("1st",adjustSelectedPokemon,0);
                     fill_pokemon_evolution_entries("2nd",j,0);
 
-                    godVar = 0;
+                    threeStagePokemon = FALSE;
 
                     printf("Pokemon Stage: %d \n", pokemonStage);
 

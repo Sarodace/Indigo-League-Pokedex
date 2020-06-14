@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int godVar;
+bool threeStagePokemon;
 int pokemonStage;
 
 // Sorting and searching

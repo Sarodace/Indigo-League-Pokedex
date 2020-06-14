@@ -75,12 +75,13 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
     }
     if (event->keyval == GDK_KEY_Right) {
         if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreen) {
-            if (godVar == 1) {
+            if (threeStagePokemon == TRUE) {
                 gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(threeTierEvolution));
+                gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(testScreenTwo));
             } else {
                 gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(twoTierEvolution));
+                gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(testScreenThree));
             }
-            gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(testScreenTwo));
             gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Evos));
             gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), FALSE);
             gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), TRUE);
