@@ -219,17 +219,17 @@ int animate_pokemon_evolution_cards(int pokemonStage, int buttonPress) {
         // CASES 1 & 2 CAN BE COMPRESSED INTO ONE CASE
         case 1:
             // Unstyle currently hovering card
-            unstyle_moving_evolution_card("threeTierEvolution_Card1", "currently_selected");
+            unstyle_moving_evolution_card("threeTierEvolution_2ndCard", "currently_selected");
 
             // Style desired card to the left of it
-            style_given_element("threeTierEvolution_Card0", "currently_selected");
+            style_given_element("threeTierEvolution_1stCard", "currently_selected");
             return 0; // pokemonStage -= 1
         case 2:
             // Unstyle currently hovering card
-            unstyle_moving_evolution_card("threeTierEvolution_Card2", "currently_selected");
+            unstyle_moving_evolution_card("threeTierEvolution_3rdCard", "currently_selected");
 
             // Style desired card to the left of it
-            style_given_element("threeTierEvolution_Card1", "currently_selected");
+            style_given_element("threeTierEvolution_2ndCard", "currently_selected");
             return 1; // pokemonStage -= 1;
         }
     }
@@ -237,17 +237,17 @@ int animate_pokemon_evolution_cards(int pokemonStage, int buttonPress) {
         switch (pokemonStage) {
         case 0:
             // Unstyle currently hovering card
-            unstyle_moving_evolution_card("threeTierEvolution_Card0", "currently_selected");
+            unstyle_moving_evolution_card("threeTierEvolution_1stCard", "currently_selected");
 
             // Style desired card to the left of it
-            style_given_element("threeTierEvolution_Card1", "currently_selected");
+            style_given_element("threeTierEvolution_2ndCard", "currently_selected");
             return 1; //pokemonStage += 1;
         case 1:
             // Unstyle currently hovering card
-            unstyle_moving_evolution_card("threeTierEvolution_Card1", "currently_selected");
+            unstyle_moving_evolution_card("threeTierEvolution_2ndCard", "currently_selected");
 
             // Style desired card to the left of it
-            style_given_element("threeTierEvolution_Card2", "currently_selected");
+            style_given_element("threeTierEvolution_3rdCard", "currently_selected");
             return 2; // pokemonStage += 1;
         case 2:
             return 2;

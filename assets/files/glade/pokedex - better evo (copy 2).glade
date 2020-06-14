@@ -7851,7 +7851,7 @@
                 <property name="vexpand">True</property>
                 <property name="spacing">10</property>
                 <child>
-                  <object class="GtkBox" id="threeTierEvolution_Card0">
+                  <object class="GtkBox" id="threeTierEvolution_1stCard">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
@@ -7860,7 +7860,7 @@
                     <property name="vexpand">True</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkLabel" id="threeTier_1stNumber1">
+                      <object class="GtkLabel" id="threeTier_1stNumber">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">#001</property>
@@ -7872,7 +7872,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkImage" id="threeTier_1stImage1">
+                      <object class="GtkImage" id="threeTier_1stImage">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="pixbuf">../../sprites/main/001.png</property>
@@ -7887,7 +7887,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="threeTier_1stName1">
+                      <object class="GtkLabel" id="threeTier_1stName">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Bulbasaur</property>
@@ -7921,7 +7921,7 @@
                     <property name="vexpand">True</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkLabel" id="threeTier_1stEvolution1">
+                      <object class="GtkLabel" id="threeTier_1stEvolution">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Lvl. 16</property>
@@ -7954,7 +7954,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="threeTierEvolution_Card1">
+                  <object class="GtkBox" id="threeTierEvolution_2ndCard">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
@@ -7963,7 +7963,7 @@
                     <property name="vexpand">True</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkLabel" id="threeTier_2ndNumber1">
+                      <object class="GtkLabel" id="threeTier_2ndNumber">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">#002</property>
@@ -7975,7 +7975,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkImage" id="threeTier_2ndImage1">
+                      <object class="GtkImage" id="threeTier_2ndImage">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="pixbuf">../../sprites/main/002.png</property>
@@ -7990,7 +7990,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="threeTier_2ndName1">
+                      <object class="GtkLabel" id="threeTier_2ndName">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Ivysaur</property>
@@ -8025,11 +8025,11 @@
                     <property name="vexpand">True</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkStack" id="threeTier_evolutionSwitcher1">
+                      <object class="GtkStack" id="threeTier_evolutionSwitcher">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkLabel" id="threeTier_2ndEvolution1">
+                          <object class="GtkLabel" id="threeTier_2ndEvolution">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label" translatable="yes">Lvl. 32</property>
@@ -8040,7 +8040,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkImage" id="threeTier_evolutionMethod1">
+                          <object class="GtkImage" id="threeTier_evolutionMethod">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="pixbuf">../../sprites/items/leaf_stone.png</property>
@@ -8079,7 +8079,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="threeTierEvolution_Card2">
+                  <object class="GtkBox" id="threeTierEvolution_3rdCard">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
@@ -8088,7 +8088,7 @@
                     <property name="vexpand">True</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkLabel" id="threeTier_3rdNumber1">
+                      <object class="GtkLabel" id="threeTier_3rdNumber">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">#003</property>
@@ -8100,7 +8100,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkImage" id="threeTier_3rdImage1">
+                      <object class="GtkImage" id="threeTier_3rdImage">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="pixbuf">../../sprites/main/003.png</property>
@@ -8115,7 +8115,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="threeTier_3rdName1">
+                      <object class="GtkLabel" id="threeTier_3rdName">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Venusaur</property>
@@ -8155,12 +8155,12 @@
                 <property name="valign">center</property>
                 <property name="spacing">10</property>
                 <child>
-                  <object class="GtkBox" id="twoTierEvolution_1stCard1">
+                  <object class="GtkBox" id="twoTierEvolution_1stCard">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkLabel" id="twoTier_1stNumber1">
+                      <object class="GtkLabel" id="twoTier_1stNumber">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">#019</property>
@@ -8172,7 +8172,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkImage" id="twoTier_1stImage1">
+                      <object class="GtkImage" id="twoTier_1stImage">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
@@ -8186,7 +8186,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="twoTier_1stName1">
+                      <object class="GtkLabel" id="twoTier_1stName">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Ratata</property>
@@ -8217,11 +8217,11 @@
                     <property name="valign">center</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkStack" id="twoTier_evolutionSwitcher1">
+                      <object class="GtkStack" id="twoTier_evolutionSwitcher">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkLabel" id="twoTier_1stEvolution1">
+                          <object class="GtkLabel" id="twoTier_1stEvolution">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="justify">center</property>
@@ -8232,7 +8232,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkImage" id="twoTier_evolutionMethod1">
+                          <object class="GtkImage" id="twoTier_evolutionMethod">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="stock">gtk-missing-image</property>
@@ -8271,12 +8271,12 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="twoTierEvolution_2ndCard1">
+                  <object class="GtkBox" id="twoTierEvolution_2ndCard">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkLabel" id="twoTier_2ndNumber1">
+                      <object class="GtkLabel" id="twoTier_2ndNumber">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">#020</property>
@@ -8288,7 +8288,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkImage" id="twoTier_2ndImage1">
+                      <object class="GtkImage" id="twoTier_2ndImage">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
@@ -8302,7 +8302,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="twoTier_2ndName1">
+                      <object class="GtkLabel" id="twoTier_2ndName">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Raticate</property>
@@ -9110,7 +9110,7 @@
                 <property name="valign">center</property>
                 <property name="spacing">8</property>
                 <child>
-                  <object class="GtkBox" id="threeTierEvolution_1stCard">
+                  <object class="GtkBox" id="threeTierEvolution_1stCard_">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="valign">center</property>
@@ -9118,7 +9118,7 @@
                     <property name="vexpand">True</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkLabel" id="threeTier_1stNumber">
+                      <object class="GtkLabel" id="threeTier_1stNumber_">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                       </object>
@@ -9129,7 +9129,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkImage" id="threeTier_1stImage">
+                      <object class="GtkImage" id="threeTier_1stImage_">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
@@ -9143,7 +9143,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="threeTier_1stName">
+                      <object class="GtkLabel" id="threeTier_1stName_">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
@@ -9173,7 +9173,7 @@
                     <property name="valign">center</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkLabel" id="threeTier_1stEvolution">
+                      <object class="GtkLabel" id="threeTier_1stEvolution_">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="justify">center</property>
@@ -9205,14 +9205,14 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="threeTierEvolution_2ndCard">
+                  <object class="GtkBox" id="threeTierEvolution_2ndCard_">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="valign">center</property>
                     <property name="vexpand">True</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkLabel" id="threeTier_2ndNumber">
+                      <object class="GtkLabel" id="threeTier_2ndNumber_">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                       </object>
@@ -9223,7 +9223,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkImage" id="threeTier_2ndImage">
+                      <object class="GtkImage" id="threeTier_2ndImage_">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
@@ -9237,7 +9237,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="threeTier_2ndName">
+                      <object class="GtkLabel" id="threeTier_2ndName_">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
@@ -9268,11 +9268,11 @@
                     <property name="margin_bottom">7</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkStack" id="threeTier_evolutionSwitcher">
+                      <object class="GtkStack" id="threeTier_evolutionSwitcher_">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkLabel" id="threeTier_2ndEvolution">
+                          <object class="GtkLabel" id="threeTier_2ndEvolution_">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                           </object>
@@ -9282,7 +9282,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkImage" id="threeTier_evolutionMethod">
+                          <object class="GtkImage" id="threeTier_evolutionMethod_">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="pixbuf">../../sprites/items/leaf_stone.png</property>
@@ -9321,7 +9321,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="threeTierEvolution_3rdCard">
+                  <object class="GtkBox" id="threeTierEvolution_3rdCard_">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="valign">center</property>
@@ -9329,7 +9329,7 @@
                     <property name="vexpand">True</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkLabel" id="threeTier_3rdNumber">
+                      <object class="GtkLabel" id="threeTier_3rdNumber_">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                       </object>
@@ -9340,7 +9340,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkImage" id="threeTier_3rdImage">
+                      <object class="GtkImage" id="threeTier_3rdImage_">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
@@ -9354,7 +9354,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="threeTier_3rdName">
+                      <object class="GtkLabel" id="threeTier_3rdName_">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
@@ -9392,12 +9392,12 @@
                 <property name="valign">center</property>
                 <property name="spacing">10</property>
                 <child>
-                  <object class="GtkBox" id="twoTierEvolution_1stCard">
+                  <object class="GtkBox" id="twoTierEvolution_1stCard_">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkLabel" id="twoTier_1stNumber">
+                      <object class="GtkLabel" id="twoTier_1stNumber_">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">#019</property>
@@ -9409,7 +9409,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkImage" id="twoTier_1stImage">
+                      <object class="GtkImage" id="twoTier_1stImage_">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
@@ -9423,7 +9423,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="twoTier_1stName">
+                      <object class="GtkLabel" id="twoTier_1stName_">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Ratata</property>
@@ -9454,11 +9454,11 @@
                     <property name="valign">center</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkStack" id="twoTier_evolutionSwitcher">
+                      <object class="GtkStack" id="twoTier_evolutionSwitcher_">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkLabel" id="twoTier_1stEvolution">
+                          <object class="GtkLabel" id="twoTier_1stEvolution_">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="justify">center</property>
@@ -9469,7 +9469,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkImage" id="twoTier_evolutionMethod">
+                          <object class="GtkImage" id="twoTier_evolutionMethod_">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="stock">gtk-missing-image</property>
@@ -9508,12 +9508,12 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="twoTierEvolution_2ndCard">
+                  <object class="GtkBox" id="twoTierEvolution_2ndCard_">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkLabel" id="twoTier_2ndNumber">
+                      <object class="GtkLabel" id="twoTier_2ndNumber_">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">#020</property>
@@ -9525,7 +9525,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkImage" id="twoTier_2ndImage">
+                      <object class="GtkImage" id="twoTier_2ndImage_">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
@@ -9539,7 +9539,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="twoTier_2ndName">
+                      <object class="GtkLabel" id="twoTier_2ndName_">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Raticate</property>

@@ -106,7 +106,7 @@ void generate_pokedex_buttons(void) {
     }
 }
 
-int fill_pokemon_evolution_entries(char *position, int counter, int threeTier) {
+int fill_pokemon_evolution_entries(char *position, int counter, bool threeTier) {
     char numberString[20];
     char imageString[20];
     char nameString[20];
@@ -117,10 +117,10 @@ int fill_pokemon_evolution_entries(char *position, int counter, int threeTier) {
     char evolutionLevel[20];
     char screen[10];
 
-    if (threeTier == 0) {
-        sprintf(screen,"%s","two");
-    } else {
+    if (threeTier) {
         sprintf(screen,"%s","three");
+    } else {
+        sprintf(screen,"%s","two");
     }
 
     sprintf(evolutionLevel, "Lvl. %d", pokedexArray[counter].level);
@@ -168,7 +168,7 @@ int fill_pokemon_evolution_entries(char *position, int counter, int threeTier) {
         }
     }
 
-    if (position == "2nd" && threeTier == 0) {
+    if (position == "2nd" && threeTier == FALSE) {
         gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "twoTier_1stEvolution")),
             evolutionLevel);
         if (pokedexArray[counter].evolutionMethod > 1) {
@@ -224,9 +224,9 @@ int find_evolutions(int selectedPokemon) {
                         //Finally, find the 3rd evolutionary stage
                         if (pokedexArray[k].evolvesFrom == pokedexArray[j].number) {
                             //// printf("3rd form (FINAL): %s\n\n",pokedexArray[k].name);
-                            fill_pokemon_evolution_entries("1st",adjustSelectedPokemon,1);
-                            fill_pokemon_evolution_entries("2nd",j,1);
-                            fill_pokemon_evolution_entries("3rd",k,1);
+                            fill_pokemon_evolution_entries("1st",adjustSelectedPokemon,TRUE);
+                            fill_pokemon_evolution_entries("2nd",j,TRUE);
+                            fill_pokemon_evolution_entries("3rd",k,TRUE);
 
                             threeStagePokemon = TRUE;
 
@@ -237,8 +237,8 @@ int find_evolutions(int selectedPokemon) {
                 // Or breaks out of loop if that's its final evolution
                 } else {
                     //// printf("2nd form (FINAL): %s\n\n",pokedexArray[j].name);
-                    fill_pokemon_evolution_entries("1st",adjustSelectedPokemon,0);
-                    fill_pokemon_evolution_entries("2nd",j,0);
+                    fill_pokemon_evolution_entries("1st",adjustSelectedPokemon,FALSE);
+                    fill_pokemon_evolution_entries("2nd",j,FALSE);
 
                     threeStagePokemon = FALSE;
 

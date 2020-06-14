@@ -15,7 +15,7 @@ int pokemonStage;
 void generate_pokedex_buttons(void);
 void pokemon_search(GtkWidget *widget, gpointer user_data);
 int find_evolutions(int selectedPokemon);
-int fill_pokemon_evolution_entries(char*, int, int);
+int fill_pokemon_evolution_entries(char*, int, bool);
 int sort_pokedex_entries(int sortingStyle);
 int compare_weight(const void *pa, const void *pb);
 void rearrange_buttons(void);
