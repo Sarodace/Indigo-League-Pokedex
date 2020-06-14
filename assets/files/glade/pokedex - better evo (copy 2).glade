@@ -8390,7 +8390,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="margin_right">10</property>
-                            <property name="label" translatable="yes">Select</property>
+                            <property name="label" translatable="yes">List</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>

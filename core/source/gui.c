@@ -73,13 +73,6 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
     if (event->keyval == GDK_KEY_Down || event->keyval == GDK_KEY_Up) {
         scroll_list_screen(event->keyval);
     }
-
-    if (event->keyval == GDK_KEY_A || event->keyval == GDK_KEY_D) {
-        if (selectingPokemon == TRUE) {
-            currentlySelectedPokemon = animate_pokemon_evolution_cards(currentlySelectedPokemon, event->keyval);
-        }
-    }
-
     if (event->keyval == GDK_KEY_Right) {
         if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreen) {
             if (godVar == 1) {
@@ -92,18 +85,23 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
             gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), FALSE);
             gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), TRUE);
         }
+        if (selectingPokemon == TRUE) {
+            currentlySelectedPokemon = animate_pokemon_evolution_cards(currentlySelectedPokemon, event->keyval);
+        }
     }
     if (event->keyval == GDK_KEY_Left) {
         if (selectingPokemon == FALSE) {
             if (gtk_stack_get_visible_child(GTK_STACK(infoStack)) == threeTierEvolution ||
                 gtk_stack_get_visible_child(GTK_STACK(infoStack)) == twoTierEvolution ||
                 gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreenTwo) {
-                printf("Test\n");
                 gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(testScreen));
                 gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Define));
                 gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), TRUE);
                 gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), FALSE);
             }
+        }
+        if (selectingPokemon == TRUE) {
+            currentlySelectedPokemon = animate_pokemon_evolution_cards(currentlySelectedPokemon, event->keyval);
         }
     }
 
@@ -213,7 +211,7 @@ void pokemon_entry_clicked (GtkButton *buttonClicked) {
 int animate_pokemon_evolution_cards(int pokemonStage, int buttonPress) {
     char relevantPokemonCard[25];
 
-    if (buttonPress == GDK_KEY_A) {
+    if (buttonPress == GDK_KEY_Left) {
         switch (pokemonStage) {
         case 0:
             return 0;
@@ -234,7 +232,7 @@ int animate_pokemon_evolution_cards(int pokemonStage, int buttonPress) {
             return 1; // pokemonStage -= 1;
         }
     }
-    if (buttonPress == GDK_KEY_D) {
+    if (buttonPress == GDK_KEY_Right) {
         switch (pokemonStage) {
         case 0:
             // Unstyle currently hovering card
