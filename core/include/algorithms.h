@@ -9,14 +9,15 @@
 #include <string.h>
 
 int godVar;
+int pokemonStage;
 
 // Sorting and searching
 void generate_pokedex_buttons(void);
 void pokemon_search(GtkWidget *widget, gpointer user_data);
 int find_evolutions(int selectedPokemon);
-int fill_pokemon_evolution_entries(char*,int,int);
+int fill_pokemon_evolution_entries(char*, int, int);
 int sort_pokedex_entries(int sortingStyle);
-int compare_weight(const void *pa,const void *pb);
+int compare_weight(const void *pa, const void *pb);
 void rearrange_buttons(void);
 void test_sorting_functions(void);
 int search_Pokemon_List(GtkWidget** buttonArray, 

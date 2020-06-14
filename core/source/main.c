@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     implement_CSS();
 
     // Build windows and connect signals described in Glade file
-    builder = gtk_builder_new_from_file("assets/files/glade/pokedex - better evo.glade");
+    builder = gtk_builder_new_from_file("assets/files/glade/pokedex - better evo (copy 2).glade");
     mainWindow = GTK_WIDGET(gtk_builder_get_object(builder, "mainWindow"));
     subWindow = GTK_WIDGET(gtk_builder_get_object(builder, "subWindow"));
     infoWindow = GTK_WIDGET(gtk_builder_get_object(builder, "infoWindow"));
@@ -118,18 +118,34 @@ int main(int argc, char *argv[]) {
     threeTier_evolutionSwitcher = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_evolutionSwitcher"));
     threeTier_evolutionMethod = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_evolutionMethod"));
 
-    viewWindow = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(viewBox));
 
+    testScreen = GTK_WIDGET(gtk_builder_get_object(builder, "testScreen"));
+    testScreenTwo = GTK_WIDGET(gtk_builder_get_object(builder, "testScreenTwo"));
+
+    menuBarStack = GTK_WIDGET(gtk_builder_get_object(builder, "menuBarStack"));
+    mainScreenBar = GTK_WIDGET(gtk_builder_get_object(builder, "mainScreenBar"));
+    displayScreenBar = GTK_WIDGET(gtk_builder_get_object(builder, "displayScreenBar"));
+
+    viewWindow = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(viewBox));
 
     // Infostack
     infoStackName = GTK_WIDGET(gtk_builder_get_object(builder, "infoStackName"));
     infoStackSpecies = GTK_WIDGET(gtk_builder_get_object(builder, "infoStackSpecies"));
     infoStackBar = GTK_WIDGET(gtk_builder_get_object(builder, "infoStackBar"));
 
+    // Define variables for bottom menu bar
+    submenuBarRevealer = GTK_WIDGET(gtk_builder_get_object(builder, "submenuBarRevealer"));
+    submenuBarStack = GTK_WIDGET(gtk_builder_get_object(builder, "submenuBarStack"));
+    submenuBarStack_Search = GTK_WIDGET(gtk_builder_get_object(builder, "submenuBarStack_Search"));
+    submenuBarStack_List = GTK_WIDGET(gtk_builder_get_object(builder, "submenuBarStack_List"));
+    submenuBarStack_Define = GTK_WIDGET(gtk_builder_get_object(builder, "submenuBarStack_Define"));
+    submenuBarStack_Evos = GTK_WIDGET(gtk_builder_get_object(builder, "submenuBarStack_Evos"));
+
 
     // Display the GUI
     gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
     gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(infoEmptyScreen));
+    gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_List));
 
     // Build widgets decribed in Glade file
     generate_pokedex_buttons();

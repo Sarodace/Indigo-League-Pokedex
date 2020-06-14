@@ -114,16 +114,30 @@ GtkWidget   *threeTier_evolutionSwitcher;
 GtkWidget   *twoTier_evolutionMethod;
 GtkWidget   *threeTier_evolutionMethod;
 
+GtkWidget   *testScreen;
+GtkWidget   *testScreenTwo;
+
+GtkWidget   *menuBarStack;
+GtkWidget   *mainScreenBar;
+GtkWidget   *displayScreenBar;
 
 // Infostack
 GtkWidget   *infoStackName;
 GtkWidget   *infoStackSpecies;
 GtkWidget   *infoStackBar;
 
+// Declare variables for bottom menu bar
+GtkWidget   *submenuBarRevealer;
+GtkWidget   *submenuBarStack;
+GtkWidget   *submenuBarStack_Search;
+GtkWidget   *submenuBarStack_List;
+GtkWidget   *submenuBarStack_Define;
+GtkWidget   *submenuBarStack_Evos;
 
 GtkAdjustment *viewWindow;
 int currentHeight;
-
+int currentlySelectedPokemon;
+bool selectingPokemon;
 
 // FUNCTION PROTOTYPES
 void handle_main_window(GtkButton *buttonClicked);
@@ -133,5 +147,7 @@ gboolean switch_screens(void);
 gboolean scroll_list_screen(int);
 void pokemon_entry_clicked(GtkButton *buttonClicked);
 gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data);
+
+int animate_pokemon_evolution_cards(int pokemonStage, int buttonPress);
 
 #endif

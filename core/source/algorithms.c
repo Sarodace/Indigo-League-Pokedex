@@ -202,6 +202,7 @@ int find_evolutions(int selectedPokemon) {
 
     // Loop back to the selected pokemon's 1st stage
     if (pokedexArray[adjustSelectedPokemon].finalForm == TRUE || pokedexArray[adjustSelectedPokemon].evolvesFrom != NO_EVO) {
+        pokemonStage += 1;
         for (int i=0;i<POKEDEX_SIZE;i++) {
             if (pokedexArray[i].number == pokedexArray[adjustSelectedPokemon].evolvesFrom) {
                 // Uses recursion to accomplish the task!
@@ -226,7 +227,11 @@ int find_evolutions(int selectedPokemon) {
                             fill_pokemon_evolution_entries("1st",adjustSelectedPokemon,1);
                             fill_pokemon_evolution_entries("2nd",j,1);
                             fill_pokemon_evolution_entries("3rd",k,1);
+
                             godVar = 1;
+
+                            currentlySelectedPokemon = pokemonStage;
+                            pokemonStage = 0;
                         }
                     }
                 // Or breaks out of loop if that's its final evolution
@@ -234,11 +239,18 @@ int find_evolutions(int selectedPokemon) {
                     //// printf("2nd form (FINAL): %s\n\n",pokedexArray[j].name);
                     fill_pokemon_evolution_entries("1st",adjustSelectedPokemon,0);
                     fill_pokemon_evolution_entries("2nd",j,0);
+
                     godVar = 0;
+
+                    printf("Pokemon Stage: %d \n", pokemonStage);
+
+                    currentlySelectedPokemon = pokemonStage;
+                    pokemonStage = 0;
                 }
             }
         }
     }
+    // printf("Pokemon Stage: %d \n", pokemonStage);
 }
 
 // Searches Pokemon list for Pokemon who satisfy user-provided constraints

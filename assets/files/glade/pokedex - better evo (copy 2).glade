@@ -7505,11 +7505,12 @@
                     <property name="can_focus">False</property>
                     <property name="vexpand">True</property>
                     <property name="orientation">vertical</property>
+                    <property name="homogeneous">True</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="valign">start</property>
+                        <property name="valign">baseline</property>
                         <property name="margin_left">10</property>
                         <property name="margin_right">10</property>
                         <property name="margin_top">10</property>
@@ -7548,7 +7549,7 @@
                                     <property name="margin_left">5</property>
                                     <property name="label" translatable="yes">Venusaur</property>
                                     <style>
-                                      <class name="name"/>
+                                      <class name="nameEntryScreen"/>
                                     </style>
                                   </object>
                                   <packing>
@@ -7557,25 +7558,7 @@
                                     <property name="position">1</property>
                                   </packing>
                                 </child>
-                                <child>
-                                  <object class="GtkLabel" id="infoStackSpecies2">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <property name="margin_left">5</property>
-                                    <property name="label" translatable="yes">the Seed Pokemon</property>
-                                    <attributes>
-                                      <attribute name="font-desc" value="Sans 8"/>
-                                      <attribute name="style" value="italic"/>
-                                    </attributes>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">2</property>
-                                  </packing>
-                                </child>
                                 <style>
-                                  <class name="button"/>
                                   <class name="Grass"/>
                                 </style>
                               </object>
@@ -7583,6 +7566,24 @@
                                 <property name="expand">False</property>
                                 <property name="fill">True</property>
                                 <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="infoStackSpecies2">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="margin_left">5</property>
+                                <property name="label" translatable="yes">The Seed Pokemon</property>
+                                <property name="xalign">0</property>
+                                <attributes>
+                                  <attribute name="font-desc" value="Sans 8"/>
+                                  <attribute name="style" value="italic"/>
+                                </attributes>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
                               </packing>
                             </child>
                             <child>
@@ -7641,7 +7642,6 @@
                                         </child>
                                         <style>
                                           <class name="Grass"/>
-                                          <class name="button"/>
                                         </style>
                                       </object>
                                       <packing>
@@ -7654,13 +7654,16 @@
                                       <object class="GtkBox">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
+                                        <property name="margin_left">5</property>
                                         <property name="margin_top">5</property>
                                         <property name="orientation">vertical</property>
                                         <child>
                                           <object class="GtkLabel">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
-                                            <property name="label" translatable="yes">Height: 8</property>
+                                            <property name="label" translatable="yes">Height: 6'07"</property>
+                                            <property name="xalign">0</property>
+                                            <property name="yalign">0</property>
                                           </object>
                                           <packing>
                                             <property name="expand">False</property>
@@ -7672,7 +7675,8 @@
                                           <object class="GtkLabel">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
-                                            <property name="label" translatable="yes">Weight: 80</property>
+                                            <property name="label" translatable="yes">Weight: 220.5 lbs.</property>
+                                            <property name="xalign">0</property>
                                           </object>
                                           <packing>
                                             <property name="expand">False</property>
@@ -7681,7 +7685,6 @@
                                           </packing>
                                         </child>
                                         <style>
-                                          <class name="button"/>
                                           <class name="Grass"/>
                                         </style>
                                       </object>
@@ -7725,7 +7728,6 @@
                                       </packing>
                                     </child>
                                     <style>
-                                      <class name="buttonBox"/>
                                       <class name="Grass"/>
                                     </style>
                                   </object>
@@ -7739,7 +7741,7 @@
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">True</property>
-                                <property name="position">1</property>
+                                <property name="position">2</property>
                               </packing>
                             </child>
                           </object>
@@ -7779,7 +7781,6 @@
                               </packing>
                             </child>
                             <style>
-                              <class name="evolutionCard"/>
                               <class name="Grass"/>
                             </style>
                           </object>
@@ -7803,6 +7804,7 @@
                       <object class="GtkLabel" id="entryScreen1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="valign">baseline</property>
                         <property name="margin_left">10</property>
                         <property name="margin_right">10</property>
                         <property name="margin_bottom">10</property>
@@ -7817,6 +7819,7 @@
                         <property name="yalign">0.05000000074505806</property>
                         <style>
                           <class name="pokemon_description_bottomBox"/>
+                          <class name="pokemon_description_text"/>
                         </style>
                       </object>
                       <packing>
@@ -8387,7 +8390,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="margin_right">10</property>
-                            <property name="label" translatable="yes">Select</property>
+                            <property name="label" translatable="yes">List</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
