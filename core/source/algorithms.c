@@ -224,17 +224,11 @@ int find_evolutions(int selectedPokemon) {
                         //Finally, find the 3rd evolutionary stage
                         if (pokedexArray[k].evolvesFrom == pokedexArray[j].number) {
                             //// printf("3rd form (FINAL): %s\n\n",pokedexArray[k].name);
-                            char relevantPokemonCard[25];
-                            sprintf(relevantPokemonCard, "threeTierEvolution_Card%d", pokemonStage);
-
                             fill_pokemon_evolution_entries("1st",adjustSelectedPokemon,1);
                             fill_pokemon_evolution_entries("2nd",j,1);
                             fill_pokemon_evolution_entries("3rd",k,1);
 
                             godVar = 1;
-
-                            printf("Pokemon Stage: %d \n", pokemonStage);
-                            style_given_element(relevantPokemonCard, "currently_selected");
 
                             currentlySelectedPokemon = pokemonStage;
                             pokemonStage = 0;

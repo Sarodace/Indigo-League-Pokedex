@@ -137,6 +137,7 @@ GtkWidget   *submenuBarStack_Evos;
 GtkAdjustment *viewWindow;
 int currentHeight;
 int currentlySelectedPokemon;
+bool selectingPokemon;
 
 // FUNCTION PROTOTYPES
 void handle_main_window(GtkButton *buttonClicked);

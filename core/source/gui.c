@@ -75,9 +75,9 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
     }
 
     if (event->keyval == GDK_KEY_A || event->keyval == GDK_KEY_D) {
-        printf("Currently selected pokemon: %d, Given stage; %d\n", currentlySelectedPokemon, pokemonStage);
-        currentlySelectedPokemon = animate_pokemon_evolution_cards(currentlySelectedPokemon, event->keyval);
-        printf("After button press: %d\n\n", currentlySelectedPokemon);
+        if (selectingPokemon == TRUE) {
+            currentlySelectedPokemon = animate_pokemon_evolution_cards(currentlySelectedPokemon, event->keyval);
+        }
     }
 
     if (event->keyval == GDK_KEY_Right) {
@@ -94,28 +94,35 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
         }
     }
     if (event->keyval == GDK_KEY_Left) {
-        if (gtk_stack_get_visible_child(GTK_STACK(infoStack)) == threeTierEvolution ||
-            gtk_stack_get_visible_child(GTK_STACK(infoStack)) == twoTierEvolution ||
-            gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreenTwo) {
-            gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(testScreen));
-            gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Define));
-            gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), TRUE);
-            gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), FALSE);
+        if (selectingPokemon == FALSE) {
+            if (gtk_stack_get_visible_child(GTK_STACK(infoStack)) == threeTierEvolution ||
+                gtk_stack_get_visible_child(GTK_STACK(infoStack)) == twoTierEvolution ||
+                gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreenTwo) {
+                printf("Test\n");
+                gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(testScreen));
+                gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Define));
+                gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), TRUE);
+                gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), FALSE);
+            }
         }
-
     }
 
-    if (event->keyval == GDK_KEY_Q) {
-        style_given_element("threeTierEvolution_Card1", "currently_selected");
+    if (event->keyval == GDK_KEY_space) {
+        char relevantPokemonCard[25];
+        sprintf(relevantPokemonCard, "threeTierEvolution_Card%d", currentlySelectedPokemon);
 
-        // gtk_revealer_set_reveal_child(GTK_REVEALER(submenuBarRevealer), FALSE);
-        // if (gtk_revealer_get_child_revealed(GTK_REVEALER(submenuBarRevealer))) {
-        //     printf("Still transtioning :( \n");
-        // }
-    }
-
-    if (event->keyval == GDK_KEY_W) {
-        unstyle_moving_evolution_card("threeTierEvolution_Card1", "currently_selected");
+        if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreenTwo) {
+            if (selectingPokemon == TRUE) {
+                unstyle_moving_evolution_card(relevantPokemonCard, "currently_selected");
+                selectingPokemon = FALSE;
+                return 0;
+            }
+            if (selectingPokemon == FALSE) {
+                style_given_element(relevantPokemonCard, "currently_selected");
+                selectingPokemon = TRUE;
+                return 0;
+            }
+        }
     }
 
     // if (event->keyval == GDK_KEY_A) {
@@ -209,12 +216,9 @@ int animate_pokemon_evolution_cards(int pokemonStage, int buttonPress) {
     if (buttonPress == GDK_KEY_A) {
         switch (pokemonStage) {
         case 0:
-            printf("Pokemon stage: %d, CAN'T GO LEFT\n", pokemonStage);
             return 0;
         // CASES 1 & 2 CAN BE COMPRESSED INTO ONE CASE
         case 1:
-            printf("Pokemon stage: %d, CAN GO LEFT\n", pokemonStage);
-            
             // Unstyle currently hovering card
             unstyle_moving_evolution_card("threeTierEvolution_Card1", "currently_selected");
 
@@ -222,8 +226,6 @@ int animate_pokemon_evolution_cards(int pokemonStage, int buttonPress) {
             style_given_element("threeTierEvolution_Card0", "currently_selected");
             return 0; // pokemonStage -= 1
         case 2:
-            printf("Pokemon stage: %d, CAN GO LEFT\n", pokemonStage);
-
             // Unstyle currently hovering card
             unstyle_moving_evolution_card("threeTierEvolution_Card2", "currently_selected");
 
@@ -235,8 +237,6 @@ int animate_pokemon_evolution_cards(int pokemonStage, int buttonPress) {
     if (buttonPress == GDK_KEY_D) {
         switch (pokemonStage) {
         case 0:
-            printf("Pokemon stage: %d, CAN GO RIGHT\n", pokemonStage);
-
             // Unstyle currently hovering card
             unstyle_moving_evolution_card("threeTierEvolution_Card0", "currently_selected");
 
@@ -244,8 +244,6 @@ int animate_pokemon_evolution_cards(int pokemonStage, int buttonPress) {
             style_given_element("threeTierEvolution_Card1", "currently_selected");
             return 1; //pokemonStage += 1;
         case 1:
-            printf("Pokemon stage: %d, CAN GO RIGHT\n", pokemonStage);
-
             // Unstyle currently hovering card
             unstyle_moving_evolution_card("threeTierEvolution_Card1", "currently_selected");
 
@@ -253,7 +251,6 @@ int animate_pokemon_evolution_cards(int pokemonStage, int buttonPress) {
             style_given_element("threeTierEvolution_Card2", "currently_selected");
             return 2; // pokemonStage += 1;
         case 2:
-            printf("Pokemon stage: %d, CAN'T GO RIGHT\n", pokemonStage);
             return 2;
         }
     }
