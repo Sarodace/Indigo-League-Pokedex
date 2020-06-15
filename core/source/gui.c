@@ -107,8 +107,25 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
     }
 
     if (event->keyval == GDK_KEY_space) {
-        char relevantPokemonCard[25];
-        sprintf(relevantPokemonCard, "threeTierEvolution_Card%d", currentlySelectedPokemon);
+        char relevantPokemonCard[30];
+
+        /* Eventually will go back to this once I properly fix the definition
+        styling function */
+        // sprintf(relevantPokemonCard, "threeTierEvolution_Card%d", currentlySelectedPokemon);
+
+        /* Temporary fix because this is a lot easier than changing a bunch of
+        variable names :^) */
+        switch (currentlySelectedPokemon) {
+        case 0:
+            sprintf(relevantPokemonCard, "threeTierEvolution_1stCard");
+            break;
+        case 1:
+            sprintf(relevantPokemonCard, "threeTierEvolution_2ndCard");
+            break;
+        case 2:
+            sprintf(relevantPokemonCard, "threeTierEvolution_3rdCard");
+            break;
+        }
 
         if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreenTwo) {
             if (selectingPokemon == TRUE) {
