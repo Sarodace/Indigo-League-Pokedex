@@ -275,7 +275,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkRevealer" id="descriptionScreenIndicator1">
+                      <object class="GtkRevealer" id="descriptionScreenIndicator">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="transition_type">slide-left</property>
@@ -318,7 +318,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkRevealer" id="evolutionScreenIndicator1">
+                      <object class="GtkRevealer" id="evolutionScreenIndicator">
                         <property name="width_request">0</property>
                         <property name="height_request">0</property>
                         <property name="visible">True</property>
@@ -8911,7 +8911,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkRevealer" id="descriptionScreenIndicator">
+                  <object class="GtkRevealer" id="descriptionScreenIndicator_">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="transition_type">slide-left</property>
@@ -8954,7 +8954,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkRevealer" id="evolutionScreenIndicator">
+                  <object class="GtkRevealer" id="evolutionScreenIndicator_">
                     <property name="width_request">0</property>
                     <property name="height_request">0</property>
                     <property name="visible">True</property>

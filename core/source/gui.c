@@ -34,6 +34,7 @@ gboolean switch_screens(void) {
         gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), TRUE);
         gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
         gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_List));
+        gtk_stack_set_visible_child(GTK_STACK(menuBarStack),GTK_WIDGET(mainScreenBar));
         return TRUE;
     }
 }
@@ -70,9 +71,11 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
     if (event->keyval == GDK_KEY_Escape) {
         return switch_screens();
     }
+
     if (event->keyval == GDK_KEY_Down || event->keyval == GDK_KEY_Up) {
         scroll_list_screen(event->keyval);
     }
+
     if (event->keyval == GDK_KEY_Right) {
         if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreen) {
             if (threeStagePokemon == TRUE) {
@@ -90,6 +93,7 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
             currentlySelectedPokemon = animate_pokemon_evolution_cards(currentlySelectedPokemon, event->keyval);
         }
     }
+
     if (event->keyval == GDK_KEY_Left) {
         if (selectingPokemon == FALSE) {
             if (gtk_stack_get_visible_child(GTK_STACK(infoStack)) == threeTierEvolution ||
@@ -141,9 +145,17 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
         }
     }
 
-    // if (event->keyval == GDK_KEY_A) {
-    //     gtk_revealer_set_reveal_child(GTK_REVEALER(submenuBarRevealer), TRUE);
-    // }
+    if (event->keyval == GDK_KEY_A) {
+        printf("Before: %d\n", gtk_revealer_get_child_revealed(GTK_REVEALER(submenuBarRevealer)));
+        gtk_revealer_set_reveal_child(GTK_REVEALER(submenuBarRevealer), TRUE);
+        printf("After: %d\n", gtk_revealer_get_child_revealed(GTK_REVEALER(submenuBarRevealer)));
+    }
+
+    if (event->keyval == GDK_KEY_Z) {
+        gtk_revealer_set_reveal_child(GTK_REVEALER(submenuBarRevealer), FALSE);
+        printf("After: %d\n", gtk_revealer_get_child_revealed(GTK_REVEALER(submenuBarRevealer)));
+        gtk_revealer_set_reveal_child(GTK_REVEALER(submenuBarRevealer), TRUE);
+    }
 
     if (event->keyval == GDK_KEY_8) {
         gtk_stack_set_visible_child(GTK_STACK(menuBarStack), GTK_WIDGET(displayScreenBar));
@@ -163,6 +175,7 @@ void handle_main_window(GtkButton *buttonClicked) {
     gtk_revealer_set_reveal_child(GTK_REVEALER(displayScreenIndicator), TRUE);
     gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), FALSE);
     gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Define));
+    gtk_stack_set_visible_child(GTK_STACK(menuBarStack),GTK_WIDGET(displayScreenBar));
     sprintf(selectedPokemon, "assets/sprites/main/%s.png",
         gtk_widget_get_name(GTK_WIDGET(buttonClicked)));
 
