@@ -39,7 +39,7 @@ void generate_pokedex_buttons(void) {
     char secondTypeString[20];
     char firstTypeCSS[20];
     char secondTypeCSS[20];
-    char formattedPokedexNumber[10];
+    char formattedPokedexNumber[5];
     char rawPokedexNumber[10];
 
     for (int i = 1; i <= POKEDEX_SIZE; i++) {
@@ -107,6 +107,7 @@ void generate_pokedex_buttons(void) {
 }
 
 int fill_pokemon_evolution_entries(char *position, int counter, bool threeTier) {
+    // Declare necessary variables
     char numberString[20];
     char imageString[20];
     char nameString[20];
@@ -117,6 +118,7 @@ int fill_pokemon_evolution_entries(char *position, int counter, bool threeTier) 
     char evolutionLevel[20];
     char screen[10];
 
+    // Determine how many stages the pokemon has
     if (threeTier) {
         sprintf(screen,"%s","three");
     } else {
@@ -124,6 +126,7 @@ int fill_pokemon_evolution_entries(char *position, int counter, bool threeTier) 
     }
 
     sprintf(evolutionLevel, "Lvl. %d", pokedexArray[counter].level);
+
     sprintf(numberString, "%sTier_%sNumber", screen, position);
     sprintf(imageString, "%sTier_%sImage", screen, position);
     sprintf(nameString, "%sTier_%sName", screen, position);
@@ -466,4 +469,49 @@ void rearrange_buttons(void) {
     for (int i = 0; i < POKEDEX_SIZE; i++) {
         gtk_box_reorder_child(GTK_BOX(pokemonEntryList), mainWindowButton[pokedexArray[i].number - 1], i);
     }
+}
+
+void populate_description_screen(int selectedPokemon) {
+    char formattedPokedexNumber[5];
+    char rawPokedexNumber[5];
+    char pokemonImageString[30];
+
+
+    // TODO: THIS IS USED PRETTY OFTEN, SHOULD PROBABLY TURN IT INTO IT'S OWN FUNCTION
+    sprintf(formattedPokedexNumber, "%s","#");
+    sprintf(rawPokedexNumber, "%03d", pokedexArray[selectedPokemon - 1].number);
+    strcat(formattedPokedexNumber, rawPokedexNumber);
+
+    // Populate number
+    gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "descriptionScreen_Number")),
+        formattedPokedexNumber);
+
+    // Populate name
+    gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "descriptionScreen_Name")),
+        pokedexArray[selectedPokemon - 1].name);
+
+    // Populate image
+    sprintf(pokemonImageString,"assets/sprites/main/%s.png", rawPokedexNumber);
+    gtk_image_set_from_file(GTK_IMAGE(gtk_builder_get_object(builder, "descriptionScreen_Image")),
+        pokemonImageString);
+
+    // Set proper color
+    style_given_element("descriptionScreen_topArea",
+        typeEnumStrings[pokedexArray[selectedPokemon - 1].firstType]);
+    // TODO: NEED TO UNSTYLE THE ELEMENT AS WELL SO THAT THE CSS GETS UPDATED
+
+    // Populate description
+    set_pokemon_description_text(GTK_WIDGET(gtk_builder_get_object(builder, "descriptionScreen_Text")));
+
+    // TODO: Populate Height
+    // TODO: Populate Weight
+    /* These two things should be able to be converted between, and properly 
+    diplayed in, metric and imperial. Not to forget that it should also display
+    "Height: " and "Weight: ", respectively, before the relevant data.
+    */
+
+   // TODO: Populate 1st type
+   // TODO: Populate 2nd type
+    /* This shouldn't be too bad, most of the code could actually be lifted from
+    the function which fills in buttons */
 }

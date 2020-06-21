@@ -20,16 +20,17 @@ int sort_pokedex_entries(int sortingStyle);
 int compare_weight(const void *pa, const void *pb);
 void rearrange_buttons(void);
 void test_sorting_functions(void);
-int search_pokemon_list(GtkWidget** buttonArray, 
+int search_pokemon_list(GtkWidget** buttonArray,
                        int desiredOrder,
-                       const char* name, 
-                       float height, 
+                       const char* name,
+                       float height,
                        int greaterHeight,
-                       float weight, 
+                       float weight,
                        int greaterWeight,
                        typeEnum firstType,
                        typeEnum secondType);
 void set_pokemon_description_title(GtkWidget *widget);
+void populate_description_screen(int selectedPokemon);
 
 
 // Sorting alogorithms

@@ -177,6 +177,9 @@ void handle_main_window(GtkButton *buttonClicked) {
     gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Define));
     gtk_stack_set_visible_child(GTK_STACK(menuBarStack),GTK_WIDGET(displayScreenBar));
 
+    // Autopopulate description screen
+    populate_description_screen(atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))));
+
     // Change screen to description screen
     gtk_stack_set_visible_child(GTK_STACK(mainStack), GTK_WIDGET(testScreen));
 }
