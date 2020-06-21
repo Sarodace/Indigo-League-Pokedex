@@ -1,24 +1,39 @@
 @keyframes selected {
   25% {
-    margin-bottom: 32px;
+    margin-bottom: 48px;
   }
   50% {
     margin-bottom: -0px;
   }
   75% {
-    margin-bottom: -32px;
+    margin-bottom: -48px;
   }
   100% {
     margin-bottom: 0px;
   }
 }
 
+@keyframes deselected {
+  100% {
+    margin-bottom: 0px;
+  }
+}
+
+/* Rename to just selected */
 .currently_selected {
   animation-name: selected;
-  animation-duration: 2s;
-  /* animation-direction: alternate; */
+  animation-duration: 1.5s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
+  animation-fill-mode: forwards
+}
+
+.deselected {
+  animation-name: deselected;
+  animation-duration: 2s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards
 }
 
 /* Better evolution screen */
@@ -80,9 +95,6 @@
 
   box-shadow: 0px 2px 4px gray;
   border: 1.5px solid;
-
-  background-color: #c6f4a1;
-  border-color: #9bcc73;
 }
 
 .pokemon_description_bottomBox {

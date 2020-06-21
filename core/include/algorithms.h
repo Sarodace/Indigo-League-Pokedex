@@ -20,7 +20,7 @@ int sort_pokedex_entries(int sortingStyle);
 int compare_weight(const void *pa, const void *pb);
 void rearrange_buttons(void);
 void test_sorting_functions(void);
-int search_Pokemon_List(GtkWidget** buttonArray, 
+int search_pokemon_list(GtkWidget** buttonArray, 
                        int desiredOrder,
                        const char* name, 
                        float height, 

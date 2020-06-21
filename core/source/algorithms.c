@@ -7,7 +7,7 @@ extern int currentHeight;
 void pokemon_search(GtkWidget *entry, gpointer user_data) {
     char relevantPokemonString[25];
 
-    int relevantPokemon = search_Pokemon_List(mainWindowButton,
+    int relevantPokemon = search_pokemon_list(mainWindowButton,
         gtk_combo_box_get_active(GTK_COMBO_BOX(orderComboBox)),
         gtk_entry_get_text(GTK_ENTRY(pokemonNameSearchEntry)),
         gtk_spin_button_get_value(GTK_SPIN_BUTTON(pokemonHeightSpinButton)),
@@ -150,6 +150,7 @@ int fill_pokemon_evolution_entries(char *position, int counter, bool threeTier) 
     }
 
     if (position == "3rd") {
+        // CHANGE THE CONDITION IN THIS IF STATEMENT TO SOMETHING MORE HUMAN-FRIENDLY
         if (pokedexArray[counter].evolutionMethod > 1) {
             char pathToImage[40];
             sprintf(pathToImage, "assets/sprites/items/%s.png",
@@ -254,7 +255,7 @@ int find_evolutions(int selectedPokemon) {
 }
 
 // Searches Pokemon list for Pokemon who satisfy user-provided constraints
-int search_Pokemon_List(GtkWidget** buttonArray,
+int search_pokemon_list(GtkWidget** buttonArray,
                        int desiredOrder,
                        const char* name, 
                        float height, 

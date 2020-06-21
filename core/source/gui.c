@@ -169,19 +169,15 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
 
 // Handle logic in the main window
 void handle_main_window(GtkButton *buttonClicked) {
-    char selectedPokemon[40];
-
-    // Assemble path to pokemon image
+    // Change active icon on top menubar
     gtk_revealer_set_reveal_child(GTK_REVEALER(displayScreenIndicator), TRUE);
     gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), FALSE);
+
+    // Change information on the top and bottom menubars
     gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Define));
     gtk_stack_set_visible_child(GTK_STACK(menuBarStack),GTK_WIDGET(displayScreenBar));
-    sprintf(selectedPokemon, "assets/sprites/main/%s.png",
-        gtk_widget_get_name(GTK_WIDGET(buttonClicked)));
 
-    // // Select relevant pokemon and then switch to child
-    // gtk_image_set_from_file(GTK_IMAGE(pokemonImage), selectedPokemon);
-    // gtk_stack_set_visible_child(GTK_STACK(mainStack), GTK_WIDGET(pokemonImage));
+    // Change screen to description screen
     gtk_stack_set_visible_child(GTK_STACK(mainStack), GTK_WIDGET(testScreen));
 }
 
