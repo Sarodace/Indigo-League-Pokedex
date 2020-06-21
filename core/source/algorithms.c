@@ -475,7 +475,8 @@ void populate_description_screen(int selectedPokemon) {
     char formattedPokedexNumber[5];
     char rawPokedexNumber[5];
     char pokemonImageString[30];
-
+    char firstTypeCSS[20];
+    char secondTypeCSS[20];
 
     // TODO: THIS IS USED PRETTY OFTEN, SHOULD PROBABLY TURN IT INTO IT'S OWN FUNCTION
     sprintf(formattedPokedexNumber, "%s","#");
@@ -496,8 +497,12 @@ void populate_description_screen(int selectedPokemon) {
         pokemonImageString);
 
     // Set proper color
-    style_given_element("descriptionScreen_topArea",
-        typeEnumStrings[pokedexArray[selectedPokemon - 1].firstType]);
+    // style_given_element("descriptionScreen_topArea",
+    //     typeEnumStrings[pokedexArray[selectedPokemon - 1].firstType]);
+    overwrite_style_given_element("descriptionScreen_topArea",
+        typeEnumStrings[pokedexArray[selectedPokemon - 1].firstType],
+        typeEnumStrings, POKEMON_TYPES);
+
     // TODO: NEED TO UNSTYLE THE ELEMENT AS WELL SO THAT THE CSS GETS UPDATED
 
     // Populate description
@@ -514,4 +519,21 @@ void populate_description_screen(int selectedPokemon) {
    // TODO: Populate 2nd type
     /* This shouldn't be too bad, most of the code could actually be lifted from
     the function which fills in buttons */
+
+    sprintf(firstTypeCSS, "%s_type", typeEnumStrings[pokedexArray[selectedPokemon - 1].firstType]);
+    sprintf(secondTypeCSS, "%s_type", typeEnumStrings[pokedexArray[selectedPokemon - 1].secondType]);
+
+    // Set Pokemon's first type...
+    gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "descriptionScreen_Type1")),
+        typeEnumStrings[pokedexArray[selectedPokemon-1].firstType]);
+    // Then apply the CSS to format it to the correct color
+    overwrite_style_given_element("descriptionScreen_Type1", firstTypeCSS,
+        typeEnumStrings, POKEMON_TYPES);
+
+    // Set Pokemon's second type...
+    gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "descriptionScreen_Type2")),
+        typeEnumStrings[pokedexArray[selectedPokemon-1].secondType]);
+    // Then apply the CSS to format it to the correct color
+    overwrite_style_given_element("descriptionScreen_Type2", secondTypeCSS,
+        typeEnumStrings, POKEMON_TYPES);
 }

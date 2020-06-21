@@ -7549,7 +7549,7 @@
                                     <property name="margin_left">5</property>
                                     <property name="label" translatable="yes">Venusaur</property>
                                     <style>
-                                      <class name="nameEntryScreen"/>
+                                      <class name="pokemon_description_name"/>
                                     </style>
                                   </object>
                                   <packing>
@@ -7726,7 +7726,7 @@
                                 <property name="vexpand">True</property>
                                 <property name="pixbuf">../../sprites/main/003.png</property>
                                 <style>
-                                  <class name="evolution_screen_icon"/>
+                                  <class name="evolution_card_icon"/>
                                 </style>
                               </object>
                               <packing>
@@ -7743,8 +7743,7 @@
                           </packing>
                         </child>
                         <style>
-                          <class name="pokemon_description_topBox"/>
-                          <class name="Water"/>
+                          <class name="pokemon_description_top_box"/>
                         </style>
                       </object>
                       <packing>
@@ -7771,8 +7770,8 @@
                         <property name="xalign">0.15000000596046448</property>
                         <property name="yalign">0.05000000074505806</property>
                         <style>
-                          <class name="pokemon_description_bottomBox"/>
                           <class name="pokemon_description_text"/>
+                          <class name="pokemon_description_bottom_box"/>
                         </style>
                       </object>
                       <packing>
@@ -7830,7 +7829,7 @@
                         <property name="can_focus">False</property>
                         <property name="pixbuf">../../sprites/main/001.png</property>
                         <style>
-                          <class name="evolution_screen_icon"/>
+                          <class name="evolution_card_icon"/>
                         </style>
                       </object>
                       <packing>
@@ -7845,7 +7844,7 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Bulbasaur</property>
                         <style>
-                          <class name="evo_screen_text"/>
+                          <class name="evolution_card_text"/>
                         </style>
                       </object>
                       <packing>
@@ -7855,8 +7854,7 @@
                       </packing>
                     </child>
                     <style>
-                      <class name="Grass"/>
-                      <class name="evolutionCard"/>
+                      <class name="evolution_card"/>
                     </style>
                   </object>
                   <packing>
@@ -7933,7 +7931,7 @@
                         <property name="can_focus">False</property>
                         <property name="pixbuf">../../sprites/main/002.png</property>
                         <style>
-                          <class name="evolution_screen_icon"/>
+                          <class name="evolution_card_icon"/>
                         </style>
                       </object>
                       <packing>
@@ -7948,7 +7946,7 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Ivysaur</property>
                         <style>
-                          <class name="evo_screen_text"/>
+                          <class name="evolution_card_text"/>
                         </style>
                       </object>
                       <packing>
@@ -7958,8 +7956,7 @@
                       </packing>
                     </child>
                     <style>
-                      <class name="Grass"/>
-                      <class name="evolutionCard"/>
+                      <class name="evolution_card"/>
                     </style>
                   </object>
                   <packing>
@@ -8058,7 +8055,7 @@
                         <property name="can_focus">False</property>
                         <property name="pixbuf">../../sprites/main/003.png</property>
                         <style>
-                          <class name="evolution_screen_icon"/>
+                          <class name="evolution_card_icon"/>
                         </style>
                       </object>
                       <packing>
@@ -8073,7 +8070,7 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Venusaur</property>
                         <style>
-                          <class name="evo_screen_text"/>
+                          <class name="evolution_card_text"/>
                         </style>
                       </object>
                       <packing>
@@ -8083,8 +8080,7 @@
                       </packing>
                     </child>
                     <style>
-                      <class name="Grass"/>
-                      <class name="evolutionCard"/>
+                      <class name="evolution_card"/>
                     </style>
                   </object>
                   <packing>
@@ -8129,7 +8125,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
-                          <class name="evolution_screen_icon"/>
+                          <class name="evolution_card_icon"/>
                         </style>
                       </object>
                       <packing>
@@ -8144,7 +8140,7 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Ratata</property>
                         <style>
-                          <class name="evo_screen_text"/>
+                          <class name="evolution_card_text"/>
                         </style>
                       </object>
                       <packing>
@@ -8154,7 +8150,7 @@
                       </packing>
                     </child>
                     <style>
-                      <class name="evolutionCard"/>
+                      <class name="evolution_card"/>
                     </style>
                   </object>
                   <packing>
@@ -8245,7 +8241,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
-                          <class name="evolution_screen_icon"/>
+                          <class name="evolution_card_icon"/>
                         </style>
                       </object>
                       <packing>
@@ -8260,7 +8256,7 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Raticate</property>
                         <style>
-                          <class name="evo_screen_text"/>
+                          <class name="evolution_card_text"/>
                         </style>
                       </object>
                       <packing>
@@ -8270,7 +8266,7 @@
                       </packing>
                     </child>
                     <style>
-                      <class name="evolutionCard"/>
+                      <class name="evolution_card"/>
                     </style>
                   </object>
                   <packing>
@@ -9086,7 +9082,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
-                          <class name="evolution_screen_icon"/>
+                          <class name="evolution_card_icon"/>
                         </style>
                       </object>
                       <packing>
@@ -9100,7 +9096,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
-                          <class name="evo_screen_text"/>
+                          <class name="evolution_card_text"/>
                         </style>
                       </object>
                       <packing>
@@ -9110,7 +9106,7 @@
                       </packing>
                     </child>
                     <style>
-                      <class name="evolutionCard"/>
+                      <class name="evolution_card"/>
                     </style>
                   </object>
                   <packing>
@@ -9180,7 +9176,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
-                          <class name="evolution_screen_icon"/>
+                          <class name="evolution_card_icon"/>
                         </style>
                       </object>
                       <packing>
@@ -9194,7 +9190,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
-                          <class name="evo_screen_text"/>
+                          <class name="evolution_card_text"/>
                         </style>
                       </object>
                       <packing>
@@ -9204,7 +9200,7 @@
                       </packing>
                     </child>
                     <style>
-                      <class name="evolutionCard"/>
+                      <class name="evolution_card"/>
                     </style>
                   </object>
                   <packing>
@@ -9297,7 +9293,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
-                          <class name="evolution_screen_icon"/>
+                          <class name="evolution_card_icon"/>
                         </style>
                       </object>
                       <packing>
@@ -9311,7 +9307,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
-                          <class name="evo_screen_text"/>
+                          <class name="evolution_card_text"/>
                         </style>
                       </object>
                       <packing>
@@ -9321,7 +9317,7 @@
                       </packing>
                     </child>
                     <style>
-                      <class name="evolutionCard"/>
+                      <class name="evolution_card"/>
                     </style>
                   </object>
                   <packing>
@@ -9366,7 +9362,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
-                          <class name="evolution_screen_icon"/>
+                          <class name="evolution_card_icon"/>
                         </style>
                       </object>
                       <packing>
@@ -9381,7 +9377,7 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Ratata</property>
                         <style>
-                          <class name="evo_screen_text"/>
+                          <class name="evolution_card_text"/>
                         </style>
                       </object>
                       <packing>
@@ -9391,7 +9387,7 @@
                       </packing>
                     </child>
                     <style>
-                      <class name="evolutionCard"/>
+                      <class name="evolution_card"/>
                     </style>
                   </object>
                   <packing>
@@ -9482,7 +9478,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
-                          <class name="evolution_screen_icon"/>
+                          <class name="evolution_card_icon"/>
                         </style>
                       </object>
                       <packing>
@@ -9497,7 +9493,7 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Raticate</property>
                         <style>
-                          <class name="evo_screen_text"/>
+                          <class name="evolution_card_text"/>
                         </style>
                       </object>
                       <packing>
@@ -9507,7 +9503,7 @@
                       </packing>
                     </child>
                     <style>
-                      <class name="evolutionCard"/>
+                      <class name="evolution_card"/>
                     </style>
                   </object>
                   <packing>

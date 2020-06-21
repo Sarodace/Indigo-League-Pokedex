@@ -25,6 +25,21 @@ void style_evolution_card(const char* elementID, const char* cssTag) {
     gtk_style_context_add_class(context, cssTag);
 }
 
+void overwrite_style_given_element(const char* elementID, const char* cssTag, const char** cssList, int cssList_size) {
+    GtkStyleContext   *context;
+    context = gtk_widget_get_style_context(GTK_WIDGET(gtk_builder_get_object(builder, 
+      elementID)));
+
+    for (int i = 0; i < cssList_size; i++) {
+        if (gtk_style_context_has_class(context, cssList[i])) {
+            gtk_style_context_remove_class(context, cssList[i]);
+        }
+    }
+
+    gtk_style_context_add_class(context, cssTag);
+}
+
+
 void unstyle_moving_evolution_card (const char* elementID, const char* cssTag) {
     GtkStyleContext   *context;
     context = gtk_widget_get_style_context(GTK_WIDGET(gtk_builder_get_object(builder, 
