@@ -9,6 +9,7 @@
 #include <stdbool.h> 
 
 #define POKEDEX_SIZE 51
+#define POKEMON_TYPES 18
 
 // VARIABLES
 // Declare & Define local variables

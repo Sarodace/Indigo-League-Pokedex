@@ -34,6 +34,7 @@ gboolean switch_screens(void) {
         gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), TRUE);
         gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
         gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_List));
+        gtk_stack_set_visible_child(GTK_STACK(menuBarStack),GTK_WIDGET(mainScreenBar));
         return TRUE;
     }
 }
@@ -70,17 +71,20 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
     if (event->keyval == GDK_KEY_Escape) {
         return switch_screens();
     }
+
     if (event->keyval == GDK_KEY_Down || event->keyval == GDK_KEY_Up) {
         scroll_list_screen(event->keyval);
     }
+
     if (event->keyval == GDK_KEY_Right) {
         if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreen) {
-            if (godVar == 1) {
+            if (threeStagePokemon == TRUE) {
                 gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(threeTierEvolution));
+                gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(testScreenTwo));
             } else {
                 gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(twoTierEvolution));
+                gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(testScreenThree));
             }
-            gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(testScreenTwo));
             gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Evos));
             gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), FALSE);
             gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), TRUE);
@@ -89,6 +93,7 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
             currentlySelectedPokemon = animate_pokemon_evolution_cards(currentlySelectedPokemon, event->keyval);
         }
     }
+
     if (event->keyval == GDK_KEY_Left) {
         if (selectingPokemon == FALSE) {
             if (gtk_stack_get_visible_child(GTK_STACK(infoStack)) == threeTierEvolution ||
@@ -106,8 +111,25 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
     }
 
     if (event->keyval == GDK_KEY_space) {
-        char relevantPokemonCard[25];
-        sprintf(relevantPokemonCard, "threeTierEvolution_Card%d", currentlySelectedPokemon);
+        char relevantPokemonCard[30];
+
+        /* Eventually will go back to this once I properly fix the definition
+        styling function */
+        // sprintf(relevantPokemonCard, "threeTierEvolution_Card%d", currentlySelectedPokemon);
+
+        /* Temporary fix because this is a lot easier than changing a bunch of
+        variable names :^) */
+        switch (currentlySelectedPokemon) {
+        case 0:
+            sprintf(relevantPokemonCard, "threeTierEvolution_1stCard");
+            break;
+        case 1:
+            sprintf(relevantPokemonCard, "threeTierEvolution_2ndCard");
+            break;
+        case 2:
+            sprintf(relevantPokemonCard, "threeTierEvolution_3rdCard");
+            break;
+        }
 
         if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreenTwo) {
             if (selectingPokemon == TRUE) {
@@ -123,9 +145,17 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
         }
     }
 
-    // if (event->keyval == GDK_KEY_A) {
-    //     gtk_revealer_set_reveal_child(GTK_REVEALER(submenuBarRevealer), TRUE);
-    // }
+    if (event->keyval == GDK_KEY_A) {
+        printf("Before: %d\n", gtk_revealer_get_child_revealed(GTK_REVEALER(submenuBarRevealer)));
+        gtk_revealer_set_reveal_child(GTK_REVEALER(submenuBarRevealer), TRUE);
+        printf("After: %d\n", gtk_revealer_get_child_revealed(GTK_REVEALER(submenuBarRevealer)));
+    }
+
+    if (event->keyval == GDK_KEY_Z) {
+        gtk_revealer_set_reveal_child(GTK_REVEALER(submenuBarRevealer), FALSE);
+        printf("After: %d\n", gtk_revealer_get_child_revealed(GTK_REVEALER(submenuBarRevealer)));
+        gtk_revealer_set_reveal_child(GTK_REVEALER(submenuBarRevealer), TRUE);
+    }
 
     if (event->keyval == GDK_KEY_8) {
         gtk_stack_set_visible_child(GTK_STACK(menuBarStack), GTK_WIDGET(displayScreenBar));
@@ -139,18 +169,18 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
 
 // Handle logic in the main window
 void handle_main_window(GtkButton *buttonClicked) {
-    char selectedPokemon[40];
-
-    // Assemble path to pokemon image
+    // Change active icon on top menubar
     gtk_revealer_set_reveal_child(GTK_REVEALER(displayScreenIndicator), TRUE);
     gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), FALSE);
-    gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Define));
-    sprintf(selectedPokemon, "assets/sprites/main/%s.png",
-        gtk_widget_get_name(GTK_WIDGET(buttonClicked)));
 
-    // // Select relevant pokemon and then switch to child
-    // gtk_image_set_from_file(GTK_IMAGE(pokemonImage), selectedPokemon);
-    // gtk_stack_set_visible_child(GTK_STACK(mainStack), GTK_WIDGET(pokemonImage));
+    // Change information on the top and bottom menubars
+    gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Define));
+    gtk_stack_set_visible_child(GTK_STACK(menuBarStack),GTK_WIDGET(displayScreenBar));
+
+    // Autopopulate description screen
+    populate_description_screen(atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))));
+
+    // Change screen to description screen
     gtk_stack_set_visible_child(GTK_STACK(mainStack), GTK_WIDGET(testScreen));
 }
 
@@ -218,17 +248,17 @@ int animate_pokemon_evolution_cards(int pokemonStage, int buttonPress) {
         // CASES 1 & 2 CAN BE COMPRESSED INTO ONE CASE
         case 1:
             // Unstyle currently hovering card
-            unstyle_moving_evolution_card("threeTierEvolution_Card1", "currently_selected");
+            unstyle_moving_evolution_card("threeTierEvolution_2ndCard", "currently_selected");
 
             // Style desired card to the left of it
-            style_given_element("threeTierEvolution_Card0", "currently_selected");
+            style_given_element("threeTierEvolution_1stCard", "currently_selected");
             return 0; // pokemonStage -= 1
         case 2:
             // Unstyle currently hovering card
-            unstyle_moving_evolution_card("threeTierEvolution_Card2", "currently_selected");
+            unstyle_moving_evolution_card("threeTierEvolution_3rdCard", "currently_selected");
 
             // Style desired card to the left of it
-            style_given_element("threeTierEvolution_Card1", "currently_selected");
+            style_given_element("threeTierEvolution_2ndCard", "currently_selected");
             return 1; // pokemonStage -= 1;
         }
     }
@@ -236,17 +266,17 @@ int animate_pokemon_evolution_cards(int pokemonStage, int buttonPress) {
         switch (pokemonStage) {
         case 0:
             // Unstyle currently hovering card
-            unstyle_moving_evolution_card("threeTierEvolution_Card0", "currently_selected");
+            unstyle_moving_evolution_card("threeTierEvolution_1stCard", "currently_selected");
 
             // Style desired card to the left of it
-            style_given_element("threeTierEvolution_Card1", "currently_selected");
+            style_given_element("threeTierEvolution_2ndCard", "currently_selected");
             return 1; //pokemonStage += 1;
         case 1:
             // Unstyle currently hovering card
-            unstyle_moving_evolution_card("threeTierEvolution_Card1", "currently_selected");
+            unstyle_moving_evolution_card("threeTierEvolution_2ndCard", "currently_selected");
 
             // Style desired card to the left of it
-            style_given_element("threeTierEvolution_Card2", "currently_selected");
+            style_given_element("threeTierEvolution_3rdCard", "currently_selected");
             return 2; // pokemonStage += 1;
         case 2:
             return 2;

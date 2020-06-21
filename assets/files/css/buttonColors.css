@@ -1,28 +1,44 @@
+/* Animations */
 @keyframes selected {
   25% {
-    margin-bottom: 32px;
+    margin-bottom: 48px;
   }
   50% {
     margin-bottom: -0px;
   }
   75% {
-    margin-bottom: -32px;
+    margin-bottom: -48px;
   }
   100% {
     margin-bottom: 0px;
   }
 }
 
-.currently_selected {
-  animation-name: selected;
-  animation-duration: 2s;
-  /* animation-direction: alternate; */
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+@keyframes deselected {
+  100% {
+    margin-bottom: 0px;
+  }
 }
 
-/* Better evolution screen */
-.evolutionCard {
+/* Rename to just selected */
+.currently_selected {
+  animation-name: selected;
+  animation-duration: 1.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards
+}
+
+.deselected {
+  animation-name: deselected;
+  animation-duration: 2s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards
+}
+
+/* Evolution screen */
+.evolution_card {
   border: 1.5px solid;
   border-radius: 10px;
   box-shadow: 0px 1px 4px gray;
@@ -30,27 +46,20 @@
   min-width: 90px;
 }
 
-.evolution_screen_icon {
+.evolution_card_icon {
   background-color: white;
   border-radius: 1000px;
   margin: 5px 25px 5px 25px;
-	/* max-height: 70px;
-  max-width: 70px; */
 }
 
-.evo_screen_text {
+.evolution_card_text {
   font-family: "Lucida Console", Courier, monospace;
   color: #616161;
   font-weight: bold;
   font-size: 14px;
 }
 
-/* Window */
-.test {
-  background-color: #e0d8c0;
-}
-
-/* MENU BAR */
+/* Menu bar */
 .menu_bar {
   background-color: #263137;
   box-shadow: 0px 1px 4px gray;
@@ -60,35 +69,26 @@
   color: white;
 }
 
+/* Description screen */
+.pokemon_description_name {
+  font-family: "Lucida Console", Courier, monospace;
+  font-weight: bold;
+  font-size: 20px;
+}
+
 .pokemon_description_text {
   font-size: 20px;
 }
 
-.pokemon_description_text2 {
-  background-color: #e2e2e2;
-  border-radius: 15px;
-  margin: 5px;
-  font-size: 20px;
-
-  box-shadow: 0px 2px 4px gray;
-  border: 1.5px solid;
-}
-
-.pokemon_description_topBox {
+.pokemon_description_top_box {
   border-radius: 15px 15px 0px 0px;
-  /* margin: 5px; */
 
   box-shadow: 0px 2px 4px gray;
   border: 1.5px solid;
-
-  background-color: #c6f4a1;
-  border-color: #9bcc73;
 }
 
-.pokemon_description_bottomBox {
-  /* background-color: #e2e2e2; */
+.pokemon_description_bottom_box {
   border-radius: 0px 0px 15px 15px;
-  /* margin: 5px; */
 
   box-shadow: 0px 2px 4px gray;
   border: 1.5px solid;
@@ -96,39 +96,23 @@
   background-color: #e2e2e2;
 }
 
-/* ICON FORMAT */
+/* List screen*/
 .icon{
   background-color: white;
   border-radius: 20px;
   margin: 0px 0px 0px 5px;
 }
 
-/* BUTTON FORMAT */
 .button{
   border-radius: 100px;
   box-shadow: 0px 2px 4px gray;
   border: 1.5px solid;
 }
 
-.buttonBox{
-  border-radius: 10px;
-  box-shadow: 0px 2px 4px gray;
-  border: 1.5px solid;
-  min-width: 50px;
-  min-height: 50px;
-}
-
-/* BUTTON ENTRY FORMAT */
 .name{
   font-family: "Lucida Console", Courier, monospace;
   font-weight: bold;
   font-size: 14px;
-}
-
-.nameEntryScreen {
-  font-family: "Lucida Console", Courier, monospace;
-  font-weight: bold;
-  font-size: 20px;
 }
 
 .number{
@@ -146,7 +130,8 @@
   min-width: 50px;
 }
 
-/* SEARCH BARS*/
+/* Search screen (not renaming variables right now because I'm planning on
+reworking the search screen)*/
 .search {
   margin: 5px 20px 5px 20px;
   border-radius: 50px;
@@ -165,7 +150,7 @@
   margin: 5px 20px 5px 0px;
 }
 
-/* TYPES PRIMARY-SHADES */
+/* Pokemon type colors (Light) */
 .Grass{
   background-color: #c6f4a1;
   border-color: #9bcc73;
@@ -206,7 +191,7 @@
   border-color: #a58c6f;
 }
 
-/* TYPES SECONDARY-SHADES */
+/* Pokemon type colors (Dark) */
 .Poison_type{
   background-color: #a074c4;
 }
@@ -243,18 +228,15 @@
   background-color: #a58c6f;
 }
 
-/* |      Poison      | */
-/* |      Flying      | */
-/* |       Fire       | */
-/* |      Grass       | */
-/* |      Water       | */
-/* |       Bug        | */
-/* |      Dragon      | */
-/* |       Rock       | */
-/* |      Ground      | */
-/* |      Normal      | */
-/* |       Dark       | */
-/* |      Ghost       | */
-/* |      Steel       | */
-/* |      Psychic     | */
-/* |     Electric     | */
+
+/* SOON TO BE REMOVED */
+/* ONLY USED IN OLD INFO SCREEN */
+.pokemon_description_text2 {
+  background-color: #e2e2e2;
+  border-radius: 15px;
+  margin: 5px;
+  font-size: 20px;
+
+  box-shadow: 0px 2px 4px gray;
+  border: 1.5px solid;
+}

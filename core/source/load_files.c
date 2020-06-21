@@ -1,5 +1,6 @@
 #include "load_files.h"
 
+// eventually make this return the text
 void set_pokemon_description_text(GtkWidget *selectedPokemon) {
     FILE* file = fopen("assets/files/txt/pokedex_entries.txt", "r");
     char line[128];
@@ -8,7 +9,7 @@ void set_pokemon_description_text(GtkWidget *selectedPokemon) {
     while (fgets(line, sizeof(line), file)) {
         i++;
         if(i == atoi(gtk_widget_get_name(selectedPokemon))) {
-            gtk_label_set_text(GTK_LABEL(entryScreen), line);
+            gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "descriptionScreen_Text")), line);
         }
     }
     fclose(file);

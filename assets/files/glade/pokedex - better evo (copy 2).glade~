@@ -275,7 +275,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkRevealer" id="descriptionScreenIndicator">
+                      <object class="GtkRevealer" id="descriptionScreenIndicator1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="transition_type">slide-left</property>
@@ -318,7 +318,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkRevealer" id="evolutionScreenIndicator">
+                      <object class="GtkRevealer" id="evolutionScreenIndicator1">
                         <property name="width_request">0</property>
                         <property name="height_request">0</property>
                         <property name="visible">True</property>
@@ -7507,7 +7507,7 @@
                     <property name="orientation">vertical</property>
                     <property name="homogeneous">True</property>
                     <child>
-                      <object class="GtkBox" id="descriptionScreen_topArea">
+                      <object class="GtkBox">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="valign">baseline</property>
@@ -7525,12 +7525,12 @@
                             <property name="hexpand">True</property>
                             <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkBox">
+                              <object class="GtkBox" id="infoStackBar1">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="margin_top">5</property>
                                 <child>
-                                  <object class="GtkLabel" id="descriptionScreen_Number">
+                                  <object class="GtkLabel" id="threeTier_1stNumber4">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
                                     <property name="margin_left">5</property>
@@ -7543,13 +7543,13 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkLabel" id="descriptionScreen_Name">
+                                  <object class="GtkLabel" id="infoStackName1">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
                                     <property name="margin_left">5</property>
                                     <property name="label" translatable="yes">Venusaur</property>
                                     <style>
-                                      <class name="pokemon_description_name"/>
+                                      <class name="nameEntryScreen"/>
                                     </style>
                                   </object>
                                   <packing>
@@ -7558,6 +7558,9 @@
                                     <property name="position">1</property>
                                   </packing>
                                 </child>
+                                <style>
+                                  <class name="Grass"/>
+                                </style>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -7566,7 +7569,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="descriptionScreen_Species">
+                              <object class="GtkLabel" id="infoStackSpecies2">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="margin_left">5</property>
@@ -7599,7 +7602,7 @@
                                         <property name="can_focus">False</property>
                                         <property name="halign">center</property>
                                         <child>
-                                          <object class="GtkLabel" id="descriptionScreen_Type1">
+                                          <object class="GtkLabel" id="type1_52">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
                                             <property name="margin_top">5</property>
@@ -7618,7 +7621,7 @@
                                           </packing>
                                         </child>
                                         <child>
-                                          <object class="GtkLabel" id="descriptionScreen_Type2">
+                                          <object class="GtkLabel" id="type1_53">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
                                             <property name="margin_right">5</property>
@@ -7637,6 +7640,9 @@
                                             <property name="position">1</property>
                                           </packing>
                                         </child>
+                                        <style>
+                                          <class name="Grass"/>
+                                        </style>
                                       </object>
                                       <packing>
                                         <property name="expand">False</property>
@@ -7652,7 +7658,7 @@
                                         <property name="margin_top">5</property>
                                         <property name="orientation">vertical</property>
                                         <child>
-                                          <object class="GtkLabel" id="descriptionScreen_Height">
+                                          <object class="GtkLabel">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
                                             <property name="label" translatable="yes">Height: 6'07"</property>
@@ -7666,7 +7672,7 @@
                                           </packing>
                                         </child>
                                         <child>
-                                          <object class="GtkLabel" id="descriptionScreen_Weight">
+                                          <object class="GtkLabel">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
                                             <property name="label" translatable="yes">Weight: 220.5 lbs.</property>
@@ -7678,6 +7684,9 @@
                                             <property name="position">1</property>
                                           </packing>
                                         </child>
+                                        <style>
+                                          <class name="Grass"/>
+                                        </style>
                                       </object>
                                       <packing>
                                         <property name="expand">False</property>
@@ -7690,6 +7699,42 @@
                                     <property name="expand">False</property>
                                     <property name="fill">True</property>
                                     <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkBox">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="halign">center</property>
+                                    <property name="valign">start</property>
+                                    <property name="margin_left">10</property>
+                                    <property name="margin_top">5</property>
+                                    <property name="orientation">vertical</property>
+                                    <child>
+                                      <object class="GtkImage">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="halign">center</property>
+                                        <property name="valign">center</property>
+                                        <property name="margin_top">10</property>
+                                        <property name="margin_bottom">10</property>
+                                        <property name="vexpand">True</property>
+                                        <property name="pixbuf">../../sprites/footprints/F003.png</property>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <style>
+                                      <class name="Grass"/>
+                                    </style>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
                                   </packing>
                                 </child>
                               </object>
@@ -7707,7 +7752,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkBox">
+                          <object class="GtkBox" id="threeTierEvolution_1stCard3">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
@@ -7718,7 +7763,7 @@
                             <property name="margin_bottom">10</property>
                             <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkImage" id="descriptionScreen_Image">
+                              <object class="GtkImage" id="threeTier_1stImage3">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="halign">center</property>
@@ -7726,7 +7771,7 @@
                                 <property name="vexpand">True</property>
                                 <property name="pixbuf">../../sprites/main/003.png</property>
                                 <style>
-                                  <class name="evolution_card_icon"/>
+                                  <class name="evolution_screen_icon"/>
                                 </style>
                               </object>
                               <packing>
@@ -7735,6 +7780,9 @@
                                 <property name="position">0</property>
                               </packing>
                             </child>
+                            <style>
+                              <class name="Grass"/>
+                            </style>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -7743,7 +7791,7 @@
                           </packing>
                         </child>
                         <style>
-                          <class name="pokemon_description_top_box"/>
+                          <class name="pokemon_description_topBox"/>
                         </style>
                       </object>
                       <packing>
@@ -7753,7 +7801,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="descriptionScreen_Text">
+                      <object class="GtkLabel" id="entryScreen1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="valign">baseline</property>
@@ -7770,8 +7818,8 @@
                         <property name="xalign">0.15000000596046448</property>
                         <property name="yalign">0.05000000074505806</property>
                         <style>
+                          <class name="pokemon_description_bottomBox"/>
                           <class name="pokemon_description_text"/>
-                          <class name="pokemon_description_bottom_box"/>
                         </style>
                       </object>
                       <packing>
@@ -7803,7 +7851,7 @@
                 <property name="vexpand">True</property>
                 <property name="spacing">10</property>
                 <child>
-                  <object class="GtkBox" id="threeTierEvolution_1stCard">
+                  <object class="GtkBox" id="threeTierEvolution_Card0">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
@@ -7829,7 +7877,7 @@
                         <property name="can_focus">False</property>
                         <property name="pixbuf">../../sprites/main/001.png</property>
                         <style>
-                          <class name="evolution_card_icon"/>
+                          <class name="evolution_screen_icon"/>
                         </style>
                       </object>
                       <packing>
@@ -7844,7 +7892,7 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Bulbasaur</property>
                         <style>
-                          <class name="evolution_card_text"/>
+                          <class name="evo_screen_text"/>
                         </style>
                       </object>
                       <packing>
@@ -7854,7 +7902,8 @@
                       </packing>
                     </child>
                     <style>
-                      <class name="evolution_card"/>
+                      <class name="Grass"/>
+                      <class name="evolutionCard"/>
                     </style>
                   </object>
                   <packing>
@@ -7872,7 +7921,7 @@
                     <property name="vexpand">True</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkLabel" id="threeTier_1stEvolution">
+                      <object class="GtkLabel" id="threeTier_Evolution1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Lvl. 16</property>
@@ -7905,7 +7954,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="threeTierEvolution_2ndCard">
+                  <object class="GtkBox" id="threeTierEvolution_Card1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
@@ -7931,7 +7980,7 @@
                         <property name="can_focus">False</property>
                         <property name="pixbuf">../../sprites/main/002.png</property>
                         <style>
-                          <class name="evolution_card_icon"/>
+                          <class name="evolution_screen_icon"/>
                         </style>
                       </object>
                       <packing>
@@ -7946,7 +7995,7 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Ivysaur</property>
                         <style>
-                          <class name="evolution_card_text"/>
+                          <class name="evo_screen_text"/>
                         </style>
                       </object>
                       <packing>
@@ -7956,7 +8005,8 @@
                       </packing>
                     </child>
                     <style>
-                      <class name="evolution_card"/>
+                      <class name="Grass"/>
+                      <class name="evolutionCard"/>
                     </style>
                   </object>
                   <packing>
@@ -8029,7 +8079,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="threeTierEvolution_3rdCard">
+                  <object class="GtkBox" id="threeTierEvolution_Card2">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
@@ -8055,7 +8105,7 @@
                         <property name="can_focus">False</property>
                         <property name="pixbuf">../../sprites/main/003.png</property>
                         <style>
-                          <class name="evolution_card_icon"/>
+                          <class name="evolution_screen_icon"/>
                         </style>
                       </object>
                       <packing>
@@ -8070,7 +8120,7 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Venusaur</property>
                         <style>
-                          <class name="evolution_card_text"/>
+                          <class name="evo_screen_text"/>
                         </style>
                       </object>
                       <packing>
@@ -8080,7 +8130,8 @@
                       </packing>
                     </child>
                     <style>
-                      <class name="evolution_card"/>
+                      <class name="Grass"/>
+                      <class name="evolutionCard"/>
                     </style>
                   </object>
                   <packing>
@@ -8104,7 +8155,7 @@
                 <property name="valign">center</property>
                 <property name="spacing">10</property>
                 <child>
-                  <object class="GtkBox" id="twoTierEvolution_1stCard">
+                  <object class="GtkBox" id="twoTierEvolution_Card0">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="orientation">vertical</property>
@@ -8125,7 +8176,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
-                          <class name="evolution_card_icon"/>
+                          <class name="evolution_screen_icon"/>
                         </style>
                       </object>
                       <packing>
@@ -8140,7 +8191,7 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Ratata</property>
                         <style>
-                          <class name="evolution_card_text"/>
+                          <class name="evo_screen_text"/>
                         </style>
                       </object>
                       <packing>
@@ -8150,7 +8201,7 @@
                       </packing>
                     </child>
                     <style>
-                      <class name="evolution_card"/>
+                      <class name="evolutionCard"/>
                     </style>
                   </object>
                   <packing>
@@ -8220,7 +8271,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="twoTierEvolution_2ndCard">
+                  <object class="GtkBox" id="twoTierEvolution_Card1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="orientation">vertical</property>
@@ -8241,7 +8292,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
-                          <class name="evolution_card_icon"/>
+                          <class name="evolution_screen_icon"/>
                         </style>
                       </object>
                       <packing>
@@ -8256,7 +8307,7 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Raticate</property>
                         <style>
-                          <class name="evolution_card_text"/>
+                          <class name="evo_screen_text"/>
                         </style>
                       </object>
                       <packing>
@@ -8266,7 +8317,7 @@
                       </packing>
                     </child>
                     <style>
-                      <class name="evolution_card"/>
+                      <class name="evolutionCard"/>
                     </style>
                   </object>
                   <packing>
@@ -8860,7 +8911,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkRevealer" id="descriptionScreenIndicator_">
+                  <object class="GtkRevealer" id="descriptionScreenIndicator">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="transition_type">slide-left</property>
@@ -8903,7 +8954,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkRevealer" id="evolutionScreenIndicator_">
+                  <object class="GtkRevealer" id="evolutionScreenIndicator">
                     <property name="width_request">0</property>
                     <property name="height_request">0</property>
                     <property name="visible">True</property>
@@ -9082,7 +9133,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
-                          <class name="evolution_card_icon"/>
+                          <class name="evolution_screen_icon"/>
                         </style>
                       </object>
                       <packing>
@@ -9096,7 +9147,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
-                          <class name="evolution_card_text"/>
+                          <class name="evo_screen_text"/>
                         </style>
                       </object>
                       <packing>
@@ -9106,7 +9157,7 @@
                       </packing>
                     </child>
                     <style>
-                      <class name="evolution_card"/>
+                      <class name="evolutionCard"/>
                     </style>
                   </object>
                   <packing>
@@ -9176,7 +9227,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
-                          <class name="evolution_card_icon"/>
+                          <class name="evolution_screen_icon"/>
                         </style>
                       </object>
                       <packing>
@@ -9190,7 +9241,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
-                          <class name="evolution_card_text"/>
+                          <class name="evo_screen_text"/>
                         </style>
                       </object>
                       <packing>
@@ -9200,7 +9251,7 @@
                       </packing>
                     </child>
                     <style>
-                      <class name="evolution_card"/>
+                      <class name="evolutionCard"/>
                     </style>
                   </object>
                   <packing>
@@ -9293,7 +9344,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
-                          <class name="evolution_card_icon"/>
+                          <class name="evolution_screen_icon"/>
                         </style>
                       </object>
                       <packing>
@@ -9307,7 +9358,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
-                          <class name="evolution_card_text"/>
+                          <class name="evo_screen_text"/>
                         </style>
                       </object>
                       <packing>
@@ -9317,7 +9368,7 @@
                       </packing>
                     </child>
                     <style>
-                      <class name="evolution_card"/>
+                      <class name="evolutionCard"/>
                     </style>
                   </object>
                   <packing>
@@ -9362,7 +9413,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
-                          <class name="evolution_card_icon"/>
+                          <class name="evolution_screen_icon"/>
                         </style>
                       </object>
                       <packing>
@@ -9377,7 +9428,7 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Ratata</property>
                         <style>
-                          <class name="evolution_card_text"/>
+                          <class name="evo_screen_text"/>
                         </style>
                       </object>
                       <packing>
@@ -9387,7 +9438,7 @@
                       </packing>
                     </child>
                     <style>
-                      <class name="evolution_card"/>
+                      <class name="evolutionCard"/>
                     </style>
                   </object>
                   <packing>
@@ -9478,7 +9529,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <style>
-                          <class name="evolution_card_icon"/>
+                          <class name="evolution_screen_icon"/>
                         </style>
                       </object>
                       <packing>
@@ -9493,7 +9544,7 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Raticate</property>
                         <style>
-                          <class name="evolution_card_text"/>
+                          <class name="evo_screen_text"/>
                         </style>
                       </object>
                       <packing>
@@ -9503,7 +9554,7 @@
                       </packing>
                     </child>
                     <style>
-                      <class name="evolution_card"/>
+                      <class name="evolutionCard"/>
                     </style>
                   </object>
                   <packing>

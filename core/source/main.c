@@ -121,6 +121,7 @@ int main(int argc, char *argv[]) {
 
     testScreen = GTK_WIDGET(gtk_builder_get_object(builder, "testScreen"));
     testScreenTwo = GTK_WIDGET(gtk_builder_get_object(builder, "testScreenTwo"));
+    testScreenThree = GTK_WIDGET(gtk_builder_get_object(builder, "testScreenThree"));
 
     menuBarStack = GTK_WIDGET(gtk_builder_get_object(builder, "menuBarStack"));
     mainScreenBar = GTK_WIDGET(gtk_builder_get_object(builder, "mainScreenBar"));
