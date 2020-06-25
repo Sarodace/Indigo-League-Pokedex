@@ -512,8 +512,7 @@ void populate_description_screen(int selectedPokemon) {
     // TODO: Populate Weight
     /* These two things should be able to be converted between, and properly 
     diplayed in, metric and imperial. Not to forget that it should also display
-    "Height: " and "Weight: ", respectively, before the relevant data.
-    */
+    "Height: " and "Weight: ", respectively, before the relevant data. */
 
    // TODO: Populate 1st type
    // TODO: Populate 2nd type
@@ -526,14 +525,20 @@ void populate_description_screen(int selectedPokemon) {
     // Set Pokemon's first type...
     gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "descriptionScreen_Type1")),
         typeEnumStrings[pokedexArray[selectedPokemon-1].firstType]);
+
     // Then apply the CSS to format it to the correct color
+    // style_pokemon_types("descriptionScreen_Type1", firstTypeCSS);
+    // testVariable = strtok(firstTypeCSS, "_");
+    // printf("%s\n", testVariable); //printing the token
     overwrite_style_given_element("descriptionScreen_Type1", firstTypeCSS,
-        typeEnumStrings, POKEMON_TYPES);
+        typeEnumStrings_CSS, POKEMON_TYPES);
+
 
     // Set Pokemon's second type...
     gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "descriptionScreen_Type2")),
         typeEnumStrings[pokedexArray[selectedPokemon-1].secondType]);
+
     // Then apply the CSS to format it to the correct color
     overwrite_style_given_element("descriptionScreen_Type2", secondTypeCSS,
-        typeEnumStrings, POKEMON_TYPES);
+        typeEnumStrings_CSS, POKEMON_TYPES);
 }

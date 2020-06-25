@@ -1,7 +1,7 @@
 #include "pokemon_data.h"
 
 // VARIABLES
-const char* typeEnumStrings[] = { // Potential Pokemon types (as strings)
+const char* typeEnumStrings[] = {
   "",
   "Normal",
   "Fire",
@@ -20,6 +20,27 @@ const char* typeEnumStrings[] = { // Potential Pokemon types (as strings)
   "Dragon",
   "Dark",
   "Steel"
+};
+
+const char* typeEnumStrings_CSS[] = {
+  "_type",
+  "Normal_type",
+  "Fire_type",
+  "Water_type",
+  "Electric_type",
+  "Grass_type",
+  "Ice_type",
+  "Fighting_type",
+  "Poison_type",
+  "Ground_type",
+  "Flying_type",
+  "Psychic_type",
+  "Bug_type",
+  "Rock_type",
+  "Ghost_type",
+  "Dragon_type",
+  "Dark_type",
+  "Steel_type"
 };
 
 const char* evolutionEnumStrings[] = {
