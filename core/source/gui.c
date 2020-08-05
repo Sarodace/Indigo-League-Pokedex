@@ -1,7 +1,5 @@
 #include "gui.h"
 
-// PLAN IS TO COMBINE BOTH SCREENS INTO ONE
-
 // VARIABLES
 // Declare global variables
 extern const char* typeEnumStrings[];
@@ -9,18 +7,15 @@ extern int pokemonStage;
 
 // FUNCTIONS
 gboolean switch_screens(void) {
+    // Switches to the search screen 
     if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == listScreen) {
-        //// This is for the other menu bar apparently
-        // gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), FALSE);
-        // gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), FALSE);
-
-        // gtk_revealer_set_reveal_child(GTK_REVEALER(submenuBarRevealer), FALSE);
         gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), FALSE);
         gtk_revealer_set_reveal_child(GTK_REVEALER(searchScreenIndicator), TRUE);
         gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(searchScreen));
         gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Search));
         return TRUE;
-    } 
+    }
+    // Switches to the list screen
     if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == searchScreen) {
         gtk_revealer_set_reveal_child(GTK_REVEALER(searchScreenIndicator), FALSE);
         gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), TRUE);
@@ -28,6 +23,7 @@ gboolean switch_screens(void) {
         gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_List));
         return TRUE;
     }
+    // Switches to the list screen 
     if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreen) {
         gtk_revealer_set_reveal_child(GTK_REVEALER(displayScreenIndicator), FALSE);
         gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), FALSE);
@@ -40,71 +36,82 @@ gboolean switch_screens(void) {
 }
 
 // Scrolls the list screen to best display selected, and surrounding, Pokemon.
-// Future goals:
-//  - Implement smooth scrolling (current code is very "snappy")
-//  - Properly account for lower bound
-//  - Gradient blur on bottom most visibile pokemon (This is more of a Glade/CSS
-//    thing, but I think it's important to mention here)
+    // TODO: Implement smooth scrolling (current code is very "snappy")
+    // TODO: Properly account for lower bound
+    // TODO: Gradient blur on bottom most visibile pokemon (This is more of a Glade/CSS
+    //    thing, but I think it's important to mention here)
 gboolean scroll_list_screen(int pressedArrowKey) {
-    if (pressedArrowKey == GDK_KEY_Up) {
-        // Checks if current height allows up arrow to be pressed
-        if (currentHeight >= 195) {
-            // Moves screen up 
-            currentHeight -= 65;
-            gtk_adjustment_set_value(viewWindow, currentHeight - 130);
-        }
+    // Checks if current is past a threshold and if up arrow key is pressed
+    if (pressedArrowKey == GDK_KEY_Up && currentHeight >= 195) {
+        currentHeight -= 65;
+        gtk_adjustment_set_value(viewWindow, currentHeight - 130);
     }
+    // Checks if down arrow key is pressed
     if (pressedArrowKey == GDK_KEY_Down) {
+        // Move screen down if height is past a certain threshold
         if (currentHeight >= 130) {
-            // Moves screen down
             currentHeight += 65;
             gtk_adjustment_set_value(viewWindow, currentHeight - 130);
+        // Increments current height by 65 pixels
         } else {
-            // Increments current height by 65 pixels
             currentHeight += 65;
         }
     }
 }
 
-//KEYPRESS HANDLER- Treat each key as a function
+/* This function is meant to handle all my key presses, but on second-thought
+maybe individual functions would be better */
 gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data) {
+    // Escape serves as the "back button", so it pretty much reverts the screen
     if (event->keyval == GDK_KEY_Escape) {
         return switch_screens();
     }
 
+    // This would be so much better as a seperate function
     if (event->keyval == GDK_KEY_Down || event->keyval == GDK_KEY_Up) {
         scroll_list_screen(event->keyval);
     }
 
     if (event->keyval == GDK_KEY_Right) {
+        // Determines which screen to transition to depending on the currently selected pokemon
         if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreen) {
+            // Transition to three stage screen for three stage pokemon
             if (threeStagePokemon == TRUE) {
-                gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(threeTierEvolution));
+                // gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(threeTierEvolution));
                 gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(testScreenTwo));
+            // Transition to two stage screen for two stage pokemon
             } else {
-                gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(twoTierEvolution));
+                // gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(twoTierEvolution));
                 gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(testScreenThree));
             }
+            // Change information displayed on top and bottom menus
             gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Evos));
             gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), FALSE);
             gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), TRUE);
         }
+        // Allows for the right arrow key to be used to select a pokemon
         if (selectingPokemon == TRUE) {
             currentlySelectedPokemon = animate_pokemon_evolution_cards(currentlySelectedPokemon, event->keyval);
         }
     }
 
     if (event->keyval == GDK_KEY_Left) {
+        // Check to see if not currently selecting pokemon
         if (selectingPokemon == FALSE) {
+            // Checks if currently viewing pokemon evolutions
+                // These first two checks are for old code, maintaining for now so that I can transition current code
             if (gtk_stack_get_visible_child(GTK_STACK(infoStack)) == threeTierEvolution ||
                 gtk_stack_get_visible_child(GTK_STACK(infoStack)) == twoTierEvolution ||
-                gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreenTwo) {
+                gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreenTwo ||
+                gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreenThree) {
+
                 gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(testScreen));
                 gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Define));
                 gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), TRUE);
                 gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), FALSE);
             }
         }
+        // Allows for the left arrow key to be used to select a pokemon
         if (selectingPokemon == TRUE) {
             currentlySelectedPokemon = animate_pokemon_evolution_cards(currentlySelectedPokemon, event->keyval);
         }
@@ -135,7 +142,9 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
             if (selectingPokemon == TRUE) {
                 unstyle_moving_evolution_card(relevantPokemonCard, "currently_selected");
                 selectingPokemon = FALSE;
+                printf("%s\n", relevantPokemonCard);
                 return 0;
+                // ADD CODE TO CHANGE CURRENTLY SELECTED POKEMON BASED ON WHAT IS CHOSEN IN THE EVOLUTION SCREEN
             }
             if (selectingPokemon == FALSE) {
                 style_given_element(relevantPokemonCard, "currently_selected");
@@ -143,25 +152,6 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
                 return 0;
             }
         }
-    }
-
-    if (event->keyval == GDK_KEY_A) {
-        printf("Before: %d\n", gtk_revealer_get_child_revealed(GTK_REVEALER(submenuBarRevealer)));
-        gtk_revealer_set_reveal_child(GTK_REVEALER(submenuBarRevealer), TRUE);
-        printf("After: %d\n", gtk_revealer_get_child_revealed(GTK_REVEALER(submenuBarRevealer)));
-    }
-
-    if (event->keyval == GDK_KEY_Z) {
-        gtk_revealer_set_reveal_child(GTK_REVEALER(submenuBarRevealer), FALSE);
-        printf("After: %d\n", gtk_revealer_get_child_revealed(GTK_REVEALER(submenuBarRevealer)));
-        gtk_revealer_set_reveal_child(GTK_REVEALER(submenuBarRevealer), TRUE);
-    }
-
-    if (event->keyval == GDK_KEY_8) {
-        gtk_stack_set_visible_child(GTK_STACK(menuBarStack), GTK_WIDGET(displayScreenBar));
-    }
-    if (event->keyval == GDK_KEY_9) {
-        gtk_stack_set_visible_child(GTK_STACK(menuBarStack), GTK_WIDGET(mainScreenBar));
     }
 
     return FALSE;
@@ -184,38 +174,6 @@ void handle_main_window(GtkButton *buttonClicked) {
     gtk_stack_set_visible_child(GTK_STACK(mainStack), GTK_WIDGET(testScreen));
 }
 
-// Handle logic in the sub window
-void handle_sub_window(GtkButton *buttonClicked) {
-    char pokemonCategoryText[30];
-
-    // Converts button's label to a number coinceding with that pokemon
-    int selectedPokemon = atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))) - 1;
-    gtk_label_set_text(GTK_LABEL(pokemonName), pokedexArray[selectedPokemon].name);
-
-    // Assemble pokemon category from button label
-    sprintf(pokemonCategoryText, "The %s Pokemon",
-        pokedexArray[selectedPokemon].category);
-    gtk_label_set_text(GTK_LABEL(pokemonCategory),pokemonCategoryText);
-
-    // Assemble pokedex number from button label
-    char pokemonDexNumber[10] = "Dex: #";
-    strcat(pokemonDexNumber, gtk_widget_get_name(GTK_WIDGET(buttonClicked)));
-    gtk_label_set_text(GTK_LABEL(pokemonNumber),pokemonDexNumber);
-
-    // // Format pokemon first type from button label
-    // gtk_label_set_text(GTK_LABEL(pokemonType1),typeEnumStrings[pokedexArray[selectedPokemon].firstType - 1]);
-
-    // // Format pokemon second type
-    // if (pokedexArray[selectedPokemon].secondType == 0) {
-    //     gtk_label_set_text(GTK_LABEL(pokemonType2),"");
-    // } else {
-    //     gtk_label_set_text(GTK_LABEL(pokemonType2),typeEnumStrings[pokedexArray[selectedPokemon].secondType - 1]);
-    // }
-
-    //Switch sub window's focus to pokemon info
-    gtk_stack_set_visible_child(GTK_STACK(subStack),GTK_WIDGET(dataScreen));
-}
-
 // Handle logic in the info window
 void handle_info_window(GtkButton *buttonClicked) {
     // Go to description screen
@@ -232,12 +190,11 @@ void handle_info_window(GtkButton *buttonClicked) {
 
 // Handle button presses
 void pokemon_entry_clicked (GtkButton *buttonClicked) {
-    if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == listScreen) {
-        handle_main_window(buttonClicked);
-        handle_info_window(buttonClicked);
-    }
+    handle_main_window(buttonClicked);
+    handle_info_window(buttonClicked);
 }
 
+// This function is a giant mess, I'll fix this in a future commit
 int animate_pokemon_evolution_cards(int pokemonStage, int buttonPress) {
     char relevantPokemonCard[25];
 

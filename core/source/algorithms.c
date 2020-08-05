@@ -472,16 +472,26 @@ void rearrange_buttons(void) {
 }
 
 void populate_description_screen(int selectedPokemon) {
+    int adjustSelectedPokemon;
     char formattedPokedexNumber[5];
     char rawPokedexNumber[5];
     char pokemonImageString[30];
+    char pokemonCategoryText[40];
     char firstTypeCSS[20];
     char secondTypeCSS[20];
 
+    // Have to do this because of pokemon sorting
+    for (int i = 0; i < POKEDEX_SIZE; i++) {
+        if (pokedexArray[i].number == selectedPokemon) {
+            adjustSelectedPokemon = i;
+        }
+    }
+
     // TODO: THIS IS USED PRETTY OFTEN, SHOULD PROBABLY TURN IT INTO IT'S OWN FUNCTION
     sprintf(formattedPokedexNumber, "%s","#");
-    sprintf(rawPokedexNumber, "%03d", pokedexArray[selectedPokemon - 1].number);
+    sprintf(rawPokedexNumber, "%03d", pokedexArray[adjustSelectedPokemon].number);
     strcat(formattedPokedexNumber, rawPokedexNumber);
+    // printf("%s\n", formattedPokedexNumber);
 
     // Populate number
     gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "descriptionScreen_Number")),
@@ -489,21 +499,24 @@ void populate_description_screen(int selectedPokemon) {
 
     // Populate name
     gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "descriptionScreen_Name")),
-        pokedexArray[selectedPokemon - 1].name);
+        pokedexArray[adjustSelectedPokemon].name);
 
     // Populate image
     sprintf(pokemonImageString,"assets/sprites/main/%s.png", rawPokedexNumber);
     gtk_image_set_from_file(GTK_IMAGE(gtk_builder_get_object(builder, "descriptionScreen_Image")),
         pokemonImageString);
 
+    sprintf(pokemonCategoryText, "The %s Pokemon",
+        pokedexArray[adjustSelectedPokemon].category);
+    gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "descriptionScreen_Species")),
+        pokemonCategoryText);
+
     // Set proper color
     // style_given_element("descriptionScreen_topArea",
     //     typeEnumStrings[pokedexArray[selectedPokemon - 1].firstType]);
     overwrite_style_given_element("descriptionScreen_topArea",
-        typeEnumStrings[pokedexArray[selectedPokemon - 1].firstType],
+        typeEnumStrings[pokedexArray[adjustSelectedPokemon].firstType],
         typeEnumStrings, POKEMON_TYPES);
-
-    // TODO: NEED TO UNSTYLE THE ELEMENT AS WELL SO THAT THE CSS GETS UPDATED
 
     // Populate description
     set_pokemon_description_text(GTK_WIDGET(gtk_builder_get_object(builder, "descriptionScreen_Text")));
@@ -512,28 +525,28 @@ void populate_description_screen(int selectedPokemon) {
     // TODO: Populate Weight
     /* These two things should be able to be converted between, and properly 
     diplayed in, metric and imperial. Not to forget that it should also display
-    "Height: " and "Weight: ", respectively, before the relevant data.
-    */
+    "Height: " and "Weight: ", respectively, before the relevant data. */
 
-   // TODO: Populate 1st type
-   // TODO: Populate 2nd type
-    /* This shouldn't be too bad, most of the code could actually be lifted from
-    the function which fills in buttons */
-
-    sprintf(firstTypeCSS, "%s_type", typeEnumStrings[pokedexArray[selectedPokemon - 1].firstType]);
-    sprintf(secondTypeCSS, "%s_type", typeEnumStrings[pokedexArray[selectedPokemon - 1].secondType]);
+    sprintf(firstTypeCSS, "%s_type", typeEnumStrings[pokedexArray[adjustSelectedPokemon].firstType]);
+    sprintf(secondTypeCSS, "%s_type", typeEnumStrings[pokedexArray[adjustSelectedPokemon].secondType]);
 
     // Set Pokemon's first type...
     gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "descriptionScreen_Type1")),
-        typeEnumStrings[pokedexArray[selectedPokemon-1].firstType]);
+        typeEnumStrings[pokedexArray[adjustSelectedPokemon].firstType]);
+
     // Then apply the CSS to format it to the correct color
+    // style_pokemon_types("descriptionScreen_Type1", firstTypeCSS);
+    // testVariable = strtok(firstTypeCSS, "_");
+    // printf("%s\n", testVariable); //printing the token
     overwrite_style_given_element("descriptionScreen_Type1", firstTypeCSS,
-        typeEnumStrings, POKEMON_TYPES);
+        typeEnumStrings_CSS, POKEMON_TYPES);
+
 
     // Set Pokemon's second type...
     gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "descriptionScreen_Type2")),
-        typeEnumStrings[pokedexArray[selectedPokemon-1].secondType]);
+        typeEnumStrings[pokedexArray[adjustSelectedPokemon].secondType]);
+
     // Then apply the CSS to format it to the correct color
     overwrite_style_given_element("descriptionScreen_Type2", secondTypeCSS,
-        typeEnumStrings, POKEMON_TYPES);
+        typeEnumStrings_CSS, POKEMON_TYPES);
 }

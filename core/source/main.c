@@ -126,6 +126,7 @@ int main(int argc, char *argv[]) {
     menuBarStack = GTK_WIDGET(gtk_builder_get_object(builder, "menuBarStack"));
     mainScreenBar = GTK_WIDGET(gtk_builder_get_object(builder, "mainScreenBar"));
     displayScreenBar = GTK_WIDGET(gtk_builder_get_object(builder, "displayScreenBar"));
+    menuBarStack_Empty = GTK_WIDGET(gtk_builder_get_object(builder, "menuBarStack_Empty"));
 
     viewWindow = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(viewBox));
 
@@ -154,7 +155,7 @@ int main(int argc, char *argv[]) {
     gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), TRUE);
     gtk_widget_show(mainWindow);
     // gtk_widget_show(subWindow);
-    gtk_widget_show(infoWindow);
+    // gtk_widget_show(infoWindow);
     gtk_main();
 
     return EXIT_SUCCESS;

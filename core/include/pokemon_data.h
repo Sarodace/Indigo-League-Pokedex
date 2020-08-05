@@ -61,6 +61,7 @@ typedef struct pokemon { // Identifying data associated with Pokemon
 
 // Declare global variables
 extern const char* typeEnumStrings[]; // Potential Pokemon types (as strings)
+extern const char* typeEnumStrings_CSS[]; // Potential Pokemon types (as strings)
 extern pokemon pokedexArray[POKEDEX_SIZE]; // Array containing all Kanto Pokemon
 
 #endif

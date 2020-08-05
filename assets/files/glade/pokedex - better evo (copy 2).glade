@@ -7608,7 +7608,6 @@
                                             <property name="xalign">0.5</property>
                                             <style>
                                               <class name="type"/>
-                                              <class name="Grass_type"/>
                                             </style>
                                           </object>
                                           <packing>
@@ -7628,7 +7627,6 @@
                                             <property name="xalign">0.5</property>
                                             <style>
                                               <class name="type"/>
-                                              <class name="Poison_type"/>
                                             </style>
                                           </object>
                                           <packing>

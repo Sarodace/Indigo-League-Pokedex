@@ -121,6 +121,7 @@ GtkWidget   *testScreenThree;
 GtkWidget   *menuBarStack;
 GtkWidget   *mainScreenBar;
 GtkWidget   *displayScreenBar;
+GtkWidget   *menuBarStack_Empty;
 
 // Infostack
 GtkWidget   *infoStackName;
@@ -143,7 +144,6 @@ bool selectingPokemon;
 // FUNCTION PROTOTYPES
 void handle_main_window(GtkButton *buttonClicked);
 void handle_info_window(GtkButton *buttonClicked);
-void handle_sub_window(GtkButton *buttonClicked);
 gboolean switch_screens(void);
 gboolean scroll_list_screen(int);
 void pokemon_entry_clicked(GtkButton *buttonClicked);
