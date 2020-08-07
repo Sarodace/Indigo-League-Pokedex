@@ -64,9 +64,6 @@ GtkWidget   *twoTierEvolution;
 // MAIN WINDOW MENU BAR
 GtkWidget   *searchScreenIndicator;
 GtkWidget   *listScreenIndicator;
-GtkWidget   *displayScreenIndicator;
-
-// TODO: RENAME
 GtkWidget   *descriptionScreenIndicator;
 GtkWidget   *evolutionScreenIndicator;
 
@@ -120,8 +117,6 @@ GtkWidget   *testScreenThree;
 
 GtkWidget   *menuBarStack;
 GtkWidget   *mainScreenBar;
-GtkWidget   *displayScreenBar;
-GtkWidget   *menuBarStack_Empty;
 
 // Infostack
 GtkWidget   *infoStackName;
@@ -133,8 +128,8 @@ GtkWidget   *submenuBarRevealer;
 GtkWidget   *submenuBarStack;
 GtkWidget   *submenuBarStack_Search;
 GtkWidget   *submenuBarStack_List;
-GtkWidget   *submenuBarStack_Define;
-GtkWidget   *submenuBarStack_Evos;
+GtkWidget   *submenuBarStack_Description;
+GtkWidget   *submenuBarStack_Evolution;
 
 GtkAdjustment *viewWindow;
 int currentHeight;
@@ -143,7 +138,6 @@ bool selectingPokemon;
 
 // FUNCTION PROTOTYPES
 void handle_main_window(GtkButton *buttonClicked);
-void handle_info_window(GtkButton *buttonClicked);
 gboolean switch_screens(void);
 gboolean scroll_list_screen(int);
 void pokemon_entry_clicked(GtkButton *buttonClicked);

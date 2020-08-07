@@ -25,7 +25,6 @@ gboolean switch_screens(void) {
     }
     // Switches to the list screen 
     if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreen) {
-        gtk_revealer_set_reveal_child(GTK_REVEALER(displayScreenIndicator), FALSE);
         gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), FALSE);
         gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), TRUE);
         gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
@@ -85,7 +84,7 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
                 gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(testScreenThree));
             }
             // Change information displayed on top and bottom menus
-            gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Evos));
+            gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Evolution));
             gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), FALSE);
             gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), TRUE);
         }
@@ -106,7 +105,7 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
                 gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreenThree) {
 
                 gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(testScreen));
-                gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Define));
+                gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Description));
                 gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), TRUE);
                 gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), FALSE);
             }
@@ -153,45 +152,28 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
             }
         }
     }
-
     return FALSE;
 }
 
-// Handle logic in the main window
-void handle_main_window(GtkButton *buttonClicked) {
-    // Change active icon on top menubar
-    gtk_revealer_set_reveal_child(GTK_REVEALER(displayScreenIndicator), TRUE);
-    gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), FALSE);
-
-    // Change information on the top and bottom menubars
-    gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Define));
-    gtk_stack_set_visible_child(GTK_STACK(menuBarStack),GTK_WIDGET(displayScreenBar));
-
-    // Autopopulate description screen
-    populate_description_screen(atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))));
-
-    // Change screen to description screen
-    gtk_stack_set_visible_child(GTK_STACK(mainStack), GTK_WIDGET(testScreen));
-}
-
-// Handle logic in the info window
-void handle_info_window(GtkButton *buttonClicked) {
-    // Go to description screen
-    gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(descriptionScreen));
-    gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), TRUE);
-
-    // Set relevant description screen text and title
-    set_pokemon_description_text(GTK_WIDGET(buttonClicked));
-    set_pokemon_description_title(GTK_WIDGET(buttonClicked));
-
-    // Set evolution screen
-    find_evolutions(atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))));
-}
 
 // Handle button presses
 void pokemon_entry_clicked (GtkButton *buttonClicked) {
-    handle_main_window(buttonClicked);
-    handle_info_window(buttonClicked);
+    // Change active icon on top menu bar
+    gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), FALSE);
+    gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), TRUE);
+
+    // Change submenu bar to information for description screen
+    gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Description));
+
+    // Autopopulate description screen
+    populate_description_screen(atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))));
+    set_pokemon_description_text(GTK_WIDGET(buttonClicked));
+
+    // Set evolution screen
+    find_evolutions(atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))));
+
+    // Change screen to description screen
+    gtk_stack_set_visible_child(GTK_STACK(mainStack), GTK_WIDGET(testScreen));
 }
 
 // This function is a giant mess, I'll fix this in a future commit
