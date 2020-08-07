@@ -1,3 +1,14 @@
+/* replace all colors with following formating, use @test */
+@define-color test #f9a039;
+
+/* Search screen */
+.search_screen {
+  border-radius: 15px 15px;
+
+  box-shadow: 0px 2px 4px gray;
+  border: 1.5px solid;
+}
+
 /* Animations */
 @keyframes selected {
   25% {
@@ -63,10 +74,11 @@
 .menu_bar {
   background-color: #263137;
   box-shadow: 0px 1px 4px gray;
+  color: white;
 }
 
 .menu_bar_text {
-  color: white;
+  margin: 0px 10px 0px 10px;
 }
 
 /* Description screen */
@@ -133,8 +145,9 @@
 /* Search screen (not renaming variables right now because I'm planning on
 reworking the search screen)*/
 .search {
-  margin: 5px 20px 5px 20px;
-  border-radius: 50px;
+  margin: 5px 20px 5px 0px;
+  /* border-radius: 50px; */
+  border-radius: 15px 50px 50px 5px;
 }
 
 .search_box {

@@ -9,27 +9,26 @@ extern int pokemonStage;
 gboolean switch_screens(void) {
     // Switches to the search screen 
     if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == listScreen) {
-        gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), FALSE);
-        gtk_revealer_set_reveal_child(GTK_REVEALER(searchScreenIndicator), TRUE);
+        gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenRevealer), FALSE);
+        gtk_revealer_set_reveal_child(GTK_REVEALER(searchScreenRevealer), TRUE);
         gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(searchScreen));
         gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Search));
         return TRUE;
     }
     // Switches to the list screen
     if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == searchScreen) {
-        gtk_revealer_set_reveal_child(GTK_REVEALER(searchScreenIndicator), FALSE);
-        gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), TRUE);
+        gtk_revealer_set_reveal_child(GTK_REVEALER(searchScreenRevealer), FALSE);
+        gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenRevealer), TRUE);
         gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
         gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_List));
         return TRUE;
     }
     // Switches to the list screen 
-    if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreen) {
-        gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), FALSE);
-        gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), TRUE);
+    if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == descriptionScreen) {
+        gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenRevealer), FALSE);
+        gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenRevealer), TRUE);
         gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
         gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_List));
-        gtk_stack_set_visible_child(GTK_STACK(menuBarStack),GTK_WIDGET(mainScreenBar));
         return TRUE;
     }
 }
@@ -73,20 +72,18 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
 
     if (event->keyval == GDK_KEY_Right) {
         // Determines which screen to transition to depending on the currently selected pokemon
-        if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreen) {
+        if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == descriptionScreen) {
             // Transition to three stage screen for three stage pokemon
             if (threeStagePokemon == TRUE) {
-                // gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(threeTierEvolution));
-                gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(testScreenTwo));
+                gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(threeTierScreen));
             // Transition to two stage screen for two stage pokemon
             } else {
-                // gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(twoTierEvolution));
-                gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(testScreenThree));
+                gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(twoTierScreen));
             }
             // Change information displayed on top and bottom menus
             gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Evolution));
-            gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), FALSE);
-            gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), TRUE);
+            gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenRevealer), FALSE);
+            gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenRevealer), TRUE);
         }
         // Allows for the right arrow key to be used to select a pokemon
         if (selectingPokemon == TRUE) {
@@ -99,15 +96,13 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
         if (selectingPokemon == FALSE) {
             // Checks if currently viewing pokemon evolutions
                 // These first two checks are for old code, maintaining for now so that I can transition current code
-            if (gtk_stack_get_visible_child(GTK_STACK(infoStack)) == threeTierEvolution ||
-                gtk_stack_get_visible_child(GTK_STACK(infoStack)) == twoTierEvolution ||
-                gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreenTwo ||
-                gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreenThree) {
+            if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == threeTierScreen ||
+                gtk_stack_get_visible_child(GTK_STACK(mainStack)) == twoTierScreen) {
 
-                gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(testScreen));
+                gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(descriptionScreen));
                 gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Description));
-                gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), TRUE);
-                gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenIndicator), FALSE);
+                gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenRevealer), TRUE);
+                gtk_revealer_set_reveal_child(GTK_REVEALER(evolutionScreenRevealer), FALSE);
             }
         }
         // Allows for the left arrow key to be used to select a pokemon
@@ -137,7 +132,7 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
             break;
         }
 
-        if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == testScreenTwo) {
+        if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == threeTierScreen) {
             if (selectingPokemon == TRUE) {
                 unstyle_moving_evolution_card(relevantPokemonCard, "currently_selected");
                 selectingPokemon = FALSE;
@@ -159,8 +154,8 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
 // Handle button presses
 void pokemon_entry_clicked (GtkButton *buttonClicked) {
     // Change active icon on top menu bar
-    gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), FALSE);
-    gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenIndicator), TRUE);
+    gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenRevealer), FALSE);
+    gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenRevealer), TRUE);
 
     // Change submenu bar to information for description screen
     gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Description));
@@ -173,7 +168,7 @@ void pokemon_entry_clicked (GtkButton *buttonClicked) {
     find_evolutions(atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))));
 
     // Change screen to description screen
-    gtk_stack_set_visible_child(GTK_STACK(mainStack), GTK_WIDGET(testScreen));
+    gtk_stack_set_visible_child(GTK_STACK(mainStack), GTK_WIDGET(descriptionScreen));
 }
 
 // This function is a giant mess, I'll fix this in a future commit

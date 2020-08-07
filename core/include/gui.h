@@ -6,69 +6,36 @@
 #include "load_files.h"
 #include "algorithms.h"
 
-
 // VARIABLES
-// WINDOW VARIABLES
 GtkWidget   *mainWindow;
-GtkWidget   *subWindow;
-GtkWidget   *infoWindow;
-
-// MAIN WINDOW SCREENS & BUILDER VARIABLE
 GtkWidget   *mainStack;
-GtkWidget   *searchScreen;
-GtkWidget   *listScreen;
-GtkWidget   *pokemonImage;
 GtkBuilder  *builder;
 
-// MAIN WINDOW LIST WIDGETS
-GtkWidget *viewBox;
-GtkWidget *pokemonEntryList;
-GtkWidget *mainWindowButton[POKEDEX_SIZE];
+// Search screen variables
+GtkWidget   *searchScreen;
 
-
-// MAIN WINDOW SEARCH WIDGETS
 GtkWidget   *orderComboBox;
-
 GtkWidget   *pokemonNameSearchEntry;
-GtkWidget   *pokemonHeightSpinButton;
-GtkWidget   *pokemonWeightSpinButton;
-GtkWidget   *pokemonResults;
-
-GtkWidget   *heightComboBox;
-GtkWidget   *weightComboBox;
-
 GtkWidget   *pokemonFirstTypeSearch;
 GtkWidget   *pokemonSecondTypeSearch;
+GtkWidget   *weightComboBox;
+GtkWidget   *pokemonWeightSpinButton;
+GtkWidget   *heightComboBox;
+GtkWidget   *pokemonHeightSpinButton;
+GtkWidget   *pokemonResults;
 
-// SUB WINDOW SCREENS
-GtkWidget   *subStack;
-GtkWidget   *dataScreen;
-GtkWidget   *subEmptyScreen;
+// List screen variables
+GtkWidget   *listScreen;
+GtkWidget   *viewBox;
+GtkWidget   *pokemonEntryList;
+GtkWidget   *mainWindowButton[POKEDEX_SIZE]; // TODO: RENAME
 
-// SUB WINDOW WIDGETS
-GtkWidget   *pokemonName;
-GtkWidget   *pokemonCategory;
-GtkWidget   *pokemonNumber;
-GtkWidget   *pokemonType1;
-GtkWidget   *pokemonType2;
-
-// INFO WINDOW SCREENS
-GtkWidget   *infoStack;
-
-GtkWidget   *infoEmptyScreen;
+// Decription screen variables
 GtkWidget   *descriptionScreen;
-GtkWidget   *entryScreen;
-GtkWidget   *threeTierEvolution;
-GtkWidget   *twoTierEvolution;
 
-// MAIN WINDOW MENU BAR
-GtkWidget   *searchScreenIndicator;
-GtkWidget   *listScreenIndicator;
-GtkWidget   *descriptionScreenIndicator;
-GtkWidget   *evolutionScreenIndicator;
+// Three-tier screen variables
+GtkWidget   *threeTierScreen;
 
-// Evolution screen variables
-// 3-Tier
 GtkWidget   *threeTier_1stImage;
 GtkWidget   *threeTier_1stNumber;
 GtkWidget   *threeTier_1stName;
@@ -89,7 +56,11 @@ GtkWidget   *threeTier_3rdType2;
 
 GtkWidget   *threeTier_1stEvolution;
 GtkWidget   *threeTier_2ndEvolution;
+GtkWidget   *threeTier_evolutionSwitcher;
+GtkWidget   *threeTier_evolutionMethod;
 
+// 2-stage evolutionary family
+GtkWidget   *twoTierScreen;
 
 GtkWidget   *twoTier_1stImage;
 GtkWidget   *twoTier_1stNumber;
@@ -104,27 +75,16 @@ GtkWidget   *twoTier_2ndType1;
 GtkWidget   *twoTier_2ndType2;
 
 GtkWidget   *twoTier_1stEvolution;
-
-// evolution methods
 GtkWidget   *twoTier_evolutionSwitcher;
-GtkWidget   *threeTier_evolutionSwitcher;
 GtkWidget   *twoTier_evolutionMethod;
-GtkWidget   *threeTier_evolutionMethod;
 
-GtkWidget   *testScreen;
-GtkWidget   *testScreenTwo;
-GtkWidget   *testScreenThree;
+// Menu bar
+GtkWidget   *searchScreenRevealer;
+GtkWidget   *listScreenRevealer;
+GtkWidget   *descriptionScreenRevealer;
+GtkWidget   *evolutionScreenRevealer;
 
-GtkWidget   *menuBarStack;
-GtkWidget   *mainScreenBar;
-
-// Infostack
-GtkWidget   *infoStackName;
-GtkWidget   *infoStackSpecies;
-GtkWidget   *infoStackBar;
-
-// Declare variables for bottom menu bar
-GtkWidget   *submenuBarRevealer;
+// Submenu bar
 GtkWidget   *submenuBarStack;
 GtkWidget   *submenuBarStack_Search;
 GtkWidget   *submenuBarStack_List;
@@ -132,6 +92,7 @@ GtkWidget   *submenuBarStack_Description;
 GtkWidget   *submenuBarStack_Evolution;
 
 GtkAdjustment *viewWindow;
+
 int currentHeight;
 int currentlySelectedPokemon;
 bool selectingPokemon;

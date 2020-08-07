@@ -4,76 +4,48 @@
 #include "algorithms.h"
 #include "css_styling.h"
 
-// Test to see if logged into GitKraken
-
 int main(int argc, char *argv[]) {
-    // init GTK
+    // initialize GTK
     gtk_init(&argc, &argv);
     implement_CSS();
 
-    // Build windows and connect signals described in Glade file
+    // Construct main window
     builder = gtk_builder_new_from_file("assets/files/glade/pokedex - better evo (copy 2).glade");
     mainWindow = GTK_WIDGET(gtk_builder_get_object(builder, "mainWindow"));
-    subWindow = GTK_WIDGET(gtk_builder_get_object(builder, "subWindow"));
-    infoWindow = GTK_WIDGET(gtk_builder_get_object(builder, "infoWindow"));
     gtk_widget_add_events(mainWindow, GDK_KEY_PRESS_MASK);
 
+    // Connect signals
     g_signal_connect(mainWindow, "destroy", G_CALLBACK(gtk_main_quit), NULL);
     g_signal_connect(G_OBJECT (mainWindow), "key_press_event", G_CALLBACK (keypress_function), NULL);
     gtk_builder_connect_signals(builder, NULL);
 
-    // MAIN WINDOW --- LIST
+    /// VARIABLES
+    mainStack = GTK_WIDGET(gtk_builder_get_object(builder, "mainStack"));
+
+    // Search screen variables
+    searchScreen = GTK_WIDGET(gtk_builder_get_object(builder, "searchScreen"));
+
+    orderComboBox = GTK_WIDGET(gtk_builder_get_object(builder, "orderComboBox"));
+    pokemonNameSearchEntry = GTK_WIDGET(gtk_builder_get_object(builder, "pokemonNameSearchEntry"));
+    pokemonFirstTypeSearch = GTK_WIDGET(gtk_builder_get_object(builder, "pokemonFirstTypeSearch"));
+    pokemonSecondTypeSearch = GTK_WIDGET(gtk_builder_get_object(builder, "pokemonSecondTypeSearch"));
+    weightComboBox = GTK_WIDGET(gtk_builder_get_object(builder, "weightComboBox"));
+    pokemonWeightSpinButton = GTK_WIDGET(gtk_builder_get_object(builder, "pokemonWeightSpinButton"));
+    heightComboBox = GTK_WIDGET(gtk_builder_get_object(builder, "heightComboBox"));
+    pokemonHeightSpinButton = GTK_WIDGET(gtk_builder_get_object(builder, "pokemonHeightSpinButton"));
+    pokemonResults = GTK_WIDGET(gtk_builder_get_object(builder, "pokemonResults"));
+
+    // List screen variables
+    listScreen = GTK_WIDGET(gtk_builder_get_object(builder, "listScreen"));
     viewBox = GTK_WIDGET(gtk_builder_get_object(builder, "viewBox"));
     pokemonEntryList = GTK_WIDGET(gtk_builder_get_object(builder, "pokemonEntryList"));
 
-    mainStack = GTK_WIDGET(gtk_builder_get_object(builder, "mainStack"));
-    searchScreen = GTK_WIDGET(gtk_builder_get_object(builder, "searchScreen"));
-    listScreen = GTK_WIDGET(gtk_builder_get_object(builder, "listScreen"));
-    pokemonImage = GTK_WIDGET(gtk_builder_get_object(builder, "pokemonImage"));
-
-    // MAIN WINDOW --- SEARCH
-    orderComboBox = GTK_WIDGET(gtk_builder_get_object(builder, "orderComboBox"));
-
-    pokemonResults = GTK_WIDGET(gtk_builder_get_object(builder, "pokemonResults"));
-    pokemonNameSearchEntry = GTK_WIDGET(gtk_builder_get_object(builder, "pokemonNameSearchEntry"));
-    pokemonHeightSpinButton = GTK_WIDGET(gtk_builder_get_object(builder, "pokemonHeightSpinButton"));
-    pokemonWeightSpinButton = GTK_WIDGET(gtk_builder_get_object(builder, "pokemonWeightSpinButton"));
-
-    heightComboBox = GTK_WIDGET(gtk_builder_get_object(builder, "heightComboBox"));
-    weightComboBox = GTK_WIDGET(gtk_builder_get_object(builder, "weightComboBox"));
-
-    pokemonFirstTypeSearch = GTK_WIDGET(gtk_builder_get_object(builder, "pokemonFirstTypeSearch"));
-    pokemonSecondTypeSearch = GTK_WIDGET(gtk_builder_get_object(builder, "pokemonSecondTypeSearch"));
-
-    // SUB WINDOW
-    pokemonName = GTK_WIDGET(gtk_builder_get_object(builder, "pokemonName"));
-    pokemonCategory = GTK_WIDGET(gtk_builder_get_object(builder, "pokemonCategory"));
-    pokemonNumber = GTK_WIDGET(gtk_builder_get_object(builder, "pokemonNumber"));
-    pokemonType1 = GTK_WIDGET(gtk_builder_get_object(builder, "pokemonType1"));
-    pokemonType2 = GTK_WIDGET(gtk_builder_get_object(builder, "pokemonType2"));
-
-    subStack = GTK_WIDGET(gtk_builder_get_object(builder, "subStack"));
-    dataScreen = GTK_WIDGET(gtk_builder_get_object(builder, "dataScreen"));
-    subEmptyScreen = GTK_WIDGET(gtk_builder_get_object(builder, "subEmptyScreen"));
-
-    // INFO WINDOW
-    infoStack = GTK_WIDGET(gtk_builder_get_object(builder, "infoStack"));
-
-    infoEmptyScreen = GTK_WIDGET(gtk_builder_get_object(builder, "infoEmptyScreen"));
+    // Decription screen variables
     descriptionScreen = GTK_WIDGET(gtk_builder_get_object(builder, "descriptionScreen"));
-    entryScreen = GTK_WIDGET(gtk_builder_get_object(builder, "entryScreen"));
-    threeTierEvolution = GTK_WIDGET(gtk_builder_get_object(builder, "threeTierEvolution"));
-    twoTierEvolution = GTK_WIDGET(gtk_builder_get_object(builder, "twoTierEvolution"));
 
-    // MENU BAR INDICATORS
-    searchScreenIndicator = GTK_WIDGET(gtk_builder_get_object(builder, "searchScreenIndicator"));
-    listScreenIndicator = GTK_WIDGET(gtk_builder_get_object(builder, "listScreenIndicator"));
+    // Three-tier screen variables
+    threeTierScreen = GTK_WIDGET(gtk_builder_get_object(builder, "threeTierScreen"));
 
-    // Info screen MENU BAR INDICATORS
-    descriptionScreenIndicator = GTK_WIDGET(gtk_builder_get_object(builder, "descriptionScreenIndicator"));
-    evolutionScreenIndicator = GTK_WIDGET(gtk_builder_get_object(builder, "evolutionScreenIndicator"));
-
-    // Evolution screen
     threeTier_1stImage = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_1stImage"));
     threeTier_1stNumber = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_1stNumber"));
     threeTier_1stName = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_1stName"));
@@ -94,7 +66,11 @@ int main(int argc, char *argv[]) {
 
     threeTier_1stEvolution = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_1stEvolution"));
     threeTier_2ndEvolution = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_2ndEvolution"));
+    threeTier_evolutionSwitcher = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_evolutionSwitcher"));
+    threeTier_evolutionMethod = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_evolutionMethod"));
 
+    // Two-tier screen variables
+    twoTierScreen = GTK_WIDGET(gtk_builder_get_object(builder, "twoTierScreen"));
 
     twoTier_1stImage = GTK_WIDGET(gtk_builder_get_object(builder, "twoTier_1stImage"));
     twoTier_1stNumber = GTK_WIDGET(gtk_builder_get_object(builder, "twoTier_1stNumber"));
@@ -112,41 +88,28 @@ int main(int argc, char *argv[]) {
     twoTier_evolutionSwitcher = GTK_WIDGET(gtk_builder_get_object(builder, "twoTier_evolutionSwitcher"));
     twoTier_evolutionMethod = GTK_WIDGET(gtk_builder_get_object(builder, "twoTier_evolutionMethod"));
 
-    threeTier_evolutionSwitcher = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_evolutionSwitcher"));
-    threeTier_evolutionMethod = GTK_WIDGET(gtk_builder_get_object(builder, "threeTier_evolutionMethod"));
+    // Menu bar
+    searchScreenRevealer = GTK_WIDGET(gtk_builder_get_object(builder, "searchScreenRevealer"));
+    listScreenRevealer = GTK_WIDGET(gtk_builder_get_object(builder, "listScreenRevealer"));
+    descriptionScreenRevealer = GTK_WIDGET(gtk_builder_get_object(builder, "descriptionScreenRevealer"));
+    evolutionScreenRevealer = GTK_WIDGET(gtk_builder_get_object(builder, "evolutionScreenRevealer"));
 
-
-    testScreen = GTK_WIDGET(gtk_builder_get_object(builder, "testScreen"));
-    testScreenTwo = GTK_WIDGET(gtk_builder_get_object(builder, "testScreenTwo"));
-    testScreenThree = GTK_WIDGET(gtk_builder_get_object(builder, "testScreenThree"));
-
-    menuBarStack = GTK_WIDGET(gtk_builder_get_object(builder, "menuBarStack"));
-    mainScreenBar = GTK_WIDGET(gtk_builder_get_object(builder, "mainScreenBar"));
-
-    viewWindow = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(viewBox));
-
-    // Infostack
-    infoStackName = GTK_WIDGET(gtk_builder_get_object(builder, "infoStackName"));
-    infoStackSpecies = GTK_WIDGET(gtk_builder_get_object(builder, "infoStackSpecies"));
-    infoStackBar = GTK_WIDGET(gtk_builder_get_object(builder, "infoStackBar"));
-
-    // Define variables for bottom menu bar
-    submenuBarRevealer = GTK_WIDGET(gtk_builder_get_object(builder, "submenuBarRevealer"));
+    // Submenu bar
     submenuBarStack = GTK_WIDGET(gtk_builder_get_object(builder, "submenuBarStack"));
     submenuBarStack_Search = GTK_WIDGET(gtk_builder_get_object(builder, "submenuBarStack_Search"));
     submenuBarStack_List = GTK_WIDGET(gtk_builder_get_object(builder, "submenuBarStack_List"));
     submenuBarStack_Description = GTK_WIDGET(gtk_builder_get_object(builder, "submenuBarStack_Description"));
     submenuBarStack_Evolution = GTK_WIDGET(gtk_builder_get_object(builder, "submenuBarStack_Evolution"));
 
-    // Display the GUI
-    gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
-    gtk_stack_set_visible_child(GTK_STACK(infoStack),GTK_WIDGET(infoEmptyScreen));
-    gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_List));
+    viewWindow = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(viewBox));
 
-    // Build widgets decribed in Glade file
+    // Populate pokemon entry buttons
     generate_pokedex_buttons();
 
-    gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenIndicator), TRUE);
+    // Display the GUI
+    gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(listScreen));
+    gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_List));
+    gtk_revealer_set_reveal_child(GTK_REVEALER(listScreenRevealer), TRUE);
     gtk_widget_show(mainWindow);
     gtk_main();
 
