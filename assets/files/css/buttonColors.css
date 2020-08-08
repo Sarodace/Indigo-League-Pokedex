@@ -1,5 +1,60 @@
-/* replace all colors with following formating, use @test */
+/*
+replace all colors with following formating, use @test
 @define-color test #f9a039;
+@define-color -primary;
+@define-color -secondary;
+*/
+
+@define-color Normal-primary #F5EA95;
+@define-color Normal-secondary #bfc775;
+
+@define-color Fire-primary #f4a9a1;
+@define-color Fire-secondary #df7165;
+
+@define-color Water-primary #abd3da;
+@define-color Water-secondary #7c9ca1;
+
+@define-color Electric-primary #f4e1a1;
+@define-color Electric-secondary #c5b171;
+
+@define-color Grass-primary #c6f4a1;
+@define-color Grass-secondary #9bcc73;
+
+@define-color Ice-primary #c1e5eb;
+@define-color Ice-secondary #91aaad;
+
+@define-color Fighting-primary #de8885;
+@define-color Fighting-secondary #a15a57;
+
+@define-color Poison-primary #cea1f4;
+@define-color Poison-secondary #a074c4;
+
+@define-color Ground-primary #d3b695;
+@define-color Ground-secondary #a58c6f;
+
+/* @define-color Flying-primary; */
+@define-color Flying-secondary #7bb4cc;
+
+/* @define-color Psychic-primary;
+@define-color Psychic-secondary; */
+
+@define-color Bug-primary #d5f193;
+@define-color Bug-secondary #becc8c;
+
+/* @define-color Rock-primary;
+@define-color Rock-secondary;
+
+@define-color Ghost-primary;
+@define-color Ghost-secondary;
+
+@define-color Dragon-primary;
+@define-color Dragon-secondary;
+
+@define-color Dark-primary;
+@define-color Dark-secondary;
+
+@define-color Steel-primary;
+@define-color Steel-secondary; */
 
 /* Search screen */
 .search_screen {
@@ -165,91 +220,78 @@ reworking the search screen)*/
 
 /* Pokemon type colors (Light) */
 .Grass{
-  background-color: #c6f4a1;
-  border-color: #9bcc73;
+  background-color: @Grass-primary;
+  border-color: @Grass-secondary;
 }
 
 .Poison{
-  background-color: #cea1f4;
-  border-color: #a074c4;
+  background-color: @Poison-primary;
+  border-color: @Poison-secondary;
 }
 
 .Water{
-  background-color: #abd3da;
-  border-color: #7c9ca1;
+  background-color: @Water-primary;
+  border-color: @Water-secondary;
 }
 
 .Fire{
-  background-color: #f4a9a1;
-  border-color: #df7165;
+  background-color: @Fire-primary;
+  border-color: @Fire-secondary;
 }
 
 .Normal{
-  background-color: #F5EA95;
-  border-color: #bfc775;
+  background-color: @Normal-primary;
+  border-color: @Normal-secondary;
 }
 
 .Electric{
-  background-color: #f4e1a1;
-  border-color: #c5b171;
+  background-color: @Electric-primary;
+  border-color: @Electric-secondary;
 }
 
 .Bug{
-  background-color: rgb(213, 241, 147);
-  border-color: rgb(190, 204, 140);
+  background-color: @Bug-primary;
+  border-color: @Bug-secondary;
 }
 
 .Ground{
-  background-color: #d3b695;
-  border-color: #a58c6f;
+  background-color: @Ground-primary;
+  border-color: @Ground-secondary;
 }
 
 /* Pokemon type colors (Dark) */
 .Poison_type{
-  background-color: #a074c4;
+  background-color: @Poison-secondary;
 }
 
 .Water_type{
-  background-color: #7c9ca1;
+  background-color: @Water-secondary;
 }
 
 .Grass_type{
-  background-color: #9bcc73;
+  background-color: @Grass-secondary;
 }
 
 .Fire_type{
-  background-color: #df7165;
+  background-color: @Fire-secondary;
 }
 
 .Flying_type{
-  background-color: rgb(123, 180, 204);
+  background-color: @Flying-secondary;
 }
 
 .Normal_type{
-  background-color: #bfc775;
+  background-color: @Normal-secondary;
 }
 
 .Bug_type{
-  background-color: rgb(190, 204, 140);
+  background-color: @Bug-secondary;
 }
 
 .Electric_type{
-  background-color: #c5b171;
+  background-color: @Electric-secondary;
 }
 
 .Ground_type{
-  background-color: #a58c6f;
-}
-
-
-/* SOON TO BE REMOVED */
-/* ONLY USED IN OLD INFO SCREEN */
-.pokemon_description_text2 {
-  background-color: #e2e2e2;
-  border-radius: 15px;
-  margin: 5px;
-  font-size: 20px;
-
-  box-shadow: 0px 2px 4px gray;
-  border: 1.5px solid;
+  background-color: @Ground-secondary;
 }

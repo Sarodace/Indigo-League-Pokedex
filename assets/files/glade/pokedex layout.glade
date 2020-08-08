@@ -7373,9 +7373,6 @@
               </packing>
             </child>
             <child>
-              <placeholder/>
-            </child>
-            <child>
               <object class="GtkBox" id="descriptionScreen">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
@@ -7670,7 +7667,7 @@
               <packing>
                 <property name="name">page3</property>
                 <property name="title" translatable="yes">page3</property>
-                <property name="position">3</property>
+                <property name="position">2</property>
               </packing>
             </child>
             <child>
@@ -7972,7 +7969,7 @@
               <packing>
                 <property name="name">page4</property>
                 <property name="title" translatable="yes">page4</property>
-                <property name="position">4</property>
+                <property name="position">3</property>
               </packing>
             </child>
             <child>
@@ -8158,7 +8155,7 @@
               <packing>
                 <property name="name">page5</property>
                 <property name="title" translatable="yes">page5</property>
-                <property name="position">5</property>
+                <property name="position">4</property>
               </packing>
             </child>
           </object>
