@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
     implement_CSS();
 
     // Construct main window
-    builder = gtk_builder_new_from_file("assets/files/glade/pokedex - better evo (copy 2).glade");
+    builder = gtk_builder_new_from_file("assets/files/glade/pokedex layout.glade");
     mainWindow = GTK_WIDGET(gtk_builder_get_object(builder, "mainWindow"));
     gtk_widget_add_events(mainWindow, GDK_KEY_PRESS_MASK);
 

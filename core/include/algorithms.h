@@ -29,7 +29,7 @@ int search_pokemon_list(GtkWidget** buttonArray,
                        int greaterWeight,
                        typeEnum firstType,
                        typeEnum secondType);
-void set_pokemon_description_title(GtkWidget *widget);
+// void set_pokemon_description_title(GtkWidget *widget);
 void populate_description_screen(int selectedPokemon);
 
 

@@ -52,6 +52,8 @@ const char* evolutionEnumStrings[] = {
   "moon_stone"
 };
 
+// Name, Species, Pokedex number, First type, Second type, height, weight, 
+// last evolution, evolutions from, evolution method, evolution level
 pokemon pokedexArray[POKEDEX_SIZE] = { // Array containing all Kanto Pokemon
   {"Bulbasaur", "Seed", 1, Grass, Poison, 0.7, 6.9, FALSE, 0, NO_EVO, 0},
   {"Ivysaur", "Seed", 2, Grass, Poison, 1, 13, FALSE, 1, LEVEL_UP, 16},
@@ -78,7 +80,7 @@ pokemon pokedexArray[POKEDEX_SIZE] = { // Array containing all Kanto Pokemon
   {"Ekans", "Snake", 23, Poison, NONE, 2, 6.9, FALSE, 0, NO_EVO, 0},
   {"Arbok", "Cobra", 24, Poison, NONE, 3.5, 65, TRUE, 23, LEVEL_UP, 22},
   {"Pikachu", "Mouse", 25, Electric, NONE, 0.4, 6, FALSE, 0, NO_EVO, 0},
-  {"Raichu", "Mouse", 26, Electric, NONE, 0.8, 30, TRUE, 25, THUNDER_STONE, 0}, // Check if not level up
+  {"Raichu", "Mouse", 26, Electric, NONE, 0.8, 30, TRUE, 25, THUNDER_STONE, 0},
   {"Sandshrew", "Mouse", 27, Ground, NONE, 0.6, 12, FALSE, 0, NO_EVO, 0},
   {"Sandslash", "Mouse", 28, Ground, NONE, 1, 29.5, TRUE, 27, LEVEL_UP, 22},
   {"Nidoran♀", "Poison Pin", 29, Poison, NONE, 0.4, 7, FALSE, 0, NO_EVO, 0},
@@ -94,16 +96,34 @@ pokemon pokedexArray[POKEDEX_SIZE] = { // Array containing all Kanto Pokemon
   {"Jigglypuff", "Balloon", 39, Normal, NONE, 0.5, 5.5, FALSE, 0, NO_EVO, 0},
   {"Wigglypuff", "Balloon", 40, Normal, NONE, 1.0, 12.0, TRUE, 39, MOON_STONE, 0},
   {"Zubat", "Bat", 41, Poison, Flying, 0.8, 7.5, FALSE, 0, NO_EVO, 0},
-  {"Golbat", "Bat", 42, Poison, Flying, 1.6, 55, TRUE, 0, LEVEL_UP, 41},
+  {"Golbat", "Bat", 42, Poison, Flying, 1.6, 55, TRUE, 41, LEVEL_UP, 22},
   {"Oddish", "Weed", 43, Grass, Poison, 0.5, 5.4, FALSE, 0, NO_EVO, 0},
-  {"Gloom", "Weed", 44, Grass, Poison, 0.8, 8.6, FALSE, 0, LEVEL_UP, 43},
-  {"Vileplume", "Flower", 45, Grass, Poison, 1.2, 18.6, TRUE, 0, LEVEL_UP, 44},
+  {"Gloom", "Weed", 44, Grass, Poison, 0.8, 8.6, FALSE, 43, LEVEL_UP, 21},
+  {"Vileplume", "Flower", 45, Grass, Poison, 1.2, 18.6, TRUE, 44, LEAF_STONE, 0},
   {"Paras", "Mushroom", 46, Bug, Grass, 0.3, 5.4, FALSE, 0, NO_EVO, 0},
-  {"Parasect", "Mushroom", 47, Bug, Grass, 1.0, 29.5, TRUE, 0, LEVEL_UP, 46},
+  {"Parasect", "Mushroom", 47, Bug, Grass, 1.0, 29.5, TRUE, 46, LEVEL_UP, 24},
   {"Venonat", "Insect", 48, Bug, Poison, 1.0, 30, FALSE, 0, NO_EVO, 0},
-  {"Venomoth", "Poison Moth", 49, Bug, Poison, 1.5, 12.5, TRUE, 0, LEVEL_UP, 48},
+  {"Venomoth", "Poison Moth", 49, Bug, Poison, 1.5, 12.5, TRUE, 48, LEVEL_UP, 31},
   {"Diglett", "Mole", 50, Ground, NONE, 0.2, 0.8, FALSE, 0, NO_EVO, 0},
-  {"Dugtrio", "Mole", 51, Ground, NONE, 0.7, 33.3, TRUE, 0, LEVEL_UP, 50},
+  {"Dugtrio", "Mole", 51, Ground, NONE, 0.7, 33.3, TRUE, 50, LEVEL_UP, 26},
+  {"Meowth", "Scratch Cat", 52, Normal, NONE, 0.4, 4.2, FALSE, 0, NO_EVO, 0},
+  {"Persian", "Classy Cat", 53, Normal, NONE, 1, 3.2, TRUE, 52, LEVEL_UP, 28},
+  {"Psyduck", "Duck", 54, Water, NONE, 0.8, 19.6, FALSE, 0, NO_EVO, 0},
+  {"Golduck", "Duck", 55, Water, NONE, 1.7, 76.6, TRUE, 54, LEVEL_UP, 33},
+  {"Mankey", "Pig Monkey", 56, Fighting, NONE, 0.5, 28, FALSE, 0, NO_EVO, 0},
+  {"Primeape", "Pig Monkey", 57, Fighting, NONE, 1, 32, TRUE, 56, LEVEL_UP, 28},
+  {"Growlithe", "Puppy", 58, Fire, NONE, 0.7, 19, FALSE, 0, NO_EVO, 0},
+  {"Arcanine", "Legendary", 59, Fire, NONE, 1.9, 155, TRUE, 58, FIRE_STONE, 0},
+  {"Poliwag", "Tadpole", 60, Water, NONE, 0.6, 12.4, FALSE, 0, NO_EVO, 0},
+  {"Poliwhirl", "Tadpole", 61, Water, NONE, 1, 20, FALSE, 60, LEVEL_UP, 25},
+  {"Poliwrath", "Tadpole", 62, Water, Fighting, 1.3, 54, TRUE, 61, WATER_STONE, 0},
+  {"Abra", "Psi", 63, Psychic, NONE, 0.9, 19.5, FALSE, 0, NO_EVO, 0},
+  {"Kadabra", "Psi", 64, Psychic, NONE, 1.3, 56.5, FALSE, 63, LEVEL_UP, 16},
+  {"Alakazam", "Psi", 65, Psychic, NONE, 1.5, 48, TRUE, 64, LEVEL_UP, 50},
+  {"Machop", "Superpower", 66, Fighting, NONE, 0.8, 19.5, FALSE, 0, NO_EVO, 0},
+  {"Machoke", "Superpower", 67, Fighting, NONE, 1.5, 70.5, FALSE, 66, LEVEL_UP, 28},
+  {"Machamp", "Superpower", 68, Fighting, NONE, 1.6, 130, TRUE, 67, LEVEL_UP, 50}
+
 
   // {"Eevee", "Fox", 37, Fire, NONE, 0.6, 9.9, FALSE, NO_EVO, NO_EVO},
   // {"Jolteon", "Fox", 38, Fire, NONE, 1.1, 19.9, TRUE, 140, THUNDER_STONE},

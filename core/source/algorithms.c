@@ -217,17 +217,14 @@ int find_evolutions(int selectedPokemon) {
 
     // Go through the evolutionary stages
     if (pokedexArray[adjustSelectedPokemon].finalForm == FALSE && pokedexArray[adjustSelectedPokemon].evolvesFrom == NO_EVO) {
-        //// printf("1st form: %s\n",pokedexArray[adjustSelectedPokemon].name);
         // Looks for 2nd evolutionary stage
         for (int j=0;j<POKEDEX_SIZE;j++) {
             if (pokedexArray[j].evolvesFrom == pokedexArray[adjustSelectedPokemon].number) {
                 // Either goes on to look for 3rd evolutionary stage...
                 if (pokedexArray[j].finalForm == FALSE) {
-                    //// printf("2nd form: %s\n",pokedexArray[j].name);
                     for (int k=0;k<POKEDEX_SIZE;k++) {
                         //Finally, find the 3rd evolutionary stage
                         if (pokedexArray[k].evolvesFrom == pokedexArray[j].number) {
-                            //// printf("3rd form (FINAL): %s\n\n",pokedexArray[k].name);
                             fill_pokemon_evolution_entries("1st",adjustSelectedPokemon,TRUE);
                             fill_pokemon_evolution_entries("2nd",j,TRUE);
                             fill_pokemon_evolution_entries("3rd",k,TRUE);
@@ -240,13 +237,10 @@ int find_evolutions(int selectedPokemon) {
                     }
                 // Or breaks out of loop if that's its final evolution
                 } else {
-                    //// printf("2nd form (FINAL): %s\n\n",pokedexArray[j].name);
                     fill_pokemon_evolution_entries("1st",adjustSelectedPokemon,FALSE);
                     fill_pokemon_evolution_entries("2nd",j,FALSE);
 
                     threeStagePokemon = FALSE;
-
-                    printf("Pokemon Stage: %d \n", pokemonStage);
 
                     currentlySelectedPokemon = pokemonStage;
                     pokemonStage = 0;
@@ -254,7 +248,6 @@ int find_evolutions(int selectedPokemon) {
             }
         }
     }
-    // printf("Pokemon Stage: %d \n", pokemonStage);
 }
 
 // Searches Pokemon list for Pokemon who satisfy user-provided constraints
@@ -319,27 +312,27 @@ int search_pokemon_list(GtkWidget** buttonArray,
   return j;
 }
 
-void set_pokemon_description_title(GtkWidget *buttonClicked) {
-    int selectedPokemon = atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))) - 1;
-    char pokemonCategoryText[30];
-    int adjustSelectedPokemon;
+// void set_pokemon_description_title(GtkWidget *buttonClicked) {
+//     int selectedPokemon = atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))) - 1;
+//     char pokemonCategoryText[30];
+//     int adjustSelectedPokemon;
 
-    // Have to do this because of pokemon sorting
-    for (int i = 0; i < POKEDEX_SIZE; i++) {
-        if (pokedexArray[i].number == selectedPokemon + 1) {
-            adjustSelectedPokemon = i;
-        }
-    }
+//     // Have to do this because of pokemon sorting
+//     for (int i = 0; i < POKEDEX_SIZE; i++) {
+//         if (pokedexArray[i].number == selectedPokemon + 1) {
+//             adjustSelectedPokemon = i;
+//         }
+//     }
 
-    gtk_label_set_text(GTK_LABEL(infoStackName), pokedexArray[adjustSelectedPokemon].name);
+//     gtk_label_set_text(GTK_LABEL(infoStackName), pokedexArray[adjustSelectedPokemon].name);
 
-    sprintf(pokemonCategoryText, "The %s Pokemon",
-        pokedexArray[adjustSelectedPokemon].category);
-    gtk_label_set_text(GTK_LABEL(infoStackSpecies),pokemonCategoryText);
+//     sprintf(pokemonCategoryText, "The %s Pokemon",
+//         pokedexArray[adjustSelectedPokemon].category);
+//     gtk_label_set_text(GTK_LABEL(infoStackSpecies),pokemonCategoryText);
 
-    style_evolution_card("infoStackBar", 
-        typeEnumStrings[pokedexArray[adjustSelectedPokemon].firstType]);
-}
+//     style_evolution_card("infoStackBar", 
+//         typeEnumStrings[pokedexArray[adjustSelectedPokemon].firstType]);
+// }
 
 // Sorting alogrithms
 int sort_alphabetical(const void *a, const void *b) {
