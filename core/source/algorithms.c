@@ -106,7 +106,7 @@ void generate_pokedex_buttons(void) {
     }
 }
 
-int fill_pokemon_evolution_entries(char *position, int counter, bool threeTier) {
+int fill_pokemon_evolution_entries(char *position, int counter, int tier) {
     // Declare necessary variables
     char numberString[20];
     char imageString[20];
@@ -119,10 +119,16 @@ int fill_pokemon_evolution_entries(char *position, int counter, bool threeTier) 
     char screen[10];
 
     // Determine how many stages the pokemon has
-    if (threeTier) {
-        sprintf(screen,"%s","three");
-    } else {
-        sprintf(screen,"%s","two");
+    switch (tier) {
+        case 1:
+            sprintf(screen,"%s","one");
+            break;
+        case 2:
+            sprintf(screen,"%s","two");
+            break;
+        case 3:
+            sprintf(screen,"%s","three");
+            break;
     }
 
     sprintf(evolutionLevel, "Lvl. %d", pokedexArray[counter].level);
@@ -172,7 +178,7 @@ int fill_pokemon_evolution_entries(char *position, int counter, bool threeTier) 
         }
     }
 
-    if (position == "2nd" && threeTier == FALSE) {
+    if (position == "2nd" && tier == 2) {
         gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "twoTier_1stEvolution")),
             evolutionLevel);
         if (pokedexArray[counter].evolutionMethod > 1) {
@@ -218,18 +224,18 @@ int find_evolutions(int selectedPokemon) {
     // Go through the evolutionary stages
     if (pokedexArray[adjustSelectedPokemon].finalForm == FALSE && pokedexArray[adjustSelectedPokemon].evolvesFrom == NO_EVO) {
         // Looks for 2nd evolutionary stage
-        for (int j=0;j<POKEDEX_SIZE;j++) {
+        for (int j = 0; j < POKEDEX_SIZE; j++) {
             if (pokedexArray[j].evolvesFrom == pokedexArray[adjustSelectedPokemon].number) {
                 // Either goes on to look for 3rd evolutionary stage...
                 if (pokedexArray[j].finalForm == FALSE) {
-                    for (int k=0;k<POKEDEX_SIZE;k++) {
+                    for (int k = 0; k < POKEDEX_SIZE; k++) {
                         //Finally, find the 3rd evolutionary stage
                         if (pokedexArray[k].evolvesFrom == pokedexArray[j].number) {
-                            fill_pokemon_evolution_entries("1st",adjustSelectedPokemon,TRUE);
-                            fill_pokemon_evolution_entries("2nd",j,TRUE);
-                            fill_pokemon_evolution_entries("3rd",k,TRUE);
+                            fill_pokemon_evolution_entries("1st",adjustSelectedPokemon,3);
+                            fill_pokemon_evolution_entries("2nd",j,3);
+                            fill_pokemon_evolution_entries("3rd",k,3);
 
-                            threeStagePokemon = TRUE;
+                            threeStagePokemon = 3;
 
                             currentlySelectedPokemon = pokemonStage;
                             pokemonStage = 0;
@@ -237,10 +243,10 @@ int find_evolutions(int selectedPokemon) {
                     }
                 // Or breaks out of loop if that's its final evolution
                 } else {
-                    fill_pokemon_evolution_entries("1st",adjustSelectedPokemon,FALSE);
-                    fill_pokemon_evolution_entries("2nd",j,FALSE);
+                    fill_pokemon_evolution_entries("1st",adjustSelectedPokemon,2);
+                    fill_pokemon_evolution_entries("2nd",j,2);
 
-                    threeStagePokemon = FALSE;
+                    threeStagePokemon = 2;
 
                     currentlySelectedPokemon = pokemonStage;
                     pokemonStage = 0;
@@ -248,6 +254,18 @@ int find_evolutions(int selectedPokemon) {
             }
         }
     }
+
+    if (pokedexArray[adjustSelectedPokemon].finalForm == TRUE &&
+        pokedexArray[adjustSelectedPokemon].evolvesFrom == NO_EVO) {
+        fill_pokemon_evolution_entries("1st", adjustSelectedPokemon, 1);
+        printf("%d\n", adjustSelectedPokemon);
+
+        threeStagePokemon = 1;
+
+        currentlySelectedPokemon = pokemonStage;
+        pokemonStage = 0;
+    }
+
 }
 
 // Searches Pokemon list for Pokemon who satisfy user-provided constraints

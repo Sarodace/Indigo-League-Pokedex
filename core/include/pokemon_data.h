@@ -8,7 +8,7 @@
 #include <gtk/gtk.h>
 #include <stdbool.h> 
 
-#define POKEDEX_SIZE 68
+#define POKEDEX_SIZE 94
 #define POKEMON_TYPES 18
 
 // VARIABLES

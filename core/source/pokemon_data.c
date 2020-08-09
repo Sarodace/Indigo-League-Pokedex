@@ -119,14 +119,40 @@ pokemon pokedexArray[POKEDEX_SIZE] = { // Array containing all Kanto Pokemon
   {"Poliwrath", "Tadpole", 62, Water, Fighting, 1.3, 54, TRUE, 61, WATER_STONE, 0},
   {"Abra", "Psi", 63, Psychic, NONE, 0.9, 19.5, FALSE, 0, NO_EVO, 0},
   {"Kadabra", "Psi", 64, Psychic, NONE, 1.3, 56.5, FALSE, 63, LEVEL_UP, 16},
-  {"Alakazam", "Psi", 65, Psychic, NONE, 1.5, 48, TRUE, 64, LEVEL_UP, 50},
+  {"Alakazam", "Psi", 65, Psychic, NONE, 1.5, 48, TRUE, 64, LEVEL_UP, 50},  // Trade
   {"Machop", "Superpower", 66, Fighting, NONE, 0.8, 19.5, FALSE, 0, NO_EVO, 0},
   {"Machoke", "Superpower", 67, Fighting, NONE, 1.5, 70.5, FALSE, 66, LEVEL_UP, 28},
-  {"Machamp", "Superpower", 68, Fighting, NONE, 1.6, 130, TRUE, 67, LEVEL_UP, 50}
+  {"Machamp", "Superpower", 68, Fighting, NONE, 1.6, 130, TRUE, 67, LEVEL_UP, 50}, // Trade
 
+  {"Bellsprout", "Flower", 69, Grass, Poison, 0.7, 4, FALSE, 0, NO_EVO, 0},
+  {"Weepinbell", "Flycatcher", 70, Grass, Poison, 1, 6.4, FALSE, 69, LEVEL_UP, 21},
+  {"Victreebel", "Flycatcher", 71, Grass, Poison, 1.7, 15.5, TRUE, 70, LEAF_STONE, 0},
+  {"Tentacool", "Jellyfish", 72, Water, Poison, 0.9, 45.5, FALSE, 0, NO_EVO, 0},
+  {"Tentacruel", "Jellyfish", 73, Water, Poison, 1.6, 55, TRUE, 72, LEVEL_UP, 30},
+  {"Geodude", "Rock", 74, Rock, Ground, 0.4, 20, FALSE, 0, NO_EVO, 0},
+  {"Graveler", "Rock", 75, Rock, Ground, 1, 105, FALSE, 74, LEVEL_UP, 25},
+  {"Golem", "Megaton", 76, Rock, Ground, 1.4, 300, TRUE, 75, LEVEL_UP, 50}, // Trade
+  {"Ponyta", "Fire Horse", 77, Fire, NONE, 1, 30, FALSE, 0, NO_EVO, 0},
+  {"Rapidash", "Fire Horse", 78, Fire, NONE, 1.7, 95.0, TRUE, 77, LEVEL_UP, 40},
+  {"Slowpoke", "Dopey", 79, Water, Psychic, 1.2, 36.0, FALSE, 0, NO_EVO, 0},
+  {"Slowbro", "Hermit Crab", 80, Water, Psychic, 1.6, 78.5, TRUE, 79, LEVEL_UP, 23},
+  {"Magnemite", "Magnet", 81, Electric, Steel, 0.3, 6, FALSE, 0, NO_EVO, 0},
+  {"Magneton", "Magnet", 82, Electric, Steel, 1, 60, TRUE, 81, LEVEL_UP, 30},
+  {"Farfetch'd", "Wild Duck", 83, Normal, Flying, 0.8, 15, TRUE, 0, NO_EVO, 0},
+  {"Doduo", "Twin Bird", 84, Normal, Flying, 1.4, 39.2, FALSE, 0, NO_EVO, 0},
+  {"Dodrio", "Triple Bird", 85, Normal, Flying, 1.8, 85.2, TRUE, 84, LEVEL_UP, 31},
+  {"Seel", "Sea Lion", 86, Water, NONE, 1.1, 90, FALSE, 0, NO_EVO, 0},
+  {"Dewgong", "Sea Lion", 87, Water, Ice, 1.7, 12, TRUE, 86, LEVEL_UP, 34},
+  {"Grimer", "Sludge", 88, Poison, NONE, 0.9, 30, FALSE, 0, NO_EVO, 0},
+  {"Muk", "Sludge", 89, Poison, NONE, 1.2, 30, TRUE, 88, LEVEL_UP, 38},
+  {"Shellder", "Bivalve", 90, Water, NONE, 0.3, 4, FALSE, 0, NO_EVO, 0},
+  {"Cloyster", "Bivalve", 91, Water, Ice, 1.5, 132.5, TRUE, 90, WATER_STONE, 0},
+  {"Gastly", "Gas", 92, Ghost, Poison, 1.3, 0.1, FALSE, 0, NO_EVO, 0},
+  {"Haunter", "Gas", 93, Ghost, Poison, 1.6, 0.1, FALSE, 92, LEVEL_UP, 25},
+  {"Gengar", "Shadow", 94, Ghost, Poison, 1.5, 40.5, TRUE, 93, LEVEL_UP, 50} // Trade
 
-  // {"Eevee", "Fox", 37, Fire, NONE, 0.6, 9.9, FALSE, NO_EVO, NO_EVO},
-  // {"Jolteon", "Fox", 38, Fire, NONE, 1.1, 19.9, TRUE, 140, THUNDER_STONE},
-  // {"Flareon", "Fox", 38, Fire, NONE, 1.1, 19.9, TRUE, 140, FIRE_STONE},
-  // {"Vaporeon", "Fox", 38, Fire, NONE, 1.1, 19.9, TRUE, 140, WATER_STONE},
+  // {"Eevee", "Evolution", 37, Fire, NONE, 0.6, 9.9, FALSE, NO_EVO, NO_EVO},
+  // {"Jolteon", "Bubble Jet", 38, Fire, NONE, 1.1, 19.9, TRUE, 140, THUNDER_STONE},
+  // {"Flareon", "Lightning", 38, Fire, NONE, 1.1, 19.9, TRUE, 140, FIRE_STONE},
+  // {"Vaporeon", "Flame", 38, Fire, NONE, 1.1, 19.9, TRUE, 140, WATER_STONE},
 };

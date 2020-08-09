@@ -88,6 +88,17 @@ int main(int argc, char *argv[]) {
     twoTier_evolutionSwitcher = GTK_WIDGET(gtk_builder_get_object(builder, "twoTier_evolutionSwitcher"));
     twoTier_evolutionMethod = GTK_WIDGET(gtk_builder_get_object(builder, "twoTier_evolutionMethod"));
 
+    // One-tier screen variables
+    oneTierScreen = GTK_WIDGET(gtk_builder_get_object(builder, "oneTierScreen"));
+
+    oneTier_1stImage = GTK_WIDGET(gtk_builder_get_object(builder, "oneTier_1stImage"));
+    oneTier_1stNumber = GTK_WIDGET(gtk_builder_get_object(builder, "oneTier_1stNumber"));
+    oneTier_1stName = GTK_WIDGET(gtk_builder_get_object(builder, "oneTier_1stName"));
+    oneTier_1stType1 = GTK_WIDGET(gtk_builder_get_object(builder, "oneTier_1stType1"));
+    oneTier_1stType2 = GTK_WIDGET(gtk_builder_get_object(builder, "oneTier_1stType2"));
+
+    oneTier_1stEvolution = GTK_WIDGET(gtk_builder_get_object(builder, "oneTier_1stEvolution"));
+
     // Menu bar
     searchScreenRevealer = GTK_WIDGET(gtk_builder_get_object(builder, "searchScreenRevealer"));
     listScreenRevealer = GTK_WIDGET(gtk_builder_get_object(builder, "listScreenRevealer"));

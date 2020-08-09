@@ -35,26 +35,27 @@ replace all colors with following formating, use @test
 /* @define-color Flying-primary; */
 @define-color Flying-secondary #7bb4cc;
 
-/* @define-color Psychic-primary;
-@define-color Psychic-secondary; */
+@define-color Psychic-primary #ff9cbf;
+@define-color Psychic-secondary #c27c91;
 
 @define-color Bug-primary #d5f193;
 @define-color Bug-secondary #becc8c;
 
-/* @define-color Rock-primary;
-@define-color Rock-secondary;
+@define-color Rock-primary #e0cc9d;
+@define-color Rock-secondary #ad9e79;
 
-@define-color Ghost-primary;
-@define-color Ghost-secondary;
+@define-color Ghost-primary #aca1d4;
+@define-color Ghost-secondary #8177a6;
 
+/*
 @define-color Dragon-primary;
 @define-color Dragon-secondary;
 
 @define-color Dark-primary;
 @define-color Dark-secondary;
 
-@define-color Steel-primary;
-@define-color Steel-secondary; */
+@define-color Steel-primary; */
+@define-color Steel-secondary #b7b7c7;
 
 /* Search screen */
 .search_screen {
@@ -110,6 +111,7 @@ replace all colors with following formating, use @test
   box-shadow: 0px 1px 4px gray;
   min-height: 120px;
   min-width: 90px;
+  /* padding-top: 40px; */
 }
 
 .evolution_card_icon {
@@ -259,6 +261,31 @@ reworking the search screen)*/
   border-color: @Ground-secondary;
 }
 
+.Fighting{
+  background-color: @Fighting-primary;
+  border-color: @Fighting-secondary;
+}
+
+.Psychic{
+  background-color: @Psychic-primary;
+  border-color: @Psychic-secondary;
+}
+
+.Ice{
+  background-color: @Ice-primary;
+  border-color: @Ice-secondary;
+}
+
+.Ghost{
+  background-color: @Ghost-primary;
+  border-color: @Ghost-secondary;
+}
+
+.Rock{
+  background-color: @Rock-primary;
+  border-color: @Rock-secondary;
+}
+
 /* Pokemon type colors (Dark) */
 .Poison_type{
   background-color: @Poison-secondary;
@@ -294,4 +321,28 @@ reworking the search screen)*/
 
 .Ground_type{
   background-color: @Ground-secondary;
+}
+
+.Fighting_type{
+  background-color: @Fighting-secondary;
+}
+
+.Psychic_type{
+  background-color: @Psychic-secondary;
+}
+
+.Ice_type{
+  background-color: @Ice-secondary;
+}
+
+.Ghost_type{
+  background-color: @Ghost-secondary;
+}
+
+.Rock_type{
+  background-color: @Rock-secondary;
+}
+
+.Steel_type{
+  background-color: @Steel-secondary;
 }

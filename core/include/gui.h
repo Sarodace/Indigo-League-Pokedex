@@ -78,6 +78,17 @@ GtkWidget   *twoTier_1stEvolution;
 GtkWidget   *twoTier_evolutionSwitcher;
 GtkWidget   *twoTier_evolutionMethod;
 
+// 1-stage
+GtkWidget   *oneTierScreen;
+
+GtkWidget   *oneTier_1stImage;
+GtkWidget   *oneTier_1stNumber;
+GtkWidget   *oneTier_1stName;
+GtkWidget   *oneTier_1stType1;
+GtkWidget   *oneTier_1stType2;
+
+GtkWidget   *oneTier_1stEvolution;
+
 // Menu bar
 GtkWidget   *searchScreenRevealer;
 GtkWidget   *listScreenRevealer;

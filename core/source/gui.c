@@ -73,13 +73,21 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
     if (event->keyval == GDK_KEY_Right) {
         // Determines which screen to transition to depending on the currently selected pokemon
         if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == descriptionScreen) {
-            // Transition to three stage screen for three stage pokemon
-            if (threeStagePokemon == TRUE) {
-                gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(threeTierScreen));
-            // Transition to two stage screen for two stage pokemon
-            } else {
-                gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(twoTierScreen));
+            switch (threeStagePokemon) {
+                // Transition to one stage screen for three stage pokemon
+                case 1:
+                    gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(oneTierScreen));
+                    break;
+                // Transition to two stage screen for two stage pokemon
+                case 2:
+                    gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(twoTierScreen));
+                    break;
+                // Transition to three stage screen for three stage pokemon
+                case 3:
+                    gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(threeTierScreen));
+                    break;
             }
+
             // Change information displayed on top and bottom menus
             gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Evolution));
             gtk_revealer_set_reveal_child(GTK_REVEALER(descriptionScreenRevealer), FALSE);
@@ -95,9 +103,9 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
         // Check to see if not currently selecting pokemon
         if (selectingPokemon == FALSE) {
             // Checks if currently viewing pokemon evolutions
-                // These first two checks are for old code, maintaining for now so that I can transition current code
             if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == threeTierScreen ||
-                gtk_stack_get_visible_child(GTK_STACK(mainStack)) == twoTierScreen) {
+                gtk_stack_get_visible_child(GTK_STACK(mainStack)) == twoTierScreen ||
+                gtk_stack_get_visible_child(GTK_STACK(mainStack)) == oneTierScreen) {
 
                 gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(descriptionScreen));
                 gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_Description));
