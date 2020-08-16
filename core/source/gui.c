@@ -158,7 +158,6 @@ gboolean keypress_function(GtkWidget *widget, GdkEventKey *event, gpointer data)
     return FALSE;
 }
 
-
 // Handle button presses
 void pokemon_entry_clicked (GtkButton *buttonClicked) {
     // Change active icon on top menu bar

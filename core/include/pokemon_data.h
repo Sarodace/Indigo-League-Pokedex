@@ -46,14 +46,14 @@ typedef enum evolutionEnum {
 } evolutionEnum;
 
 typedef struct pokemon { // Identifying data associated with Pokemon
-  char name[13];
-  char category[15];
+  char name[20];
+  char category[20];
   int number;
   typeEnum firstType;
   typeEnum secondType;
   float height; // In meters
   float weight; // In kilograms
-  bool finalForm; // -1 Can't evolve, 0 No, 1 yes
+  bool finalForm; // 0 No, 1 yes
   int evolvesFrom;
   evolutionEnum evolutionMethod;
   int level;

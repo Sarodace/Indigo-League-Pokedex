@@ -4,6 +4,84 @@ extern const char* evolutionEnumStrings[];
 extern int currentHeight;
 
 // Signal handlers
+int fill_pokedex_array(void) {
+    FILE *file;
+    int count = 0;
+
+    file = fopen("assets/files/csv/pokedex_entries.csv", "r");
+
+    if (!file) {
+        printf("Can't open file :(\n");
+        return 1;
+    }
+
+    char *firstType = (char *) malloc(20);
+    char *secondType = (char *) malloc(20);
+    char *finalForm = (char *) malloc(1);
+    char *evolutionMethod = (char *) malloc(15);
+
+    // Grab line and add it to the array
+    while (fscanf(file, " %[^,],%[^,],%d,%[^,],%[^,],%f,%f,%[^,],%d,%[^,],%d,",
+                                pokedexEntries[count].name, 
+                                pokedexEntries[count].category,
+                                &pokedexEntries[count].number,
+                                firstType,
+                                secondType,
+                                &pokedexEntries[count].height,
+                                &pokedexEntries[count].weight,
+                                finalForm,
+                                &pokedexEntries[count].evolvesFrom,
+                                evolutionMethod,
+                                &pokedexEntries[count].level) == 11) {
+
+    // Handle first type enum
+    for(int i = 0; i < 17; ++i) {
+        if(!strcmp(typeEnumStrings[i], firstType)) {
+            pokedexEntries[count].firstType = i;
+        }
+    }
+
+    // Handle second type enum
+    for(int i = 0; i < 17; ++i) {
+        if(!strcmp(typeEnumStrings[i], secondType)) {
+            pokedexEntries[count].secondType = i;
+        }
+    }
+
+    // Handle final form enum
+    if (!strcmp(finalForm,"FALSE")) {
+        pokedexEntries[count].finalForm == FALSE;
+    } else {
+        pokedexEntries[count].finalForm == TRUE;
+    }
+
+    // Handle evolution method enum
+    for(int i = 0; i < 8; ++i) {
+        if(!strcmp(evolutionEnumStrings[i], evolutionMethod)) {
+            pokedexEntries[count].evolutionMethod == i;
+        }
+    }
+
+    // printf("Name: %s\n", pokedexEntries[count].name);
+    // printf("Species: %s\n", pokedexEntries[count].category);
+    // printf("Number: %d\n", pokedexEntries[count].number);
+    // printf("First type: %s\n", firstType);
+    // printf("Second type: %s\n", secondType);
+    // printf("Height: %f\n", pokedexEntries[count].height);
+    // printf("Weight: %f\n", pokedexEntries[count].weight);
+    // printf("Final form: %s\n", finalForm);
+    // printf("Evolves from: %d\n", pokedexEntries[count].evolvesFrom);
+    // printf("Evolution method: %s\n", evolutionMethod);
+    // printf("Level: %d\n\n", pokedexEntries[count].level);
+
+    count++;
+                                }
+
+    fclose(file);
+
+    return 0;
+}
+
 void pokemon_search(GtkWidget *entry, gpointer user_data) {
     char relevantPokemonString[25];
 
@@ -62,8 +140,8 @@ void generate_pokedex_buttons(void) {
         sprintf(secondTypeString,"type2_%d",i); // Pokemon icon
 
         // Create string that formats types with CSS
-        sprintf(firstTypeCSS, "%s_type", typeEnumStrings[pokedexArray[i-1].firstType]);
-        sprintf(secondTypeCSS, "%s_type", typeEnumStrings[pokedexArray[i-1].secondType]);
+        sprintf(firstTypeCSS, "%s_type", typeEnumStrings[pokedexEntries[i-1].firstType]);
+        sprintf(secondTypeCSS, "%s_type", typeEnumStrings[pokedexEntries[i-1].secondType]);
 
         //// CREATE THE BUTTON
         mainWindowButton[i-1] = GTK_WIDGET(gtk_builder_get_object(builder, buttonID));
@@ -75,7 +153,7 @@ void generate_pokedex_buttons(void) {
 
         // Set Pokemon's name on button
         gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, nameString)),
-            pokedexArray[i-1].name);
+            pokedexEntries[i-1].name);
 
         // Set Pokemon's number on button
         gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, numberString)),
@@ -83,19 +161,19 @@ void generate_pokedex_buttons(void) {
 
         // Set Pokemon's first type...
         gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, firstTypeString)),
-            typeEnumStrings[pokedexArray[i-1].firstType]);
+            typeEnumStrings[pokedexEntries[i-1].firstType]);
         // Then apply the CSS to format it to the correct color
         style_given_element(firstTypeString,firstTypeCSS);
 
         // Set Pokemon's second type...
         gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, secondTypeString)),
-            typeEnumStrings[pokedexArray[i-1].secondType]);
+            typeEnumStrings[pokedexEntries[i-1].secondType]);
         // Then apply the CSS to format it to the correct color
         style_given_element(secondTypeString,secondTypeCSS);
 
         // Apply CSS to format button's color to allign with Pokemon's first type
         style_given_element(buttonID,
-            typeEnumStrings[pokedexArray[i-1].firstType]);
+            typeEnumStrings[pokedexEntries[i-1].firstType]);
 
         // Clicking the button will trigger the "pokemon_entry_clicked" function
         g_signal_connect(GTK_BUTTON(mainWindowButton[i-1]), "clicked",
@@ -131,7 +209,7 @@ int fill_pokemon_evolution_entries(char *position, int counter, int tier) {
             break;
     }
 
-    sprintf(evolutionLevel, "Lvl. %d", pokedexArray[counter].level);
+    sprintf(evolutionLevel, "Lvl. %d", pokedexEntries[counter].level);
 
     sprintf(numberString, "%sTier_%sNumber", screen, position);
     sprintf(imageString, "%sTier_%sImage", screen, position);
@@ -139,7 +217,7 @@ int fill_pokemon_evolution_entries(char *position, int counter, int tier) {
     sprintf(cardString, "%sTierEvolution_%sCard", screen, position);
 
     sprintf(formattedPokedexNumber, "%s","#");
-    sprintf(rawPokedexNumber, "%03d", pokedexArray[counter].number);
+    sprintf(rawPokedexNumber, "%03d", pokedexEntries[counter].number);
     strcat(formattedPokedexNumber, rawPokedexNumber);
 
     sprintf(pokemonImageString,"assets/sprites/main/%s.png",rawPokedexNumber);
@@ -149,9 +227,9 @@ int fill_pokemon_evolution_entries(char *position, int counter, int tier) {
     gtk_image_set_from_file(GTK_IMAGE(gtk_builder_get_object(builder, imageString)),
         pokemonImageString);
     gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, nameString)),
-        pokedexArray[counter].name);
+        pokedexEntries[counter].name);
 
-    style_evolution_card(cardString, typeEnumStrings[pokedexArray[counter].firstType]);
+    style_evolution_card(cardString, typeEnumStrings[pokedexEntries[counter].firstType]);
 
     if (position == "2nd") {
         gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "threeTier_1stEvolution")),
@@ -160,10 +238,10 @@ int fill_pokemon_evolution_entries(char *position, int counter, int tier) {
 
     if (position == "3rd") {
         // CHANGE THE CONDITION IN THIS IF STATEMENT TO SOMETHING MORE HUMAN-FRIENDLY
-        if (pokedexArray[counter].evolutionMethod > 1) {
+        if (pokedexEntries[counter].evolutionMethod > 1) {
             char pathToImage[40];
             sprintf(pathToImage, "assets/sprites/items/%s.png",
-                evolutionEnumStrings[pokedexArray[counter].evolutionMethod - 2]);
+                evolutionEnumStrings[pokedexEntries[counter].evolutionMethod - 2]);
 
             gtk_stack_set_visible_child(GTK_STACK(threeTier_evolutionSwitcher),
             threeTier_evolutionMethod);
@@ -181,10 +259,10 @@ int fill_pokemon_evolution_entries(char *position, int counter, int tier) {
     if (position == "2nd" && tier == 2) {
         gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "twoTier_1stEvolution")),
             evolutionLevel);
-        if (pokedexArray[counter].evolutionMethod > 1) {
+        if (pokedexEntries[counter].evolutionMethod > 1) {
             char pathToImage[40];
             sprintf(pathToImage, "assets/sprites/items/%s.png",
-                evolutionEnumStrings[pokedexArray[counter].evolutionMethod - 2]);
+                evolutionEnumStrings[pokedexEntries[counter].evolutionMethod - 2]);
 
             gtk_stack_set_visible_child(GTK_STACK(twoTier_evolutionSwitcher),
                 twoTier_evolutionMethod);
@@ -205,32 +283,32 @@ int find_evolutions(int selectedPokemon) {
 
     // Have to do this because of pokemon sorting
     for (int i = 0; i < POKEDEX_SIZE; i++) {
-        if (pokedexArray[i].number == selectedPokemon) {
+        if (pokedexEntries[i].number == selectedPokemon) {
             adjustSelectedPokemon = i;
         }
     }
 
     // Loop back to the selected pokemon's 1st stage
-    if (pokedexArray[adjustSelectedPokemon].finalForm == TRUE || pokedexArray[adjustSelectedPokemon].evolvesFrom != NO_EVO) {
+    if (pokedexEntries[adjustSelectedPokemon].finalForm == TRUE || pokedexEntries[adjustSelectedPokemon].evolvesFrom != NO_EVO) {
         pokemonStage += 1;
         for (int i=0;i<POKEDEX_SIZE;i++) {
-            if (pokedexArray[i].number == pokedexArray[adjustSelectedPokemon].evolvesFrom) {
+            if (pokedexEntries[i].number == pokedexEntries[adjustSelectedPokemon].evolvesFrom) {
                 // Uses recursion to accomplish the task!
-                find_evolutions(pokedexArray[i].number);
+                find_evolutions(pokedexEntries[i].number);
             }
         }
     }
 
     // Go through the evolutionary stages
-    if (pokedexArray[adjustSelectedPokemon].finalForm == FALSE && pokedexArray[adjustSelectedPokemon].evolvesFrom == NO_EVO) {
+    if (pokedexEntries[adjustSelectedPokemon].finalForm == FALSE && pokedexEntries[adjustSelectedPokemon].evolvesFrom == NO_EVO) {
         // Looks for 2nd evolutionary stage
         for (int j = 0; j < POKEDEX_SIZE; j++) {
-            if (pokedexArray[j].evolvesFrom == pokedexArray[adjustSelectedPokemon].number) {
+            if (pokedexEntries[j].evolvesFrom == pokedexEntries[adjustSelectedPokemon].number) {
                 // Either goes on to look for 3rd evolutionary stage...
-                if (pokedexArray[j].finalForm == FALSE) {
+                if (pokedexEntries[j].finalForm == FALSE) {
                     for (int k = 0; k < POKEDEX_SIZE; k++) {
                         //Finally, find the 3rd evolutionary stage
-                        if (pokedexArray[k].evolvesFrom == pokedexArray[j].number) {
+                        if (pokedexEntries[k].evolvesFrom == pokedexEntries[j].number) {
                             fill_pokemon_evolution_entries("1st",adjustSelectedPokemon,3);
                             fill_pokemon_evolution_entries("2nd",j,3);
                             fill_pokemon_evolution_entries("3rd",k,3);
@@ -255,8 +333,8 @@ int find_evolutions(int selectedPokemon) {
         }
     }
 
-    if (pokedexArray[adjustSelectedPokemon].finalForm == TRUE &&
-        pokedexArray[adjustSelectedPokemon].evolvesFrom == NO_EVO) {
+    if (pokedexEntries[adjustSelectedPokemon].finalForm == TRUE &&
+        pokedexEntries[adjustSelectedPokemon].evolvesFrom == NO_EVO) {
         fill_pokemon_evolution_entries("1st", adjustSelectedPokemon, 1);
         printf("%d\n", adjustSelectedPokemon);
 
@@ -288,69 +366,47 @@ int search_pokemon_list(GtkWidget** buttonArray,
 
   for (i=0;i<POKEDEX_SIZE;i++) {
     // Check if Pokemon's name contains given string 
-    ptr1 = strcasestr(pokedexArray[i].name,name);
+    ptr1 = strcasestr(pokedexEntries[i].name,name);
 
     // Check if Pokemon's height falls within given range
     if (greaterHeight) {
-      ptr2 = (pokedexArray[i].height >= height);
+      ptr2 = (pokedexEntries[i].height >= height);
     } else {
-      ptr2 = (pokedexArray[i].height <= height);
+      ptr2 = (pokedexEntries[i].height <= height);
     }
 
     // Check if Pokemon's weight falls within given range
     if (greaterWeight) {
-      ptr3 = (pokedexArray[i].weight >= weight);
+      ptr3 = (pokedexEntries[i].weight >= weight);
     } else {
-      ptr3 = (pokedexArray[i].weight <= weight);
+      ptr3 = (pokedexEntries[i].weight <= weight);
     }
 
     // Check if Pokemon's first type matches with given first type
     if (firstType == NONE) {
       ptr4 = 1;
     } else {
-      ptr4 = (pokedexArray[i].firstType == firstType);
+      ptr4 = (pokedexEntries[i].firstType == firstType);
     }
 
     // Check if Pokemon's second type matches with given second type
     if (secondType == NONE) {
       ptr5 = 1;
     } else {
-      ptr5 = (pokedexArray[i].secondType == secondType);
+      ptr5 = (pokedexEntries[i].secondType == secondType);
     }
 
     // Determine whether the Pokemon satisfies all constraints
     if (ptr1 != NULL && ptr2 && ptr3 && ptr4 && ptr5) {
       j += 1;
-      gtk_widget_show(buttonArray[pokedexArray[i].number -1]);
+      gtk_widget_show(buttonArray[pokedexEntries[i].number -1]);
     } else {
-      gtk_widget_hide(buttonArray[pokedexArray[i].number -1]);
+      gtk_widget_hide(buttonArray[pokedexEntries[i].number -1]);
     }
   }
 
   return j;
 }
-
-// void set_pokemon_description_title(GtkWidget *buttonClicked) {
-//     int selectedPokemon = atoi(gtk_widget_get_name(GTK_WIDGET(buttonClicked))) - 1;
-//     char pokemonCategoryText[30];
-//     int adjustSelectedPokemon;
-
-//     // Have to do this because of pokemon sorting
-//     for (int i = 0; i < POKEDEX_SIZE; i++) {
-//         if (pokedexArray[i].number == selectedPokemon + 1) {
-//             adjustSelectedPokemon = i;
-//         }
-//     }
-
-//     gtk_label_set_text(GTK_LABEL(infoStackName), pokedexArray[adjustSelectedPokemon].name);
-
-//     sprintf(pokemonCategoryText, "The %s Pokemon",
-//         pokedexArray[adjustSelectedPokemon].category);
-//     gtk_label_set_text(GTK_LABEL(infoStackSpecies),pokemonCategoryText);
-
-//     style_evolution_card("infoStackBar", 
-//         typeEnumStrings[pokedexArray[adjustSelectedPokemon].firstType]);
-// }
 
 // Sorting alogrithms
 int sort_alphabetical(const void *a, const void *b) {
@@ -431,31 +487,31 @@ int sort_height_descending(const void *a, const void *b) {
 
 // Select sorting algorithm
 int sort_pokedex_entries(int sortingStyle) {
-    size_t pokemon_len = sizeof(pokedexArray) / sizeof(struct pokemon);
+    size_t pokemon_len = sizeof(pokedexEntries) / sizeof(struct pokemon);
 
     switch (sortingStyle) {
     case 0: // Numerical
-        qsort(pokedexArray, pokemon_len, sizeof(pokemon), sort_numerical);
+        qsort(pokedexEntries, pokemon_len, sizeof(pokemon), sort_numerical);
         break;
 
     case 1: // Alphabetical
-        qsort(pokedexArray, pokemon_len, sizeof(pokemon), sort_alphabetical);
+        qsort(pokedexEntries, pokemon_len, sizeof(pokemon), sort_alphabetical);
         break;
 
     case 2: // Heaviest
-        qsort(pokedexArray, pokemon_len, sizeof(pokemon), sort_weight_descending);
+        qsort(pokedexEntries, pokemon_len, sizeof(pokemon), sort_weight_descending);
         break;
 
     case 3: // Lightest
-        qsort(pokedexArray, pokemon_len, sizeof(pokemon), sort_weight_ascending);
+        qsort(pokedexEntries, pokemon_len, sizeof(pokemon), sort_weight_ascending);
         break;
 
     case 4: // Tallest
-        qsort(pokedexArray, pokemon_len, sizeof(pokemon), sort_height_descending);
+        qsort(pokedexEntries, pokemon_len, sizeof(pokemon), sort_height_descending);
         break;
 
     case 5: // Shortest
-        qsort(pokedexArray, pokemon_len, sizeof(pokemon), sort_height_ascending);
+        qsort(pokedexEntries, pokemon_len, sizeof(pokemon), sort_height_ascending);
         break;
     }
 }
@@ -473,12 +529,12 @@ void print_pokemon_struct_array(struct pokemon *array, size_t len) {
 
 
 void rearrange_buttons(void) {
-    size_t pokemon_len = sizeof(pokedexArray) / sizeof(struct pokemon);
+    size_t pokemon_len = sizeof(pokedexEntries) / sizeof(struct pokemon);
 
-    // print_pokemon_struct_array(pokedexArray, pokemon_len);
+    // print_pokemon_struct_array(pokedexEntries, pokemon_len);
 
     for (int i = 0; i < POKEDEX_SIZE; i++) {
-        gtk_box_reorder_child(GTK_BOX(pokemonEntryList), mainWindowButton[pokedexArray[i].number - 1], i);
+        gtk_box_reorder_child(GTK_BOX(pokemonEntryList), mainWindowButton[pokedexEntries[i].number - 1], i);
     }
 }
 
@@ -493,14 +549,14 @@ void populate_description_screen(int selectedPokemon) {
 
     // Have to do this because of pokemon sorting
     for (int i = 0; i < POKEDEX_SIZE; i++) {
-        if (pokedexArray[i].number == selectedPokemon) {
+        if (pokedexEntries[i].number == selectedPokemon) {
             adjustSelectedPokemon = i;
         }
     }
 
     // TODO: THIS IS USED PRETTY OFTEN, SHOULD PROBABLY TURN IT INTO IT'S OWN FUNCTION
     sprintf(formattedPokedexNumber, "%s","#");
-    sprintf(rawPokedexNumber, "%03d", pokedexArray[adjustSelectedPokemon].number);
+    sprintf(rawPokedexNumber, "%03d", pokedexEntries[adjustSelectedPokemon].number);
     strcat(formattedPokedexNumber, rawPokedexNumber);
     // printf("%s\n", formattedPokedexNumber);
 
@@ -510,7 +566,7 @@ void populate_description_screen(int selectedPokemon) {
 
     // Populate name
     gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "descriptionScreen_Name")),
-        pokedexArray[adjustSelectedPokemon].name);
+        pokedexEntries[adjustSelectedPokemon].name);
 
     // Populate image
     sprintf(pokemonImageString,"assets/sprites/main/%s.png", rawPokedexNumber);
@@ -518,15 +574,15 @@ void populate_description_screen(int selectedPokemon) {
         pokemonImageString);
 
     sprintf(pokemonCategoryText, "The %s Pokemon",
-        pokedexArray[adjustSelectedPokemon].category);
+        pokedexEntries[adjustSelectedPokemon].category);
     gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "descriptionScreen_Species")),
         pokemonCategoryText);
 
     // Set proper color
     // style_given_element("descriptionScreen_topArea",
-    //     typeEnumStrings[pokedexArray[selectedPokemon - 1].firstType]);
+    //     typeEnumStrings[pokedexEntries[selectedPokemon - 1].firstType]);
     overwrite_style_given_element("descriptionScreen_topArea",
-        typeEnumStrings[pokedexArray[adjustSelectedPokemon].firstType],
+        typeEnumStrings[pokedexEntries[adjustSelectedPokemon].firstType],
         typeEnumStrings, POKEMON_TYPES);
 
     // Populate description
@@ -538,12 +594,12 @@ void populate_description_screen(int selectedPokemon) {
     diplayed in, metric and imperial. Not to forget that it should also display
     "Height: " and "Weight: ", respectively, before the relevant data. */
 
-    sprintf(firstTypeCSS, "%s_type", typeEnumStrings[pokedexArray[adjustSelectedPokemon].firstType]);
-    sprintf(secondTypeCSS, "%s_type", typeEnumStrings[pokedexArray[adjustSelectedPokemon].secondType]);
+    sprintf(firstTypeCSS, "%s_type", typeEnumStrings[pokedexEntries[adjustSelectedPokemon].firstType]);
+    sprintf(secondTypeCSS, "%s_type", typeEnumStrings[pokedexEntries[adjustSelectedPokemon].secondType]);
 
     // Set Pokemon's first type...
     gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "descriptionScreen_Type1")),
-        typeEnumStrings[pokedexArray[adjustSelectedPokemon].firstType]);
+        typeEnumStrings[pokedexEntries[adjustSelectedPokemon].firstType]);
 
     // Then apply the CSS to format it to the correct color
     // style_pokemon_types("descriptionScreen_Type1", firstTypeCSS);
@@ -555,7 +611,7 @@ void populate_description_screen(int selectedPokemon) {
 
     // Set Pokemon's second type...
     gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "descriptionScreen_Type2")),
-        typeEnumStrings[pokedexArray[adjustSelectedPokemon].secondType]);
+        typeEnumStrings[pokedexEntries[adjustSelectedPokemon].secondType]);
 
     // Then apply the CSS to format it to the correct color
     overwrite_style_given_element("descriptionScreen_Type2", secondTypeCSS,

@@ -114,6 +114,9 @@ int main(int argc, char *argv[]) {
 
     viewWindow = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(viewBox));
 
+    // Testing stuff
+    fill_pokedex_array();
+
     // Populate pokemon entry buttons
     generate_pokedex_buttons();
 
