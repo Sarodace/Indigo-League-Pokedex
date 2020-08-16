@@ -1,94 +1,94 @@
-Bulbasaur,Seed,1,Grass,Poison,0.7,6.9,FALSE,0,NO_EVO,0,
-Ivysaur,Seed,2,Grass,Poison,1,13,FALSE,1,LEVEL_UP,16,
-Venusaur,Seed,3,Grass,Poison,2,100,TRUE,2,LEVEL_UP,32,
-Charmander,Lizard,4,Fire,NONE,0.6,8.5,FALSE,0,NO_EVO,0,
-Charmeleon,Flame,5,Fire,NONE,1.1,19,FALSE,4,LEVEL_UP,16,
-Charizard,Flame,6,Fire,Flying,1.7,90.5,TRUE,5,LEVEL_UP,36,
-Squirtle,Tiny Turtle,7,Water,NONE,0.5,9,FALSE,0,NO_EVO,0,
-Wartortle,Turtle,8,Water,NONE,1,22.5,FALSE,7,LEVEL_UP,16,
-Blastoise,Shellfish,9,Water,NONE,1.6,85.5,TRUE,8,LEVEL_UP,36,
-Caterpie,Worm,10,Bug,NONE,0.3,2.99,FALSE,0,NO_EVO,0,
-Metapod,Cocoon,11,Bug,NONE,0.7,9.9,FALSE,10,LEVEL_UP,7,
-Butterfree,Butterfly,12,Bug,Flying,1.1,32,TRUE,11,LEVEL_UP,10,
-Weedle,Hairy Bug,13,Bug,Poison,0.3,3.2,FALSE,0,NO_EVO,0,
-Kakuna,Cocoon,14,Bug,Poison,0.6,10,FALSE,13,LEVEL_UP,7,
-Beedrill,Poison Bee,15,Bug,Poison,1,29.5,TRUE,14,LEVEL_UP,10,
-Pidgey,Tiny Bird,16,Normal,Flying,0.3,1.8,FALSE,0,NO_EVO,0,
-Pidgeotto,Bird,17,Normal,Flying,1.1,30,FALSE,16,LEVEL_UP,18,
-Pidgeot,Bird,18,Normal,Flying,1.5,39.5,TRUE,17,LEVEL_UP,36,
-Rattata,Mouse,19,Normal,NONE,0.3,3.5,FALSE,0,NO_EVO,0,
-Raticate,Mouse,20,Normal,NONE,0.7,18.5,TRUE,19,LEVEL_UP,20,
-Spearow,Tiny Bird,21,Normal,Flying,0.3,2,FALSE,0,NO_EVO,0,
-Fearow,Beak,22,Normal,Flying,1.2,38,TRUE,21,LEVEL_UP,20,
-Ekans,Snake,23,Poison,NONE,2,6.9,FALSE,0,NO_EVO,0,
-Arbok,Cobra,24,Poison,NONE,3.5,65,TRUE,23,LEVEL_UP,22,
-Pikachu,Mouse,25,Electric,NONE,0.4,6,FALSE,0,NO_EVO,0,
-Raichu,Mouse,26,Electric,NONE,0.8,30,TRUE,25,THUNDER_STONE,0,
-Sandshrew,Mouse,27,Ground,NONE,0.6,12,FALSE,0,NO_EVO,0,
-Sandslash,Mouse,28,Ground,NONE,1,29.5,TRUE,27,LEVEL_UP,22,
-Nidoran♀,Poison Pin,29,Poison,NONE,0.4,7,FALSE,0,NO_EVO,0,
-Nidorina,Poison Pin,30,Poison,NONE,0.8,20,FALSE,29,LEVEL_UP,16,
-Nidoqueen,Drill,31,Poison,Ground,1.3,60,TRUE,30,MOON_STONE,0,
-Nidoran♂,Poison Pin,32,Poison,NONE,0.5,9,FALSE,0,NO_EVO,0,
-Nidorino,Poison Pin,33,Poison,NONE,0.8,19.5,FALSE,32,LEVEL_UP,16,
-Nidoking,Drill,34,Poison,Ground,1.4,62,TRUE,33,MOON_STONE,0,
-Clefairy,Fairy,35,Normal,NONE,0.6,7.5,FALSE,0,NO_EVO,0,
-Clefable,Fairy,36,Normal,NONE,1.3,40,TRUE,35,MOON_STONE,0,
-Vulpix,Fox,37,Fire,NONE,0.6,9.9,FALSE,0,NO_EVO,0,
-Ninetales,Fox,38,Fire,NONE,1.1,19.9,TRUE,37,FIRE_STONE,0,
-Jigglypuff,Balloon,39,Normal,NONE,0.5,5.5,FALSE,0,NO_EVO,0,
-Wigglypuff,Balloon,40,Normal,NONE,1,12,TRUE,39,MOON_STONE,0,
-Zubat,Bat,41,Poison,Flying,0.8,7.5,FALSE,0,NO_EVO,0,
-Golbat,Bat,42,Poison,Flying,1.6,55,TRUE,41,LEVEL_UP,22,
-Oddish,Weed,43,Grass,Poison,0.5,5.4,FALSE,0,NO_EVO,0,
-Gloom,Weed,44,Grass,Poison,0.8,8.6,FALSE,43,LEVEL_UP,21,
-Vileplume,Flower,45,Grass,Poison,1.2,18.6,TRUE,44,LEAF_STONE,0,
-Paras,Mushroom,46,Bug,Grass,0.3,5.4,FALSE,0,NO_EVO,0,
-Parasect,Mushroom,47,Bug,Grass,1,29.5,TRUE,46,LEVEL_UP,24,
-Venonat,Insect,48,Bug,Poison,1,30,FALSE,0,NO_EVO,0,
-Venomoth,Poison Moth,49,Bug,Poison,1.5,12.5,TRUE,48,LEVEL_UP,31,
-Diglett,Mole,50,Ground,NONE,0.2,0.8,FALSE,0,NO_EVO,0,
-Dugtrio,Mole,51,Ground,NONE,0.7,33.3,TRUE,50,LEVEL_UP,26,
-Meowth,Scratch Cat,52,Normal,NONE,0.4,4.2,FALSE,0,NO_EVO,0,
-Persian,Classy Cat,53,Normal,NONE,1,3.2,TRUE,52,LEVEL_UP,28,
-Psyduck,Duck,54,Water,NONE,0.8,19.6,FALSE,0,NO_EVO,0,
-Golduck,Duck,55,Water,NONE,1.7,76.6,TRUE,54,LEVEL_UP,33,
-Mankey,Pig Monkey,56,Fighting,NONE,0.5,28,FALSE,0,NO_EVO,0,
-Primeape,Pig Monkey,57,Fighting,NONE,1,32,TRUE,56,LEVEL_UP,28,
-Growlithe,Puppy,58,Fire,NONE,0.7,19,FALSE,0,NO_EVO,0,
-Arcanine,Legendary,59,Fire,NONE,1.9,155,TRUE,58,FIRE_STONE,0,
-Poliwag,Tadpole,60,Water,NONE,0.6,12.4,FALSE,0,NO_EVO,0,
-Poliwhirl,Tadpole,61,Water,NONE,1,20,FALSE,60,LEVEL_UP,25,
-Poliwrath,Tadpole,62,Water,Fighting,1.3,54,TRUE,61,WATER_STONE,0,
-Abra,Psi,63,Psychic,NONE,0.9,19.5,FALSE,0,NO_EVO,0,
-Kadabra,Psi,64,Psychic,NONE,1.3,56.5,FALSE,63,LEVEL_UP,16,
-Alakazam,Psi,65,Psychic,NONE,1.5,48,TRUE,64,LEVEL_UP,50,
-Machop,Superpower,66,Fighting,NONE,0.8,19.5,FALSE,0,NO_EVO,0,
-Machoke,Superpower,67,Fighting,NONE,1.5,70.5,FALSE,66,LEVEL_UP,28,
-Machamp,Superpower,68,Fighting,NONE,1.6,130,TRUE,67,LEVEL_UP,50,
-Bellsprout,Flower,69,Grass,Poison,0.7,4,FALSE,0,NO_EVO,0,
-Weepinbell,Flycatcher,70,Grass,Poison,1,6.4,FALSE,69,LEVEL_UP,21,
-Victreebel,Flycatcher,71,Grass,Poison,1.7,15.5,TRUE,70,LEAF_STONE,0,
-Tentacool,Jellyfish,72,Water,Poison,0.9,45.5,FALSE,0,NO_EVO,0,
-Tentacruel,Jellyfish,73,Water,Poison,1.6,55,TRUE,72,LEVEL_UP,30,
-Geodude,Rock,74,Rock,Ground,0.4,20,FALSE,0,NO_EVO,0,
-Graveler,Rock,75,Rock,Ground,1,105,FALSE,74,LEVEL_UP,25,
-Golem,Megaton,76,Rock,Ground,1.4,300,TRUE,75,LEVEL_UP,50,
-Ponyta,Fire Horse,77,Fire,NONE,1,30,FALSE,0,NO_EVO,0,
-Rapidash,Fire Horse,78,Fire,NONE,1.7,95,TRUE,77,LEVEL_UP,40,
-Slowpoke,Dopey,79,Water,Psychic,1.2,36,FALSE,0,NO_EVO,0,
-Slowbro,Hermit Crab,80,Water,Psychic,1.6,78.5,TRUE,79,LEVEL_UP,23,
-Magnemite,Magnet,81,Electric,Steel,0.3,6,FALSE,0,NO_EVO,0,
-Magneton,Magnet,82,Electric,Steel,1,60,TRUE,81,LEVEL_UP,30,
-Farfetch'd,Wild Duck,83,Normal,Flying,0.8,15,TRUE,0,NO_EVO,0,
-Doduo,Twin Bird,84,Normal,Flying,1.4,39.2,FALSE,0,NO_EVO,0,
-Dodrio,Triple Bird,85,Normal,Flying,1.8,85.2,TRUE,84,LEVEL_UP,31,
-Seel,Sea Lion,86,Water,NONE,1.1,90,FALSE,0,NO_EVO,0,
-Dewgong,Sea Lion,87,Water,Ice,1.7,12,TRUE,86,LEVEL_UP,34,
-Grimer,Sludge,88,Poison,NONE,0.9,30,FALSE,0,NO_EVO,0,
-Muk,Sludge,89,Poison,NONE,1.2,30,TRUE,88,LEVEL_UP,38,
-Shellder,Bivalve,90,Water,NONE,0.3,4,FALSE,0,NO_EVO,0,
-Cloyster,Bivalve,91,Water,Ice,1.5,132.5,TRUE,90,WATER_STONE,0,
-Gastly,Gas,92,Ghost,Poison,1.3,0.1,FALSE,0,NO_EVO,0,
-Haunter,Gas,93,Ghost,Poison,1.6,0.1,FALSE,92,LEVEL_UP,25,
-Gengar,Shadow,94,Ghost,Poison,1.5,40.5,TRUE,93,LEVEL_UP,50,
+Bulbasaur,Seed,1,Grass,Poison,0.7,6.9,FALSE,0,NO_EVO,0
+Ivysaur,Seed,2,Grass,Poison,1,13,FALSE,1,LEVEL_UP,16
+Venusaur,Seed,3,Grass,Poison,2,100,TRUE,2,LEVEL_UP,32
+Charmander,Lizard,4,Fire,NONE,0.6,8.5,FALSE,0,NO_EVO,0
+Charmeleon,Flame,5,Fire,NONE,1.1,19,FALSE,4,LEVEL_UP,16
+Charizard,Flame,6,Fire,Flying,1.7,90.5,TRUE,5,LEVEL_UP,36
+Squirtle,Tiny Turtle,7,Water,NONE,0.5,9,FALSE,0,NO_EVO,0
+Wartortle,Turtle,8,Water,NONE,1,22.5,FALSE,7,LEVEL_UP,16
+Blastoise,Shellfish,9,Water,NONE,1.6,85.5,TRUE,8,LEVEL_UP,36
+Caterpie,Worm,10,Bug,NONE,0.3,2.99,FALSE,0,NO_EVO,0
+Metapod,Cocoon,11,Bug,NONE,0.7,9.9,FALSE,10,LEVEL_UP,7
+Butterfree,Butterfly,12,Bug,Flying,1.1,32,TRUE,11,LEVEL_UP,10
+Weedle,Hairy Bug,13,Bug,Poison,0.3,3.2,FALSE,0,NO_EVO,0
+Kakuna,Cocoon,14,Bug,Poison,0.6,10,FALSE,13,LEVEL_UP,7
+Beedrill,Poison Bee,15,Bug,Poison,1,29.5,TRUE,14,LEVEL_UP,10
+Pidgey,Tiny Bird,16,Normal,Flying,0.3,1.8,FALSE,0,NO_EVO,0
+Pidgeotto,Bird,17,Normal,Flying,1.1,30,FALSE,16,LEVEL_UP,18
+Pidgeot,Bird,18,Normal,Flying,1.5,39.5,TRUE,17,LEVEL_UP,36
+Rattata,Mouse,19,Normal,NONE,0.3,3.5,FALSE,0,NO_EVO,0
+Raticate,Mouse,20,Normal,NONE,0.7,18.5,TRUE,19,LEVEL_UP,20
+Spearow,Tiny Bird,21,Normal,Flying,0.3,2,FALSE,0,NO_EVO,0
+Fearow,Beak,22,Normal,Flying,1.2,38,TRUE,21,LEVEL_UP,20
+Ekans,Snake,23,Poison,NONE,2,6.9,FALSE,0,NO_EVO,0
+Arbok,Cobra,24,Poison,NONE,3.5,65,TRUE,23,LEVEL_UP,22
+Pikachu,Mouse,25,Electric,NONE,0.4,6,FALSE,0,NO_EVO,0
+Raichu,Mouse,26,Electric,NONE,0.8,30,TRUE,25,THUNDER_STONE,0
+Sandshrew,Mouse,27,Ground,NONE,0.6,12,FALSE,0,NO_EVO,0
+Sandslash,Mouse,28,Ground,NONE,1,29.5,TRUE,27,LEVEL_UP,22
+Nidoran♀,Poison Pin,29,Poison,NONE,0.4,7,FALSE,0,NO_EVO,0
+Nidorina,Poison Pin,30,Poison,NONE,0.8,20,FALSE,29,LEVEL_UP,16
+Nidoqueen,Drill,31,Poison,Ground,1.3,60,TRUE,30,MOON_STONE,0
+Nidoran♂,Poison Pin,32,Poison,NONE,0.5,9,FALSE,0,NO_EVO,0
+Nidorino,Poison Pin,33,Poison,NONE,0.8,19.5,FALSE,32,LEVEL_UP,16
+Nidoking,Drill,34,Poison,Ground,1.4,62,TRUE,33,MOON_STONE,0
+Clefairy,Fairy,35,Normal,NONE,0.6,7.5,FALSE,0,NO_EVO,0
+Clefable,Fairy,36,Normal,NONE,1.3,40,TRUE,35,MOON_STONE,0
+Vulpix,Fox,37,Fire,NONE,0.6,9.9,FALSE,0,NO_EVO,0
+Ninetales,Fox,38,Fire,NONE,1.1,19.9,TRUE,37,FIRE_STONE,0
+Jigglypuff,Balloon,39,Normal,NONE,0.5,5.5,FALSE,0,NO_EVO,0
+Wigglypuff,Balloon,40,Normal,NONE,1,12,TRUE,39,MOON_STONE,0
+Zubat,Bat,41,Poison,Flying,0.8,7.5,FALSE,0,NO_EVO,0
+Golbat,Bat,42,Poison,Flying,1.6,55,TRUE,41,LEVEL_UP,22
+Oddish,Weed,43,Grass,Poison,0.5,5.4,FALSE,0,NO_EVO,0
+Gloom,Weed,44,Grass,Poison,0.8,8.6,FALSE,43,LEVEL_UP,21
+Vileplume,Flower,45,Grass,Poison,1.2,18.6,TRUE,44,LEAF_STONE,0
+Paras,Mushroom,46,Bug,Grass,0.3,5.4,FALSE,0,NO_EVO,0
+Parasect,Mushroom,47,Bug,Grass,1,29.5,TRUE,46,LEVEL_UP,24
+Venonat,Insect,48,Bug,Poison,1,30,FALSE,0,NO_EVO,0
+Venomoth,Poison Moth,49,Bug,Poison,1.5,12.5,TRUE,48,LEVEL_UP,31
+Diglett,Mole,50,Ground,NONE,0.2,0.8,FALSE,0,NO_EVO,0
+Dugtrio,Mole,51,Ground,NONE,0.7,33.3,TRUE,50,LEVEL_UP,26
+Meowth,Scratch Cat,52,Normal,NONE,0.4,4.2,FALSE,0,NO_EVO,0
+Persian,Classy Cat,53,Normal,NONE,1,3.2,TRUE,52,LEVEL_UP,28
+Psyduck,Duck,54,Water,NONE,0.8,19.6,FALSE,0,NO_EVO,0
+Golduck,Duck,55,Water,NONE,1.7,76.6,TRUE,54,LEVEL_UP,33
+Mankey,Pig Monkey,56,Fighting,NONE,0.5,28,FALSE,0,NO_EVO,0
+Primeape,Pig Monkey,57,Fighting,NONE,1,32,TRUE,56,LEVEL_UP,28
+Growlithe,Puppy,58,Fire,NONE,0.7,19,FALSE,0,NO_EVO,0
+Arcanine,Legendary,59,Fire,NONE,1.9,155,TRUE,58,FIRE_STONE,0
+Poliwag,Tadpole,60,Water,NONE,0.6,12.4,FALSE,0,NO_EVO,0
+Poliwhirl,Tadpole,61,Water,NONE,1,20,FALSE,60,LEVEL_UP,25
+Poliwrath,Tadpole,62,Water,Fighting,1.3,54,TRUE,61,WATER_STONE,0
+Abra,Psi,63,Psychic,NONE,0.9,19.5,FALSE,0,NO_EVO,0
+Kadabra,Psi,64,Psychic,NONE,1.3,56.5,FALSE,63,LEVEL_UP,16
+Alakazam,Psi,65,Psychic,NONE,1.5,48,TRUE,64,TRADE,0
+Machop,Superpower,66,Fighting,NONE,0.8,19.5,FALSE,0,NO_EVO,0
+Machoke,Superpower,67,Fighting,NONE,1.5,70.5,FALSE,66,LEVEL_UP,28
+Machamp,Superpower,68,Fighting,NONE,1.6,130,TRUE,67,TRADE,0
+Bellsprout,Flower,69,Grass,Poison,0.7,4,FALSE,0,NO_EVO,0
+Weepinbell,Flycatcher,70,Grass,Poison,1,6.4,FALSE,69,LEVEL_UP,21
+Victreebel,Flycatcher,71,Grass,Poison,1.7,15.5,TRUE,70,LEAF_STONE,0
+Tentacool,Jellyfish,72,Water,Poison,0.9,45.5,FALSE,0,NO_EVO,0
+Tentacruel,Jellyfish,73,Water,Poison,1.6,55,TRUE,72,LEVEL_UP,30
+Geodude,Rock,74,Rock,Ground,0.4,20,FALSE,0,NO_EVO,0
+Graveler,Rock,75,Rock,Ground,1,105,FALSE,74,LEVEL_UP,25
+Golem,Megaton,76,Rock,Ground,1.4,300,TRUE,75,TRADE,0
+Ponyta,Fire Horse,77,Fire,NONE,1,30,FALSE,0,NO_EVO,0
+Rapidash,Fire Horse,78,Fire,NONE,1.7,95,TRUE,77,LEVEL_UP,40
+Slowpoke,Dopey,79,Water,Psychic,1.2,36,FALSE,0,NO_EVO,0
+Slowbro,Hermit Crab,80,Water,Psychic,1.6,78.5,TRUE,79,LEVEL_UP,23
+Magnemite,Magnet,81,Electric,Steel,0.3,6,FALSE,0,NO_EVO,0
+Magneton,Magnet,82,Electric,Steel,1,60,TRUE,81,LEVEL_UP,30
+Farfetch'd,Wild Duck,83,Normal,Flying,0.8,15,TRUE,0,NO_EVO,0
+Doduo,Twin Bird,84,Normal,Flying,1.4,39.2,FALSE,0,NO_EVO,0
+Dodrio,Triple Bird,85,Normal,Flying,1.8,85.2,TRUE,84,LEVEL_UP,31
+Seel,Sea Lion,86,Water,NONE,1.1,90,FALSE,0,NO_EVO,0
+Dewgong,Sea Lion,87,Water,Ice,1.7,12,TRUE,86,LEVEL_UP,34
+Grimer,Sludge,88,Poison,NONE,0.9,30,FALSE,0,NO_EVO,0
+Muk,Sludge,89,Poison,NONE,1.2,30,TRUE,88,LEVEL_UP,38
+Shellder,Bivalve,90,Water,NONE,0.3,4,FALSE,0,NO_EVO,0
+Cloyster,Bivalve,91,Water,Ice,1.5,132.5,TRUE,90,WATER_STONE,0
+Gastly,Gas,92,Ghost,Poison,1.3,0.1,FALSE,0,NO_EVO,0
+Haunter,Gas,93,Ghost,Poison,1.6,0.1,FALSE,92,LEVEL_UP,25
+Gengar,Shadow,94,Ghost,Poison,1.5,40.5,TRUE,93,TRADE,0

@@ -42,7 +42,7 @@ int fill_pokedex_array(void) {
     }
 
     // Handle second type enum
-    for(int i = 0; i < 17; ++i) {
+    for (int i = 0; i < 17; ++i) {
         if(!strcmp(typeEnumStrings[i], secondType)) {
             pokedexEntries[count].secondType = i;
         }
@@ -50,15 +50,15 @@ int fill_pokedex_array(void) {
 
     // Handle final form enum
     if (!strcmp(finalForm,"FALSE")) {
-        pokedexEntries[count].finalForm == FALSE;
+        pokedexEntries[count].finalForm = FALSE;
     } else {
-        pokedexEntries[count].finalForm == TRUE;
+        pokedexEntries[count].finalForm = TRUE;
     }
 
     // Handle evolution method enum
-    for(int i = 0; i < 8; ++i) {
+    for (int i = 0; i < 8; ++i) {
         if(!strcmp(evolutionEnumStrings[i], evolutionMethod)) {
-            pokedexEntries[count].evolutionMethod == i;
+            pokedexEntries[count].evolutionMethod = i;
         }
     }
 
@@ -241,10 +241,10 @@ int fill_pokemon_evolution_entries(char *position, int counter, int tier) {
         if (pokedexEntries[counter].evolutionMethod > 1) {
             char pathToImage[40];
             sprintf(pathToImage, "assets/sprites/items/%s.png",
-                evolutionEnumStrings[pokedexEntries[counter].evolutionMethod - 2]);
+                evolutionEnumStrings[pokedexEntries[counter].evolutionMethod]);
 
             gtk_stack_set_visible_child(GTK_STACK(threeTier_evolutionSwitcher),
-            threeTier_evolutionMethod);
+                threeTier_evolutionMethod);
 
             gtk_image_set_from_file(GTK_IMAGE(threeTier_evolutionMethod),
                 pathToImage);
@@ -262,7 +262,7 @@ int fill_pokemon_evolution_entries(char *position, int counter, int tier) {
         if (pokedexEntries[counter].evolutionMethod > 1) {
             char pathToImage[40];
             sprintf(pathToImage, "assets/sprites/items/%s.png",
-                evolutionEnumStrings[pokedexEntries[counter].evolutionMethod - 2]);
+                evolutionEnumStrings[pokedexEntries[counter].evolutionMethod]);
 
             gtk_stack_set_visible_child(GTK_STACK(twoTier_evolutionSwitcher),
                 twoTier_evolutionMethod);
@@ -313,7 +313,7 @@ int find_evolutions(int selectedPokemon) {
                             fill_pokemon_evolution_entries("2nd",j,3);
                             fill_pokemon_evolution_entries("3rd",k,3);
 
-                            threeStagePokemon = 3;
+                            threeStagePokemon = 3; // Rename this variable maybe?
 
                             currentlySelectedPokemon = pokemonStage;
                             pokemonStage = 0;
@@ -336,7 +336,6 @@ int find_evolutions(int selectedPokemon) {
     if (pokedexEntries[adjustSelectedPokemon].finalForm == TRUE &&
         pokedexEntries[adjustSelectedPokemon].evolvesFrom == NO_EVO) {
         fill_pokemon_evolution_entries("1st", adjustSelectedPokemon, 1);
-        printf("%d\n", adjustSelectedPokemon);
 
         threeStagePokemon = 1;
 
