@@ -15,14 +15,16 @@ int fill_pokedex_array(void) {
         return 1;
     }
 
+    char *discovered = (char *) malloc(1);
     char *firstType = (char *) malloc(20);
     char *secondType = (char *) malloc(20);
     char *finalForm = (char *) malloc(1);
     char *evolutionMethod = (char *) malloc(15);
 
     // Grab line and add it to the array
-    while (fscanf(file, " %[^,],%[^,],%d,%[^,],%[^,],%f,%f,%[^,],%d,%[^,],%d,",
-                                pokedexEntries[count].name, 
+    while (fscanf(file, " %[^,],%[^,],%[^,],%d,%[^,],%[^,],%f,%f,%[^,],%d,%[^,],%d,",
+                                discovered,
+                                pokedexEntries[count].name,
                                 pokedexEntries[count].category,
                                 &pokedexEntries[count].number,
                                 firstType,
@@ -32,7 +34,14 @@ int fill_pokedex_array(void) {
                                 finalForm,
                                 &pokedexEntries[count].evolvesFrom,
                                 evolutionMethod,
-                                &pokedexEntries[count].level) == 11) {
+                                &pokedexEntries[count].level) == 12) {
+
+    // Handle discovered enum
+    if (!strcmp(discovered,"FALSE")) {
+        pokedexEntries[count].discovered = FALSE;
+    } else {
+        pokedexEntries[count].discovered = TRUE;
+    }
 
     // Handle first type enum
     for(int i = 0; i < 17; ++i) {
@@ -62,6 +71,7 @@ int fill_pokedex_array(void) {
         }
     }
 
+    // printf("Discovered: %s\n", discovered);
     // printf("Name: %s\n", pokedexEntries[count].name);
     // printf("Species: %s\n", pokedexEntries[count].category);
     // printf("Number: %d\n", pokedexEntries[count].number);
@@ -127,9 +137,6 @@ void generate_pokedex_buttons(void) {
         sprintf(iconString,"icon_%d",i); // Pokemon icon
         sprintf(numberString,"number_%d",i); // Pokemon number
 
-        // Pokemon icon location
-        sprintf(iconStringFromFile,"assets/sprites/icons/%d.png",i);
-
         // Pokemon number
         sprintf(formattedPokedexNumber, "%s","#");
         sprintf(rawPokedexNumber, "%03d", i);
@@ -146,38 +153,47 @@ void generate_pokedex_buttons(void) {
         //// CREATE THE BUTTON
         mainWindowButton[i-1] = GTK_WIDGET(gtk_builder_get_object(builder, buttonID));
 
+        // EMPTY POKEMON ENTRY
+        if (pokedexEntries[i-1].discovered == TRUE) {
+            // Pokemon icon location
+            sprintf(iconStringFromFile,"assets/sprites/icons/%d.png",i);
+
+            // Set Pokemon's name on button
+            gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, nameString)),
+                pokedexEntries[i-1].name);
+
+            // Set Pokemon's first type...
+            gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, firstTypeString)),
+                typeEnumStrings[pokedexEntries[i-1].firstType]);
+            // Then apply the CSS to format it to the correct color
+            style_given_element(firstTypeString,firstTypeCSS);
+
+            // Set Pokemon's second type...
+            gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, secondTypeString)),
+                typeEnumStrings[pokedexEntries[i-1].secondType]);
+            // Then apply the CSS to format it to the correct color
+            style_given_element(secondTypeString,secondTypeCSS);
+
+            // Apply CSS to format button's color to allign with Pokemon's first type
+            style_given_element(buttonID,
+                typeEnumStrings[pokedexEntries[i-1].firstType]);
+
+            // Clicking the button will trigger the "pokemon_entry_clicked" function
+            g_signal_connect(GTK_BUTTON(mainWindowButton[i-1]), "clicked",
+                G_CALLBACK(pokemon_entry_clicked), pInt);
+
+        } else {
+            sprintf(iconStringFromFile,"assets/sprites/icons/%s.png","???_1");
+        }
+
         //// FILL THE BUTTON WITH RELEVANT UNIQUE INFORMATION
         // Set icon image on button
         gtk_image_set_from_file(GTK_IMAGE(gtk_builder_get_object(builder, iconString)),
             iconStringFromFile);
 
-        // Set Pokemon's name on button
-        gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, nameString)),
-            pokedexEntries[i-1].name);
-
         // Set Pokemon's number on button
         gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, numberString)),
             formattedPokedexNumber);
-
-        // Set Pokemon's first type...
-        gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, firstTypeString)),
-            typeEnumStrings[pokedexEntries[i-1].firstType]);
-        // Then apply the CSS to format it to the correct color
-        style_given_element(firstTypeString,firstTypeCSS);
-
-        // Set Pokemon's second type...
-        gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, secondTypeString)),
-            typeEnumStrings[pokedexEntries[i-1].secondType]);
-        // Then apply the CSS to format it to the correct color
-        style_given_element(secondTypeString,secondTypeCSS);
-
-        // Apply CSS to format button's color to allign with Pokemon's first type
-        style_given_element(buttonID,
-            typeEnumStrings[pokedexEntries[i-1].firstType]);
-
-        // Clicking the button will trigger the "pokemon_entry_clicked" function
-        g_signal_connect(GTK_BUTTON(mainWindowButton[i-1]), "clicked",
-            G_CALLBACK(pokemon_entry_clicked), pInt);
 
         // Finally, name the button to facilitate interaction with other functions
         gtk_widget_set_name(mainWindowButton[i-1],rawPokedexNumber);

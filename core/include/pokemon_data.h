@@ -46,6 +46,7 @@ typedef enum evolutionEnum {
 } evolutionEnum;
 
 typedef struct pokemon { // Identifying data associated with Pokemon
+  bool discovered;
   char name[20];
   char category[20];
   int number;
