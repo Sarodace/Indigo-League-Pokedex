@@ -207,6 +207,7 @@ int fill_pokemon_evolution_entries(char *position, int counter, int tier) {
     char nameString[20];
     char cardString[20];
     char pokemonImageString[30];
+    char pokemonNameString[10];
     char formattedPokedexNumber[5];
     char rawPokedexNumber[5];
     char evolutionLevel[20];
@@ -236,60 +237,91 @@ int fill_pokemon_evolution_entries(char *position, int counter, int tier) {
     sprintf(rawPokedexNumber, "%03d", pokedexEntries[counter].number);
     strcat(formattedPokedexNumber, rawPokedexNumber);
 
-    sprintf(pokemonImageString,"assets/sprites/main/%s.png",rawPokedexNumber);
+
+    // Fill in pokemon card or leave it blank depending on whether the pokemon
+    // has been discovered 
+    if (pokedexEntries[counter].discovered == TRUE) {
+        sprintf(pokemonImageString,"assets/sprites/main/%s.png",rawPokedexNumber);
+
+        sprintf(pokemonNameString, "%s", pokedexEntries[counter].name);
+
+        style_evolution_card(cardString, typeEnumStrings[pokedexEntries[counter].firstType]);
+    } else {
+        strcpy(pokemonImageString, "assets/sprites/main/100.png");
+
+        // Needs a better name than Unknown due to it's similiarity with unown
+        strcpy(pokemonNameString, "Unknown");
+
+        // Need to remove CSS styling
+    }
+
+    // Fill in pokemon card information
+    gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, nameString)),
+       pokemonNameString);
+
+    gtk_image_set_from_file(GTK_IMAGE(gtk_builder_get_object(builder, imageString)),
+        pokemonImageString);
 
     gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, numberString)),
         formattedPokedexNumber);
-    gtk_image_set_from_file(GTK_IMAGE(gtk_builder_get_object(builder, imageString)),
-        pokemonImageString);
-    gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, nameString)),
-        pokedexEntries[counter].name);
-
-    style_evolution_card(cardString, typeEnumStrings[pokedexEntries[counter].firstType]);
 
     if (position == "2nd") {
-        gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "threeTier_1stEvolution")),
-            evolutionLevel);
+        if (pokedexEntries[counter].discovered == TRUE) {
+            gtk_label_set_text(GTK_LABEL(threeTier_1stEvolution),
+                evolutionLevel);
+        } else {
+            gtk_label_set_text(GTK_LABEL(threeTier_1stEvolution),
+                "???");
+        }
     }
 
     if (position == "3rd") {
-        // CHANGE THE CONDITION IN THIS IF STATEMENT TO SOMETHING MORE HUMAN-FRIENDLY
-        if (pokedexEntries[counter].evolutionMethod > 1) {
-            char pathToImage[40];
-            sprintf(pathToImage, "assets/sprites/items/%s.png",
-                evolutionEnumStrings[pokedexEntries[counter].evolutionMethod]);
+        if (pokedexEntries[counter].discovered == TRUE) {
+            if (pokedexEntries[counter].evolutionMethod > 1) {
+                char pathToImage[40];
+                sprintf(pathToImage, "assets/sprites/items/%s.png",
+                    evolutionEnumStrings[pokedexEntries[counter].evolutionMethod]);
 
-            gtk_stack_set_visible_child(GTK_STACK(threeTier_evolutionSwitcher),
-                threeTier_evolutionMethod);
+                gtk_stack_set_visible_child(GTK_STACK(threeTier_evolutionSwitcher),
+                    threeTier_evolutionMethod);
 
-            gtk_image_set_from_file(GTK_IMAGE(threeTier_evolutionMethod),
-                pathToImage);
+                gtk_image_set_from_file(GTK_IMAGE(threeTier_evolutionMethod),
+                    pathToImage);
+            } else {
+                gtk_stack_set_visible_child(GTK_STACK(threeTier_evolutionSwitcher),
+                    threeTier_2ndEvolution);
+                gtk_label_set_text(GTK_LABEL(threeTier_2ndEvolution),
+                    evolutionLevel);
+            }
         } else {
-            gtk_stack_set_visible_child(GTK_STACK(threeTier_evolutionSwitcher),
-                threeTier_2ndEvolution);
             gtk_label_set_text(GTK_LABEL(threeTier_2ndEvolution),
-                evolutionLevel);
+                "???");
         }
     }
 
     if (position == "2nd" && tier == 2) {
-        gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "twoTier_1stEvolution")),
-            evolutionLevel);
-        if (pokedexEntries[counter].evolutionMethod > 1) {
-            char pathToImage[40];
-            sprintf(pathToImage, "assets/sprites/items/%s.png",
-                evolutionEnumStrings[pokedexEntries[counter].evolutionMethod]);
-
-            gtk_stack_set_visible_child(GTK_STACK(twoTier_evolutionSwitcher),
-                twoTier_evolutionMethod);
-
-            gtk_image_set_from_file(GTK_IMAGE(twoTier_evolutionMethod),
-                pathToImage);
-        } else {
-            gtk_stack_set_visible_child(GTK_STACK(twoTier_evolutionSwitcher),
-                twoTier_1stEvolution);
-            gtk_label_set_text(GTK_LABEL(twoTier_1stEvolution),
+        if (pokedexEntries[counter].discovered == TRUE) {
+            gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, "twoTier_1stEvolution")),
                 evolutionLevel);
+            if (pokedexEntries[counter].evolutionMethod > 1) {
+                char pathToImage[40];
+                sprintf(pathToImage, "assets/sprites/items/%s.png",
+                    evolutionEnumStrings[pokedexEntries[counter].evolutionMethod]);
+
+                gtk_stack_set_visible_child(GTK_STACK(twoTier_evolutionSwitcher),
+                    twoTier_evolutionMethod);
+
+                gtk_image_set_from_file(GTK_IMAGE(twoTier_evolutionMethod),
+                    pathToImage);
+            } else {
+                gtk_stack_set_visible_child(GTK_STACK(twoTier_evolutionSwitcher),
+                    twoTier_1stEvolution);
+                gtk_label_set_text(GTK_LABEL(twoTier_1stEvolution),
+                    evolutionLevel);
+            }
+        } else {
+            gtk_label_set_text(GTK_LABEL(twoTier_1stEvolution),
+                "???");
         }
     }
 }
