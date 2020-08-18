@@ -183,6 +183,10 @@ void generate_pokedex_buttons(void) {
                 G_CALLBACK(pokemon_entry_clicked), pInt);
 
         } else {
+            // Set Pokemon's name on button
+            gtk_label_set_text(GTK_LABEL(gtk_builder_get_object(builder, nameString)),
+                "?????");
+
             sprintf(iconStringFromFile,"assets/sprites/icons/%s.png","???_1");
         }
 
@@ -252,7 +256,8 @@ int fill_pokemon_evolution_entries(char *position, int counter, int tier) {
         // Needs a better name than Unknown due to it's similiarity with unown
         strcpy(pokemonNameString, "Unknown");
 
-        // Need to remove CSS styling
+        // Remove CSS styling (Kind of a cop out, but it works!)
+        style_evolution_card(cardString, "NULL");
     }
 
     // Fill in pokemon card information

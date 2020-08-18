@@ -199,6 +199,11 @@ replace all colors with following formating, use @test
   min-width: 50px;
 }
 
+box#pokemon_entry_list > button {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
 /* Search screen (not renaming variables right now because I'm planning on
 reworking the search screen)*/
 .search {

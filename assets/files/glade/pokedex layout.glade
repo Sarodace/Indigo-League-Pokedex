@@ -15,8 +15,11 @@
   <object class="GtkWindow" id="mainWindow">
     <property name="can_focus">False</property>
     <property name="resizable">False</property>
+    <property name="window_position">center</property>
     <property name="default_width">480</property>
     <property name="default_height">320</property>
+    <property name="icon">../../sprites/main/006.png</property>
+    <property name="gravity">center</property>
     <child>
       <placeholder/>
     </child>
@@ -656,8 +659,6 @@
             </child>
             <child>
               <object class="GtkScrolledWindow" id="listScreen">
-                <property name="width_request">-1</property>
-                <property name="height_request">-1</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="hscrollbar_policy">never</property>
@@ -670,14 +671,18 @@
                     <property name="height_request">-1</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="margin_left">5</property>
+                    <property name="margin_right">5</property>
+                    <property name="margin_top">5</property>
+                    <property name="margin_bottom">5</property>
                     <property name="shadow_type">none</property>
                     <child>
                       <object class="GtkBox" id="pokemonEntryList">
+                        <property name="name">pokemon_entry_list</property>
                         <property name="width_request">-1</property>
                         <property name="height_request">-1</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="margin_top">4</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">5</property>
                         <child>
@@ -14829,7 +14834,7 @@
                           <object class="GtkImage" id="threeTier_evolutionMethod_">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="pixbuf">../../sprites/items/LEAF_STONE.png</property>
+                            <property name="pixbuf">../../sprites/items/leaf_stone.png</property>
                           </object>
                           <packing>
                             <property name="name">page1</property>
