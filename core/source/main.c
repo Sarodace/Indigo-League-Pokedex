@@ -35,6 +35,8 @@ int main(int argc, char *argv[]) {
     pokemonHeightSpinButton = GTK_WIDGET(gtk_builder_get_object(builder, "pokemonHeightSpinButton"));
     pokemonResults = GTK_WIDGET(gtk_builder_get_object(builder, "pokemonResults"));
 
+    searchScreen_type = GTK_WIDGET(gtk_builder_get_object(builder, "searchScreen_type"));
+
     // List screen variables
     listScreen = GTK_WIDGET(gtk_builder_get_object(builder, "listScreen"));
     viewBox = GTK_WIDGET(gtk_builder_get_object(builder, "viewBox"));

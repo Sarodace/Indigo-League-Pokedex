@@ -31,6 +31,10 @@ gboolean switch_screens(void) {
         gtk_stack_set_visible_child(GTK_STACK(submenuBarStack),GTK_WIDGET(submenuBarStack_List));
         return TRUE;
     }
+
+    if (gtk_stack_get_visible_child(GTK_STACK(mainStack)) == searchScreen_type) {
+        gtk_stack_set_visible_child(GTK_STACK(mainStack),GTK_WIDGET(searchScreen));
+    }
 }
 
 // Scrolls the list screen to best display selected, and surrounding, Pokemon.
@@ -223,4 +227,8 @@ int animate_pokemon_evolution_cards(int pokemonStage, int buttonPress) {
             return 2;
         }
     }
+}
+
+void transition_to_searchType (GtkButton *buttonClicked) {
+    gtk_stack_set_visible_child(GTK_STACK(mainStack), GTK_WIDGET(searchScreen_type));
 }

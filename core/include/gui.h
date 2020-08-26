@@ -24,6 +24,8 @@ GtkWidget   *heightComboBox;
 GtkWidget   *pokemonHeightSpinButton;
 GtkWidget   *pokemonResults;
 
+GtkWidget   *searchScreen_type;
+
 // List screen variables
 GtkWidget   *listScreen;
 GtkWidget   *viewBox;
